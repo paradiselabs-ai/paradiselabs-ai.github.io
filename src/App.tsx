@@ -1,4 +1,3 @@
-// src/App.tsx
 import React from 'react';
 import Header from './components/Header/Header';
 import WorkflowBuilder from './components/WorkflowBuilder/WorkflowBuilder';
@@ -7,13 +6,21 @@ import WorkflowEditor from './components/WorkflowEditor/WorkflowEditor';
 
 const App: React.FC = () => {
   return (
-    <div className="app">
+    <div className="h-screen flex flex-col">
+      {/* Fixed Header */}
       <Header />
-      <div className="app__content">
+      
+      {/* Main Content Area - subtract header height */}
+      <div className="flex flex-1 h-[calc(100vh-72px)] mt-[72px]">
+        {/* Sidebar Editor */}
         <WorkflowEditor />
-        <div className="app__main">
-          <WorkflowBuilder />
-          <WorkflowControls />
+        
+        {/* Main Workspace */}
+        <div className="flex-1 flex flex-col">
+          <div className="flex-1">
+            <WorkflowBuilder />
+          </div>
+         {/* <WorkflowControls />*/}
         </div>
       </div>
     </div>

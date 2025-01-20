@@ -83,26 +83,6 @@ code {
     monospace;
 }
 
-/* Layout */
-.app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding-top: var(--header-height);
-}
-
-.app__main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.app__content {
-  flex: 1;
-  display: flex;
-}
-
 /* Header Component */
 .header {
   display: flex;
@@ -140,6 +120,7 @@ code {
   animation: backlight_bg var(--animation-duration-slow) ease-in-out infinite;
 }
 
+/* Header Component Classes */
 .header__left {
   display: flex;
   align-items: center;
@@ -295,18 +276,7 @@ code {
   color: var(--color-neutral-900);
 }
 
-/* Workflow Builder */
-.workflow-builder {
-  flex: 1;
-  padding: var(--spacing-24);
-  background-color: var(--color-neutral-100);
-  overflow: auto;
-}
-
-.workflow-builder__content {
-  height: 100%;
-}
-
+/* Workflow Controls */
 .workflow-controls {
   padding: var(--spacing-24);
   background-color: #fff;

@@ -1,12 +1,14 @@
-// src/components/WorkflowBuilder/WorkflowBuilder.tsx
 import React from 'react';
+import InteractiveBackground from './InteractiveBackground';
 
 const WorkflowBuilder: React.FC = () => {
   return (
-    <div className="workflow-builder">
-      {/* This will be your main workspace where workflows are built */}
-      <div className="workflow-builder__content">
-        {/* Add your workflow building interface here */}
+    <div className="absolute inset-0">
+      <InteractiveBackground />
+      <div className="relative z-10 h-full">
+        <div className="p-6">
+          {/* Add your workflow building interface here */}
+        </div>
       </div>
     </div>
   );
