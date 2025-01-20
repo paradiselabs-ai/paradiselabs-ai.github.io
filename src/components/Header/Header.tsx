@@ -1,8 +1,15 @@
-/* src\components\Header\Header.tsx */
+// src/components/Header/Header.tsx
 import React from 'react';
-import { Undo2, Redo2, Download, Play } from 'lucide-react';
+import { Undo2, Redo2, Download, Play, Moon, Sun } from 'lucide-react';
+import { useTheme } from '../../hooks/useTheme';
 
 const Header: React.FC = () => {
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
   return (
     <div className="header">
       <div className="header__left">
@@ -26,6 +33,14 @@ const Header: React.FC = () => {
       </div>
       
       <div className="header__actions">
+        <button 
+          className="header__button"
+          onClick={toggleTheme}
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+        >
+          {theme === 'light' ? <Moon /> : <Sun />}
+        </button>
         <button 
           className="header__button" 
           title="Export your code"

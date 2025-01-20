@@ -1,4 +1,4 @@
-/* src\components\WorkflowEditor\WorkflowEditor.tsx */
+// src/components/WorkflowEditor/WorkflowEditor.tsx
 import React from 'react';
 import { Plus, Sparkles, Trash2, LucideIcon } from 'lucide-react';
 
