@@ -1,7 +1,42 @@
-/* index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Color and effect variables */
+  --backlight-gradient: linear-gradient(
+    90deg,
+    #00CAB1,
+    #7B00FF,
+    #FF3366,
+    #7B00FF,
+    #00CAB1
+  );
+  --backlight-blur-base: 3px;
+  --backlight-opacity: 0.7;
+  --backlight-glow-spread: 15px;
+  --animation-duration: 12s;
+  
+  /* Layout variables */
+  --header-height: 72px;
+  --workflow-editor-width: 64px;
+  
+  /* Z-index layers */
+  --z-header: 100;
+  --z-workflow-editor: 50;
+  
+  /* Spacing system */
+  --spacing-base: 8px;
+  --spacing-md: calc(var(--spacing-base) * 2);
+  --spacing-lg: calc(var(--spacing-base) * 3);
+}
+
+/* Global box sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   margin: 0;
@@ -18,14 +53,10 @@ code {
 }
 
 .app {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100vh;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: var(--header-height); /* Single source of header offset */
 }
 
 .app__main {
@@ -35,16 +66,140 @@ code {
   overflow: hidden;
 }
 
+.app__content {
+  flex: 1;
+  display: flex;
+}
+
+/* Header styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+  padding: 0 var(--spacing-lg);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(234, 234, 234, 0.3);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-header);
+  transition: all 0.3s ease;
+}
+
+.header:after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 4%;
+  right: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--backlight-gradient);
+  background-size: 300% 100%;
+  filter: blur(var(--backlight-blur-base)) drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
+  opacity: var(--backlight-opacity);
+  z-index: -1;
+  animation: backlight_bg var(--animation-duration) ease-in-out infinite;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+.header__actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.header__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header__button:hover {
+  background-color: #f9f9f9;
+  border-color: #ddd;
+  color: #333;
+}
+
+.header__button:active {
+  transform: translateY(1px);
+}
+
+.header__button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.header__button span {
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header__button--run {
+  background-color: #2563eb;
+  border: none;
+  color: white;
+  padding: 0 16px;
+}
+
+.header__button--run:hover {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+/* Workflow Editor styles */
 .workflow-editor {
   position: fixed;
   left: 0;
-  top: 60px;
+  top: var(--header-height);
   bottom: 0;
-  width: 64px; /* Reduced from 200px to make it more compact */
-  padding: 12px 8px;
+  width: var(--workflow-editor-width);
+  padding: var(--spacing-md) var(--spacing-base);
   background-color: #fff;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid rgba(234, 234, 234, 0.3);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: var(--z-workflow-editor);
+}
+
+.workflow-editor::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--backlight-gradient);
+  background-size: 100% 300%;
+  filter: blur(var(--backlight-blur-base)) drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
+  opacity: var(--backlight-opacity);
+  animation: backlight_bg var(--animation-duration) ease-in-out infinite;
+  pointer-events: none;
 }
 
 .workflow-editor__buttons {
@@ -86,125 +241,33 @@ code {
   line-height: 1;
 }
 
+/* Workflow Builder styles */
 .workflow-builder {
   flex: 1;
-  padding: 20px;
-  margin-left: 64px; /* Updated to match new workflow-editor width */
+  padding: var(--spacing-lg);
+  margin-left: var(--workflow-editor-width);
   background-color: #f5f5f5;
+  overflow: auto;
 }
 
 .workflow-builder__content {
   height: 100%;
-  overflow: auto;
 }
 
 .workflow-controls {
-  padding: 20px;
-  margin-left: 64px; /* Matches workflow-editor width */
+  padding: var(--spacing-lg);
+  margin-left: var(--workflow-editor-width);
   background-color: #fff;
   border-top: 1px solid #ddd;
 }
 
-/* Header Styles */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  padding: 0 16px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #eaeaea;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 100;
-}
-
-.header__left {
-  display: flex;
-  align-items: center;
-}
-
-.header__logo-text {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1a1a1a;
-  letter-spacing: -0.01em;
-}
-
-.header__actions {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.header__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  padding: 0 12px;
-  border: 1px solid #eaeaea;
-  border-radius: 6px;
-  background-color: #ffffff;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.header__button:hover {
-  background-color: #f9f9f9;
-  border-color: #ddd;
-  color: #333;
-}
-
-.header__button svg {
-  width: 18px;
-  height: 18px;
-}
-
-.header__button span {
-  margin-left: 6px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.header__button--run {
-  background-color: #2563eb;
-  border: none;
-  color: white;
-  padding: 0 16px;
-}
-
-.header__button--run:hover {
-  background-color: #1d4ed8;
-  color: white;
-}
-
-/* Add subtle active state */
-.header__button:active {
-  transform: translateY(1px);
-}
-
-/* Main content wrapper */
-.app__content {
-  margin-top: 60px; /* Matches header height */
-  height: calc(100vh - 60px);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}.example {
-    display: -ms-grid;
-    display: grid;
-    -webkit-transition: all .5s;
-    -o-transition: all .5s;
-    transition: all .5s;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-    background: -webkit-gradient(linear, left top, left bottom, from(white), to(black));
-    background: -o-linear-gradient(top, white, black);
-    background: linear-gradient(to bottom, white, black);
+@keyframes backlight_bg {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: blur(var(--backlight-blur-base)) drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: blur(calc(var(--backlight-blur-base) * 1.5)) drop-shadow(0 0 calc(var(--backlight-glow-spread) * 1.2) rgba(123, 0, 255, 0.4));
+  }
 }
