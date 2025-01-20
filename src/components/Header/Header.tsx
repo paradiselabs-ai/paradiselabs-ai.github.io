@@ -6,23 +6,25 @@ const Header: React.FC = () => {
     <div className="header">
       <div className="header__left">
         <span className="header__logo-text">WorkflowAI</span>
+        <div className="header__actions" style={{ marginLeft: '150px' }}>
+          <button 
+            className="header__button" 
+            title="Undo"
+            aria-label="Undo"
+          >
+            <Undo2 />
+          </button>
+          <button 
+            className="header__button" 
+            title="Redo"
+            aria-label="Redo"
+          >
+            <Redo2 />
+          </button>
+        </div>
       </div>
       
       <div className="header__actions">
-        <button 
-          className="header__button" 
-          title="Undo"
-          aria-label="Undo"
-        >
-          <Undo2 />
-        </button>
-        <button 
-          className="header__button" 
-          title="Redo"
-          aria-label="Redo"
-        >
-          <Redo2 />
-        </button>
         <button 
           className="header__button" 
           title="Export your code"

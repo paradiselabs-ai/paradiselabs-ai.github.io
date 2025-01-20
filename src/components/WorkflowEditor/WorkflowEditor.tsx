@@ -33,8 +33,8 @@ const WorkflowEditor: React.FC = () => {
   ];
 
   return (
-    <div className="workflow-editor">
-      <div className="workflow-editor__buttons">
+    <nav className="workflow-editor" aria-label="Workflow tools">
+      <div className="workflow-editor__buttons" role="toolbar" aria-label="Workflow editing tools">
         {menuItems.map(({ id, icon: Icon, label, onClick }) => (
           <button
             key={id}
@@ -42,18 +42,21 @@ const WorkflowEditor: React.FC = () => {
               setSelectedItem(id);
               onClick?.();
             }}
-            className={`workflow-editor__button ${
-              selectedItem === id ? 'text-gray-900 bg-gray-100' : ''
+            className={`workflow-editor__button group ${
+              selectedItem === id ? 'workflow-editor__button--selected' : ''
             }`}
             aria-label={label}
             title={label}
+            aria-pressed={selectedItem === id}
           >
-            <Icon className="workflow-editor__button-icon" />
-            <span className="workflow-editor__button-text">{label}</span>
+            <span className="workflow-editor__button-content">
+              <Icon className="workflow-editor__button-icon" />
+              <span className="workflow-editor__button-text">{label}</span>
+            </span>
           </button>
         ))}
       </div>
-    </div>
+    </nav>
   );
 };
 

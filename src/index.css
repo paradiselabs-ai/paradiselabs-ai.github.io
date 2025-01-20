@@ -3,41 +3,71 @@
 @tailwind utilities;
 
 :root {
-  /* Color and effect variables */
+  /* Color System */
+  --color-primary: #2563eb;
+  --color-primary-dark: #1d4ed8;
+  --color-neutral-50: #f9f9f9;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-300: #ddd;
+  --color-neutral-400: #666;
+  --color-neutral-900: #1a1a1a;
+  
+  /* Gradient Colors */
+  --color-gradient-1: #00CAB1;
+  --color-gradient-2: #7B00FF;
+  --color-gradient-3: #FF3366;
+  
+  /* Effects */
   --backlight-gradient: linear-gradient(
     90deg,
-    #00CAB1,
-    #7B00FF,
-    #FF3366,
-    #7B00FF,
-    #00CAB1
+    var(--color-gradient-1),
+    var(--color-gradient-2),
+    var(--color-gradient-3),
+    var(--color-gradient-2),
+    var(--color-gradient-1)
   );
   --backlight-blur-base: 3px;
   --backlight-opacity: 0.7;
   --backlight-glow-spread: 15px;
-  --animation-duration: 12s;
   
-  /* Layout variables */
+  /* Animations */
+  --animation-duration-slow: 12s;
+  --animation-duration-medium: 0.3s;
+  --animation-duration-fast: 0.2s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Layout */
   --header-height: 72px;
-  --workflow-editor-width: 64px;
   
-  /* Z-index layers */
+  /* Spacing System */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-base: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  
+  /* Z-index System */
+  --z-base: 1;
   --z-header: 100;
   --z-workflow-editor: 50;
   
-  /* Spacing system */
-  --spacing-base: 8px;
-  --spacing-md: calc(var(--spacing-base) * 2);
-  --spacing-lg: calc(var(--spacing-base) * 3);
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Global box sizing reset */
+/* Modern CSS Reset */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* Base Styles */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -45,6 +75,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--color-neutral-900);
 }
 
 code {
@@ -52,11 +83,12 @@ code {
     monospace;
 }
 
+/* Layout */
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-top: var(--header-height); /* Single source of header offset */
+  padding-top: var(--header-height);
 }
 
 .app__main {
@@ -71,58 +103,59 @@ code {
   display: flex;
 }
 
-/* Header styles */
+/* Header Component */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: var(--header-height);
-  padding: 0 var(--spacing-lg);
+  padding: 0 var(--spacing-24);
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(234, 234, 234, 0.3);
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow-md);
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: var(--z-header);
-  transition: all 0.3s ease;
+  transition: all var(--animation-duration-medium) var(--transition-timing);
 }
 
 .header:after {
   position: absolute;
   content: "";
   top: 100%;
-  left: 4%;
+  left: 0;
   right: 0;
   height: 2px;
   width: 100%;
   background: var(--backlight-gradient);
   background-size: 300% 100%;
-  filter: blur(var(--backlight-blur-base)) drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
+  filter: blur(var(--backlight-blur-base)) 
+    drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
   opacity: var(--backlight-opacity);
-  z-index: -1;
-  animation: backlight_bg var(--animation-duration) ease-in-out infinite;
+  z-index: var(--z-base);
+  will-change: background-position, filter;
+  animation: backlight_bg var(--animation-duration-slow) ease-in-out infinite;
 }
 
 .header__left {
   display: flex;
   align-items: center;
+  gap: var(--spacing-16);
 }
 
 .header__logo-text {
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--color-neutral-900);
   letter-spacing: -0.01em;
 }
 
 .header__actions {
   display: flex;
-  gap: 8px;
+  gap: var(--spacing-base);
   align-items: center;
 }
 
@@ -131,19 +164,24 @@ code {
   align-items: center;
   justify-content: center;
   height: 36px;
-  padding: 0 12px;
-  border: 1px solid #eaeaea;
+  padding: 0 var(--spacing-12);
+  border: 1px solid var(--color-neutral-200);
   border-radius: 6px;
   background-color: #ffffff;
-  color: #666;
+  color: var(--color-neutral-400);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--animation-duration-fast) var(--transition-timing);
 }
 
 .header__button:hover {
-  background-color: #f9f9f9;
-  border-color: #ddd;
-  color: #333;
+  background-color: var(--color-neutral-50);
+  border-color: var(--color-neutral-300);
+  color: var(--color-neutral-900);
+}
+
+.header__button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .header__button:active {
@@ -156,97 +194,112 @@ code {
 }
 
 .header__button span {
-  margin-left: 6px;
+  margin-left: var(--spacing-base);
   font-size: 14px;
   font-weight: 500;
 }
 
 .header__button--run {
-  background-color: #2563eb;
+  background-color: var(--color-primary);
   border: none;
   color: white;
-  padding: 0 16px;
+  padding: 0 var(--spacing-16);
 }
 
 .header__button--run:hover {
-  background-color: #1d4ed8;
+  background-color: var(--color-primary-dark);
   color: white;
 }
 
-/* Workflow Editor styles */
+/* Workflow Editor */
 .workflow-editor {
   position: fixed;
-  left: 0;
-  top: var(--header-height);
-  bottom: 0;
-  width: var(--workflow-editor-width);
-  padding: var(--spacing-md) var(--spacing-base);
-  background-color: #fff;
-  border-right: 1px solid rgba(234, 234, 234, 0.3);
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  left: var(--spacing-16);
+  top: calc(var(--header-height) + var(--spacing-16));
   z-index: var(--z-workflow-editor);
-}
-
-.workflow-editor::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--backlight-gradient);
-  background-size: 100% 300%;
-  filter: blur(var(--backlight-blur-base)) drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
-  opacity: var(--backlight-opacity);
-  animation: backlight_bg var(--animation-duration) ease-in-out infinite;
-  pointer-events: none;
 }
 
 .workflow-editor__buttons {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  align-items: center;
+  gap: var(--spacing-12);
+  background-color: white;
+  padding: var(--spacing-12);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
 }
 
 .workflow-editor__button {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all var(--animation-duration-fast) var(--transition-timing);
+  outline: none;
+}
+
+.workflow-editor__button-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 48px;
-  height: 48px;
-  padding: 8px;
-  border: none;
-  border-radius: 8px;
+  padding: var(--spacing-base);
   background-color: transparent;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s;
+  border-radius: 12px;
+  transition: all var(--animation-duration-fast) var(--transition-timing);
 }
 
-.workflow-editor__button:hover {
-  background-color: #f5f5f5;
-  color: #333;
+.workflow-editor__button:hover .workflow-editor__button-content {
+  background-color: var(--color-neutral-50);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.workflow-editor__button:active .workflow-editor__button-content {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.workflow-editor__button--selected .workflow-editor__button-content {
+  background-color: var(--color-neutral-100);
+  box-shadow: var(--shadow-md);
+}
+
+.workflow-editor__button:focus-visible .workflow-editor__button-content {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .workflow-editor__button-icon {
   width: 24px;
   height: 24px;
-  margin-bottom: 4px;
+  margin-bottom: var(--spacing-base);
+  color: var(--color-neutral-400);
+  transition: color var(--animation-duration-fast) var(--transition-timing);
+}
+
+.workflow-editor__button:hover .workflow-editor__button-icon,
+.workflow-editor__button--selected .workflow-editor__button-icon {
+  color: var(--color-neutral-900);
 }
 
 .workflow-editor__button-text {
-  font-size: 11px;
-  text-align: center;
-  line-height: 1;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-neutral-400);
+  transition: color var(--animation-duration-fast) var(--transition-timing);
 }
 
-/* Workflow Builder styles */
+.workflow-editor__button:hover .workflow-editor__button-text,
+.workflow-editor__button--selected .workflow-editor__button-text {
+  color: var(--color-neutral-900);
+}
+
+/* Workflow Builder */
 .workflow-builder {
   flex: 1;
-  padding: var(--spacing-lg);
-  margin-left: var(--workflow-editor-width);
-  background-color: #f5f5f5;
+  padding: var(--spacing-24);
+  background-color: var(--color-neutral-100);
   overflow: auto;
 }
 
@@ -255,19 +308,32 @@ code {
 }
 
 .workflow-controls {
-  padding: var(--spacing-lg);
-  margin-left: var(--workflow-editor-width);
+  padding: var(--spacing-24);
   background-color: #fff;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--color-neutral-200);
 }
 
+/* Animations */
 @keyframes backlight_bg {
   0%, 100% {
     background-position: 0% 50%;
-    filter: blur(var(--backlight-blur-base)) drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
+    filter: blur(var(--backlight-blur-base)) 
+      drop-shadow(0 0 var(--backlight-glow-spread) rgba(123, 0, 255, 0.3));
   }
   50% {
     background-position: 100% 50%;
-    filter: blur(calc(var(--backlight-blur-base) * 1.5)) drop-shadow(0 0 calc(var(--backlight-glow-spread) * 1.2) rgba(123, 0, 255, 0.4));
+    filter: blur(calc(var(--backlight-blur-base) * 1.5)) 
+      drop-shadow(0 0 calc(var(--backlight-glow-spread) * 1.2) rgba(123, 0, 255, 0.4));
+  }
+}
+
+/* Media Queries */
+@media (max-width: 640px) {
+  .header {
+    padding: 0 var(--spacing-16);
+  }
+  
+  .workflow-editor {
+    left: var(--spacing-base);
   }
 }
