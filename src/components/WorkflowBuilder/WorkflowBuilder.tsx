@@ -1,10 +1,13 @@
+// src/components/WorkflowBuilder/WorkflowBuilder.tsx
 import React from 'react';
 
 const WorkflowBuilder: React.FC = () => {
   return (
     <div className="workflow-builder">
-      <h1>Workflow Builder</h1>
-      {/* Workflow builder UI will go here */}
+      {/* This will be your main workspace where workflows are built */}
+      <div className="workflow-builder__content">
+        {/* Add your workflow building interface here */}
+      </div>
     </div>
   );
 };
