@@ -1,3 +1,4 @@
+/* src\components\Header\Header.tsx */
 import React from 'react';
 import { Undo2, Redo2, Download, Play } from 'lucide-react';
 
