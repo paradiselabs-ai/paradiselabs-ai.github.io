@@ -15,6 +15,11 @@
   --animation-duration-inner: 12s;
   --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
   
+  /* Glass Variables */
+  --glass-blur: 18px;
+  --glass-border: 0.5px solid rgba(147, 147, 147, 0.2);
+  --glass-opacity: 0.85;
+  
   /* Spacing System */
   --spacing-2: 2px;
   --spacing-4: 4px;
@@ -206,27 +211,30 @@ code {
   justify-content: center;
   height: 36px;
   padding: 0 var(--spacing-12);
-  border: 1px solid var(--color-neutral-200);
-  border-radius: 6px;
-  background-color: var(--color-neutral-50);
-  color: var(--color-neutral-400);
+  background: calc(var(--glass-opacity) * 0.7);
+  backdrop-filter: blur(calc(var(--glass-blur) * 0.8));
+  -webkit-backdrop-filter: blur(calc(var(--glass-blur) * 0.8));
+  border: var(--glass-border);
+  border-radius: 15px;
+  color: var(--color-neutral-700);
   cursor: pointer;
   transition: all var(--animation-duration-fast) var(--transition-timing);
 }
 
 .header__button:hover {
-  background-color: var(--color-neutral-100);
-  border-color: var(--color-neutral-300);
+  background: calc(var(--glass-opacity) * 0.8);
   color: var(--color-neutral-900);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.header__button:active {
+  transform: translateY(0);
 }
 
 .header__button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
-}
-
-.header__button:active {
-  transform: translateY(1px);
 }
 
 .header__button svg {
