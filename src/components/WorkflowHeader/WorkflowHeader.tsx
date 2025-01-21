@@ -1,9 +1,9 @@
-// src/components/Header/Header.tsx
+// src/components/WorkflowHeader/WorkflowHeader.tsx
 import React from 'react';
 import { Undo2, Redo2, Download, Play, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
 
-const Header: React.FC = () => {
+const WorkflowHeader: React.FC = () => {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -61,4 +61,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default Header;
+export default WorkflowHeader;
