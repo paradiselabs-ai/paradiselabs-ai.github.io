@@ -1,56 +1,104 @@
 /* src\pages\Home.tsx */ 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 export default function Home() {
+  useEffect(() => {
+    const interactive = document.querySelector('.interactive');
+    const container = document.querySelector('.gradient-bg');
+    
+    const handleMouseMove = (e: Event) => {
+      if (interactive && container && e instanceof MouseEvent) {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        (interactive as HTMLElement).style.left = `${x}px`;
+        (interactive as HTMLElement).style.top = `${y}px`;
+      }
+    };
+
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        container.removeEventListener('mousemove', handleMouseMove);
+      };
+    }
+  }, []);
+
   return (
-    <div className="home-container">
-      <header className="hero-section">
-        <h1>Welcome to Glue</h1>
-        <p className="tagline">
-          The Generative Language Unified Environment for building intelligent workflows
-        </p>
-        <div className="cta-buttons">
-          <Link to="/workflow" className="cta-primary">
-            Try the Editor
-          </Link>
-          <Link to="/docs" className="cta-secondary">
-            Learn More
-          </Link>
+    <div className="root-container">
+      <div className="gradient-bg">
+        <svg xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+              <feColorMatrix
+                in="blur"
+                mode="matrix"
+                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
+                result="goo"
+              />
+              <feBlend in="SourceGraphic" in2="goo" />
+            </filter>
+          </defs>
+        </svg>
+        <div className="gradients-container">
+          <div className="g1"></div>
+          <div className="g2"></div>
+          <div className="g3"></div>
+          <div className="g4"></div>
+          <div className="g5"></div>
+          <div className="interactive"></div>
         </div>
-      </header>
+      </div>
 
-      <section className="features-section">
-        <div className="feature-card">
-          <h2>Adhesive Binding System</h2>
-          <p>
-            TAPE, VELCRO, and GLUE bindings for flexible component relationships
+      <main className="content-container">
+        <header className="hero-section">
+          <h1>Welcome to Glue</h1>
+          <p className="tagline">
+            The Generative Language Unified Environment for building intelligent workflows
           </p>
-        </div>
-        <div className="feature-card">
-          <h2>Magnetic Coordination</h2>
-          <p>
-            Components self-organize based on magnetic field orchestration
-          </p>
-        </div>
-        <div className="feature-card">
-          <h2>Declarative DSL</h2>
-          <p>
-            Configure workflows using our intuitive domain-specific language
-          </p>
-        </div>
-      </section>
-
-      <section className="demo-section">
-        <h2>See Glue in Action</h2>
-        <div className="demo-container">
-          <div className="demo-placeholder">
-            {/* Will contain interactive demo */}
-            Drag-and-drop demo coming soon
+          <div className="cta-buttons">
+            <Link to="/workflow" className="cta-primary">
+              Try the Editor
+            </Link>
+            <Link to="/docs" className="cta-secondary">
+              Learn More
+            </Link>
           </div>
-        </div>
-      </section>
+        </header>
+
+        <section className="features-section">
+          <div className="feature-card">
+            <h2>Adhesive Binding System</h2>
+            <p>
+              TAPE, VELCRO, and GLUE bindings for flexible component relationships
+            </p>
+          </div>
+          <div className="feature-card">
+            <h2>Magnetic Coordination</h2>
+            <p>
+              Components self-organize based on magnetic field orchestration
+            </p>
+          </div>
+          <div className="feature-card">
+            <h2>Declarative DSL</h2>
+            <p>
+              Configure workflows using our intuitive domain-specific language
+            </p>
+          </div>
+        </section>
+
+        <section className="demo-section">
+          <h2>See Glue in Action</h2>
+          <div className="demo-container">
+            <div className="demo-placeholder">
+              Drag-and-drop demo coming soon
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 }
