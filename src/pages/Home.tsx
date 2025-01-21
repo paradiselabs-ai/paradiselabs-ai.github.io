@@ -1,63 +1,34 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+/* src\pages\Home.tsx */ 
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 export default function Home() {
-  // Refs for storing DOM elements and animation frame
-  const interactiveRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number>();
-  const lastUpdateRef = useRef<number>(0);
-  const THROTTLE_MS = 33; // Approx. 30fps
-
-  // Memoized mouse move handler
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const now = Date.now();
+  useEffect(() => {
+    const interactive = document.querySelector('.interactive');
+    const container = document.querySelector('.gradient-bg');
     
-    // Throttle updates
-    if (now - lastUpdateRef.current < THROTTLE_MS) {
-      return;
-    }
-
-    if (interactiveRef.current && containerRef.current) {
-      // Cancel any pending animation frame
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-
-      // Schedule new update
-      animationFrameRef.current = requestAnimationFrame(() => {
-        const rect = containerRef.current!.getBoundingClientRect();
+    const handleMouseMove = (e: Event) => {
+      if (interactive && container && e instanceof MouseEvent) {
+        const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
-        // Use transform instead of left/top
-        interactiveRef.current!.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      });
+        (interactive as HTMLElement).style.left = `${x}px`;
+        (interactive as HTMLElement).style.top = `${y}px`;
+      }
+    };
 
-      lastUpdateRef.current = now;
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      return () => {
+        container.removeEventListener('mousemove', handleMouseMove);
+      };
     }
   }, []);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    
-    if (container) {
-      container.addEventListener('mousemove', handleMouseMove);
-      
-      return () => {
-        // Cleanup
-        container.removeEventListener('mousemove', handleMouseMove);
-        if (animationFrameRef.current) {
-          cancelAnimationFrame(animationFrameRef.current);
-        }
-      };
-    }
-  }, [handleMouseMove]);
-
   return (
     <div className="root-container">
-      <div className="gradient-bg" ref={containerRef}>
+      <div className="gradient-bg">
         <svg xmlns="http://www.w3.org/2000/svg">
           <defs>
             <filter id="goo">
@@ -78,9 +49,10 @@ export default function Home() {
           <div className="g3"></div>
           <div className="g4"></div>
           <div className="g5"></div>
-          <div className="interactive" ref={interactiveRef}></div>
+          <div className="interactive"></div>
         </div>
       </div>
+
       <main className="content-container">
         <header className="hero-section">
           <h1>Welcome to Glue</h1>
@@ -96,6 +68,7 @@ export default function Home() {
             </Link>
           </div>
         </header>
+
         <section className="features-section">
           <div className="feature-card">
             <h2>Adhesive Binding System</h2>
@@ -116,6 +89,7 @@ export default function Home() {
             </p>
           </div>
         </section>
+
         <section className="demo-section">
           <h2>See Glue in Action</h2>
           <div className="demo-container">
