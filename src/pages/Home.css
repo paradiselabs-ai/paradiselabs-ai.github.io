@@ -1,4 +1,5 @@
 /* src\pages\Home.css */ 
+/* src\pages\Home.css */ 
 @import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
 
 :root {
@@ -17,7 +18,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -40,6 +42,7 @@ body {
   left: 0;
   background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
   overflow: hidden;
+  will-change: transform;
 }
 
 .gradient-bg svg {
@@ -51,9 +54,13 @@ body {
 }
 
 .gradients-container {
-  filter: url(#goo) blur(40px);
+  -webkit-filter: url(#goo) blur(40px);
+          filter: url(#goo) blur(40px);
   width: 100%;
   height: 100%;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  will-change: transform;
 }
 
 .g1, .g2, .g3, .g4, .g5, .interactive {
@@ -62,20 +69,29 @@ body {
   height: var(--circle-size);
   mix-blend-mode: var(--blending);
   opacity: 0.8;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 .g1 {
   background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
-  animation: moveVertical 30s ease infinite;
+  -webkit-animation: moveVertical 30s ease infinite;
+          animation: moveVertical 30s ease infinite;
 }
 
 .g2 {
   background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
-  transform-origin: calc(50% - 400px);
+  -webkit-transform-origin: calc(50% - 400px);
+          transform-origin: calc(50% - 400px);
   animation: moveInCircle 20s reverse infinite;
 }
 
@@ -83,16 +99,20 @@ body {
   background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2 + 200px);
   left: calc(50% - var(--circle-size) / 2 - 500px);
-  transform-origin: calc(50% + 400px);
-  animation: moveInCircle 40s linear infinite;
+  -webkit-transform-origin: calc(50% + 400px);
+          transform-origin: calc(50% + 400px);
+  -webkit-animation: moveInCircle 40s linear infinite;
+          animation: moveInCircle 40s linear infinite;
 }
 
 .g4 {
   background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
-  transform-origin: calc(50% - 200px);
-  animation: moveHorizontal 40s ease infinite;
+  -webkit-transform-origin: calc(50% - 200px);
+          transform-origin: calc(50% - 200px);
+  -webkit-animation: moveHorizontal 40s ease infinite;
+          animation: moveHorizontal 40s ease infinite;
   opacity: 0.7;
 }
 
@@ -102,34 +122,60 @@ body {
   height: calc(var(--circle-size) * 2);
   top: calc(50% - var(--circle-size));
   left: calc(50% - var(--circle-size));
-  transform-origin: calc(50% - 800px) calc(50% + 200px);
-  animation: moveInCircle 20s ease infinite;
+  -webkit-transform-origin: calc(50% - 800px) calc(50% + 200px);
+          transform-origin: calc(50% - 800px) calc(50% + 200px);
+  -webkit-animation: moveInCircle 20s ease infinite;
+          animation: moveInCircle 20s ease infinite;
 }
 
 .interactive {
   background: radial-gradient(circle at center, rgba(var(--color-interactive), 0.8) 0, rgba(var(--color-interactive), 0) 50%) no-repeat;
   width: 100%;
   height: 100%;
-  transition: all 0.1s ease;
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
   opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@-webkit-keyframes moveInCircle {
+  0% { -webkit-transform: translate3d(0, 0, 0) rotate(0deg); transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { -webkit-transform: translate3d(0, 0, 0) rotate(180deg); transform: translate3d(0, 0, 0) rotate(180deg); }
+  100% { -webkit-transform: translate3d(0, 0, 0) rotate(360deg); transform: translate3d(0, 0, 0) rotate(360deg); }
 }
 
 @keyframes moveInCircle {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
-  100% { transform: rotate(360deg); }
+  0% { -webkit-transform: translate3d(0, 0, 0) rotate(0deg); transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { -webkit-transform: translate3d(0, 0, 0) rotate(180deg); transform: translate3d(0, 0, 0) rotate(180deg); }
+  100% { -webkit-transform: translate3d(0, 0, 0) rotate(360deg); transform: translate3d(0, 0, 0) rotate(360deg); }
+}
+
+@-webkit-keyframes moveVertical {
+  0% { -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+  50% { -webkit-transform: translate3d(0, 50%, 0); transform: translate3d(0, 50%, 0); }
+  100% { -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
 }
 
 @keyframes moveVertical {
-  0% { transform: translateY(-50%); }
-  50% { transform: translateY(50%); }
-  100% { transform: translateY(-50%); }
+  0% { -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+  50% { -webkit-transform: translate3d(0, 50%, 0); transform: translate3d(0, 50%, 0); }
+  100% { -webkit-transform: translate3d(0, -50%, 0); transform: translate3d(0, -50%, 0); }
+}
+
+@-webkit-keyframes moveHorizontal {
+  0% { -webkit-transform: translate3d(-50%, -10%, 0); transform: translate3d(-50%, -10%, 0); }
+  50% { -webkit-transform: translate3d(50%, 10%, 0); transform: translate3d(50%, 10%, 0); }
+  100% { -webkit-transform: translate3d(-50%, -10%, 0); transform: translate3d(-50%, -10%, 0); }
 }
 
 @keyframes moveHorizontal {
-  0% { transform: translateX(-50%) translateY(-10%); }
-  50% { transform: translateX(50%) translateY(10%); }
-  100% { transform: translateX(-50%) translateY(-10%); }
+  0% { -webkit-transform: translate3d(-50%, -10%, 0); transform: translate3d(-50%, -10%, 0); }
+  50% { -webkit-transform: translate3d(50%, 10%, 0); transform: translate3d(50%, 10%, 0); }
+  100% { -webkit-transform: translate3d(-50%, -10%, 0); transform: translate3d(-50%, -10%, 0); }
 }
 
 .content-container {
@@ -138,11 +184,15 @@ body {
   min-height: 100vh;
   color: white;
   padding: 2rem;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .hero-section {
   text-align: center;
   padding: 4rem 0;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
 }
 
 .hero-section h1 {
@@ -156,9 +206,13 @@ body {
 }
 
 .cta-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .cta-primary,
@@ -167,13 +221,15 @@ body {
   border-radius: 0.5rem;
   text-decoration: none;
   font-weight: bold;
+  -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
 .cta-primary {
   background: rgba(255, 255, 255, 0.2);
   color: white;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 
 .cta-secondary {
@@ -183,11 +239,13 @@ body {
 
 .cta-primary:hover,
 .cta-secondary:hover {
-  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.3);
 }
 
 .features-section {
+  display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
@@ -196,7 +254,8 @@ body {
 
 .feature-card {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
@@ -214,7 +273,8 @@ body {
 
 .demo-container {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 1rem;
   margin-top: 2rem;
@@ -222,9 +282,15 @@ body {
 
 .demo-placeholder {
   height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-style: italic;
   color: rgba(255, 255, 255, 0.6);
 }
