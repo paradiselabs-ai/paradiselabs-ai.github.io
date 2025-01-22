@@ -1,14 +1,14 @@
 // src/App.tsx
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import WorkflowHeader from './components/WorkflowHeader/WorkflowHeader';
-import HomepageHeader from './components/HomepageHeader/HomepageHeader';
-import WorkflowBuilder from './components/WorkflowBuilder/WorkflowBuilder';
-import WorkflowControls from './components/WorkflowControls/WorkflowControls';
-import WorkflowEditor from './components/WorkflowEditor/WorkflowEditor';
-import { useTheme } from './hooks/useTheme';
-import Home from './pages/Home';
-import Docs from './pages/Docs';
+import WorkflowHeader from './workflow/components/WorkflowHeader/WorkflowHeader';
+import HomepageHeader from './home/components/HomepageHeader';
+import WorkflowBuilder from './workflow/components/WorkflowBuilder/WorkflowBuilder';
+import WorkflowControls from './workflow/components/WorkflowControls/WorkflowControls';
+import WorkflowEditor from './workflow/components/WorkflowEditor/WorkflowEditor';
+import { useTheme } from './workflow/hooks/useTheme';
+import Home from './home/Home';
+import Docs from './documentation/Docs';
 
 const App: React.FC = () => {
   const { theme } = useTheme();
