@@ -1,4 +1,4 @@
-/* src\components\WorkflowBuilder\InteractiveBackground.tsx */
+/* src/workflow/components/WorkflowBuilder/InteractiveBackground.tsx */
 import React, { useEffect, useRef } from 'react';
 
 interface Circle {

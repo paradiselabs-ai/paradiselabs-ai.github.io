@@ -1,4 +1,4 @@
-// src/hooks/useTheme.ts
+// src/workflow/hooks/useTheme.ts
 import { useState, useEffect } from 'react';
 
 type Theme = 'light' | 'dark';

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Undo2, Redo2, Download, Play, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
+import '../Workflow.css';
 
 const WorkflowHeader: React.FC = () => {
   const { theme, setTheme } = useTheme();
@@ -11,6 +12,7 @@ const WorkflowHeader: React.FC = () => {
   };
 
   return (
+    <div className="workflow-app">
     <div className="header">
       <div className="header__left">
         <span className="header__logo-text">WorkflowAI</span>
@@ -57,6 +59,7 @@ const WorkflowHeader: React.FC = () => {
           <span>Run</span>
         </button>
       </div>
+    </div>
     </div>
   );
 };

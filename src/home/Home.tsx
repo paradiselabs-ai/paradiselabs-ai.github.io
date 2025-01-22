@@ -4,7 +4,7 @@ import './Home.css';
 
 const Home: React.FC = () => {
   return (
-    <div className="root-container">
+    <div className="home-container">
       {/* Header Section */}
       <header className="header-section">
         <div className="gradient-bg">
