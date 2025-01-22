@@ -17,13 +17,13 @@ const App: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={
-          <div className="min-h-screen" data-theme={theme}>
+          <div className="min-h-screen">
             <HomepageHeader />
             <Home />
           </div>
         } />
         <Route path="/docs" element={
-          <div className="min-h-screen" data-theme={theme}>
+          <div className="min-h-screen">
             <HomepageHeader />
             <Docs />
           </div>

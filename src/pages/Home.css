@@ -1,6 +1,9 @@
-/* src\pages\Home.css */ 
+/* src/pages/Home.css */
 @import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
 
+/* ==================== */
+/* Global Variables */
+/* ==================== */
 :root {
   --color-bg1: rgb(108, 0, 162);
   --color-bg2: rgb(0, 17, 82);
@@ -14,6 +17,9 @@
   --blending: hard-light;
 }
 
+/* ==================== */
+/* Global Reset */
+/* ==================== */
 * {
   margin: 0;
   padding: 0;
@@ -23,27 +29,58 @@
 body {
   font-family: 'Dongle', sans-serif;
   overflow-x: hidden;
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
 }
 
+/* ==================== */
+/* Layout Containers */
+/* ==================== */
 .root-container {
   position: relative;
-  min-height: 100vh;
   width: 100vw;
   overflow-x: hidden;
 }
 
+.content-container {
+  position: relative;
+  z-index: 4; /* Higher than gradient-bg */
+  pointer-events: auto; /* Enable interaction with content */
+}
+
+/* ==================== */
+/* Header Section */
+/* ==================== */
+.header-section {
+  position: relative;
+  min-height: 90vh;
+}
+
+.header-section::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; /* Extend further down */
+  left: 0;
+  width: 100%;
+  height: 140px; /* Increased height */
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ==================== */
+/* Gradient Background */
+/* ==================== */
 .gradient-bg {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
+  position: absolute; /* Changed back from fixed */
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
-  overflow: hidden;
+  filter: url(#goo) blur(40px);
+  pointer-events: none; /* Ensure blobs don't block interaction */
 }
 
 .gradient-bg svg {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 0;
@@ -51,15 +88,16 @@ body {
 }
 
 .gradients-container {
-  filter: url(#goo) blur(40px);
   width: 100%;
   height: 100%;
+  clip-path: inset(0 0 -20% 0); /* Allow blur overflow */
 }
 
+/* Gradient Circles */
 .g1, .g2, .g3, .g4, .g5 {
-  position: absolute;
   width: var(--circle-size);
   height: var(--circle-size);
+  position: absolute;
   mix-blend-mode: var(--blending);
   opacity: 0.8;
 }
@@ -76,6 +114,7 @@ body {
   top: calc(50% - var(--circle-size) / 2);
   left: calc(50% - var(--circle-size) / 2);
   transform-origin: calc(50% - 400px);
+
   animation: moveInCircle 20s reverse infinite;
 }
 
@@ -106,45 +145,19 @@ body {
   animation: moveInCircle 20s ease infinite;
 }
 
-@keyframes moveInCircle {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes moveVertical {
-  0% { transform: translateY(-50%); }
-  50% { transform: translateY(50%); }
-  100% { transform: translateY(-50%); }
-}
-
-@keyframes moveHorizontal {
-  0% { transform: translateX(-50%) translateY(-10%); }
-  50% { transform: translateX(50%) translateY(10%); }
-  100% { transform: translateX(-50%) translateY(-10%); }
-}
-
-.content-container {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  color: white;
-  padding: 2rem;
-}
-
+/* ==================== */
+/* Hero Section */
+/* ==================== */
 .hero-section {
   text-align: center;
-  padding: 4rem 0;
+  position: relative;
+  z-index: 3;
+  padding-top: 20vh;
 }
 
 .hero-section h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
-}
-
-.highlight {
-  color: rgba(var(--color-interactive), 1);
-  text-shadow: 0 0 10px rgba(var(--color-interactive), 0.8);
 }
 
 .tagline {
@@ -156,7 +169,6 @@ body {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  margin-bottom: 3rem;
 }
 
 .cta-primary,
@@ -185,78 +197,122 @@ body {
   background: rgba(255, 255, 255, 0.3);
 }
 
-.value-props {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 4rem;
+/* ==================== */
+/* Main Content */
+/* ==================== */
+.main-content {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    transparent 10%,
+    rgba(var(--color-bg1), 0.9) 90%
+  );
+  padding-bottom: 4rem;
 }
 
-.value-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 2rem;
-  border-radius: 1rem;
+.main-content::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--color-bg1), 0),
+    rgba(var(--color-bg1), 0.9)
+  );
+  z-index: -1;
+}
+
+/* ==================== */
+/* Features Section */
+/* ==================== */
+.features-section,
+.demo-section {
+  position: relative;
+  padding: 4rem 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border-radius: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: sectionEntry 0.8s ease-out forwards;
+}
+
+.section-title {
+  font-size: 2.5rem;
   text-align: center;
-  transition: transform 0.3s ease;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
-.value-card:hover {
-  transform: translateY(-5px);
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    rgba(var(--color1), 0),
+    rgba(var(--color1), 0.8),
+    rgba(var(--color2), 0.8),
+    rgba(var(--color3), 0)
+  );
 }
 
-.value-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: rgba(var(--color-interactive), 1);
-}
-
-.benefits-section {
-  padding: 4rem 0;
-}
-
-.benefits-grid {
+.features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
 
-.benefit-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+.feature-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(15px);
   padding: 2rem;
-  border-radius: 1rem;
-  text-align: center;
-  transition: transform 0.3s ease;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.benefit-card:hover {
+.feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.benefit-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: rgba(var(--color-interactive), 1);
+.feature-card:nth-child(1) {
+  border-top: 2px solid rgba(var(--color1), 0.3);
 }
 
-.demo-section {
-  text-align: center;
-  padding: 4rem 0;
+.feature-card:nth-child(2) {
+  border-top: 2px solid rgba(var(--color2), 0.3);
 }
 
+.feature-card:nth-child(3) {
+  border-top: 2px solid rgba(var(--color3), 0.3);
+}
+
+/* ==================== */
+/* Demo Section */
+/* ==================== */
 .demo-container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   padding: 2rem;
   border-radius: 1rem;
   margin-top: 2rem;
-}
-
-.demo-content {
-  max-width: 800px;
-  margin: 0 auto;
 }
 
 .demo-placeholder {
@@ -266,99 +322,49 @@ body {
   justify-content: center;
   font-style: italic;
   color: rgba(255, 255, 255, 0.6);
-  margin: 2rem 0;
 }
 
-.use-cases-section {
-  padding: 4rem 0;
-}
-
-.use-cases-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.use-case-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+.demo-overlay {
+  position: relative;
+  z-index: 2;
   padding: 2rem;
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
-  transition: transform 0.3s ease;
 }
 
-.use-case-card:hover {
-  transform: translateY(-5px);
+.demo-overlay p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
 }
 
-.use-case-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: rgba(var(--color-interactive), 1);
+/* ==================== */
+/* Animations */
+/* ==================== */
+@keyframes moveInCircle {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
 }
 
-.use-case-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
+@keyframes moveVertical {
+  0% { transform: translateY(-50%); }
+  50% { transform: translateY(50%); }
+  100% { transform: translateY(-50%); }
 }
 
-.use-case-card li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+@keyframes moveHorizontal {
+  0% { transform: translateX(-50%) translateY(-10%); }
+  50% { transform: translateX(50%) translateY(10%); }
+  100% { transform: translateX(-50%) translateY(-10%); }
 }
 
-.comparison-section {
-  padding: 4rem 0;
-}
-
-.comparison-table {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 1rem;
-  overflow: hidden;
-  margin-top: 2rem;
-}
-
-.table-header {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background: rgba(var(--color-interactive), 0.1);
-  padding: 1rem;
-  font-weight: bold;
-}
-
-.table-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.demo-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.feature-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem;
-}
-
-.feature-icon {
-  font-size: 1.5rem;
-}
-
-.demo-cta {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
+@keyframes sectionEntry {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
