@@ -66,7 +66,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  filter: url(#goo) blur(40px);
+  filter: url(#goo) blur(20px);
   pointer-events: none; /* Ensure blobs don't block interaction */
 }
 
