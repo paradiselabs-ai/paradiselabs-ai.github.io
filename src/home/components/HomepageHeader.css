@@ -1,4 +1,4 @@
-.header {
+.header-component .header {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     /* Improved timing function for smoother transitions */
 }
 
-.header::before {
+.header-component .header::before {
     content: '';
     position: absolute;
     top: 0;
@@ -18,12 +18,12 @@
     right: 0;
     bottom: 0;
     background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(0px);
+    backdrop-filter: blur(5px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 1px solid transparent; //line below header
 }
 
-.header::after {
+.header-component .header::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -36,13 +36,13 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.header.scrolled::before {
+.header-component .header.scrolled::before {
     background: transparent;
     border-bottom: 1px solid rgba(214, 221, 244, 0.6);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-.header-content {
+.header-component .header-content {
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -55,7 +55,7 @@
     /* Increased height for better touch targets */
 }
 
-.logo {
+.header-component .logo {
     font-size: 1.5rem;
     /* Larger font size for better hierarchy */
     font-weight: 700;
@@ -64,19 +64,14 @@
     transition: transform 0.2s ease;
 }
 
-.logo:hover {
-    transform: scale(1.02);
-    /* Subtle hover interaction */
-}
-
-.nav-links {
+.header-component .nav-links {
     display: flex;
     gap: 2.5rem;
     /* Increased gap for better separation */
     position: relative;
 }
 
-.nav-links a {
+.header-component .nav-links a {
     color: #d6ddf4;
     /* Higher contrast color */
     text-decoration: none;
@@ -88,7 +83,7 @@
     /* Increased clickable area */
 }
 
-.nav-links a::after {
+.header-component .nav-links a::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -99,12 +94,9 @@
     transition: width 0.3s ease;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
-}
 
 /* Focus states for accessibility */
-.nav-links a:focus-visible {
+.header-component .nav-links a:focus-visible {
     outline: 2px solid #1a1a1a;
     outline-offset: 4px;
     border-radius: 2px;
@@ -112,21 +104,21 @@
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
-    .header-content {
+    .header-component .header-content {
         padding: 1rem;
     }
 
-    .nav-links {
+    .header-component .nav-links {
         gap: 1.5rem;
     }
 }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-    .header,
-    .header::before,
-    .header::after,
-    .nav-links a {
+    .header-component .header,
+    .header-component .header::before,
+    .header-component .header::after,
+    .header-component .nav-links a {
         transition-duration: 0.001ms !important;
     }
 }

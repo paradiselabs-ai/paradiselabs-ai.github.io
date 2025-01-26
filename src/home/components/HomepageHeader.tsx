@@ -51,6 +51,7 @@ const HomepageHeader: React.FC = () => {
   }, [lastScrollY, headerVisible]);
 
   return (
+    <div className="header-component">
     <header 
       className={`header ${isScrolled ? 'scrolled' : ''}`}
       style={{
@@ -71,6 +72,7 @@ const HomepageHeader: React.FC = () => {
         </nav>
       </div>
     </header>
+    </div>
   );
 };
 
