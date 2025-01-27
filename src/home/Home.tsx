@@ -27,25 +27,20 @@ const Home: React.FC = () => {
             <div className="g2"></div>
             <div className="g3"></div>
             <div className="g4"></div>
-            <div className="g5"></div>
           </div>
         </div>
 
         {/* Hero Content */}
         <div className="content-container">
           <section className="hero-section">
-            <h1>Welcome to Glue</h1>
+          <h1>Build Self-Organizing AI Teams<br /><span className="sub-line">Scale Effortlessly</span></h1>
             <p className="tagline">
-              The Generative Language Unified Environment for building intelligent workflows
+               and more, with
             </p>
-            <div className="cta-buttons">
+            <span className="sub-line">GenAI Linking &</span><span className="sub-line">Unification Engine</span>
               <Link to="/workflow" className="cta-primary">
                 Try the Editor
               </Link>
-              <Link to="/docs" className="cta-secondary">
-                Learn More
-              </Link>
-            </div>
           </section>
         </div>
       </header>

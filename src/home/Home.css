@@ -99,78 +99,77 @@
 .home-container .g1 {
   background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
+  left: calc(60% - var(--circle-size) / 2);  /* Moved further left */
   animation: moveVertical 30s ease infinite;
 }
 
 .home-container .g2 {
   background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: calc(50% - 400px);
-
-  animation: moveInCircle 20s reverse infinite;
+  left: calc(70% - var(--circle-size) / 2);  /* Spread out */
+  transform-origin: calc(75% + 100px);
+  animation: moveInCircleSmall 20s reverse infinite;
 }
 
 .home-container .g3 {
   background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
-  top: calc(50% - var(--circle-size) / 2 + 200px);
-  left: calc(50% - var(--circle-size) / 2 - 500px);
-  transform-origin: calc(50% + 400px);
-  animation: moveInCircle 40s linear infinite;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(82% - var(--circle-size) / 2);  /* Moved further right */
+  transform-origin: calc(75% + 100px);
+  animation: moveInCircleSmall 20s linear infinite;
 }
 
 .home-container .g4 {
   background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
-  left: calc(50% - var(--circle-size) / 2);
-  transform-origin: calc(50% - 200px);
-  animation: moveHorizontal 40s ease infinite;
+  left: calc(65% - var(--circle-size) / 2);  /* Repositioned */
+  transform-origin: calc(75% + 100px);
+  animation: moveInCircleSmall 20s ease infinite;
   opacity: 0.7;
 }
 
 .home-container .g5 {
   background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
-  width: calc(var(--circle-size) * 2);
-  height: calc(var(--circle-size) * 2);
-  top: calc(50% - var(--circle-size));
-  left: calc(50% - var(--circle-size));
-  transform-origin: calc(50% - 800px) calc(50% + 200px);
-  animation: moveInCircle 20s ease infinite;
+  top: calc(50% - var(--circle-size) / 2);
+  left: calc(76% - var(--circle-size) / 2);  /* Slight adjustment */
+  transform-origin: calc(75% + 100px);
+  animation: moveInCircleSmall 20s reverse infinite;
 }
 
 /* ==================== */
 /* Hero Section */
 /* ==================== */
 .home-container .hero-section {
-  text-align: center;
   position: relative;
+  top: 80px; /* Adjust this value */
+  left: 180px; /* Adjust this value */
   z-index: 3;
-  padding-top: 20vh;
 }
 
 .home-container .hero-section h1 {
   font-size: 4rem;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
+  margin-top: 4%;
+}
+
+.home-container .hero-section .sub-line {
+  display: block; /* Force new line */
+  margin-top:-0.6em; /* Add spacing between lines */
+  font-size: 4rem;
 }
 
 .home-container .tagline {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.home-container .cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 0rem;
+  margin-top:10rem;
 }
 
 .home-container .cta-primary,
 .home-container .cta-secondary {
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  padding: 0.8rem 2.2rem;
+  border-radius: 3rem;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
 }
 
@@ -335,21 +334,21 @@
 /* Animations */
 /* ==================== */
 @keyframes moveInCircle {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
-  100% { transform: rotate(360deg); }
+  0% { transform: rotate(0deg) translateX(-10%); }
+  50% { transform: rotate(180deg) translateX(10%); }
+  100% { transform: rotate(360deg) translateX(-10%); }
 }
 
 @keyframes moveVertical {
-  0% { transform: translateY(-50%); }
-  50% { transform: translateY(50%); }
-  100% { transform: translateY(-50%); }
+  0% { transform: translateY(-30%) translateX(-5%); }
+  50% { transform: translateY(30%) translateX(5%); }
+  100% { transform: translateY(-30%) translateX(-5%); }
 }
 
 @keyframes moveHorizontal {
-  0% { transform: translateX(-50%) translateY(-10%); }
-  50% { transform: translateX(50%) translateY(10%); }
-  100% { transform: translateX(-50%) translateY(-10%); }
+  0% { transform: translateX(-20%) translateY(-10%); }
+  50% { transform: translateX(20%) translateY(10%); }
+  100% { transform: translateX(-20%) translateY(-10%); }
 }
 
 @keyframes sectionEntry {
@@ -360,5 +359,267 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Large Screens (1440px and below) */
+@media screen and (max-width: 1440px) {
+  .home-container .hero-section {
+    left: calc(180px * 0.5); /* Proportionally reduce from desktop's 180px */
+    top: calc(80px * 0.9); /* Slightly reduce top spacing */
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 3.5rem;
+  }
+
+  .home-container .tagline {
+    font-size: 2.75rem;
+    margin-top: 8rem;
+  }
+
+  .home-container .sub-line {
+    font-size: 3.5rem;
+  }
+}
+
+/* Medium Screens (1024px and below) */
+@media screen and (max-width: 1024px) {
+  .home-container .hero-section {
+    left: calc(180px * 0.5); /* Further reduce left spacing */
+    top: 90px;
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 3.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .home-container .tagline {
+    font-size: 2.5rem;
+    margin-top: 6rem;
+  }
+
+  .home-container .hero-section .sub-line  {
+    font-size: 3.2rem;
+    margin-top: -0.5em;
+  }
+
+  /* Adjust gradient positions */
+  .home-container .g1 { left: calc(55% - var(--circle-size) / 2); }
+  .home-container .g2 { left: calc(65% - var(--circle-size) / 2); }
+  .home-container .g3 { left: calc(75% - var(--circle-size) / 2); }
+  .home-container .g4 { left: calc(60% - var(--circle-size) / 2); }
+  .home-container .g5 { left: calc(70% - var(--circle-size) / 2); }
+}
+
+/* Tablet Screens (768px and below) */
+@media screen and (max-width: 768px) {
+  .home-container .hero-section {
+    left: calc(180px * 0.3); /* Significant reduction for tablets */
+    top: 50px;
+    padding-right: 1rem;
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .home-container .tagline {
+    font-size: 2.2rem;
+    margin-top: 5rem;
+  }
+
+  .home-container .hero-section .sub-line {
+    font-size: 3rem;
+  }
+
+  /* Adjust sections padding */
+  .home-container .features-section,
+  .home-container .demo-section {
+    padding: 3rem 1.5rem;
+    margin: 2rem 1rem;
+  }
+
+  /* Gradient adjustments for tablet */
+  .home-container .g1 { left: calc(50% - var(--circle-size) / 2); }
+  .home-container .g2 { left: calc(60% - var(--circle-size) / 2); }
+  .home-container .g3 { left: calc(70% - var(--circle-size) / 2); }
+  .home-container .g4 { left: calc(55% - var(--circle-size) / 2); }
+  .home-container .g5 { left: calc(65% - var(--circle-size) / 2); }
+}
+
+/* Mobile Large Screens (576px and below) */
+@media screen and (max-width: 576px) {
+  .home-container .hero-section {
+    left: 2rem; /* Fixed margin for mobile */
+    top: 125px;
+    padding-right: 1rem;
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 2.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .home-container .tagline {
+    font-size: 2rem;
+    margin-top: 7rem;
+  }
+
+  .home-container .hero-section .sub-line  {
+    font-size: 2.4rem;
+    margin-top: -0.4em;
+  }
+
+  /* Adjust CTA buttons */
+  .home-container .cta-primary,
+  .home-container .cta-secondary {
+    padding: 0.6rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  /* Mobile gradient positions */
+  .home-container .g1,
+  .home-container .g2{
+    --circle-size: 90%;
+    left: calc(50% - var(--circle-size) / 2.9);
+  }
+  .home-container .g3,
+  .home-container .g4 {
+    --circle-size: 110%;
+    left: calc(50% - var(--circle-size) / 2.5);
+  }
+}
+
+
+/* Mobile Large Screens (420px and below) */
+@media screen and (max-width: 420px) {
+  .home-container .hero-section {
+    left: 1.2rem; /* Fixed margin for mobile */
+    top: 125px;
+    padding-right: 1rem;
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0rem;
+  }
+
+  .home-container .tagline {
+    font-size: 1.9rem;
+    margin-top: 7.5rem;
+  }
+
+  .home-container .hero-section .sub-line {
+    font-size: 2.2rem;
+  }
+
+  /* Adjust CTA buttons */
+  .home-container .cta-primary,
+  .home-container .cta-secondary {
+    padding: 0.5rem 1.3rem;
+    font-size: 1rem;
+  }
+
+  /* Mobile gradient positions */
+  .home-container .g1,
+  .home-container .g2{
+    --circle-size: 90%;
+    left: calc(50% - var(--circle-size) / 2.9);
+  }
+  .home-container .g3,
+  .home-container .g4 {
+    --circle-size: 110%;
+    left: calc(50% - var(--circle-size) / 2.5);
+  }
+}
+
+/* Mobile Small Screens (375px and below) */
+@media screen and (max-width: 375px) {
+  .home-container .hero-section {
+    left: 1rem;
+    top: 125px;
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 2.1rem;
+    margin-bottom: 2.1rem;
+  }
+
+  .home-container .tagline {
+    font-size: 1.9rem;
+    margin-top: 6rem;
+  }
+
+  .home-container .hero-section .sub-line  {
+    font-size: 2.1rem;
+  }
+
+  /* Adjust CTA buttons */
+  .home-container .cta-primary,
+  .home-container .cta-secondary {
+    padding: 0.4rem 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .home-container .g1,
+  .home-container .g2{
+    --circle-size: 90%;
+    left: calc(50% - var(--circle-size) / 2.9);
+  }
+  .home-container .g3,
+  .home-container .g4 {
+    --circle-size: 110%;
+    left: calc(50% - var(--circle-size) / 2.5);
+  }
+
+  /* Adjust feature cards */
+  .home-container .feature-card {
+    padding: 1.5rem;
+  }
+
+  .home-container .demo-placeholder {
+    height: 250px;
+  }
+}
+
+/* Handle Orientation Changes */
+@media screen and (max-height: 600px) and (orientation: landscape) {
+  .home-container .header-section {
+    min-height: 120vh;
+  }
+
+  .home-container .hero-section {
+    top: 30px;
+  }
+
+  .home-container .tagline {
+    margin-top: 3rem;
+  }
+
+  .home-container .hero-section h1 {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Ensure minimum spacing */
+@media screen and (max-width: 320px) {
+  .home-container .hero-section {
+    left: 0.8rem;
+    top: 20px;
+  }
+
+  .home-container .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .home-container .tagline {
+    font-size: 1.6rem;
+  }
+
+  .home-container .sub-line {
+    font-size: 2rem;
   }
 }
