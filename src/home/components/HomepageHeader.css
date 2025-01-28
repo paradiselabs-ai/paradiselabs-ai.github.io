@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+
 .header-component .header {
     position: fixed;
     top: 0;
@@ -20,7 +22,7 @@
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(5px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border-bottom: 1px solid transparent; //line below header
+    border-bottom: 1px solid transparent;
 }
 
 .header-component .header::after {
@@ -43,6 +45,8 @@
 }
 
 .header-component .header-content {
+    font-size: 1.5rem;
+    font-family: 'Dongle';
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -56,9 +60,10 @@
 }
 
 .header-component .logo {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
+    font-weight: bold; 
+    font-family: 'Dongle';
     /* Larger font size for better hierarchy */
-    font-weight: 700;
     color: #d6ddf4;
     text-decoration: none;
     transition: transform 0.2s ease;
