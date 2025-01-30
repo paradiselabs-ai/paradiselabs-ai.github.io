@@ -39,56 +39,53 @@ const Home: React.FC = () => {
             </p>
             <span className="sub-line">GenAI Linking &</span><span className="sub-line">Unification Engine</span>
               <Link to="/workflow" className="cta-primary">
-                Try the Editor
+              Try Visual Builder
+              </Link>
+              <Link to="https://github.com/paradiselabs-ai/glue-framework" className="cta-secondary">
+                View on Github
               </Link>
           </section>
         </div>
       </header>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+        <svg
+          width="80%"
+          height="3"
+          viewBox="0 0 100 3"
+          preserveAspectRatio="none"
+        >
+          <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
+        </svg>
+      </div>
 
       {/* Main Content */}
       <div className="main-content">
-        {/* Features Section */}
-        <section className="features-section">
-          <h2 className="section-title">Core Capabilities</h2>
-          <div className="features-grid">
-            <div className="feature-card">
-              <h3>Adhesive Binding System</h3>
-              <p>
-                TAPE, VELCRO, and GLUE bindings create flexible component relationships 
-                with varying strength and flexibility characteristics.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>Magnetic Coordination</h3>
-              <p>
-                Components dynamically self-organize through our proprietary magnetic 
-                field orchestration layer, enabling emergent architectures.
-              </p>
-            </div>
-            <div className="feature-card">
-              <h3>Declarative DSL</h3>
-              <p>
-                Configure complex workflows using our intuitive GluonScript language, 
-                combining YAML simplicity with Turing-complete expressiveness.
-              </p>
-            </div>
+        <div className="CLIC">
+          <h1>Unlock the value in team focused AI systems. </h1>
+          <div className="content-grid">
+          <div className="content-section">
+            <h3>Communicate</h3>
+            <p>Design fluid communication patterns between AI agents that enable natural dialogue and automated information sharing.</p>
           </div>
-        </section>
-
-        {/* Demo Section */}
-        <section className="demo-section">
-          <h2 className="section-title">Interactive Playground</h2>
-          <div className="demo-container">
-            <div className="demo-placeholder">
-              <div className="demo-overlay">
-                <p>Experience the Glue workflow editor</p>
-                <Link to="/workflow" className="cta-primary">
-                  Launch Sandbox
-                </Link>
-              </div>
-            </div>
+          
+          <div className="content-section">
+            <h3>Limit</h3>
+            <p>Implement strategic boundaries and access controls to maintain system integrity and information security.</p>
           </div>
-        </section>
+          
+          <div className="content-section">
+            <h3>Imitate</h3>
+            <p>Mirror proven organizational structures and roles to create intuitive, human-like team dynamics.</p>
+          </div>
+          
+          <div className="content-section">
+            <h3>Collaborate</h3>
+            <p>Build purposeful cross-team workflows that drive collective outcomes through aligned incentives.</p>
+          </div>
+          
+          <div className="intersection-dot" />
+        </div>
+        </div>
       </div>
     </div>
   );
