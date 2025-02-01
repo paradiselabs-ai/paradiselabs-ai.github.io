@@ -3,30 +3,51 @@
 
 $colors: ("secondary", "accent", "danger", "success", "warning", "info");
 
-
 .btn {
-  @apply cursor-pointer rounded-[50px] h-[52px] px-8 py-2 text-sm font-medium leading-[36px] transition-all duration-200 flex flex-row items-center justify-center hover:shadow-[0px_5px_15px] hover:shadow-slate-500/60;
+  @apply cursor-pointer rounded-lg h-[52px] px-8 py-2 text-sm font-medium leading-[36px] transition-all duration-300 flex flex-row items-center justify-center bg-surface/10 backdrop-blur-sm border border-white/20;
+  
+  &:hover {
+    @apply bg-surface/20 border-white/30 shadow-lg shadow-primary/20;
+  }
+  
   &-primary {
     @extend .btn;
-    @extend .bg-gradient-primary;
-    @apply border-0 text-center font-medium text-white hover:shadow-[0px_5px_30px] hover:shadow-primary;
-    &-outline {
-      @extend .btn;
-      @apply border border-text text-text bg-transparent;
-      &:hover {
-        @extend .bg-gradient-primary;
-      }
+    @apply text-white bg-primary/80 border-primary/50;
+    
+    &:hover {
+      @apply bg-primary/90 border-primary/70 shadow-primary/30;
     }
   }
+
   @each $color in $colors {
     &-#{$color} {
       @extend .btn;
+      @apply text-white;
+      background-color: rgba(var(--#{$color}), 0.8);
+      border-color: rgba(var(--#{$color}), 0.5);
 
-      @apply bg-none border-0 text-white font-medium hover:shadow-[0px_5px_30px] hover:shadow-#{$color}/50 bg-#{$color}; // Error here does not break the build and the styles are applied correctly
+      &:hover {
+        background-color: rgba(var(--#{$color}), 0.9);
+        border-color: rgba(var(--#{$color}), 0.7);
+        box-shadow: 0 10px 15px -3px rgba(var(--#{$color}), 0.3);
+      }
+
       &-outline {
         @extend .btn;
-        @apply border border-text text-text bg-transparent;
+        background-color: transparent;
+        border-color: rgba(var(--#{$color}), 0.5);
+        color: rgb(var(--#{$color}));
+
+        &:hover {
+          background-color: rgba(var(--#{$color}), 0.1);
+          border-color: rgba(var(--#{$color}), 0.7);
+        }
       }
     }
-  } // Dont know why this line triggers an error
+  }
+}
+
+.glassmorphic-button {
+  @extend .btn;
+  @apply text-text;
 }

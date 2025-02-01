@@ -1,129 +1,99 @@
 ---
-# Does not contain meta customizations because it is the homepage and config is already set in the config file
-
 banner:
-  title: 'An <span class="text-accent text-shadow-[0px_5px_15px] shadow-accent/10">Astro</span> Starter <span class="text-secondary"> batteries-included</span>'
+  title: '<span class="text-accent text-shadow-[0px_5px_15px] shadow-accent/10">Paradise</span><span class="text-white">Labs</span>'
   title_size: "text-4xl md:text-6xl"
-  content: "A fully responsive astro starter repo, ideal for simple (yet laborious) content-driven pages or landings."  
+  content: "ParadiseLabs is revolutionizing AI development with innovative frameworks and tools that make advanced AI technology accessible to everyone."
   image: /images/logo_v5_xl_pfp.webp
   buttons:
-    - label: Get the Code
-      href: "https://github.com/diego-alfadev/alfadev-astro-starter"
-      target: "_blank"
-      icon: _GitHub
-      addClasses: "w-full bg-gray-900 text-white hover:bg-accent dark:border-white/10 dark:border"
+    - label: Join GLUE Waitlist
+      href: "#waitlist"
+      icon: _Zap
+      addClasses: "w-full glassmorphic-button hover:bg-primary/20"
 
 sections:
-  - title: Tired of writing the same code over and over again?
-    content: "We've all been there... Setting up the same SEO, theming, and responsive layout boilerplate again and again. Say goodbye to that! <b class='text-accent'>alfadev-astro-starter</b> lets you jump straight into creating, skipping the repetitive groundwork."
-    image: /images/tired-of-writing.webp
-
-  - title: This is not a library
-    content: It's a <b class='text-accent'>ready-to-go template</b>. No steep learning curves or dozens of new dependencies. Just the essentials to build content-driven pages with ease.<br/>If you're familiar with <span class="text-accent font-bold">Astro</span>, you are good to go.
-    image: /images/this-is-not-a-library.webp
-
-  - title: Optimized out of the box
-    content: Lightweight and fast. Packed with <span class="text-accent font-bold">Astro</span>, <span class="text-[#38bdf8] font-bold">tailwind</span> and <span class="text-[#e41c81] font-bold">Sass</span> goodness, so your pages load <b class='text-accent'>blazing fast</b>—right from the start. <br/> All the pages are configured in a way that are SEO-friendly and defined with markdown.
+  - title: Introducing GLUE Framework
+    content: "A revolutionary <b class='text-accent'>context-aware AI system</b> that naturally adapts to different types of interactions. Whether you're building a chatbot, research assistant, or complex AI agent, GLUE intelligently adjusts its behavior without any special configuration."
     image: /images/optimized-out-of-the-box.webp
 
-  - title: Looks great, day or night
-    content: "With <b class='text-accent'>built-in dark theme support</b>, your site will look amazing no matter what time of day your users visit. Or what their eyes prefer.<br/> <br/>Forget convoluted theming systems. alfadev-astro-starter keeps it <b class='text-accent'>simple and extensible</b>, so you can focus on your design and let the code work fori you."
+  - title: Smart by Design
+    content: "GLUE features an intelligent system that <b class='text-accent'>learns from interactions</b> and improves over time. No more complex configurations or manual mode switching - GLUE handles everything automatically, from simple conversations to complex research tasks."
+    image: /images/this-is-not-a-library.webp
+
+  - title: Built for Everyone
+    content: "From data scientists to hobbyists, GLUE makes advanced AI technology <b class='text-accent'>accessible to everyone</b>. Create domain-specific AI agents without extensive technical expertise, and let GLUE handle the complexity for you."
+    image: /images/tired-of-writing.webp
+
+  - title: Secure and Ethical
+    content: "With a strong focus on <b class='text-accent'>responsible AI development</b>, GLUE incorporates security and ethical considerations at its core. Built by a team with expertise in both AI and cybersecurity, you can trust GLUE to handle your AI needs safely."
     image: /images/loogs-good.webp
 
-
-##key features
 features:
-  title: Why <span class="text-accent">alfadev-starter</span>?
-  description: Because every content-driven page needs a lot boilerplate to initialize, and **we provide you with the tools and guidelines** needed to focus on what's important.
+  title: Why Choose <span class="text-accent">GLUE</span>?
+  description: GLUE is designed to revolutionize how we build and interact with AI agents, making advanced AI technology accessible while maintaining powerful capabilities.
   feature_list:
-    - icon: "box"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Simple
-      content: Avoid Complexity, small yet not useless. Loaded, but <b class="text-text">not overwhelming</b>.
-    - icon: "clock"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Up-to-date
-      content: Using the latest version and best practices of <span class="text-accent font-bold">Astro</span>, <span class="text-[#38bdf8] font-bold">tailwindcss</span> and <span class="text-[#e41c81] font-bold">Sass</span>
-    - icon: "search"  #icon package react-feather-icon [https://feathericons.com/]
-      title: SEO Friendly
-      content: Boost your site's visibility with <b class="text-text">built-in SEO optimizations</b>, including automatic sitemap generation using <a target='blank' href="https://docs.astro.build/es/guides/integrations-guide/sitemap/"><span class="text-accent font-bold underline">astrojs/sitemap</span></a>.
-    - icon: "plus"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Extendable
-      content: Add or change content just by <b class="text-text">editing markdown files</b>, so it stays in one place regardless of the code.
-    - icon: "coffee"  #icon package react-feather-icon [https://feathericons.com/]
-      title: "Focused"
-      content: Put you effort on what's important, not on small details. Dont worry about <span class="text-shadow-sm shadow-surface-contrast">***that damn shadow***</span>.
-    - icon: "tool"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Customizable
-      content: Every corner of the page <b class="text-text">can be easily changed</b> to fit your needs.
-    - icon: "moon"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Dark Mode Support
-      content: Fully supports ***dark theme*** with an easy-to-extend theming system.
-    - icon: "feather"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Lightweight
-      content: Fast and efficient. Every asset is optimized to ensure <b class="text-text">minimal load times</b>.
-    - icon: "layers"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Modular
-      content: Built with ***reusable components*** that simplify adding or editing sections of the page.
-    - icon: "zap"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Performance-First
-      content: Designed with <b class="text-text">best-in-class performance</b> metrics to improve the user experience.
-    - icon: "layout"  #icon package react-feather-icon [https://feathericons.com/]
-      title: Content-Centric
-      content: Focused on delivering content seamlessly, making it ideal for <b class="text-text">portfolios, showcases, or landing pages</b>.
-    - icon: "code"  #icon package react-feather-icon [https://feathericons.com/]
+    - icon: "Zap"
+      title: Context-Aware
+      content: Automatically adapts to different types of interactions without any configuration.
+    - icon: "Cpu"
+      title: Intelligent
+      content: Smart tool usage and natural conversation handling that improves over time.
+    - icon: "Users"
+      title: Accessible
+      content: Designed for everyone, from AI experts to hobbyists.
+    - icon: "Shield"
+      title: Secure
+      content: Built with security and ethical considerations at its core.
+    - icon: "Box"
+      title: Versatile
+      content: Perfect for chatbots, research assistants, and complex AI agents.
+    - icon: "TrendingUp"
+      title: Adaptive
+      content: Learns from successful interactions and improves automatically.
+    - icon: "Layers"
+      title: Integrated
+      content: Seamless tool coordination and natural transitions between modes.
+    - icon: "RefreshCw"
+      title: Self-Improving
+      content: Gets better with each interaction through pattern recognition.
+    - icon: "Code"
       title: Developer-Friendly
-      content: Crafted for developers who value ***simplicity, flexibility, and modern*** tools.
-    
+      content: Clean APIs and intuitive interfaces for easy integration.
+    - icon: "CheckCircle"
+      title: Production-Ready
+      content: Built for reliability and performance at scale.
+    - icon: "GitMerge"
+      title: Collaborative
+      content: Supports team interactions and knowledge sharing.
+    - icon: "Heart"
+      title: User-Focused
+      content: Designed with different learning styles in mind.
 
-
-
-
-#testimonial
 testimonial:
-  title: Our adopters and their clients <ins>have nice things to say</ins> about us
-  description: Or they will, once they taste a drop of **what we've built**
+  title: Early Access Feedback
+  description: Join our growing community of AI innovators and be among the first to experience GLUE.
   testimonial_list:
-    - author: Jhon Doe
-      organization: Example Corp
+    - author: Dr. Sarah Chen
+      organization: AI Research Lab
       rating: five
-      content: "I can't believe this testimonial is autogenerated! But hey, I’d still give it <b class='text-accent'>five stars</b>!"
-    - author: Jane D. Smith
-      organization: Acme Inc.
+      content: "The context-aware system is a game-changer. GLUE's ability to adapt automatically saves us countless hours of configuration."
+    - author: Mark Thompson
+      organization: Tech Innovations Inc.
+      rating: five
+      content: "Finally, an AI framework that prioritizes both power and accessibility. GLUE is exactly what we've been waiting for."
+    - author: David Rodriguez
+      organization: DataSense AI
+      rating: five
+      content: "The learning capabilities are impressive. Our agents get smarter with each interaction, just as promised."
+    - author: Lisa Patel
+      organization: AI Solutions Co.
       rating: four
-      content: "Doesn't matter if I exist or not, this project is <b class='text-accent'>truly fantastic</b>. Highly recommend!"
-    - author: Bob A. Nonymous
-      organization: FutureTech Labs
-      rating: five
-      content: "Wow, this is so good, I’d recommend it to all my imaginary friends."
-    - author: Alice Placeholder
-      organization: Startup Ipsum
-      rating: three
-      content: "If I were real, I’d definitely complain less. But it’s still pretty good!"
-    - author: Richard Fakenham
-      organization: Lorem Ipsum Ltd.
-      rating: five
-      content: "Astounding! Even for a made-up person like me, this template <b class='text-accent'>exceeds expectations</b>."
-    - author: Emily Mockson
-      organization: Phantom Co.
-      rating: four
-      content: "No real user said this, but they should! Such a slick and modern experience."
-    - author: Alex Testworth
-      organization: AlphaBeta Agency
-      rating: five
-      content: "Best autogenerated testimonial I’ve ever seen. 10/10 would fake it again."
-    - author: Chris Placeholder
-      # avatar: "/images/users/user-8.png"
-      organization: Ghost Design Studios
-      rating: four
-      content: "You don’t have to believe me, but you should believe in this product!"
+      content: "GLUE's security-first approach gives us confidence in deploying AI solutions at scale."
 
-
-## Call to Action
 call_to_action:
-  title: "Because we love <span class='text-accent text-shadow-[0px_5px_15px]' >Astro</span> and <span class='text-[#38bdf8] text-shadow-[0px_5px_15px]'>Tailwind</span>."
-  description: "Save yourself some time (and sanity). Use this template and act like you planned everything from scratch. We won't tell. **Just be sure to leave a star, please.**"
-  button: 
-    label: "Grab the Starter"
-    href: "https://github.com/diego-alfadev/alfadev-astro-starter"
+  title: "Join the <span class='text-accent text-shadow-[0px_5px_15px]'>AI Revolution</span>"
+  description: "Be among the first to experience GLUE and shape the future of AI development. **Sign up for early access today.**"
+  button:
+    label: "Join Waitlist"
+    href: "#waitlist"
     color: accent
-
 ---

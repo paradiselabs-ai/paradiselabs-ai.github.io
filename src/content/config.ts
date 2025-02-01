@@ -40,13 +40,13 @@ const indexPage = defineCollection({
   schema: indexSchema,
 });
 
-// Export collections
-export const collections = {
-  about: pagesCollection,
-  changelog: pagesCollection,
-  contact: pagesCollection,
-  features: pagesCollection,
-  homepage: indexPage,
+// Blog collection schema
+const blogCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date: z.string(),
   pages: pagesCollection,
 };
 

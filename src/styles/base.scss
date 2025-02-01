@@ -1,9 +1,23 @@
-body {
-  @apply font-primary text-text bg-background
+// Apply glassmorphic utility classes
+.glassmorphic {
+  @apply bg-surface/10 backdrop-blur-md border border-white/20 rounded-xl;
 }
-.dark body {
 
-  @apply bg-slate-950 bg-[url(/images/bg.svg)] bg-cover bg-repeat;
+.glassmorphic-card {
+  @apply glassmorphic shadow-lg hover:shadow-xl transition-all duration-300;
+}
+
+.glassmorphic-button {
+  @apply glassmorphic px-6 py-2 hover:bg-surface/20 transition-all duration-300;
+}
+
+body {
+  @apply font-primary text-text bg-background bg-[url(/images/bg.svg)] bg-cover bg-repeat min-h-screen;
+}
+
+// Dark theme is now default
+.light body {
+  @apply bg-background;
 }
 
 h1 {

@@ -1,0 +1,50 @@
+---
+import Base from "./Base.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Base>
+  <section class="section">
+    <div class="container">
+      <article class="glassmorphic p-8 rounded-xl">
+        <h1 class="text-4xl font-bold mb-4 text-accent">{frontmatter.title}</h1>
+        <div class="text-text-secondary mb-8">
+          <span>{frontmatter.date}</span> • <span>{frontmatter.author}</span>
+        </div>
+        <div class="prose prose-invert max-w-none">
+          <slot />
+        </div>
+      </article>
+    </div>
+  </section>
+</Base>
+
+<style is:global>
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply text-accent;
+  }
+  .prose a {
+    @apply text-primary hover:text-accent;
+  }
+  .prose strong {
+    @apply text-accent;
+  }
+  .prose code {
+    @apply bg-surface/10 backdrop-blur-sm px-2 py-0.5 rounded border border-white/20;
+  }
+  .prose pre {
+    @apply bg-surface/10 backdrop-blur-sm border border-white/20;
+  }
+  .prose img {
+    @apply rounded-lg border border-white/20;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-accent/50;
+  }
+  .prose ul, .prose ol {
+    @apply text-text;
+  }
+  .prose p {
+    @apply text-text;
+  }
+</style>

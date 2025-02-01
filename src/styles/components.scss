@@ -12,37 +12,36 @@
 
 }
 
-// badge
+// badge with glassmorphic effect
 .badge {
-  @apply relative top-[0.625rem] rounded-md px-[0.8rem] py-[0.45rem] text-xs font-semibold text-white;
+  @apply relative top-[0.625rem] rounded-md px-[0.8rem] py-[0.45rem] text-xs font-semibold text-white backdrop-blur-sm;
   &.primary {
-    @apply bg-primary;
+    @apply bg-primary/80;
   }
   &.secondary {
-    @apply bg-secondary;
+    @apply bg-secondary/80;
   }
   &.accent {
-    @apply bg-accent;
+    @apply bg-accent/80;
   }
   &.danger {
-    @apply bg-danger;
+    @apply bg-danger/80;
   }
   &.success {
-    @apply bg-success;
+    @apply bg-success/80;
   }
   &.warning {
-    @apply bg-warning;
+    @apply bg-warning/80;
   }
   &.info {
-    @apply bg-info;
+    @apply bg-info/80;
   }
   &.light {
-    @apply bg-white text-text;
+    @apply bg-white/80 text-text;
   }
   &.dark {
-    @apply bg-surface text-text-secondary;
+    @apply bg-surface/80 text-text-secondary;
   }
-
 }
 
 
@@ -56,23 +55,27 @@
   @apply mb-5 leading-10;
 }
 
-// social icon style
+// social icon style with glassmorphic effect
 .social-icons {
   li {
     @apply mr-2 inline-block;
     a {
-      @apply inline-flex h-11 w-11 items-center justify-center rounded-full bg-white text-center transition-all duration-200 hover:bg-primary;
+      @apply inline-flex h-11 w-11 items-center justify-center rounded-full bg-surface/10 backdrop-blur-sm border border-white/20 text-center transition-all duration-300 hover:bg-primary/80;
 
       svg {
-        @apply m-auto h-11 fill-gray-600 text-xl;
+        @apply m-auto h-11 fill-text text-xl;
       }
 
       path {
-        @apply transition-all duration-200;
+        @apply transition-all duration-300;
       }
 
-      &:hover path {
-        @apply fill-white;
+      &:hover {
+        @apply border-primary/50;
+        
+        path {
+          @apply fill-white;
+        }
       }
     }
   }
@@ -95,12 +98,12 @@
 }
 
 
-//review-carousel
+//review-carousel with glassmorphic effect
 .review {
-  @apply mx-[0.9rem] my-10 rounded-xl bg-surface px-3 py-6 pb-16 text-center shadow;
+  @apply mx-[0.9rem] my-10 rounded-xl glassmorphic px-3 py-6 pb-16 text-center;
 
   &-author-avatar {
-    @apply mx-auto -mt-12 h-[90px] w-[90px] -translate-y-5 rounded-full p-0.5;
+    @apply mx-auto -mt-12 h-[90px] w-[90px] -translate-y-5 rounded-full p-0.5 border-2 border-primary/50;
   }
 }
 .review-rating {
@@ -188,18 +191,17 @@
 }
 
 
-//changelogs
+//changelogs with glassmorphic effect
 .changelogs {
   &-content {
     // First child of the changelogs-content below a badge should have a margin-top of 6
     > .badge + * {
       @apply mt-8;
     }
-    @apply relative shadow-lg rounded-xl bg-surface  ;
+    @apply relative glassmorphic p-6;
     &::before {
-      @apply absolute -top-[38px] left-0 h-[18px] w-[18px] rounded-full border-4 border-secondary/70 bg-background content-[''] lg:-left-[49px] lg:top-0;
+      @apply absolute -top-[38px] left-0 h-[18px] w-[18px] rounded-full border-4 border-primary/50 bg-background content-[''] lg:-left-[49px] lg:top-0;
     }
-
 
     ul {
       @apply list-disc pl-6 marker:text-text;
@@ -219,19 +221,23 @@
   }
 
   &-tag {
-    @apply mb-5 inline-block h-5 rounded px-1 py-0.5 text-xs text-red-500;
+    @apply mb-5 inline-block h-5 rounded px-1 py-0.5 text-xs text-secondary;
   }
 }
 
 
 
-// form style
+// form style with glassmorphic effect
 .form-control,
 .form-select {
   & option {
-    @apply text-text dark:text-text-contrast;
+    @apply text-text bg-background;
   }
-  @apply h-[60px] w-full rounded-lg border-surface-contrast/50 text-text placeholder:text-text focus:border-primary focus:ring-transparent bg-transparent;
+  @apply h-[60px] w-full rounded-lg border-white/20 text-text placeholder:text-text/70 focus:border-primary focus:ring-primary/50 bg-surface/10 backdrop-blur-sm transition-all duration-300;
+
+  &:hover {
+    @apply border-white/30 bg-surface/20;
+  }
 }
 
 .form-inputs * {
@@ -243,5 +249,5 @@
 }
 
 select:invalid {
-  color: #b0b0b0 !important;
+  @apply text-text/50;
 }

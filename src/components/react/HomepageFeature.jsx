@@ -2,7 +2,7 @@ import { humanize } from "@/lib/utils/textConverter";
 import * as Icon from "react-feather";
 import { markdownify } from "@/lib/utils/textConverter";
 
-const HomapageFeature = ({ feature_list }) => {
+const HomepageFeature = ({ feature_list }) => {
   return (
     <div className="key-feature-grid mt-10 grid grid-cols-2 gap-7 md:grid-cols-3 xl:grid-cols-4 ">
       {feature_list.map((item, i) => {
@@ -28,4 +28,4 @@ const HomapageFeature = ({ feature_list }) => {
   );
 };
 
-export default HomapageFeature;
+export default HomepageFeature;
