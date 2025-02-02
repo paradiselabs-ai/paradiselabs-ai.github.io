@@ -1,9 +1,10 @@
-// src/components/Header/Header.tsx
+// src/components/WorkflowHeader/WorkflowHeader.tsx
 import React from 'react';
 import { Undo2, Redo2, Download, Play, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
+import '../Workflow.css';
 
-const Header: React.FC = () => {
+const WorkflowHeader: React.FC = () => {
   const { theme, setTheme } = useTheme();
 
   const toggleTheme = () => {
@@ -11,6 +12,7 @@ const Header: React.FC = () => {
   };
 
   return (
+    <div className="workflow-app">
     <div className="header">
       <div className="header__left">
         <span className="header__logo-text">WorkflowAI</span>
@@ -58,7 +60,8 @@ const Header: React.FC = () => {
         </button>
       </div>
     </div>
+    </div>
   );
 };
 
-export default Header;
+export default WorkflowHeader;

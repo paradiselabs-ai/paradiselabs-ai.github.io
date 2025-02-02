@@ -1,0 +1,35 @@
+/* src\pages\Docs.css */ 
+.docs-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.docs-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.docs-section h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.docs-section p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+.docs-section ul {
+  list-style: disc;
+  padding-left: 2rem;
+  color: #475569;
+}
+
+.docs-section li {
+  margin: 0.5rem 0;
+}

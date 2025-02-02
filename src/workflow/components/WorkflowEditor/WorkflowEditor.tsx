@@ -1,6 +1,7 @@
 // src/components/WorkflowEditor/WorkflowEditor.tsx
 import React from 'react';
 import { Plus, Sparkles, Trash2, LucideIcon } from 'lucide-react';
+import '../Workflow.css';
 
 interface MenuItem {
   id: string;
@@ -34,6 +35,7 @@ const WorkflowEditor: React.FC = () => {
   ];
 
   return (
+    <div className="workflow-app">
     <nav className="workflow-editor" aria-label="Workflow tools">
       <div className="workflow-editor__buttons" role="toolbar" aria-label="Workflow editing tools">
         {menuItems.map(({ id, icon: Icon, label, onClick }) => (
@@ -58,6 +60,7 @@ const WorkflowEditor: React.FC = () => {
         ))}
       </div>
     </nav>
+    </div>
   );
 };
 
