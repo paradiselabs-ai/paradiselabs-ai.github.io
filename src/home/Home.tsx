@@ -61,30 +61,40 @@ const Home: React.FC = () => {
       {/* Main Content */}
       <div className="main-content">
         <div className="CLIC">
-          <h1>Unlock the value in team focused AI systems. </h1>
-          <div className="content-grid">
-          <div className="content-section">
-            <h3>Communicate</h3>
-            <p>Design fluid communication patterns between AI agents that enable natural dialogue and automated information sharing.</p>
+          <h1>Unlock the value in team focused AI systems.</h1>
+          <div className="cards-container">
+            <div className="feature-card">
+              <div className="gradient-overlay"></div>
+              <div className="feature-content">
+                <h3 className="feature-title">Control, moderate, and guide your agent's actions</h3>
+                <p className="feature-description">Prevent agents from veering off course and ensure reliability with easy-to-add moderation and quality loops. Add human-in-the-loop to steer and approve agent actions.</p>
+              </div>
+            </div>
+
+            <div className="feature-card">
+              <div className="gradient-overlay"></div>
+              <div className="feature-content">
+                <h3 className="feature-title">Scale with confidence</h3>
+                <p className="feature-description">Deploy and manage multiple agents seamlessly across your organization. Monitor performance and adjust settings in real-time for optimal results.</p>
+              </div>
+            </div>
+
+            <div className="feature-card">
+              <div className="gradient-overlay"></div>
+              <div className="feature-content">
+                <h3 className="feature-title">Customize workflows</h3>
+                <p className="feature-description">Design and implement custom agent workflows that match your specific needs. Integrate with existing systems and processes effortlessly.</p>
+              </div>
+            </div>
+
+            <div className="feature-card">
+              <div className="gradient-overlay"></div>
+              <div className="feature-content">
+                <h3 className="feature-title">Customize workflows</h3>
+                <p className="feature-description">Design and implement custom agent workflows that match your specific needs. Integrate with existing systems and processes effortlessly.</p>
+              </div>
+            </div>
           </div>
-          
-          <div className="content-section">
-            <h3>Limit</h3>
-            <p>Implement strategic boundaries and access controls to maintain system integrity and information security.</p>
-          </div>
-          
-          <div className="content-section">
-            <h3>Imitate</h3>
-            <p>Mirror proven organizational structures and roles to create intuitive, human-like team dynamics.</p>
-          </div>
-          
-          <div className="content-section">
-            <h3>Collaborate</h3>
-            <p>Build purposeful cross-team workflows that drive collective outcomes through aligned incentives.</p>
-          </div>
-          
-          <div className="intersection-dot" />
-        </div>
         </div>
       </div>
     </div>
