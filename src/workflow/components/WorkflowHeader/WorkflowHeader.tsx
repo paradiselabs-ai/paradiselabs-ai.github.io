@@ -21,6 +21,7 @@ const WorkflowHeader: React.FC = () => {
             className="header__button" 
             title="Undo"
             aria-label="Undo"
+            /* Undo node configuration or placement or whatever */
           >
             <Undo2 />
           </button>
@@ -28,6 +29,7 @@ const WorkflowHeader: React.FC = () => {
             className="header__button" 
             title="Redo"
             aria-label="Redo"
+            /* Redo node configuration or placement or whatever */
           >
             <Redo2 />
           </button>
@@ -47,6 +49,7 @@ const WorkflowHeader: React.FC = () => {
           className="header__button" 
           title="Export your code"
           aria-label="Export your code"
+          /* Exports the visual workflow nodes in a .glue format code */
         >
           <Download />
         </button>
@@ -54,6 +57,7 @@ const WorkflowHeader: React.FC = () => {
           className="header__button header__button--run" 
           title="Preview component"
           aria-label="Run preview"
+          /* Runs the visual workflow nodes in a preview mode (To be done later) */
         >
           <Play />
           <span>Run</span>

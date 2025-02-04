@@ -17,20 +17,23 @@ const WorkflowEditor: React.FC = () => {
     { 
       id: 'add', 
       icon: Plus, 
-      label: 'Add',
+      label: 'Add Node',
       onClick: () => console.log('Add clicked')
+      /* Adds a node that can be preconfigured or configured by the user using WorkflowControls which appears once the user clicks on a node*/
     },
     { 
       id: 'askAi', 
       icon: Sparkles, 
       label: 'Ask AI',
       onClick: () => console.log('Ask AI clicked')
+      /* To be configured later on */
     },
     { 
       id: 'clear', 
       icon: Trash2, 
       label: 'Clear',
       onClick: () => console.log('Clear clicked')
+      /* Clears all nodes in the workflow */
     }
   ];
 
