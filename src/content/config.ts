@@ -47,7 +47,14 @@ const blogCollection = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     date: z.string(),
+    author: z.string(),
+    image: z.string().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
+export const collections = {
   pages: pagesCollection,
+  homepage: indexPage,
+  blog: blogCollection,
 };
-
-
