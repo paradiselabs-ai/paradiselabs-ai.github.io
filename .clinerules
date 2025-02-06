@@ -1,11 +1,15 @@
 
 ## CLINE RULES:
 
-color preference: glassmorphic components in a modern pleasing layout. 
+color preference: glassmorphic, slightly transparent components in a modern pleasing layout. The nav bar should be about 85% transparent. 
 
-deep slate-gray background, light purplish-neon pink gradients for secondary colors, and blue topaz and neon turquoise for highlight elements. 
+The background should always be the darkest element, and reversed when light mode is toggled. dark mode should always be the default. It should be a deep slate-gray background, with light purplish-neon-pink gradients and blues that are already present in the template used for secondary colors, and electric blue topaz and neon turquoise for highlight elements, outlines, partitions, and borders, etc. 
 
-Fix the git repos locally and in github. 
+Text should be professional looking but not bland or boring. 
+
+The site should be modern and professional above flashy and gaudy or overly hyper and distracting. however it shouldnt be wikipedia page level of bland either. Finding the right balance is the goal. Use your best judgement for the best UX/UI. 
+
+
 
 # PAT removed for security
 read the paradiselabs info and info about the GLUE project. make sure you write about it as our upcoming release. in fact, add a specific GLUE page, that can be used as a product accouncement page, with a waitlist for early access as a CTA, in the hero section, and read about it in p/ and use that info to create a professional and modern AI startup project announcement page, and the waitlist early access CTA. 

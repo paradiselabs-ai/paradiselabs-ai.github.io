@@ -24,7 +24,8 @@ sections:
     image: /images/tired-of-writing.webp
 
   - title: Secure and Ethical
-    content: "With a strong focus on <b class='text-accent'>responsible AI development</b>, GLUE incorporates security and ethical considerations at its core. Built by a team with expertise in both AI and cybersecurity, you can trust GLUE to handle your AI needs safely."
+    content: "With a strong focus on <b class='text-accent'>responsible AI development</b>, GLUE incorporates security and ethical considerations at its core. Built by a team with expertise in both AI and cybersecurity, you can 
+     l                                                            11                                                                                                   3  e33     n33n3 nnnn nnnnnnnnnnnnnnnnnnnnnn  11w                        m GLUE to handle your AI needs safely."
     image: /images/loogs-good.webp
 
 features:

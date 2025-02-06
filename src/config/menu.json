@@ -1,10 +1,6 @@
 {
   "main": [
     {
-      "name": "Home",
-      "url": "/"
-    },
-    {
       "name": "GLUE",
       "url": "/features"
     },

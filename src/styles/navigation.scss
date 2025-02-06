@@ -13,7 +13,7 @@ input#nav-toggle:checked ~ #nav-menu {
 .header {
   flex-direction: row;
   --shadow-color: rgba(99, 99, 99, 0.3);
-  --bg: rgba(255, 255, 255, 0.565);
+  --bg: rgba(255, 255, 255, 0.15);
   animation: reduce-header linear both;
   animation-timeline: scroll();
   animation-range: 0 150px;
@@ -22,7 +22,7 @@ input#nav-toggle:checked ~ #nav-menu {
 
 .dark .header {
   --shadow-color: rgba(255, 255, 255, 0.3);
-  --bg: rgba(28, 28, 45, 0.3);
+  --bg: rgba(26, 32, 44, 0.15);
 }
 
 @keyframes reduce-header {
