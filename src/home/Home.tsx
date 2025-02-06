@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
 import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
-
+import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
 
 const Home: React.FC = () => {
 
@@ -91,7 +91,11 @@ const Home: React.FC = () => {
       <div style={newContainerStyle}>
         <HowDoesGlueWork />
       </div>
-
+      
+      {/* Key Features Section */}
+      <div style={newContainerStyle}>
+        <GlueKeyFeatures />
+      </div>
       {/* Main Content */}
       <div className="main-content">
         <div className="CLIC">
