@@ -2,16 +2,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
-
+import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
 
 
 const Home: React.FC = () => {
 
-  const containerStyle: React.CSSProperties = {
+  const firstContainerStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'center', // Centers horizontally
     alignItems: 'center',     // Centers vertically
     height: '100vh'           // Full viewport height
+  };
+
+  const newContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center', // Centers horizontally
+    alignItems: 'center',     // Centers vertically
+    height: '100vh',          // Full viewport height
+    marginTop: '10%',           // Proper camelCase property name
+    marginBottom: '12%'  
   };
 
   return (
@@ -74,8 +83,13 @@ const Home: React.FC = () => {
       {/* ------------- Main Content ------------- */}
 
       {/* Why Choose GLUE Section */}
-      <div style={containerStyle}>
+      <div style={firstContainerStyle}>
         <WhyChooseGlue />
+      </div>
+      
+      {/* How Does Glue Work Section */}
+      <div style={newContainerStyle}>
+        <HowDoesGlueWork />
       </div>
 
       {/* Main Content */}
