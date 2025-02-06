@@ -54,13 +54,13 @@
     max-width: 1280px;
     /* Slightly increased max-width */
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     height: 80px;
     /* Increased height for better touch targets */
 }
 
 .header-component .logo {
-    font-size: 2.2rem;
+    font-size: 3rem;
     font-weight: bold; 
     font-family: 'Dongle';
     /* Larger font size for better hierarchy */
@@ -77,6 +77,7 @@
 }
 
 .header-component .nav-links a {
+    font-size: 3rem;
     color: #d6ddf4;
     /* Higher contrast color */
     text-decoration: none;

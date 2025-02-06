@@ -1,11 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
+import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
+
+
 
 const Home: React.FC = () => {
+
+  const containerStyle: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center', // Centers horizontally
+    alignItems: 'center',     // Centers vertically
+    height: '100vh'           // Full viewport height
+  };
+
   return (
     <div className="home-container">
-      {/* Header Section */}
+      {/* ------------- Header Section ------------- */}
       <header className="header-section">
         <div className="gradient-bg">
           <svg xmlns="http://www.w3.org/2000/svg">
@@ -30,20 +41,22 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Hero Content */}
         <div className="content-container">
           <section className="hero-section">
-          <h1>Build Self-Organizing AI Teams<br /><span className="sub-line">Scale Effortlessly</span></h1>
-            <p className="tagline">
-               and more, with
-            </p>
-            <span className="sub-line">GenAI Linking &</span><span className="sub-line">Unification Engine</span>
-              <Link to="/workflow" className="cta-primary">
-              Try Visual Builder
+            <p>From ParadiseLabs</p>
+            <span className="header-line">Generative-AI Linking &</span>
+            <span className="header-line">Unification Engine</span>
+            <span className="tagline">The GLUE framework</span>
+            <span className="glue-line">simplifies complex AI development</span>
+            <span className="glue-line">by unifying tools, agents, and processes.</span>
+            <div className="cta-container">
+              <Link to="/undefined" className="cta-primary">
+                Start Building Today
               </Link>
               <Link to="https://github.com/paradiselabs-ai/glue-framework" className="cta-secondary">
                 View on Github
               </Link>
+            </div>
           </section>
         </div>
       </header>
@@ -56,6 +69,13 @@ const Home: React.FC = () => {
         >
           <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
         </svg>
+      </div>
+
+      {/* ------------- Main Content ------------- */}
+
+      {/* Why Choose GLUE Section */}
+      <div style={containerStyle}>
+        <WhyChooseGlue />
       </div>
 
       {/* Main Content */}

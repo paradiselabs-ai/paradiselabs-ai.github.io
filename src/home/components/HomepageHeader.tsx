@@ -63,12 +63,10 @@ const HomepageHeader: React.FC = () => {
     >
       <div className="header-content">
         <Link to="/" className="logo">
-          Glue
+          GLUE
         </Link>
         <nav className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/docs">Documentation</Link>
-          <Link to="/workflow">Workflow Editor</Link>
+          <Link to="/docs">Docs</Link>
         </nav>
       </div>
     </header>

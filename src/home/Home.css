@@ -142,30 +142,39 @@
   z-index: 3;
 }
 
-.home-container .hero-section h1 {
-  font-size: 4rem;
-  margin-bottom: 5rem;
+.home-container .hero-section p {
+  font-size: 3.4rem;
+  margin-bottom: 2rem;
   margin-top: 4%;
 }
 
-.home-container .hero-section .sub-line {
+.home-container .hero-section .header-line {
   display: block; /* Force new line */
   margin-top:-0.6em; /* Add spacing between lines */
-  font-size: 4rem;
+  font-size: 5.5rem;
 }
 
-.home-container .tagline {
-  font-size: 3.5rem;
+.home-container .hero-section .glue-line {
+  display: block; /* Force new line */
+  margin-top:-0.6em; 
+  font-size: 3.4rem;
+}
+
+.home-container .hero-section .tagline {
+  display: inline-block;
+  font-size: 3.4rem;
   margin-bottom: 0rem;
-  margin-top:10rem;
+  margin-top:3rem;
 }
 
 .home-container .cta-primary,
 .home-container .cta-secondary {
+  display: inline-block;
+  margin-top: 1.5rem;
   padding: 0.8rem 2.2rem;
   border-radius: 3rem;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem; /* Updated to match Button Text (Large) */
   transition: all 0.3s ease;
 }
 
@@ -482,7 +491,7 @@
     margin-top: 8rem;
   }
 
-  .home-container .sub-line {
+  .home-container .glue-line {
     font-size: 3.5rem;
   }
 }
@@ -504,7 +513,7 @@
     margin-top: 6rem;
   }
 
-  .home-container .hero-section .sub-line  {
+  .home-container .hero-section .glue-line  {
     font-size: 3.2rem;
     margin-top: -0.5em;
   }
@@ -535,8 +544,8 @@
     margin-top: 5rem;
   }
 
-  .home-container .hero-section .sub-line {
-    font-size: 3rem;
+  .home-container .hero-section .glue-line {
+    font-size: 5rem;
   }
 
   /* Adjust sections padding */
@@ -592,7 +601,7 @@
     margin-top: 7rem;
   }
 
-  .home-container .hero-section .sub-line  {
+  .home-container .hero-section .glue-line  {
     font-size: 2.4rem;
     margin-top: -0.4em;
   }
@@ -636,7 +645,7 @@
     margin-top: 7.5rem;
   }
 
-  .home-container .hero-section .sub-line {
+  .home-container .hero-section .glue-line {
     font-size: 2.2rem;
   }
 
@@ -690,7 +699,7 @@
     margin-top: 6rem;
   }
 
-  .home-container .hero-section .sub-line  {
+  .home-container .hero-section .glue-line  {
     font-size: 2.1rem;
   }
 
@@ -756,7 +765,7 @@
     font-size: 1.6rem;
   }
 
-  .home-container .sub-line {
+  .home-container .glue-line {
     font-size: 2rem;
   }
 }
