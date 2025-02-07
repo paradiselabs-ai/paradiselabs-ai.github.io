@@ -4,6 +4,7 @@ import './Home.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
 import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
 import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
+import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 
 const Home: React.FC = () => {
 
@@ -20,7 +21,7 @@ const Home: React.FC = () => {
     alignItems: 'center',     // Centers vertically
     height: '100vh',          // Full viewport height
     marginTop: '10%',           // Proper camelCase property name
-    marginBottom: '12%'  
+    marginBottom: '5%'  
   };
 
   return (
@@ -95,6 +96,11 @@ const Home: React.FC = () => {
       {/* Key Features Section */}
       <div style={newContainerStyle}>
         <GlueKeyFeatures />
+      </div>
+      
+      {/* Glue Syntax Section */}
+      <div style={newContainerStyle}>
+        <GlueSyntax />
       </div>
       {/* Main Content */}
       <div className="main-content">
