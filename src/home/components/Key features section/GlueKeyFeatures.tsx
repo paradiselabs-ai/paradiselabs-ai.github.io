@@ -4,7 +4,7 @@ import "./GlueKeyFeatures.css";
 
 export const GlueKeyFeatures = () => {
   return (
-    <div id="webcrumbs"> 
+    <div id="GlueKeyFeatures"> 
             	<div className="w-[1200px] max-w-full px-4 sm:px-6 md:px-8 relative">
     	    <div className="relative z-10">
     	        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 sm:mb-10 md:mb-14 lg:mb-16">

@@ -8,7 +8,7 @@ import "./WhyChooseGlue.css";
 
 export const WhyChooseGlue = () => {
     return (
-        <div id="webcrumbs">
+        <div id="WhyChooseGlue">
           <div className="w-[1200px] relative">
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-16">

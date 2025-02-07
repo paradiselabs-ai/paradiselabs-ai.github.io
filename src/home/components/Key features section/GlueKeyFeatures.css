@@ -316,139 +316,139 @@ video {
   --tw-contain-paint: ;
   --tw-contain-style: ;
 }
-#webcrumbs .absolute {
+#GlueKeyFeatures .absolute {
   position: absolute;
 }
-#webcrumbs .relative {
+#GlueKeyFeatures .relative {
   position: relative;
 }
-#webcrumbs .inset-0 {
+#GlueKeyFeatures .inset-0 {
   inset: 0;
 }
-#webcrumbs .z-10 {
+#GlueKeyFeatures .z-10 {
   z-index: 10;
 }
-#webcrumbs .mb-4 {
+#GlueKeyFeatures .mb-4 {
   margin-bottom: 16px;
 }
-#webcrumbs .mb-8 {
+#GlueKeyFeatures .mb-8 {
   margin-bottom: 32px;
 }
-#webcrumbs .flex {
+#GlueKeyFeatures .flex {
   display: flex;
 }
-#webcrumbs .grid {
+#GlueKeyFeatures .grid {
   display: grid;
 }
-#webcrumbs .h-full {
+#GlueKeyFeatures .h-full {
   height: 100%;
 }
-#webcrumbs .w-\[1200px\] {
+#GlueKeyFeatures .w-\[1200px\] {
   width: 1200px;
 }
-#webcrumbs .max-w-full {
+#GlueKeyFeatures .max-w-full {
   max-width: 100%;
 }
-#webcrumbs .max-w-xl {
+#GlueKeyFeatures .max-w-xl {
   max-width: 36rem;
 }
-#webcrumbs .shrink-0 {
+#GlueKeyFeatures .shrink-0 {
   flex-shrink: 0;
 }
-#webcrumbs .grid-cols-1 {
+#GlueKeyFeatures .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
-#webcrumbs .flex-row {
+#GlueKeyFeatures .flex-row {
   flex-direction: row;
 }
-#webcrumbs .flex-col {
+#GlueKeyFeatures .flex-col {
   flex-direction: column;
 }
-#webcrumbs .items-start {
+#GlueKeyFeatures .items-start {
   align-items: flex-start;
 }
-#webcrumbs .items-center {
+#GlueKeyFeatures .items-center {
   align-items: center;
 }
-#webcrumbs .justify-between {
+#GlueKeyFeatures .justify-between {
   justify-content: space-between;
 }
-#webcrumbs .gap-3 {
+#GlueKeyFeatures .gap-3 {
   gap: 12px;
 }
-#webcrumbs .gap-4 {
+#GlueKeyFeatures .gap-4 {
   gap: 16px;
 }
-#webcrumbs .gap-6 {
+#GlueKeyFeatures .gap-6 {
   gap: 24px;
 }
-#webcrumbs .rounded-xl {
+#GlueKeyFeatures .rounded-xl {
   border-radius: 36px;
 }
-#webcrumbs .border {
+#GlueKeyFeatures .border {
   border-width: 1px;
 }
-#webcrumbs .border-white\/20 {
+#GlueKeyFeatures .border-white\/20 {
   border-color: hsla(0, 0%, 100%, 0.2);
 }
-#webcrumbs .bg-\[\#d6ddf4\]\/10 {
+#GlueKeyFeatures .bg-\[\#d6ddf4\]\/10 {
   background-color: rgba(214, 221, 244, 0.1);
 }
-#webcrumbs .bg-white\/5 {
+#GlueKeyFeatures .bg-white\/5 {
   background-color: hsla(0, 0%, 100%, 0.05);
 }
-#webcrumbs .p-4 {
+#GlueKeyFeatures .p-4 {
   padding: 16px;
 }
-#webcrumbs .px-4 {
+#GlueKeyFeatures .px-4 {
   padding-left: 16px;
   padding-right: 16px;
 }
-#webcrumbs .text-2xl {
+#GlueKeyFeatures .text-2xl {
   font-size: 24px;
   line-height: 31.200000000000003px;
 }
-#webcrumbs .text-\[0\.9rem\] {
+#GlueKeyFeatures .text-\[0\.9rem\] {
   font-size: 0.9rem;
 }
-#webcrumbs .text-\[1\.2rem\] {
+#GlueKeyFeatures .text-\[1\.2rem\] {
   font-size: 1.2rem;
 }
-#webcrumbs .text-\[1rem\] {
+#GlueKeyFeatures .text-\[1rem\] {
   font-size: 1rem;
 }
-#webcrumbs .text-\[2rem\] {
+#GlueKeyFeatures .text-\[2rem\] {
   font-size: 2rem;
 }
-#webcrumbs .font-bold {
+#GlueKeyFeatures .font-bold {
   font-weight: 700;
 }
-#webcrumbs .font-semibold {
+#GlueKeyFeatures .font-semibold {
   font-weight: 600;
 }
-#webcrumbs .leading-tight {
+#GlueKeyFeatures .leading-tight {
   line-height: 1.25;
 }
-#webcrumbs .text-\[\#d6ddf4\] {
+#GlueKeyFeatures .text-\[\#d6ddf4\] {
   --tw-text-opacity: 1;
   color: rgb(214 221 244 / var(--tw-text-opacity));
 }
-#webcrumbs .text-\[\#d6ddf4\]\/60 {
+#GlueKeyFeatures .text-\[\#d6ddf4\]\/60 {
   color: rgba(214, 221, 244, 0.6);
 }
-#webcrumbs .text-\[\#d6ddf4\]\/70 {
+#GlueKeyFeatures .text-\[\#d6ddf4\]\/70 {
   color: rgba(214, 221, 244, 0.7);
 }
-#webcrumbs .opacity-0 {
+#GlueKeyFeatures .opacity-0 {
   opacity: 0;
 }
-#webcrumbs .blur-2xl {
+#GlueKeyFeatures .blur-2xl {
   --tw-blur: blur(40px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
     var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
     var(--tw-sepia) var(--tw-drop-shadow);
 }
-#webcrumbs .backdrop-blur-2xl {
+#GlueKeyFeatures .backdrop-blur-2xl {
   --tw-backdrop-blur: blur(40px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
     var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
@@ -461,129 +461,129 @@ video {
     var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
     var(--tw-backdrop-sepia);
 }
-#webcrumbs .transition-all {
+#GlueKeyFeatures .transition-all {
   transition-duration: 0.15s;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#webcrumbs .transition-transform {
+#GlueKeyFeatures .transition-transform {
   transition-duration: 0.15s;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#webcrumbs .duration-300 {
+#GlueKeyFeatures .duration-300 {
   transition-duration: 0.3s;
 }
-#webcrumbs {
+#GlueKeyFeatures {
   font-family: 'Dongle', sans-serif !important;
   font-size: 16px !important;
 }
-#webcrumbs .hover\:-translate-y-1:hover {
+#GlueKeyFeatures .hover\:-translate-y-1:hover {
   --tw-translate-y: -4px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#webcrumbs .hover\:border-\[\#d6ddf4\]\/30:hover {
+#GlueKeyFeatures .hover\:border-\[\#d6ddf4\]\/30:hover {
   border-color: rgba(214, 221, 244, 0.3);
 }
-#webcrumbs .hover\:shadow-2xl:hover {
+#GlueKeyFeatures .hover\:shadow-2xl:hover {
   --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
-#webcrumbs :is(.group:hover .group-hover\:scale-110) {
+#GlueKeyFeatures :is(.group:hover .group-hover\:scale-110) {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#webcrumbs :is(.group:hover .group-hover\:bg-white\/10) {
+#GlueKeyFeatures :is(.group:hover .group-hover\:bg-white\/10) {
   background-color: hsla(0, 0%, 100%, 0.1);
 }
-#webcrumbs :is(.group:hover .group-hover\:text-\[\#d6ddf4\]) {
+#GlueKeyFeatures :is(.group:hover .group-hover\:text-\[\#d6ddf4\]) {
   --tw-text-opacity: 1;
   color: rgb(214 221 244 / var(--tw-text-opacity));
 }
-#webcrumbs :is(.group:hover .group-hover\:opacity-100) {
+#GlueKeyFeatures :is(.group:hover .group-hover\:opacity-100) {
   opacity: 1;
 }
 @media (min-width: 640px) {
-  #webcrumbs .sm\:mb-10 {
+  #GlueKeyFeatures .sm\:mb-10 {
     margin-bottom: 40px;
   }
-  #webcrumbs .sm\:grid-cols-2 {
+  #GlueKeyFeatures .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  #webcrumbs .sm\:p-6 {
+  #GlueKeyFeatures .sm\:p-6 {
     padding: 24px;
   }
-  #webcrumbs .sm\:px-6 {
+  #GlueKeyFeatures .sm\:px-6 {
     padding-left: 24px;
     padding-right: 24px;
   }
-  #webcrumbs .sm\:text-3xl {
+  #GlueKeyFeatures .sm\:text-3xl {
     font-size: 30px;
     line-height: 36px;
   }
-  #webcrumbs .sm\:text-\[1\.1rem\] {
+  #GlueKeyFeatures .sm\:text-\[1\.1rem\] {
     font-size: 1.1rem;
   }
-  #webcrumbs .sm\:text-\[1\.4rem\] {
+  #GlueKeyFeatures .sm\:text-\[1\.4rem\] {
     font-size: 1.4rem;
   }
-  #webcrumbs .sm\:text-\[3rem\] {
+  #GlueKeyFeatures .sm\:text-\[3rem\] {
     font-size: 3rem;
   }
-  #webcrumbs .sm\:text-base {
+  #GlueKeyFeatures .sm\:text-base {
     font-size: 16px;
     line-height: 25.6px;
   }
 }
 @media (min-width: 768px) {
-  #webcrumbs .md\:mb-14 {
+  #GlueKeyFeatures .md\:mb-14 {
     margin-bottom: 56px;
   }
-  #webcrumbs .md\:flex-row {
+  #GlueKeyFeatures .md\:flex-row {
     flex-direction: row;
   }
-  #webcrumbs .md\:items-center {
+  #GlueKeyFeatures .md\:items-center {
     align-items: center;
   }
-  #webcrumbs .md\:justify-between {
+  #GlueKeyFeatures .md\:justify-between {
     justify-content: space-between;
   }
-  #webcrumbs .md\:p-7 {
+  #GlueKeyFeatures .md\:p-7 {
     padding: 28px;
   }
-  #webcrumbs .md\:px-8 {
+  #GlueKeyFeatures .md\:px-8 {
     padding-left: 32px;
     padding-right: 32px;
   }
-  #webcrumbs .md\:text-4xl {
+  #GlueKeyFeatures .md\:text-4xl {
     font-size: 36px;
     line-height: 41.4px;
   }
-  #webcrumbs .md\:text-\[1\.2rem\] {
+  #GlueKeyFeatures .md\:text-\[1\.2rem\] {
     font-size: 1.2rem;
   }
-  #webcrumbs .md\:text-\[1\.6rem\] {
+  #GlueKeyFeatures .md\:text-\[1\.6rem\] {
     font-size: 1.6rem;
   }
-  #webcrumbs .md\:text-\[3\.5rem\] {
+  #GlueKeyFeatures .md\:text-\[3\.5rem\] {
     font-size: 3.5rem;
   }
 }
 @media (min-width: 1024px) {
-  #webcrumbs .lg\:mb-16 {
+  #GlueKeyFeatures .lg\:mb-16 {
     margin-bottom: 64px;
   }
-  #webcrumbs .lg\:grid-cols-3 {
+  #GlueKeyFeatures .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  #webcrumbs .lg\:text-\[4\.5rem\] {
+  #GlueKeyFeatures .lg\:text-\[4\.5rem\] {
     font-size: 4.5rem;
   }
 }

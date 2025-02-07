@@ -5,6 +5,7 @@ import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlu
 import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
 import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
 import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
+import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
 
 const Home: React.FC = () => {
 
@@ -16,12 +17,15 @@ const Home: React.FC = () => {
   };
 
   const newContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center', // Centers horizontally
-    alignItems: 'center',     // Centers vertically
     height: '100vh',          // Full viewport height
     marginTop: '10%',           // Proper camelCase property name
     marginBottom: '5%'  
+  };
+
+  const WhatMakesGlueInnovativeSection: React.CSSProperties = {
+    height: '100vh',          // Full viewport height
+    marginTop: '20%',           // Proper camelCase property name
+    marginBottom: '20%'  
   };
 
   return (
@@ -102,6 +106,12 @@ const Home: React.FC = () => {
       <div style={newContainerStyle}>
         <GlueSyntax />
       </div>
+      
+      {/* Innovation Spotlight Section */}
+      <div style={WhatMakesGlueInnovativeSection}>
+        <WhatMakesGlueInnovative />
+      </div>
+
       {/* Main Content */}
       <div className="main-content">
         <div className="CLIC">

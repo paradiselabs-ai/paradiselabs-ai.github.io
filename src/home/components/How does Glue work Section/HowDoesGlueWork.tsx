@@ -4,7 +4,7 @@ import "./HowDoesGlueWork.css";
 
 export const HowDoesGlueWork = () => {
     return (
-        <div id="webcrumbs">
+        <div id="HowDoesGlueWork">
           <div className="w-[1200px] max-w-full px-2 sm:px-4 md:px-6 relative">
             <div className="relative z-10">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 sm:mb-8 md:mb-12 lg:mb-16">
