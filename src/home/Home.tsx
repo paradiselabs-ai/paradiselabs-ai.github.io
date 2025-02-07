@@ -25,7 +25,7 @@ const Home: React.FC = () => {
   const WhatMakesGlueInnovativeSection: React.CSSProperties = {
     height: '100vh',          // Full viewport height
     marginTop: '20%',           // Proper camelCase property name
-    marginBottom: '20%'  
+    marginBottom: '30%'  
   };
 
   return (

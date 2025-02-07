@@ -332,6 +332,9 @@ video {
 #WhatMakesGlueInnovative .grid {
   display: grid;
 }
+#WhatMakesGlueInnovative .hidden {
+  display: none;
+}
 #WhatMakesGlueInnovative .h-full {
   height: 100%;
 }
@@ -536,6 +539,10 @@ video {
 }
 #WhatMakesGlueInnovative .text-\[\#d6ddf4\]\/90 {
   color: rgba(214, 221, 244, 0.9);
+}
+#WhatMakesGlueInnovative .text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 #WhatMakesGlueInnovative .text-slate-950 {
   --tw-text-opacity: 1;

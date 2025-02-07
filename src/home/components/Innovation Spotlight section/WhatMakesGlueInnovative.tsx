@@ -84,7 +84,7 @@ export const WhatMakesGlueInnovative = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-              <div className="lg:col-span-1 flex flex-col justify-between p-10 rounded-xl backdrop-blur-xl bg-gradient-to-br from-[#d6ddf4]/10 to-[#a8b2e0]/10 hover:from-[#d6ddf4]/15 hover:to-[#a8b2e0]/15 transition-all duration-300 border border-[#d6ddf4]/20 hover:border-[#d6ddf4]/30">
+              <div className="h-full lg:col-span-1 flex flex-col justify-between p-10 rounded-xl backdrop-blur-xl bg-gradient-to-br from-[#d6ddf4]/10 to-[#a8b2e0]/10 hover:from-[#d6ddf4]/15 hover:to-[#a8b2e0]/15 transition-all duration-300 border border-[#d6ddf4]/20 hover:border-[#d6ddf4]/30">
                 <div className="space-y-6">
                   <span className="material-symbols-outlined text-6xl text-[#d6ddf4]">
                     verified
@@ -98,19 +98,43 @@ export const WhatMakesGlueInnovative = () => {
                     AI collaboration.
                   </p>
                 </div>
-                <div className="flex flex-col gap-4 mt-8">
+                <form
+                  onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+                    e.preventDefault();
+                    const form = e.currentTarget;
+                    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (emailRegex.test(email)) {
+                      const button = form.querySelector("button")!;
+                      button.innerHTML =
+                        '<span class="material-symbols-outlined animate-spin mr-2">autorenew</span>Processing...';
+                      setTimeout(() => {
+                        button.innerHTML =
+                          '<span class="material-symbols-outlined mr-2">check_circle</span>Joined Successfully!';
+                        button.className += " bg-green-500";
+                      }, 1500);
+                    } else {
+                      form.querySelector(".error-message")?.classList.remove("hidden");
+                    }
+                  }}
+                  className="flex flex-col gap-4 mt-8"
+                >
                   <input
                     type="email"
+                    name="email"
                     placeholder="Enter your email"
                     className="w-full px-8 py-4 bg-[#d6ddf4]/10 border border-[#d6ddf4]/30 rounded-lg focus:outline-none focus:border-[#d6ddf4]/50 transition-all duration-300 placeholder-[#d6ddf4]/50"
                   />
-                  <button className="w-full px-8 py-4 bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] text-slate-950 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-base font-medium">
+                  <p className="text-red-500 text-sm hidden error-message">
+                    Please enter a valid email address
+                  </p>
+                  <button className="w-full px-8 py-4 bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] text-slate-950 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg text-base font-medium flex items-center justify-center">
                     Join Waitlist
                   </button>
                   <p className="text-xs text-center text-[#d6ddf4]/70">
                     Limited spots available. Early access coming soon.
                   </p>
-                </div>
+                </form>
               </div>
 
               <div className="lg:col-span-2 overflow-hidden rounded-xl backdrop-blur-xl bg-[#d6ddf4]/5 hover:bg-[#d6ddf4]/10 transition-all duration-300">
