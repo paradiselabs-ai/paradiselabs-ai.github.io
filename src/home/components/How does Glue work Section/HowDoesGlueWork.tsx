@@ -1,18 +1,7 @@
 import React, { useEffect } from "react";
 import "./HowDoesGlueWork.css";
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
 
 export const HowDoesGlueWork = () => {
-  useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      once: false,
-      offset: 100,
-      easing: 'ease-in-out-quad',
-    });
-  }, []);
   return (
     <div id="HowDoesGlueWork">
       <div className="w-full flex justify-center">

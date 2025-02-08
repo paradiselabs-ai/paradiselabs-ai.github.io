@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
@@ -8,6 +8,8 @@ import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
 import { MCP } from './components/MCP Section/MCP';
 import { Waitlist } from './components/Waitlist section/Waitlist';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
 
 const Home: React.FC = () => {
   // Define base styles for section containers
@@ -17,6 +19,16 @@ const Home: React.FC = () => {
     padding: '4rem 0',        // Add consistent vertical padding
     position: 'relative',     // For proper spacing
   };
+
+  useEffect(() => {
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: false,
+      offset: 100,
+      easing: 'ease-in-out-quad',
+    });
+  }, []);
 
   return (
     <div className="home-container">

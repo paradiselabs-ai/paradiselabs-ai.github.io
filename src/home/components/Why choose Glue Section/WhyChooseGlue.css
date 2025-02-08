@@ -481,8 +481,14 @@ video {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+#WhyChooseGlue .delay-100 {
+  transition-delay: 0.1s;
+}
 #WhyChooseGlue .duration-300 {
   transition-duration: 0.3s;
+}
+#WhyChooseGlue .duration-500 {
+  transition-duration: 0.5s;
 }
 #WhyChooseGlue {
   font-family: 'Dongle', sans-serif !important;
