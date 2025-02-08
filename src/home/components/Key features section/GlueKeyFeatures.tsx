@@ -9,7 +9,7 @@ export const GlueKeyFeatures = () => {
 			<div className="w-[1200px] max-w-full px-4">
 			  <div className="relative">
 				<div className="mb-24" data-aos="fade-up" data-aos-duration="1000">
-				  <h2 className="text-4xl sm:text-5xl font-bold mb-8 leading-tight bg-gradient-to-r from-white to-white/70 bg-clip-text tracking-tight">
+				  <h2 className="text-4xl sm:text-5xl lg:text-[5.5rem] font-bold mb-8 leading-tight bg-gradient-to-r from-white to-white/70 bg-clip-text tracking-tight">
 					Key Features
 				  </h2>
 				  <p className="text-lg sm:text-xl opacity-80 max-w-3xl leading-relaxed">

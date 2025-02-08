@@ -315,63 +315,6 @@ video {
   --tw-contain-paint: ;
   --tw-contain-style: ;
 }
-@keyframes fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-right {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fade-left {
-  0% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-[data-aos="fade-up"] {
-  animation-name: fade-up;
-}
-
-[data-aos="fade-right"] {
-  animation-name: fade-right;
-}
-
-[data-aos="fade-left"] {
-  animation-name: fade-left;
-}
-
-/* Ensure elements are hidden before animation */
-[data-aos] {
-  opacity: 0;
-  transition-property: opacity, transform;
-  will-change: opacity, transform;
-}
-
-.aos-animate {
-  opacity: 1 !important;
-  transform: translate(0) !important;
-}
-
 #HowDoesGlueWork .absolute {
   position: absolute;
 }
@@ -387,17 +330,11 @@ video {
 #HowDoesGlueWork .top-0 {
   top: 0;
 }
-#HowDoesGlueWork .mb-32 {
-  margin-bottom: 128px;
+#HowDoesGlueWork .mb-16 {
+  margin-bottom: 64px;
 }
-#HowDoesGlueWork .mb-6 {
-  margin-bottom: 24px;
-}
-#HowDoesGlueWork .mb-8 {
-  margin-bottom: 32px;
-}
-#HowDoesGlueWork .ml-auto {
-  margin-left: auto;
+#HowDoesGlueWork .mb-4 {
+  margin-bottom: 16px;
 }
 #HowDoesGlueWork .block {
   display: block;
@@ -405,11 +342,14 @@ video {
 #HowDoesGlueWork .flex {
   display: flex;
 }
+#HowDoesGlueWork .hidden {
+  display: none;
+}
 #HowDoesGlueWork .h-full {
   height: 100%;
 }
-#HowDoesGlueWork .w-1 {
-  width: 4px;
+#HowDoesGlueWork .w-0\.5 {
+  width: 2px;
 }
 #HowDoesGlueWork .w-\[1200px\] {
   width: 1200px;
@@ -454,16 +394,16 @@ video {
 #HowDoesGlueWork .justify-between {
   justify-content: space-between;
 }
-#HowDoesGlueWork .gap-16 {
-  gap: 64px;
-}
 #HowDoesGlueWork .gap-4 {
   gap: 16px;
 }
-#HowDoesGlueWork :is(.space-y-32 > :not([hidden]) ~ :not([hidden])) {
+#HowDoesGlueWork .gap-8 {
+  gap: 32px;
+}
+#HowDoesGlueWork :is(.space-y-16 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
-  margin-bottom: calc(128px * var(--tw-space-y-reverse));
-  margin-top: calc(128px * (1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(64px * var(--tw-space-y-reverse));
+  margin-top: calc(64px * (1 - var(--tw-space-y-reverse)));
 }
 #HowDoesGlueWork .rounded-full {
   border-radius: 9999px;
@@ -471,48 +411,39 @@ video {
 #HowDoesGlueWork .bg-\[\#d6ddf4\]\/10 {
   background-color: rgba(214, 221, 244, 0.1);
 }
-#HowDoesGlueWork .p-10 {
-  padding: 40px;
+#HowDoesGlueWork .p-4 {
+  padding: 16px;
 }
-#HowDoesGlueWork .p-12 {
-  padding: 48px;
-}
-#HowDoesGlueWork .p-8 {
-  padding: 32px;
+#HowDoesGlueWork .p-6 {
+  padding: 24px;
 }
 #HowDoesGlueWork .px-2 {
   padding-left: 8px;
   padding-right: 8px;
 }
-#HowDoesGlueWork .py-16 {
-  padding-bottom: 64px;
-  padding-top: 64px;
+#HowDoesGlueWork .py-8 {
+  padding-bottom: 32px;
+  padding-top: 32px;
 }
 #HowDoesGlueWork .text-center {
   text-align: center;
 }
-#HowDoesGlueWork .text-right {
-  text-align: right;
+#HowDoesGlueWork .text-5xl {
+  font-size: 48px;
+  line-height: 52.800000000000004px;
 }
-#HowDoesGlueWork .text-6xl {
-  font-size: 60px;
-  line-height: 66px;
+#HowDoesGlueWork .text-7xl {
+  font-size: 72px;
+  line-height: 75.60000000000001px;
 }
-#HowDoesGlueWork .text-9xl {
-  font-size: 128px;
-  line-height: 134.4px;
-}
-#HowDoesGlueWork .text-\[1\.2rem\] {
-  font-size: 1.2rem;
+#HowDoesGlueWork .text-\[1\.8rem\] {
+  font-size: 1.8rem;
 }
 #HowDoesGlueWork .text-\[1rem\] {
   font-size: 1rem;
 }
-#HowDoesGlueWork .text-\[2\.2rem\] {
-  font-size: 2.2rem;
-}
-#HowDoesGlueWork .text-\[2\.5rem\] {
-  font-size: 2.5rem;
+#HowDoesGlueWork .text-\[2rem\] {
+  font-size: 2rem;
 }
 #HowDoesGlueWork .font-bold {
   font-weight: 700;
@@ -575,29 +506,88 @@ video {
     padding-left: 16px;
     padding-right: 16px;
   }
-  #HowDoesGlueWork .sm\:text-\[1\.2rem\] {
-    font-size: 1.2rem;
+  #HowDoesGlueWork .sm\:text-\[1\.1rem\] {
+    font-size: 1.1rem;
   }
-  #HowDoesGlueWork .sm\:text-\[3rem\] {
-    font-size: 3rem;
+  #HowDoesGlueWork .sm\:text-\[2\.5rem\] {
+    font-size: 2.5rem;
   }
 }
 @media (min-width: 768px) {
+  #HowDoesGlueWork .md\:mb-32 {
+    margin-bottom: 128px;
+  }
+  #HowDoesGlueWork .md\:mb-6 {
+    margin-bottom: 24px;
+  }
+  #HowDoesGlueWork .md\:mb-8 {
+    margin-bottom: 32px;
+  }
+  #HowDoesGlueWork .md\:ml-auto {
+    margin-left: auto;
+  }
+  #HowDoesGlueWork .md\:block {
+    display: block;
+  }
+  #HowDoesGlueWork .md\:w-1 {
+    width: 4px;
+  }
   #HowDoesGlueWork .md\:w-1\/2 {
     width: 50%;
   }
   #HowDoesGlueWork .md\:flex-row {
     flex-direction: row;
   }
+  #HowDoesGlueWork .md\:gap-16 {
+    gap: 64px;
+  }
+  #HowDoesGlueWork :is(.md\:space-y-32 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-y-reverse: 0;
+    margin-bottom: calc(128px * var(--tw-space-y-reverse));
+    margin-top: calc(128px * (1 - var(--tw-space-y-reverse)));
+  }
+  #HowDoesGlueWork .md\:p-10 {
+    padding: 40px;
+  }
+  #HowDoesGlueWork .md\:p-12 {
+    padding: 48px;
+  }
+  #HowDoesGlueWork .md\:p-8 {
+    padding: 32px;
+  }
   #HowDoesGlueWork .md\:px-6 {
     padding-left: 24px;
     padding-right: 24px;
   }
+  #HowDoesGlueWork .md\:py-16 {
+    padding-bottom: 64px;
+    padding-top: 64px;
+  }
+  #HowDoesGlueWork .md\:text-left {
+    text-align: left;
+  }
+  #HowDoesGlueWork .md\:text-right {
+    text-align: right;
+  }
+  #HowDoesGlueWork .md\:text-6xl {
+    font-size: 60px;
+    line-height: 66px;
+  }
+  #HowDoesGlueWork .md\:text-9xl {
+    font-size: 128px;
+    line-height: 134.4px;
+  }
+  #HowDoesGlueWork .md\:text-\[1\.2rem\] {
+    font-size: 1.2rem;
+  }
   #HowDoesGlueWork .md\:text-\[1\.4rem\] {
     font-size: 1.4rem;
   }
-  #HowDoesGlueWork .md\:text-\[4rem\] {
-    font-size: 4rem;
+  #HowDoesGlueWork .md\:text-\[2\.2rem\] {
+    font-size: 2.2rem;
+  }
+  #HowDoesGlueWork .md\:text-\[3\.5rem\] {
+    font-size: 3.5rem;
   }
 }
 @media (min-width: 1024px) {
