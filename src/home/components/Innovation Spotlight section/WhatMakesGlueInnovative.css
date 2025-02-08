@@ -420,11 +420,19 @@ video {
 #WhatMakesGlueInnovative .border-\[\#d6ddf4\]\/30 {
   border-color: rgba(214, 221, 244, 0.3);
 }
+#WhatMakesGlueInnovative .bg-\[\#d6ddf4\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(214 221 244 / var(--tw-bg-opacity));
+}
 #WhatMakesGlueInnovative .bg-\[\#d6ddf4\]\/10 {
   background-color: rgba(214, 221, 244, 0.1);
 }
 #WhatMakesGlueInnovative .bg-\[\#d6ddf4\]\/5 {
   background-color: rgba(214, 221, 244, 0.05);
+}
+#WhatMakesGlueInnovative .bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 #WhatMakesGlueInnovative .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -550,8 +558,15 @@ video {
 #WhatMakesGlueInnovative .text-transparent {
   color: transparent;
 }
+#WhatMakesGlueInnovative .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 #WhatMakesGlueInnovative .placeholder-\[\#d6ddf4\]\/50::placeholder {
   color: rgba(214, 221, 244, 0.5);
+}
+#WhatMakesGlueInnovative .opacity-75 {
+  opacity: 0.75;
 }
 #WhatMakesGlueInnovative .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
