@@ -12,7 +12,7 @@
   width: 100%; /* Changed from 100vw */
   overflow-x: hidden;
   color: #d6ddf4; 
-
+  overflow-y: hidden;
   --color-bg1: rgb(108, 0, 162);
   --color-bg2: rgb(0, 17, 82);
   --color1: 18, 113, 255;
