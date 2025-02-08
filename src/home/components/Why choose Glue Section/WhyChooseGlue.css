@@ -61,7 +61,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: 'Dongle', sans-serif;
+  font-family: 'Dongle', sans-serif;
   font-feature-settings: normal;
   font-size: 1em;
   font-variation-settings: normal;
@@ -327,20 +327,14 @@ video {
 #WhyChooseGlue .z-10 {
   z-index: 10;
 }
-#WhyChooseGlue .col-span-2 {
-  grid-column: span 2 / span 2;
+#WhyChooseGlue .mb-12 {
+  margin-bottom: 48px;
 }
-#WhyChooseGlue .mb-16 {
-  margin-bottom: 64px;
+#WhyChooseGlue .mb-6 {
+  margin-bottom: 24px;
 }
-#WhyChooseGlue .mb-4 {
-  margin-bottom: 16px;
-}
-#WhyChooseGlue .ml-4 {
-  margin-left: 16px;
-}
-#WhyChooseGlue .mt-10 {
-  margin-top: 40px;
+#WhyChooseGlue .ml-6 {
+  margin-left: 24px;
 }
 #WhyChooseGlue .flex {
   display: flex;
@@ -351,34 +345,51 @@ video {
 #WhyChooseGlue .w-\[1200px\] {
   width: 1200px;
 }
+#WhyChooseGlue .w-full {
+  width: 100%;
+}
+#WhyChooseGlue .max-w-2xl {
+  max-width: 42rem;
+}
 #WhyChooseGlue .max-w-xl {
   max-width: 36rem;
 }
-#WhyChooseGlue .grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+#WhyChooseGlue .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 #WhyChooseGlue .flex-row {
   flex-direction: row;
 }
+#WhyChooseGlue .flex-col {
+  flex-direction: column;
+}
 #WhyChooseGlue .items-center {
   align-items: center;
+}
+#WhyChooseGlue .justify-center {
+  justify-content: center;
 }
 #WhyChooseGlue .justify-between {
   justify-content: space-between;
 }
-#WhyChooseGlue .gap-10 {
-  gap: 40px;
-}
 #WhyChooseGlue .gap-4 {
   gap: 16px;
 }
-#WhyChooseGlue :is(.space-y-10 > :not([hidden]) ~ :not([hidden])) {
-  --tw-space-y-reverse: 0;
-  margin-bottom: calc(40px * var(--tw-space-y-reverse));
-  margin-top: calc(40px * (1 - var(--tw-space-y-reverse)));
+#WhyChooseGlue .gap-8 {
+  gap: 32px;
 }
-#WhyChooseGlue .rounded-xl {
-  border-radius: 36px;
+#WhyChooseGlue :is(.space-y-12 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(48px * var(--tw-space-y-reverse));
+  margin-top: calc(48px * (1 - var(--tw-space-y-reverse)));
+}
+#WhyChooseGlue :is(.space-y-8 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(32px * var(--tw-space-y-reverse));
+  margin-top: calc(32px * (1 - var(--tw-space-y-reverse)));
+}
+#WhyChooseGlue .rounded-2xl {
+  border-radius: 48px;
 }
 #WhyChooseGlue .border {
   border-width: 1px;
@@ -395,24 +406,38 @@ video {
 #WhyChooseGlue .p-8 {
   padding: 32px;
 }
+#WhyChooseGlue .px-8 {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+#WhyChooseGlue .text-2xl {
+  font-size: 24px;
+  line-height: 31.200000000000003px;
+}
+#WhyChooseGlue .text-4xl {
+  font-size: 36px;
+  line-height: 41.4px;
+}
 #WhyChooseGlue .text-5xl {
   font-size: 48px;
   line-height: 52.800000000000004px;
 }
-#WhyChooseGlue .text-\[1\.3rem\] {
-  font-size: 1.3rem;
+#WhyChooseGlue .text-base {
+  font-size: 16px;
+  line-height: 25.6px;
 }
-#WhyChooseGlue .text-\[2\.1rem\] {
-  font-size: 2.1rem;
-}
-#WhyChooseGlue .text-\[5\.5rem\] {
-  font-size: 5.5rem;
+#WhyChooseGlue .text-lg {
+  font-size: 18px;
+  line-height: 27px;
 }
 #WhyChooseGlue .font-bold {
   font-weight: 700;
 }
 #WhyChooseGlue .font-semibold {
   font-weight: 600;
+}
+#WhyChooseGlue .leading-tight {
+  line-height: 1.25;
 }
 #WhyChooseGlue .text-\[\#d6ddf4\] {
   --tw-text-opacity: 1;
@@ -460,7 +485,7 @@ video {
   transition-duration: 0.3s;
 }
 #WhyChooseGlue {
-    font-family: 'Dongle', sans-serif !important;
+  font-family: 'Dongle', sans-serif !important;
   font-size: 16px !important;
 }
 #WhyChooseGlue .hover\:-translate-y-1:hover {
@@ -495,11 +520,79 @@ video {
 #WhyChooseGlue :is(.group:hover .group-hover\:opacity-100) {
   opacity: 1;
 }
-@media (min-width: 768px) {
-  #WhyChooseGlue .md\:col-span-1 {
-    grid-column: span 1 / span 1;
+@media (min-width: 640px) {
+  #WhyChooseGlue .sm\:px-12 {
+    padding-left: 48px;
+    padding-right: 48px;
   }
-  #WhyChooseGlue .md\:mt-20 {
+  #WhyChooseGlue .sm\:text-5xl {
+    font-size: 48px;
+    line-height: 52.800000000000004px;
+  }
+  #WhyChooseGlue .sm\:text-lg {
+    font-size: 18px;
+    line-height: 27px;
+  }
+}
+@media (min-width: 768px) {
+  #WhyChooseGlue .md\:mt-24 {
+    margin-top: 96px;
+  }
+  #WhyChooseGlue .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  #WhyChooseGlue .lg\:mb-24 {
+    margin-bottom: 96px;
+  }
+  #WhyChooseGlue .lg\:mt-20 {
     margin-top: 80px;
+  }
+  #WhyChooseGlue .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  #WhyChooseGlue .lg\:flex-row {
+    flex-direction: row;
+  }
+  #WhyChooseGlue .lg\:items-center {
+    align-items: center;
+  }
+  #WhyChooseGlue .lg\:justify-between {
+    justify-content: space-between;
+  }
+  #WhyChooseGlue .lg\:gap-16 {
+    gap: 64px;
+  }
+  #WhyChooseGlue :is(.lg\:space-y-16 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-y-reverse: 0;
+    margin-bottom: calc(64px * var(--tw-space-y-reverse));
+    margin-top: calc(64px * (1 - var(--tw-space-y-reverse)));
+  }
+  #WhyChooseGlue .lg\:whitespace-nowrap {
+    white-space: nowrap;
+  }
+  #WhyChooseGlue .lg\:p-10 {
+    padding: 40px;
+  }
+  #WhyChooseGlue .lg\:px-16 {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+  #WhyChooseGlue .lg\:text-6xl {
+    font-size: 60px;
+    line-height: 66px;
+  }
+  #WhyChooseGlue .lg\:text-\[1\.3rem\] {
+    font-size: 1.3rem;
+  }
+  #WhyChooseGlue .lg\:text-\[2\.1rem\] {
+    font-size: 2.1rem;
+  }
+  #WhyChooseGlue .lg\:text-\[5\.5rem\] {
+    font-size: 5.5rem;
+  }
+  #WhyChooseGlue .lg\:tracking-tight {
+    letter-spacing: -0.025em;
   }
 }

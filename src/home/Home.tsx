@@ -12,9 +12,6 @@ import { Waitlist } from './components/Waitlist section/Waitlist';
 const Home: React.FC = () => {
 
   const firstContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    justifyContent: 'center', // Centers horizontally
-    alignItems: 'center',     // Centers vertically
     height: '100vh'           // Full viewport height
   };
 
