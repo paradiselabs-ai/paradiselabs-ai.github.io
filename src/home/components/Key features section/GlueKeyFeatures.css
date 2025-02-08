@@ -1,6 +1,4 @@
-@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
-
-@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 
@@ -19,11 +17,7 @@
 html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
-  font-family:
-    Open Sans,
-    ui-sans-serif,
-    system-ui,
-    sans-serif,
+  font-family: 'Dongle', sans-serif,
     Apple Color Emoji,
     Segoe UI Emoji,
     Segoe UI Symbol,
@@ -67,15 +61,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    Menlo,
-    Monaco,
-    Consolas,
-    Liberation Mono,
-    Courier New,
-    monospace;
+  font-family: 'Dongle', sans-serif;
   font-feature-settings: normal;
   font-size: 1em;
   font-variation-settings: normal;
@@ -212,7 +198,6 @@ object,
 svg,
 video {
   display: block;
-  vertical-align: middle;
 }
 img,
 video {
@@ -505,7 +490,7 @@ video {
   transition-duration: 0.3s;
 }
 #GlueKeyFeatures {
-  font-family: Open Sans !important;
+  font-family: 'Dongle', sans-serif !important;
   font-size: 16px !important;
 }
 #GlueKeyFeatures .hover\:scale-110:hover {

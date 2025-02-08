@@ -315,203 +315,200 @@ video {
   --tw-contain-paint: ;
   --tw-contain-style: ;
 }
-#SyntaxSection .relative {
+#GlueSyntax .relative {
   position: relative;
 }
-#SyntaxSection .z-10 {
+#GlueSyntax .z-10 {
   z-index: 10;
 }
-#SyntaxSection .mx-auto {
+#GlueSyntax .mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
-#SyntaxSection .mb-2 {
+#GlueSyntax .mb-2 {
   margin-bottom: 8px;
 }
-#SyntaxSection .mb-4 {
+#GlueSyntax .mb-4 {
   margin-bottom: 16px;
 }
-#SyntaxSection .mb-8 {
+#GlueSyntax .mb-8 {
   margin-bottom: 32px;
 }
-#SyntaxSection .mr-2 {
+#GlueSyntax .mr-2 {
   margin-right: 8px;
 }
-#SyntaxSection .mt-12 {
+#GlueSyntax .mt-12 {
   margin-top: 48px;
 }
-#SyntaxSection .mt-3 {
+#GlueSyntax .mt-3 {
   margin-top: 12px;
 }
-#SyntaxSection .inline-block {
+#GlueSyntax .inline-block {
   display: inline-block;
 }
-#SyntaxSection .flex {
+#GlueSyntax .flex {
   display: flex;
 }
-#SyntaxSection .h-2\.5 {
+#GlueSyntax .h-2\.5 {
   height: 10px;
 }
-#SyntaxSection .h-full {
-  height: 100%;
-}
-#SyntaxSection .min-h-\[600px\] {
-  min-height: 600px;
-}
-#SyntaxSection .w-2\.5 {
+#GlueSyntax .w-2\.5 {
   width: 10px;
 }
-#SyntaxSection .w-\[1200px\] {
+#GlueSyntax .w-\[1200px\] {
   width: 1200px;
 }
-#SyntaxSection .w-full {
+#GlueSyntax .w-full {
   width: 100%;
 }
-#SyntaxSection .max-w-4xl {
+#GlueSyntax .max-w-4xl {
   max-width: 56rem;
 }
-#SyntaxSection .max-w-full {
+#GlueSyntax .max-w-full {
   max-width: 100%;
 }
-#SyntaxSection .cursor-pointer {
+#GlueSyntax .cursor-pointer {
   cursor: pointer;
 }
-#SyntaxSection .list-disc {
+#GlueSyntax .list-disc {
   list-style-type: disc;
 }
-#SyntaxSection .flex-row {
+#GlueSyntax .flex-row {
   flex-direction: row;
 }
-#SyntaxSection .flex-col {
+#GlueSyntax .flex-col {
   flex-direction: column;
 }
-#SyntaxSection .items-center {
+#GlueSyntax .items-center {
   align-items: center;
 }
-#SyntaxSection .justify-center {
+#GlueSyntax .justify-center {
   justify-content: center;
 }
-#SyntaxSection .justify-between {
+#GlueSyntax .justify-between {
   justify-content: space-between;
 }
-#SyntaxSection .gap-2 {
+#GlueSyntax .gap-2 {
   gap: 8px;
 }
-#SyntaxSection .gap-4 {
+#GlueSyntax .gap-4 {
   gap: 16px;
 }
-#SyntaxSection .gap-6 {
+#GlueSyntax .gap-6 {
   gap: 24px;
 }
-#SyntaxSection :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
+#GlueSyntax :is(.space-y-2 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-bottom: calc(8px * var(--tw-space-y-reverse));
   margin-top: calc(8px * (1 - var(--tw-space-y-reverse)));
 }
-#SyntaxSection :is(.space-y-6 > :not([hidden]) ~ :not([hidden])) {
+#GlueSyntax :is(.space-y-6 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-bottom: calc(24px * var(--tw-space-y-reverse));
   margin-top: calc(24px * (1 - var(--tw-space-y-reverse)));
 }
-#SyntaxSection .overflow-hidden {
+#GlueSyntax .overflow-hidden {
   overflow: hidden;
 }
-#SyntaxSection .overflow-x-auto {
+#GlueSyntax .overflow-x-auto {
   overflow-x: auto;
 }
-#SyntaxSection .break-words {
-  overflow-wrap: break-word;
+#GlueSyntax .whitespace-nowrap {
+  white-space: nowrap;
 }
-#SyntaxSection .rounded-full {
+#GlueSyntax .whitespace-pre {
+  white-space: pre;
+}
+#GlueSyntax .rounded-full {
   border-radius: 9999px;
 }
-#SyntaxSection .rounded-lg {
+#GlueSyntax .rounded-lg {
   border-radius: 24px;
 }
-#SyntaxSection .rounded-xl {
+#GlueSyntax .rounded-xl {
   border-radius: 36px;
 }
-#SyntaxSection .border {
+#GlueSyntax .border {
   border-width: 1px;
 }
-#SyntaxSection .border-\[\#abb2bf\]\/20 {
+#GlueSyntax .border-\[\#abb2bf\]\/20 {
   border-color: rgba(171, 178, 191, 0.2);
 }
-#SyntaxSection .bg-\[\#282c34\] {
+#GlueSyntax .bg-\[\#282c34\] {
   --tw-bg-opacity: 1;
   background-color: rgb(40 44 52 / var(--tw-bg-opacity));
 }
-#SyntaxSection .bg-green-500 {
+#GlueSyntax .bg-green-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
-#SyntaxSection .bg-red-500 {
+#GlueSyntax .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
-#SyntaxSection .bg-yellow-500 {
+#GlueSyntax .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
 }
-#SyntaxSection .bg-clip-text {
+#GlueSyntax .bg-clip-text {
   background-clip: text;
 }
-#SyntaxSection .p-2 {
+#GlueSyntax .p-2 {
   padding: 8px;
 }
-#SyntaxSection .p-4 {
+#GlueSyntax .p-4 {
   padding: 16px;
 }
-#SyntaxSection .px-2 {
-  padding-left: 8px;
-  padding-right: 8px;
+#GlueSyntax .px-4 {
+  padding-right: 16px;
 }
-#SyntaxSection .pl-4 {
+#GlueSyntax .pl-4,
+#GlueSyntax .px-4 {
   padding-left: 16px;
 }
-#SyntaxSection .pl-6 {
+#GlueSyntax .pl-6 {
   padding-left: 24px;
 }
-#SyntaxSection .text-center {
+#GlueSyntax .text-center {
   text-align: center;
 }
-#SyntaxSection .text-\[1rem\] {
+#GlueSyntax .text-\[1\.5rem\] {
+  font-size: 1.5rem;
+}
+#GlueSyntax .text-\[1rem\] {
   font-size: 1rem;
 }
-#SyntaxSection .text-\[2rem\] {
-  font-size: 2rem;
-}
-#SyntaxSection .text-lg {
+#GlueSyntax .text-lg {
   font-size: 18px;
   line-height: 27px;
 }
-#SyntaxSection .text-sm {
+#GlueSyntax .text-sm {
   font-size: 14px;
   line-height: 21px;
 }
-#SyntaxSection .text-xs {
+#GlueSyntax .text-xs {
   font-size: 12px;
   line-height: 19.200000000000003px;
 }
-#SyntaxSection .font-bold {
+#GlueSyntax .font-bold {
   font-weight: 700;
 }
-#SyntaxSection .font-semibold {
+#GlueSyntax .font-semibold {
   font-weight: 600;
 }
-#SyntaxSection .text-\[\#61dafb\] {
+#GlueSyntax .text-\[\#61dafb\] {
   --tw-text-opacity: 1;
   color: rgb(97 218 251 / var(--tw-text-opacity));
 }
-#SyntaxSection .text-\[\#98c379\] {
+#GlueSyntax .text-\[\#98c379\] {
   --tw-text-opacity: 1;
   color: rgb(152 195 121 / var(--tw-text-opacity));
 }
-#SyntaxSection .text-\[\#abb2bf\] {
+#GlueSyntax .text-\[\#abb2bf\] {
   --tw-text-opacity: 1;
   color: rgb(171 178 191 / var(--tw-text-opacity));
 }
-#SyntaxSection .backdrop-blur-xl {
+#GlueSyntax .backdrop-blur-xl {
   --tw-backdrop-blur: blur(24px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
     var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
@@ -524,92 +521,104 @@ video {
     var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
     var(--tw-backdrop-sepia);
 }
-#SyntaxSection .transition-colors {
+#GlueSyntax .transition-colors {
   transition-duration: 0.15s;
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#SyntaxSection .duration-300 {
+#GlueSyntax .transition-transform {
+  transition-duration: 0.15s;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+#GlueSyntax .duration-300 {
   transition-duration: 0.3s;
 }
-#SyntaxSection {
+#GlueSyntax {
   font-family: 'Dongle', sans-serif !important;
   font-size: 16px !important;
 }
-#SyntaxSection .hover\:bg-\[\#282c34\]\/30:hover {
+#GlueSyntax .hover\:bg-\[\#282c34\]\/30:hover {
   background-color: rgba(40, 44, 52, 0.3);
 }
-#SyntaxSection .hover\:text-\[\#61dafb\]:hover {
+#GlueSyntax .hover\:text-\[\#61dafb\]:hover {
   --tw-text-opacity: 1;
   color: rgb(97 218 251 / var(--tw-text-opacity));
 }
+#GlueSyntax :is(.group:hover .group-hover\:scale-110) {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 @media (min-width: 640px) {
-  #SyntaxSection .sm\:mb-12 {
+  #GlueSyntax .sm\:mb-12 {
     margin-bottom: 48px;
   }
-  #SyntaxSection .sm\:mb-16 {
+  #GlueSyntax .sm\:mb-16 {
     margin-bottom: 64px;
   }
-  #SyntaxSection .sm\:mb-6 {
+  #GlueSyntax .sm\:mb-6 {
     margin-bottom: 24px;
   }
-  #SyntaxSection .sm\:mt-24 {
+  #GlueSyntax .sm\:mt-24 {
     margin-top: 96px;
   }
-  #SyntaxSection .sm\:mt-4 {
+  #GlueSyntax .sm\:mt-4 {
     margin-top: 16px;
   }
-  #SyntaxSection .sm\:h-3 {
+  #GlueSyntax .sm\:h-3 {
     height: 12px;
   }
-  #SyntaxSection .sm\:w-3 {
+  #GlueSyntax .sm\:w-3 {
     width: 12px;
   }
-  #SyntaxSection .sm\:gap-8 {
+  #GlueSyntax .sm\:gap-8 {
     gap: 32px;
   }
-  #SyntaxSection :is(.sm\:space-y-8 > :not([hidden]) ~ :not([hidden])) {
+  #GlueSyntax :is(.sm\:space-y-8 > :not([hidden]) ~ :not([hidden])) {
     --tw-space-y-reverse: 0;
     margin-bottom: calc(32px * var(--tw-space-y-reverse));
     margin-top: calc(32px * (1 - var(--tw-space-y-reverse)));
   }
-  #SyntaxSection .sm\:p-8 {
+  #GlueSyntax .sm\:p-8 {
     padding: 32px;
   }
-  #SyntaxSection .sm\:px-6 {
+  #GlueSyntax .sm\:px-6 {
     padding-left: 24px;
     padding-right: 24px;
   }
-  #SyntaxSection .sm\:pl-8 {
+  #GlueSyntax .sm\:pl-8 {
     padding-left: 32px;
   }
-  #SyntaxSection .sm\:text-\[1\.1rem\] {
+  #GlueSyntax .sm\:text-\[1\.1rem\] {
     font-size: 1.1rem;
   }
-  #SyntaxSection .sm\:text-\[3rem\] {
+  #GlueSyntax .sm\:text-\[3rem\] {
     font-size: 3rem;
   }
-  #SyntaxSection .sm\:text-base {
+  #GlueSyntax .sm\:text-base {
     font-size: 16px;
     line-height: 25.6px;
   }
-  #SyntaxSection .sm\:text-xl {
+  #GlueSyntax .sm\:text-xl {
     font-size: 20px;
     line-height: 28px;
   }
 }
 @media (min-width: 768px) {
-  #SyntaxSection .md\:px-8 {
+  #GlueSyntax .md\:px-8 {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 @media (min-width: 1024px) {
-  #SyntaxSection .lg\:w-1\/2 {
+  #GlueSyntax .lg\:w-1\/2 {
     width: 50%;
   }
-  #SyntaxSection .lg\:flex-row {
+  #GlueSyntax .lg\:flex-row {
     flex-direction: row;
   }
 }
