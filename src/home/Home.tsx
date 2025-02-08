@@ -36,6 +36,12 @@ const Home: React.FC = () => {
     marginBottom: '30rem'  
   };
 
+  const WaitlistSection: React.CSSProperties = {
+    height: '100vh',          // Full viewport height
+    marginTop: '0rem',           // Proper camelCase property name
+    marginBottom: '30rem'  
+  };
+
   return (
     <div className="home-container">
       {/* ------------- Header Section ------------- */}
@@ -126,7 +132,7 @@ const Home: React.FC = () => {
       </div>
       
       {/* Waitlist Section */}
-      <div style={newContainerStyle}>
+      <div style={WaitlistSection}>
         <Waitlist />
       </div>
       

@@ -1,11 +1,16 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import "./Waitlist.css";
+import { Check } from 'lucide-react';
 
 export const Waitlist = () => {
+  const [isChecked, setIsChecked] = useState(false);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
+    const nameInput = form.querySelector("#name") as HTMLInputElement;
     const emailInput = form.querySelector("#email") as HTMLInputElement;
+    const reasonInput = form.querySelector("#reason") as HTMLTextAreaElement;
+    
     const emailValue = emailInput.value;
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -14,6 +19,15 @@ export const Waitlist = () => {
       emailInput.reportValidity();
       return;
     }
+
+    const formData = {
+      "Name": nameInput.value,
+      "Email": emailValue,
+      "Form": reasonInput.value,
+      "subscriber": isChecked
+    };
+
+    console.log(formData); // This will output the JSON format you requested
 
     const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     button.disabled = true;
@@ -222,32 +236,58 @@ export const Waitlist = () => {
                   >
                     <span>Secure Your Early Access</span>
                     <svg
-                      className="absolute -right-2 -top-2 w-7 sm:w-8 h-7 sm:h-8 text-[#FBF8F1] opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-0 group-hover:rotate-12"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      stroke="currentColor"
-                    >
-                      <path
-                        d="M16,8 C16,8 20,2 26,8 C32,14 16,24 16,24 C16,24 0,14 6,8 C12,2 16,8 16,8"
-                        fill="currentColor"
-                      />
+                        className="absolute -right-2 -top-2 w-7 sm:w-8 h-7 sm:h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-0 group-hover:rotate-12"
+                        viewBox="0 0 32 32"
+                        fill="none"
+                        >
+                        <path
+                            d="M16,8 C16,8 20,2 26,8 C32,14 16,24 16,24 C16,24 0,14 6,8 C12,2 16,8 16,8"
+                            fill="#BB479C"
+                        />
                     </svg>
                   </button>
                   <div className="flex items-center gap-3 mt-1 sm:mt-2">
-                        <input
-                          type="checkbox"
-                          id="newsletter"
-                          name="newsletter"
-                          aria-label="Subscribe to receive exclusive updates"
-                          className="w-5 h-5 rounded-md border-2 border-[#F8F9FA]/30 text-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 checked:bg-[#FBF8F1] checked:border-[#FBF8F1] transition-colors duration-200"
+                  <div className="relative inline-flex items-center">
+                    {/* Decorative checkbox */}
+                    <div 
+                        onClick={() => setIsChecked(!isChecked)} // Handle toggle here
+                        className={`
+                        w-5 h-5 
+                        border-2 
+                        rounded-md 
+                        transition-all 
+                        duration-200 
+                        flex 
+                        items-center 
+                        justify-center
+                        cursor-pointer
+                        ${isChecked ? 'bg-[#FBF8F1] border-[#FBF8F1]' : 'border-[#F8F9FA]/30 bg-transparent hover:border-[#FBF8F1]/60'}
+                        focus:ring-2 
+                        focus:ring-[#FBF8F1]/20
+                        `}
+                        role="checkbox" // Add ARIA role for accessibility
+                        aria-checked={isChecked} // Indicate checked state for screen readers
+                        tabIndex={0} // Make it keyboard-navigable
+                    >
+                        <Check 
+                        aria-hidden="true" // Ensure this is purely decorative
+                        className={`
+                            w-3 h-3 
+                            text-gray-800 
+                            transition-all 
+                            duration-200
+                            ${isChecked ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
+                        `}
                         />
-                        <label
-                          htmlFor="newsletter"
-                          className="text-[13px] sm:text-[14px] text-[#F8F9FA] font-medium tracking-wide hover:text-[#FBF8F1] transition-colors duration-200"
-                        >
-                          Keep me updated with exclusive launch details
-                        </label>
-                      </div>
+                    </div>
+                    </div>
+                    <label
+                    htmlFor="newsletter"
+                    className="text-[13px] sm:text-[14px] text-[#F8F9FA] font-medium tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
+                    >
+                    Keep me updated with exclusive launch details
+                    </label>
+                        </div>
                     </form>
                     <p className="text-[11px] sm:text-xs text-center mt-8 sm:mt-10 text-[#F8F9FA]/60 leading-relaxed px-2 sm:px-0 relative z-20">
                       By joining our waitlist, you agree to our Terms of Service and
