@@ -25,7 +25,7 @@ const Home: React.FC = () => {
     AOS.init({
       duration: 800,
       once: false,
-      offset: 100,
+      offset: 150,
       easing: 'ease-in-out-quad',
     });
   }, []);
