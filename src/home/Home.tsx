@@ -10,33 +10,12 @@ import { MCP } from './components/MCP Section/MCP';
 import { Waitlist } from './components/Waitlist section/Waitlist';
 
 const Home: React.FC = () => {
-
-  const firstContainerStyle: React.CSSProperties = {
-    height: '100vh'           // Full viewport height
-  };
-
-  const newContainerStyle: React.CSSProperties = {
-    height: '100vh',          // Full viewport height
-    marginTop: '10%',           // Proper camelCase property name
-    marginBottom: '5%'  
-  };
-
-  const WhatMakesGlueInnovativeSection: React.CSSProperties = {
-    height: '100vh',          // Full viewport height
-    marginTop: '20%',           // Proper camelCase property name
-    marginBottom: '30%'  
-  };
-
-  const MCPSection: React.CSSProperties = {
-    height: '100vh',          // Full viewport height
-    marginTop: '0rem',           // Proper camelCase property name
-    marginBottom: '30rem'  
-  };
-
-  const WaitlistSection: React.CSSProperties = {
-    height: '100vh',          // Full viewport height
-    marginTop: '0rem',           // Proper camelCase property name
-    marginBottom: '30rem'  
+  // Define base styles for section containers
+  const sectionContainerStyle: React.CSSProperties = {
+    width: '100%',
+    minHeight: 'min-content', // Allow container to grow with content
+    padding: '4rem 0',        // Add consistent vertical padding
+    position: 'relative',     // For proper spacing
   };
 
   return (
@@ -85,7 +64,13 @@ const Home: React.FC = () => {
           </section>
         </div>
       </header>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
+
+      <div className="divider" style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        margin: '2rem 0' 
+      }}>
         <svg
           width="80%"
           height="3"
@@ -97,42 +82,41 @@ const Home: React.FC = () => {
       </div>
 
       {/* ------------- Main Content ------------- */}
-
+      
       {/* Why Choose GLUE Section */}
-      <div style={firstContainerStyle}>
+      <section style={sectionContainerStyle}>
         <WhyChooseGlue />
-      </div>
+      </section>
       
       {/* How Does Glue Work Section */}
-      <div style={newContainerStyle}>
+      <section style={sectionContainerStyle}>
         <HowDoesGlueWork />
-      </div>
+      </section>
       
       {/* Key Features Section */}
-      <div style={newContainerStyle}>
+      <section style={sectionContainerStyle}>
         <GlueKeyFeatures />
-      </div>
+      </section>
       
       {/* Glue Syntax Section */}
-      <div style={newContainerStyle}>
+      <section style={sectionContainerStyle}>
         <GlueSyntax />
-      </div>
+      </section>
       
       {/* Innovation Spotlight Section */}
-      <div style={WhatMakesGlueInnovativeSection}>
+      <section style={sectionContainerStyle}>
         <WhatMakesGlueInnovative />
-      </div>
+      </section>
       
       {/* MCP Section */}
-      <div style={MCPSection}>
+      <section style={sectionContainerStyle}>
         <MCP />
-      </div>
+      </section>
       
       {/* Waitlist Section */}
-      <div style={WaitlistSection}>
+      <section style={sectionContainerStyle}>
         <Waitlist />
-      </div>
-      
+      </section>
     </div>
   );
 };
