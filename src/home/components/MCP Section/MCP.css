@@ -315,253 +315,215 @@ video {
   --tw-contain-paint: ;
   --tw-contain-style: ;
 }
-#WhatMakesGlueInnovative .mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+#MCP .absolute {
+  position: absolute;
 }
-#WhatMakesGlueInnovative .mb-12 {
-  margin-bottom: 48px;
+#MCP .relative {
+  position: relative;
 }
-#WhatMakesGlueInnovative .mt-8 {
-  margin-top: 32px;
+#MCP .-bottom-32 {
+  bottom: -128px;
 }
-#WhatMakesGlueInnovative .flex {
+#MCP .-top-32 {
+  top: -128px;
+}
+#MCP .left-0 {
+  left: 0;
+}
+#MCP .left-8 {
+  left: 32px;
+}
+#MCP .top-8 {
+  top: 32px;
+}
+#MCP .z-10 {
+  z-index: 10;
+}
+#MCP .mb-2 {
+  margin-bottom: 8px;
+}
+#MCP .mb-3 {
+  margin-bottom: 12px;
+}
+#MCP .mb-4 {
+  margin-bottom: 16px;
+}
+#MCP .block {
+  display: block;
+}
+#MCP .flex {
   display: flex;
 }
-#WhatMakesGlueInnovative .grid {
-  display: grid;
+#MCP .h-16 {
+  height: 64px;
 }
-#WhatMakesGlueInnovative .hidden {
-  display: none;
+#MCP .h-\[300px\] {
+  height: 300px;
 }
-#WhatMakesGlueInnovative .h-full {
+#MCP .h-full {
   height: 100%;
 }
-#WhatMakesGlueInnovative .w-\[1400px\] {
+#MCP .min-h-screen {
+  min-height: 100vh;
+}
+#MCP .w-16 {
+  width: 64px;
+}
+#MCP .w-\[1400px\] {
   width: 1400px;
 }
-#WhatMakesGlueInnovative .w-full {
+#MCP .w-\[300px\] {
+  width: 300px;
+}
+#MCP .w-full {
   width: 100%;
 }
-#WhatMakesGlueInnovative .max-w-7xl {
-  max-width: 80rem;
-}
-#WhatMakesGlueInnovative .flex-1 {
-  flex: 1 1 0%;
-}
-#WhatMakesGlueInnovative .transform {
+#MCP .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#WhatMakesGlueInnovative .grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
 }
-#WhatMakesGlueInnovative .grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+#MCP .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
-#WhatMakesGlueInnovative .flex-row {
+#MCP .flex-row {
   flex-direction: row;
 }
-#WhatMakesGlueInnovative .flex-col {
+#MCP .flex-col {
   flex-direction: column;
 }
-#WhatMakesGlueInnovative .items-start {
-  align-items: flex-start;
-}
-#WhatMakesGlueInnovative .items-center {
+#MCP .items-center {
   align-items: center;
 }
-#WhatMakesGlueInnovative .justify-center {
+#MCP .justify-center {
   justify-content: center;
 }
-#WhatMakesGlueInnovative .justify-between {
+#MCP .justify-between {
   justify-content: space-between;
 }
-#WhatMakesGlueInnovative .gap-4 {
+#MCP .gap-4 {
   gap: 16px;
 }
-#WhatMakesGlueInnovative .gap-6 {
-  gap: 24px;
-}
-#WhatMakesGlueInnovative :is(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
+#MCP :is(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-bottom: calc(12px * var(--tw-space-y-reverse));
   margin-top: calc(12px * (1 - var(--tw-space-y-reverse)));
 }
-#WhatMakesGlueInnovative :is(.space-y-6 > :not([hidden]) ~ :not([hidden])) {
+#MCP :is(.space-y-4 > :not([hidden]) ~ :not([hidden])) {
+  --tw-space-y-reverse: 0;
+  margin-bottom: calc(16px * var(--tw-space-y-reverse));
+  margin-top: calc(16px * (1 - var(--tw-space-y-reverse)));
+}
+#MCP :is(.space-y-6 > :not([hidden]) ~ :not([hidden])) {
   --tw-space-y-reverse: 0;
   margin-bottom: calc(24px * var(--tw-space-y-reverse));
   margin-top: calc(24px * (1 - var(--tw-space-y-reverse)));
 }
-#WhatMakesGlueInnovative :is(.space-y-8 > :not([hidden]) ~ :not([hidden])) {
-  --tw-space-y-reverse: 0;
-  margin-bottom: calc(32px * var(--tw-space-y-reverse));
-  margin-top: calc(32px * (1 - var(--tw-space-y-reverse)));
-}
-#WhatMakesGlueInnovative .overflow-hidden {
+#MCP .overflow-hidden {
   overflow: hidden;
 }
-#WhatMakesGlueInnovative .overflow-y-auto {
-  overflow-y: auto;
+#MCP .rounded-2xl {
+  border-radius: 48px;
 }
-#WhatMakesGlueInnovative .rounded-lg {
-  border-radius: 24px;
+#MCP .rounded-full {
+  border-radius: 9999px;
 }
-#WhatMakesGlueInnovative .rounded-xl {
+#MCP .rounded-xl {
   border-radius: 36px;
 }
-#WhatMakesGlueInnovative .border {
+#MCP .border {
   border-width: 1px;
 }
-#WhatMakesGlueInnovative .border-\[\#d6ddf4\]\/20 {
-  border-color: rgba(214, 221, 244, 0.2);
+#MCP .border-\[\#d6ddf4\]\/10 {
+  border-color: rgba(214, 221, 244, 0.1);
 }
-#WhatMakesGlueInnovative .border-\[\#d6ddf4\]\/30 {
-  border-color: rgba(214, 221, 244, 0.3);
-}
-#WhatMakesGlueInnovative .bg-\[\#d6ddf4\]\/10 {
-  background-color: rgba(214, 221, 244, 0.1);
-}
-#WhatMakesGlueInnovative .bg-\[\#d6ddf4\]\/5 {
+#MCP .bg-\[\#d6ddf4\]\/5 {
   background-color: rgba(214, 221, 244, 0.05);
 }
-#WhatMakesGlueInnovative .bg-gradient-to-br {
-  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
-}
-#WhatMakesGlueInnovative .bg-gradient-to-r {
+#MCP .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
-#WhatMakesGlueInnovative .from-\[\#d6ddf4\] {
+#MCP .from-\[\#d6ddf4\] {
   --tw-gradient-from: #d6ddf4 var(--tw-gradient-from-position);
   --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-#WhatMakesGlueInnovative .from-\[\#d6ddf4\]\/10 {
-  --tw-gradient-from: rgba(214, 221, 244, 0.1) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+#MCP .to-\[\#a9b4e8\] {
+  --tw-gradient-to: #a9b4e8 var(--tw-gradient-to-position);
 }
-#WhatMakesGlueInnovative .to-\[\#a8b2e0\] {
-  --tw-gradient-to: #a8b2e0 var(--tw-gradient-to-position);
-}
-#WhatMakesGlueInnovative .to-\[\#a8b2e0\]\/10 {
-  --tw-gradient-to: rgba(168, 178, 224, 0.1) var(--tw-gradient-to-position);
-}
-#WhatMakesGlueInnovative .bg-clip-text {
+#MCP .bg-clip-text {
   background-clip: text;
 }
-#WhatMakesGlueInnovative .p-10 {
-  padding: 40px;
+#MCP .p-4 {
+  padding: 16px;
 }
-#WhatMakesGlueInnovative .p-6 {
-  padding: 24px;
-}
-#WhatMakesGlueInnovative .p-8 {
-  padding: 32px;
-}
-#WhatMakesGlueInnovative .px-8 {
-  padding-left: 32px;
-  padding-right: 32px;
-}
-#WhatMakesGlueInnovative .py-12 {
-  padding-bottom: 48px;
-  padding-top: 48px;
-}
-#WhatMakesGlueInnovative .py-4 {
-  padding-bottom: 16px;
-  padding-top: 16px;
-}
-#WhatMakesGlueInnovative .pb-2 {
-  padding-bottom: 8px;
-}
-#WhatMakesGlueInnovative .text-center {
+#MCP .text-center {
   text-align: center;
 }
-#WhatMakesGlueInnovative .text-2xl {
+#MCP .text-2xl {
   font-size: 24px;
   line-height: 31.200000000000003px;
 }
-#WhatMakesGlueInnovative .text-4xl {
+#MCP .text-3xl {
+  font-size: 30px;
+  line-height: 36px;
+}
+#MCP .text-4xl {
   font-size: 36px;
   line-height: 41.4px;
 }
-#WhatMakesGlueInnovative .text-5xl {
-  font-size: 48px;
-  line-height: 52.800000000000004px;
-}
-#WhatMakesGlueInnovative .text-6xl {
-  font-size: 60px;
-  line-height: 66px;
-}
-#WhatMakesGlueInnovative .text-base {
+#MCP .text-base {
   font-size: 16px;
   line-height: 25.6px;
 }
-#WhatMakesGlueInnovative .text-lg {
+#MCP .text-lg {
   font-size: 18px;
   line-height: 27px;
 }
-#WhatMakesGlueInnovative .text-sm {
+#MCP .text-sm {
   font-size: 14px;
   line-height: 21px;
 }
-#WhatMakesGlueInnovative .text-xl {
-  font-size: 20px;
-  line-height: 28px;
-}
-#WhatMakesGlueInnovative .text-xs {
-  font-size: 12px;
-  line-height: 19.200000000000003px;
-}
-#WhatMakesGlueInnovative .font-bold {
+#MCP .font-bold {
   font-weight: 700;
 }
-#WhatMakesGlueInnovative .font-medium {
-  font-weight: 500;
-}
-#WhatMakesGlueInnovative .font-semibold {
+#MCP .font-semibold {
   font-weight: 600;
 }
-#WhatMakesGlueInnovative .leading-relaxed {
+#MCP .leading-relaxed {
   line-height: 1.625;
 }
-#WhatMakesGlueInnovative .tracking-tight {
-  letter-spacing: -0.025em;
-}
-#WhatMakesGlueInnovative .text-\[\#d6ddf4\] {
+#MCP .text-\[\#d6ddf4\] {
   --tw-text-opacity: 1;
   color: rgb(214 221 244 / var(--tw-text-opacity));
 }
-#WhatMakesGlueInnovative .text-\[\#d6ddf4\]\/70 {
+#MCP .text-\[\#d6ddf4\]\/70 {
   color: rgba(214, 221, 244, 0.7);
 }
-#WhatMakesGlueInnovative .text-\[\#d6ddf4\]\/90 {
-  color: rgba(214, 221, 244, 0.9);
+#MCP .text-\[\#d6ddf4\]\/80 {
+  color: rgba(214, 221, 244, 0.8);
 }
-#WhatMakesGlueInnovative .text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-#WhatMakesGlueInnovative .text-slate-950 {
-  --tw-text-opacity: 1;
-  color: rgb(2 6 23 / var(--tw-text-opacity));
-}
-#WhatMakesGlueInnovative .text-transparent {
+#MCP .text-transparent {
   color: transparent;
 }
-#WhatMakesGlueInnovative .placeholder-\[\#d6ddf4\]\/50::placeholder {
-  color: rgba(214, 221, 244, 0.5);
+#MCP .blur-2xl {
+  --tw-blur: blur(40px);
 }
-#WhatMakesGlueInnovative .shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
-    0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+#MCP .blur-2xl,
+#MCP .blur-3xl {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast)
+    var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate)
+    var(--tw-sepia) var(--tw-drop-shadow);
 }
-#WhatMakesGlueInnovative .backdrop-blur-xl {
+#MCP .blur-3xl {
+  --tw-blur: blur(64px);
+}
+#MCP .backdrop-blur-xl {
   --tw-backdrop-blur: blur(24px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness)
     var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale)
@@ -574,141 +536,173 @@ video {
     var(--tw-backdrop-opacity) var(--tw-backdrop-saturate)
     var(--tw-backdrop-sepia);
 }
-#WhatMakesGlueInnovative .transition-all {
+#MCP .transition-all {
   transition-duration: 0.15s;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#WhatMakesGlueInnovative .transition-colors {
-  transition-duration: 0.15s;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-#WhatMakesGlueInnovative .transition-transform {
+#MCP .transition-transform {
   transition-duration: 0.15s;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-#WhatMakesGlueInnovative .duration-200 {
-  transition-duration: 0.2s;
-}
-#WhatMakesGlueInnovative .duration-300 {
+#MCP .duration-300 {
   transition-duration: 0.3s;
 }
-#WhatMakesGlueInnovative {
+#MCP .duration-500 {
+  transition-duration: 0.5s;
+}
+#MCP {
   font-family: 'Dongle', sans-serif !important;
   font-size: 16px !important;
 }
-#WhatMakesGlueInnovative .hover\:-translate-y-1:hover {
-  --tw-translate-y: -4px;
+#MCP .hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
 }
-#WhatMakesGlueInnovative .hover\:-translate-y-1:hover,
-#WhatMakesGlueInnovative .hover\:-translate-y-2:hover {
+#MCP .hover\:scale-105:hover,
+#MCP .hover\:scale-110:hover {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#WhatMakesGlueInnovative .hover\:-translate-y-2:hover {
-  --tw-translate-y: -8px;
+#MCP .hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
 }
-#WhatMakesGlueInnovative .hover\:scale-110:hover {
+#MCP .hover\:bg-\[\#d6ddf4\]\/5:hover {
+  background-color: rgba(214, 221, 244, 0.05);
+}
+#MCP :is(.group:hover .group-hover\:scale-110) {
   --tw-scale-x: 1.1;
   --tw-scale-y: 1.1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y))
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#WhatMakesGlueInnovative .hover\:border-\[\#d6ddf4\]\/30:hover {
-  border-color: rgba(214, 221, 244, 0.3);
-}
-#WhatMakesGlueInnovative .hover\:bg-\[\#d6ddf4\]\/10:hover {
-  background-color: rgba(214, 221, 244, 0.1);
-}
-#WhatMakesGlueInnovative .hover\:from-\[\#d6ddf4\]\/15:hover {
-  --tw-gradient-from: rgba(214, 221, 244, 0.15) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
-  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-}
-#WhatMakesGlueInnovative .hover\:to-\[\#a8b2e0\]\/15:hover {
-  --tw-gradient-to: rgba(168, 178, 224, 0.15) var(--tw-gradient-to-position);
-}
-#WhatMakesGlueInnovative .hover\:opacity-90:hover {
-  opacity: 0.9;
-}
-#WhatMakesGlueInnovative .hover\:shadow-2xl:hover {
-  --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
-}
-#WhatMakesGlueInnovative .hover\:shadow-2xl:hover,
-#WhatMakesGlueInnovative .hover\:shadow-lg:hover {
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-#WhatMakesGlueInnovative .hover\:shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
-    0 4px 6px -4px var(--tw-shadow-color);
-}
-#WhatMakesGlueInnovative .focus\:border-\[\#d6ddf4\]\/50:focus {
-  border-color: rgba(214, 221, 244, 0.5);
-}
-#WhatMakesGlueInnovative .focus\:outline-none:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
 @media (min-width: 768px) {
-  #WhatMakesGlueInnovative .md\:w-1\/2 {
+  #MCP .md\:-bottom-64 {
+    bottom: -256px;
+  }
+  #MCP .md\:-top-64 {
+    top: -256px;
+  }
+  #MCP .md\:left-0 {
+    left: 0;
+  }
+  #MCP .md\:left-32 {
+    left: 128px;
+  }
+  #MCP .md\:top-32 {
+    top: 128px;
+  }
+  #MCP .md\:mb-4 {
+    margin-bottom: 16px;
+  }
+  #MCP .md\:mb-6 {
+    margin-bottom: 24px;
+  }
+  #MCP .md\:mb-8 {
+    margin-bottom: 32px;
+  }
+  #MCP .md\:h-32 {
+    height: 128px;
+  }
+  #MCP .md\:h-\[600px\] {
+    height: 600px;
+  }
+  #MCP .md\:w-1\/2 {
     width: 50%;
   }
-  #WhatMakesGlueInnovative .md\:grid-cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  #MCP .md\:w-32 {
+    width: 128px;
   }
-  #WhatMakesGlueInnovative .md\:flex-row {
+  #MCP .md\:w-\[600px\] {
+    width: 600px;
+  }
+  #MCP .md\:flex-row {
     flex-direction: row;
   }
-  #WhatMakesGlueInnovative .md\:gap-8 {
-    gap: 32px;
+  #MCP .md\:items-start {
+    align-items: flex-start;
   }
-  #WhatMakesGlueInnovative :is(.md\:space-x-16 > :not([hidden]) ~ :not([hidden])) {
+  #MCP :is(.md\:space-x-6 > :not([hidden]) ~ :not([hidden])) {
     --tw-space-x-reverse: 0;
-    margin-left: calc(64px * (1 - var(--tw-space-x-reverse)));
-    margin-right: calc(64px * var(--tw-space-x-reverse));
+    margin-left: calc(24px * (1 - var(--tw-space-x-reverse)));
+    margin-right: calc(24px * var(--tw-space-x-reverse));
   }
-  #WhatMakesGlueInnovative :is(.md\:space-y-0 > :not([hidden]) ~ :not([hidden])) {
+  #MCP :is(.md\:space-y-0 > :not([hidden]) ~ :not([hidden])) {
     --tw-space-y-reverse: 0;
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
     margin-top: calc(0px * (1 - var(--tw-space-y-reverse)));
   }
-  #WhatMakesGlueInnovative .md\:text-3xl {
+  #MCP :is(.md\:space-y-12 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-y-reverse: 0;
+    margin-bottom: calc(48px * var(--tw-space-y-reverse));
+    margin-top: calc(48px * (1 - var(--tw-space-y-reverse)));
+  }
+  #MCP :is(.md\:space-y-8 > :not([hidden]) ~ :not([hidden])) {
+    --tw-space-y-reverse: 0;
+    margin-bottom: calc(32px * var(--tw-space-y-reverse));
+    margin-top: calc(32px * (1 - var(--tw-space-y-reverse)));
+  }
+  #MCP .md\:p-0 {
+    padding: 0;
+  }
+  #MCP .md\:p-12 {
+    padding: 48px;
+  }
+  #MCP .md\:p-8 {
+    padding: 32px;
+  }
+  #MCP .md\:text-left {
+    text-align: left;
+  }
+  #MCP .md\:text-3xl {
     font-size: 30px;
     line-height: 36px;
   }
-  #WhatMakesGlueInnovative .md\:text-base {
-    font-size: 16px;
-    line-height: 25.6px;
+  #MCP .md\:text-4xl {
+    font-size: 36px;
+    line-height: 41.4px;
   }
-}
-@media (min-width: 1024px) {
-  #WhatMakesGlueInnovative .lg\:col-span-1 {
-    grid-column: span 1 / span 1;
-  }
-  #WhatMakesGlueInnovative .lg\:col-span-2 {
-    grid-column: span 2 / span 2;
-  }
-  #WhatMakesGlueInnovative .lg\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  #WhatMakesGlueInnovative .lg\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  #WhatMakesGlueInnovative .lg\:text-5xl {
+  #MCP .md\:text-5xl {
     font-size: 48px;
     line-height: 52.800000000000004px;
   }
-  #WhatMakesGlueInnovative .lg\:text-lg {
+  #MCP .md\:text-8xl {
+    font-size: 96px;
+    line-height: 100.80000000000001px;
+  }
+  #MCP .md\:text-base {
+    font-size: 16px;
+    line-height: 25.6px;
+  }
+  #MCP .md\:text-lg {
     font-size: 18px;
     line-height: 27px;
+  }
+  #MCP .md\:text-xl {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  #MCP .lg\:w-5\/12 {
+    width: 41.666667%;
+  }
+  #MCP .lg\:w-7\/12 {
+    width: 58.333333%;
+  }
+  #MCP .lg\:p-24 {
+    padding: 96px;
+  }
+  #MCP .lg\:text-2xl {
+    font-size: 24px;
+    line-height: 31.200000000000003px;
+  }
+  #MCP .lg\:text-6xl {
+    font-size: 60px;
+    line-height: 66px;
   }
 }

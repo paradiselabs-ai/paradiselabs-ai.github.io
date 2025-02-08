@@ -6,6 +6,7 @@ import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoes
 import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
 import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
+import { MCP } from './components/MCP Section/MCP';
 
 const Home: React.FC = () => {
 
@@ -26,6 +27,12 @@ const Home: React.FC = () => {
     height: '100vh',          // Full viewport height
     marginTop: '20%',           // Proper camelCase property name
     marginBottom: '30%'  
+  };
+
+  const MCPSection: React.CSSProperties = {
+    height: '100vh',          // Full viewport height
+    marginTop: '0rem',           // Proper camelCase property name
+    marginBottom: '30rem'  
   };
 
   return (
@@ -111,7 +118,11 @@ const Home: React.FC = () => {
       <div style={WhatMakesGlueInnovativeSection}>
         <WhatMakesGlueInnovative />
       </div>
-
+      
+      {/* MCP Section */}
+      <div style={MCPSection}>
+        <MCP />
+      </div>
       {/* Main Content */}
       <div className="main-content">
         <div className="CLIC">
