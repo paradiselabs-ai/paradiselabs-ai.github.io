@@ -411,11 +411,11 @@ video {
   padding-right: 32px;
 }
 #WhyChooseGlue .text-2xl {
-  font-size: 24px;
+  font-size: 32px;
   line-height: 31.200000000000003px;
 }
 #WhyChooseGlue .text-4xl {
-  font-size: 36px;
+  font-size: 48px;
   line-height: 41.4px;
 }
 #WhyChooseGlue .text-5xl {
@@ -423,11 +423,11 @@ video {
   line-height: 52.800000000000004px;
 }
 #WhyChooseGlue .text-base {
-  font-size: 16px;
+  font-size: 17.6px;
   line-height: 25.6px;
 }
 #WhyChooseGlue .text-lg {
-  font-size: 18px;
+  font-size: 28.8px;
   line-height: 27px;
 }
 #WhyChooseGlue .font-bold {
@@ -532,11 +532,11 @@ video {
     padding-right: 48px;
   }
   #WhyChooseGlue .sm\:text-5xl {
-    font-size: 48px;
+    font-size: 88px;
     line-height: 52.800000000000004px;
   }
   #WhyChooseGlue .sm\:text-lg {
-    font-size: 18px;
+    font-size: 30.4px;
     line-height: 27px;
   }
 }

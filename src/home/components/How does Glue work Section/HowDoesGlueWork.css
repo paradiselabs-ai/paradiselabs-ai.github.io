@@ -437,13 +437,13 @@ video {
   line-height: 75.60000000000001px;
 }
 #HowDoesGlueWork .text-\[1\.8rem\] {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 #HowDoesGlueWork .text-\[1rem\] {
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 #HowDoesGlueWork .text-\[2rem\] {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 #HowDoesGlueWork .font-bold {
   font-weight: 700;
@@ -578,16 +578,16 @@ video {
     line-height: 134.4px;
   }
   #HowDoesGlueWork .md\:text-\[1\.2rem\] {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
   #HowDoesGlueWork .md\:text-\[1\.4rem\] {
-    font-size: 1.4rem;
+    font-size: 1.9rem;
   }
   #HowDoesGlueWork .md\:text-\[2\.2rem\] {
-    font-size: 2.2rem;
+    font-size: 3rem;
   }
   #HowDoesGlueWork .md\:text-\[3\.5rem\] {
-    font-size: 3.5rem;
+    font-size: 5.5rem;
   }
 }
 @media (min-width: 1024px) {
