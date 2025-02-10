@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './Home.css';
+import './components/Typography/Typography.css'
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
 import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
 import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
@@ -8,8 +6,11 @@ import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
 import { MCP } from './components/MCP Section/MCP';
 import { Waitlist } from './components/Waitlist section/Waitlist';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import 'aos/dist/aos.css';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import AOS styles
+import './Home.css';
 
 const Home: React.FC = () => {
   // Define base styles for section containers
@@ -25,7 +26,7 @@ const Home: React.FC = () => {
     AOS.init({
       duration: 800,
       once: true,
-      offset: 150,
+      offset: 100,
       easing: 'ease-in-out-quad',
     });
   }, []);
@@ -67,7 +68,7 @@ const Home: React.FC = () => {
             <span className="glue-line">by unifying tools, agents, and processes.</span>
             <div className="cta-container">
               <Link to="/undefined" className="cta-primary">
-                Start Building Today
+                Sign Up For Early Access
               </Link>
               <Link to="https://github.com/paradiselabs-ai/glue-framework" className="cta-secondary">
                 View on Github
@@ -77,20 +78,24 @@ const Home: React.FC = () => {
         </div>
       </header>
 
+      {/* ------------- Hero To Main Content Line Seperator ------------- */}
+      
       <div className="divider" style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        margin: '2rem 0' 
-      }}>
-        <svg
-          width="80%"
-          height="3"
-          viewBox="0 0 100 3"
-          preserveAspectRatio="none"
-        >
-          <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
-        </svg>
+          display: 'flex', 
+          justifyContent: 'center', 
+          alignItems: 'center', 
+          margin: 0, 
+          position: 'relative', 
+          zIndex: 1 
+       }}>
+          <svg
+              width="80%"
+              height="3"
+              viewBox="0 0 100 3"
+              preserveAspectRatio="none"
+          >
+              <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
+          </svg>
       </div>
 
       {/* ------------- Main Content ------------- */}

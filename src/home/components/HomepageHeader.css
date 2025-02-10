@@ -45,39 +45,52 @@
 }
 
 .header-component .header-content {
-    font-size: 1.5rem;
-    font-family: 'Dongle';
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1280px;
-    /* Slightly increased max-width */
     margin: 0 auto;
-    padding: 1rem 1rem;
+    padding: 2.2rem 1rem;
     height: 80px;
-    /* Increased height for better touch targets */
 }
 
+/* Left-aligned GLUE text */
 .header-component .logo {
-    font-size: 3rem;
+    font-size: 36px;
     font-weight: bold; 
     font-family: 'Dongle';
-    /* Larger font size for better hierarchy */
     color: #d6ddf4;
     text-decoration: none;
-    transition: transform 0.2s ease;
+    z-index: 1;
 }
 
+/* Centered SVG */
+.header-component .logo-svg-link {
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    z-index: 1;
+}
+
+.header-component .logo-svg-link svg {
+    width: 100%;
+    height: 100%;
+    color: #d6ddf4;
+}
+
+/* Right-aligned Docs link */
 .header-component .nav-links {
     display: flex;
     gap: 2.5rem;
-    /* Increased gap for better separation */
-    position: relative;
+    z-index: 1;
 }
 
 .header-component .nav-links a {
-    font-size: 3rem;
+    font-size: 36px;
     color: #d6ddf4;
     /* Higher contrast color */
     text-decoration: none;
@@ -108,16 +121,94 @@
     border-radius: 2px;
 }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
+/* Tablet and Small Laptop Screens (1024px and below) */
+@media (max-width: 1024px) {
     .header-component .header-content {
-        padding: 1rem;
+      padding: 2rem 3rem;
     }
-
+    
+    .header-component .logo,
+    .header-component .nav-links a {
+      font-size: 32px;
+    }
+  }
+  
+  /* Tablet Screens (768px and below) */
+  @media (max-width: 768px) {
+    .header-component .header-content {
+      padding: 2rem 2.2rem;
+      height: 70px;
+    }
+    
+    .header-component .logo,
+    .header-component .nav-links a {
+      font-size: 32px;
+    }
+    
+    .header-component .logo-svg-link {
+      width: 45px;
+      height: 45px;
+    }
+    
     .header-component .nav-links {
-        gap: 1.5rem;
+      gap: 2rem;
     }
-}
+    
+    .header-component .header::after {
+      width: calc(100% - 3rem);
+    }
+  }
+  
+  /* Mobile Screens (480px and below) */
+  @media (max-width: 480px) {
+    .header-component .header-content {
+      padding: 2rem 1rem;
+      height: 60px;
+    }
+    
+    .header-component .logo {
+      font-size: 30px;
+    }
+    
+    .header-component .nav-links a {
+      font-size: 30px;
+    }
+    
+    .header-component .logo-svg-link {
+      width: 40px;
+      height: 40px;
+      top: 15%;
+    }
+    
+    .header-component .nav-links {
+      gap: 1.5rem;
+    }
+    
+    .header-component .header::after {
+      width: calc(100% - 2rem);
+    }
+  }
+  
+  /* Very Small Mobile Screens (360px and below) */
+  @media (max-width: 360px) {
+    .header-component .header-content {
+      padding: 0.75rem 0.25rem;
+    }
+    
+    .header-component .logo,
+    .header-component .nav-links a {
+      font-size: 22px;
+    }
+    
+    .header-component .nav-links {
+      gap: 1rem;
+    }
+    
+    .header-component .logo-svg-link {
+      width: 35px;
+      height: 35px;
+    }
+  }
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {

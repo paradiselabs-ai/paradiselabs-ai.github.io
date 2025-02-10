@@ -9,10 +9,10 @@ export const WhyChooseGlue = () => {
           <div className="relative z-10">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12 lg:mb-24 animate-fade-in">
               <div className="max-w-xl lg:mt-20 space-y-12">
-                <h2 className="text-4xl sm:text-5xl lg:text-[5.5rem] leading-tight font-bold text-[#d6ddf4] lg:tracking-tight lg:whitespace-nowrap animate-slide-up">
+                <h2 className="typography-root typography-h2 !leading-tight font-bold text-[#d6ddf4] lg:tracking-tight lg:whitespace-nowrap animate-slide-up">
                   Why Choose GLUE?
                 </h2>
-                <p className="text-base sm:text-lg lg:text-[1.3rem] text-[#d6ddf4]/70 max-w-2xl animate-slide-up delay-100">
+                <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70 max-w-2xl animate-slide-up delay-100">
                   GLUE transforms how AI teams collaborate and build solutions.
                   It's intuitive, scalable, and built for real-world workflows.
                 </p>
@@ -28,13 +28,12 @@ export const WhyChooseGlue = () => {
                       <span className="material-symbols-outlined text-5xl lg:text-6xl text-[#d6ddf4]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#d6ddf4]">
                         groups
                       </span>
-                      <h3 className="text-2xl lg:text-[2.1rem] font-semibold ml-6 text-[#d6ddf4]">
+                      <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
                         Team-Based Structure
                       </h3>
                     </div>
-                    <p className="text-lg lg:text-[1.3rem] text-[#d6ddf4]/70">
-                      Mimics real-life organizations—models work together
-                      naturally within teams.
+                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
+                      Mimics real-life organizations<span style={{ display: 'block' }}></span>models work together naturally within teams.
                     </p>
                   </div>
                 </div>
@@ -50,11 +49,11 @@ export const WhyChooseGlue = () => {
                       <span className="material-symbols-outlined text-5xl lg:text-6xl text-[#d6ddf4]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#d6ddf4]">
                         code
                       </span>
-                      <h3 className="text-2xl lg:text-[2.1rem] font-semibold ml-6 text-[#d6ddf4]">
+                      <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
                         Expression Language
                       </h3>
                     </div>
-                    <p className="text-lg lg:text-[1.3rem] text-[#d6ddf4]/70">
+                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
                       Write applications quickly using an easy-to-understand
                       declarative syntax.
                     </p>
@@ -74,11 +73,11 @@ export const WhyChooseGlue = () => {
                       <span className="material-symbols-outlined text-5xl lg:text-6xl text-[#d6ddf4]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#d6ddf4]">
                         build
                       </span>
-                      <h3 className="text-2xl lg:text-[2.1rem] font-semibold ml-6 text-[#d6ddf4]">
+                      <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
                         Custom Tool Creation
                       </h3>
                     </div>
-                    <p className="text-lg lg:text-[1.3rem] text-[#d6ddf4]/70">
+                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
                       Build tools tailored to your needs, with seamless
                       integration into workflows.
                     </p>
@@ -96,11 +95,11 @@ export const WhyChooseGlue = () => {
                       <span className="material-symbols-outlined text-5xl lg:text-6xl text-[#d6ddf4]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#d6ddf4]">
                         share
                       </span>
-                      <h3 className="text-2xl lg:text-[2.1rem] font-semibold ml-6 text-[#d6ddf4]">
+                      <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
                         Persistent Knowledge Sharing
                       </h3>
                     </div>
-                    <p className="text-lg lg:text-[1.3rem] text-[#d6ddf4]/70">
+                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
                       Share insights across teams effortlessly with adhesive
                       bindings.
                     </p>

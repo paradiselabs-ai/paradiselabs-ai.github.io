@@ -1,0 +1,183 @@
+/* Typography.css - Centralized font size management */
+:root {
+  /* Base font family */
+  --font-primary: 'Dongle', sans-serif;
+  
+    /* Font weight definitions */
+    --font-light: 300;
+    --font-regular: 400;
+    --font-bold: 700;
+  
+    /* Font sizes - Mobile first */
+    --size-xs: 17px;
+    --size-sm: 19px;
+    --size-base: 21px;
+    --size-lg: 23px;
+    --size-xl: 25px;
+    --size-2xl: 30px;
+    --size-3xl: 33px;
+    --size-4xl: 42px;
+    --size-5xl: 47px;
+    --size-6xl: 57px;
+    --size-7xl: 67px;
+    --size-8xl: 87px;
+  
+    /* Line heights - Maintain better readability with larger sizes having tighter leading */
+    --leading-xs: 1.6;
+    --leading-sm: 1.6;
+    --leading-base: 1.5;
+    --leading-lg: 1.4;
+    --leading-xl: 1.4;
+    --leading-2xl: 1.3;
+    --leading-3xl: 1.3;
+    --leading-4xl: 1.25;
+    --leading-5xl: 1.2;
+    --leading-6xl: 1.15;
+    --leading-7xl: 1.1;
+    --leading-8xl: 1.05;
+  }
+  
+  /* Tablet breakpoint */
+  @media (min-width: 640px) {
+    :root {
+      --size-base: 22px;
+      --size-lg: 25px;
+      --size-xl: 28px;
+      --size-2xl: 32px;
+      --size-3xl: 38px;
+      --size-4xl: 46px;
+      --size-5xl: 58px;
+      --size-6xl: 70px;
+      --size-7xl: 86px;
+      --size-8xl: 110px;
+    }
+  }
+  
+  /* Desktop breakpoint */
+  @media (min-width: 1024px) {
+    :root {
+      --size-base: 16px;  /* Keep base size consistent */
+      --size-lg: 20px;
+      --size-xl: 24px;
+      --size-2xl: 28px;
+      --size-3xl: 36px;
+      --size-4xl: 44px;
+      --size-5xl: 56px;
+      --size-6xl: 68px;
+      --size-7xl: 84px;
+      --size-8xl: 112px;
+    }
+  }
+
+/* Font family application */
+.typography-root {
+  font-family: var(--font-primary);
+}
+
+/* Semantic Typography Classes */
+.typography-h2 {
+  font-size: var(--size-4xl);
+  line-height: var(--leading-4xl);
+  font-weight: var(--font-bold);
+}
+
+@media (min-width: 640px) {
+  .typography-h2 {
+    font-size: var(--size-5xl);
+    line-height: var(--leading-5xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .typography-h2 {
+    font-size: var(--size-6xl);
+    line-height: var(--leading-6xl);
+  }
+}
+
+.typography-h3 {
+  font-size: var(--size-2xl);
+  line-height: var(--leading-2xl);
+  font-weight: var(--font-semibold);
+}
+
+@media (min-width: 1024px) {
+  .typography-h3 {
+    font-size: var(--size-3xl);
+    line-height: var(--leading-3xl);
+  }
+}
+
+.typography-p {
+  font-size: var(--size-base);
+  line-height: var(--leading-base);
+}
+
+@media (min-width: 640px) {
+  .typography-p {
+    font-size: var(--size-lg);
+    line-height: var(--leading-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .typography-p {
+    font-size: var(--size-xl);
+    line-height: var(--leading-xl);
+  }
+}
+
+/* Basic utility classes for font sizes */
+.text-xs {
+  font-size: var(--size-xs);
+  line-height: var(--leading-xs);
+}
+.text-sm {
+  font-size: var(--size-sm);
+  line-height: var(--leading-sm);
+}
+.text-base {
+  font-size: var(--size-base);
+  line-height: var(--leading-base);
+}
+.text-lg {
+  font-size: var(--size-lg);
+  line-height: var(--leading-lg);
+}
+.text-xl {
+  font-size: var(--size-xl);
+  line-height: var(--leading-xl);
+}
+.text-2xl {
+  font-size: var(--size-2xl);
+  line-height: var(--leading-2xl);
+}
+.text-3xl {
+  font-size: var(--size-3xl);
+  line-height: var(--leading-3xl);
+}
+.text-4xl {
+  font-size: var(--size-4xl);
+  line-height: var(--leading-4xl);
+}
+.text-5xl {
+  font-size: var(--size-5xl);
+  line-height: var(--leading-5xl);
+}
+.text-6xl {
+  font-size: var(--size-6xl);
+  line-height: var(--leading-6xl);
+}
+.text-7xl {
+  font-size: var(--size-7xl);
+  line-height: var(--leading-7xl);
+}
+.text-8xl {
+  font-size: var(--size-8xl);
+  line-height: var(--leading-8xl);
+}
+
+/* Font weight utilities */
+.font-light { font-weight: var(--font-light); }
+.font-regular { font-weight: var(--font-regular); }
+.font-bold { font-weight: var(--font-bold); }
