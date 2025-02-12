@@ -626,6 +626,10 @@ video {
   --tw-text-opacity: 1;
   color: rgb(214 221 244 / var(--tw-text-opacity));
 }
+#Waitlist .text-\[\#d6ddf7\] {
+  --tw-text-opacity: 1;
+  color: rgb(224 231 254 / var(--tw-text-opacity));
+}
 #Waitlist .text-\[\#f7d794\] {
   --tw-text-opacity: 1;
   color: rgb(247 215 148 / var(--tw-text-opacity));

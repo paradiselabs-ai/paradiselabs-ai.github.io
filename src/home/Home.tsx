@@ -6,7 +6,7 @@ import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
 import { MCP } from './components/MCP Section/MCP';
 import { Waitlist } from './components/Waitlist section/Waitlist';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
@@ -21,12 +21,48 @@ const Home: React.FC = () => {
     position: 'relative',     // For proper spacing
   };
 
+  // Function to handle smooth scrolling
+  const waitlistRef = useRef<HTMLDivElement>(null);
+
+  // Function to handle smooth scrolling
+  const scrollToWaitlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!waitlistRef.current) return;
+
+    const targetPosition = waitlistRef.current.offsetTop;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 1300; // Duration in milliseconds
+    let start: number | null = null;
+
+    const animation = (currentTime: number) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const progress = Math.min(timeElapsed / duration, 1);
+
+      // Easing function for smooth acceleration and deceleration
+      const ease = (t: number) => {
+        return t < 0.5
+          ? 4 * t * t * t
+          : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      };
+
+      window.scrollTo(0, startPosition + distance * ease(progress));
+
+      if (progress < 1) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   useEffect(() => {
     // Initialize AOS
     AOS.init({
       duration: 800,
       once: true,
-      offset: 100,
+      offset: 30,
       easing: 'ease-in-out-quad',
     });
   }, []);
@@ -67,9 +103,9 @@ const Home: React.FC = () => {
             <span className="glue-line">simplifies complex AI development</span>
             <span className="glue-line">by unifying tools, agents, and processes.</span>
             <div className="cta-container">
-              <Link to="/undefined" className="cta-primary">
+              <a href="#waitlist" onClick={scrollToWaitlist} className="cta-primary">
                 Sign Up For Early Access
-              </Link>
+              </a>
               <Link to="https://github.com/paradiselabs-ai/glue-framework" className="cta-secondary">
                 View on Github
               </Link>
@@ -131,7 +167,7 @@ const Home: React.FC = () => {
       </section>
       
       {/* Waitlist Section */}
-      <section style={sectionContainerStyle}>
+      <section ref={waitlistRef} id="waitlist" style={sectionContainerStyle}>
         <Waitlist />
       </section>
     </div>

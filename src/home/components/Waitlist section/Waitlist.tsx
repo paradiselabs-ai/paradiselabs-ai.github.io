@@ -70,8 +70,8 @@ export const Waitlist = () => {
         <section className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <h2 className="typography-h2 text-[#d6ddf4] !leading-tight">
-                Elevate Your AI Development with GLUE
+              <h2 className="typography-h2 text-[#d6ddf7] !leading-tight">
+                Streamline Your AI Development with GLUE
               </h2>
               <p className="typography-p text-[#d6ddf4] !leading-relaxed">
                 Be part of the movement shaping the future of AI-powered
@@ -154,7 +154,7 @@ export const Waitlist = () => {
               <div className="w-[480px] min-h-[580px] rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] p-6 sm:p-14 relative overflow-hidden backdrop-blur-sm bg-gradient-to-br from-[#F8F9FA]/10 to-[#F8F9FA]/5">
                 <header className="mb-8 sm:mb-12 relative z-20">
                   <h1 className="typography-h2 text-center mb-4 sm:mb-6 bg-gradient-to-r from-[#F8F9FA] to-[#FBF8F1] bg-clip-text text-transparent tracking-tight relative">
-                    Join Our Open-Source Journey
+                    Get Early Access
                     <svg
                       className="absolute -right-6 sm:-right-8 top-0 w-5 sm:w-6 h-5 sm:h-6 text-[#FBF8F1] animate-pulse"
                       viewBox="0 0 24 24"
@@ -169,8 +169,7 @@ export const Waitlist = () => {
                     </svg>
                   </h1>
                   <p className="typography-p !leading-relaxed text-[#F8F9FA] text-center px-2 sm:px-0">
-                    Join the exclusive group of innovators shaping the future of
-                    digital experiences.
+                  Be among the first to experience GLUE by joining our exclusive early-access program.
                   </p>
                 </header>
                 <form
