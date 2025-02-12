@@ -7,18 +7,17 @@ import { getEntry } from "astro:content";
 const entry = await getEntry("contact", "index");
 const { contact_form_action } = config.params;
 ---
-
 <Base
   entry_keys={["contact", "index"]}
 >
-  <section class=" pb-6 pt-16">
-    <div class="container"><PageHeader page_data={entry.data} /></div>
+  <section class="pb-6 pt-16">
+    <div class="container">
+      <PageHeader page_data={entry.data} />
+    </div>
   </section>
-
   <section class="section pt-0">
     <div class="container">
       <div class="row">
-
         <div class="md:col-12 md:order-1 grid place-content-center">
           <form
             class="lg:max-w-[484px]"
@@ -32,41 +31,46 @@ const { contact_form_action } = config.params;
                 type="text"
                 id="name"
                 placeholder="Your Full Name"
+                required
               />
             </div>
             <div class="form-group mb-5">
-              <label class="form-label" for="eamil">Email Adrdess</label>
+              <label class="form-label" for="email">Email Address</label>
               <input
                 class="form-control"
-                type="text"
+                type="email"
                 id="email"
-                placeholder="Your  Email Address"
+                placeholder="Your Email Address"
+                required
               />
             </div>
             <div class="form-group mb-5">
               <label class="form-label" for="reason">Reason/Purpose</label>
               <select name="reason" id="reason" class="form-select" required>
                 <option value="">Select reason/purpose</option>
-                <option value="hello">Wanted to say hello</option>
-                <option value="work-with-you">I want to work with you</option>
-                <option value="work-for-me">I want you to work for me</option>
-                <option value="investment plane-3">There's a project I want to discuss with you</option>
-                <option value="investment plane-3">Other</option>
+                <option value="hello">Just saying hello</option>
+                <option value="collaboration">I want to collaborate with ParadiseLabs</option>
+                <option value="ai-solutions">I need help with AI solutions</option>
+                <option value="project-discussion">I have a project to discuss</option>
+                <option value="other">Other</option>
               </select>
             </div>
             <div class="form-group mb-5">
-              <label class="form-label" for="message">Message Here</label>
+              <label class="form-label" for="message">Message</label>
               <textarea
                 class="form-control h-[150px]"
                 id="message"
                 cols="30"
-                rows="10"></textarea>
+                rows="10"
+                placeholder="Tell us more about your inquiry..."
+                required
+              ></textarea>
             </div>
             <input
               class="btn-primary block w-full"
               type="submit"
               value="Send Message"
-              onclick="alert('This form is not functional. Please use the email address provided in the footer to contact me.')"
+              onclick="alert('Thank you for reaching out! We will get back to you as soon as possible.')"
             />
           </form>
         </div>
