@@ -100,8 +100,8 @@ const Home: React.FC = () => {
             <span className="header-line">Generative-AI Linking &</span>
             <span className="header-line">Unification Engine</span>
             <span className="tagline">The GLUE framework</span>
-            <span className="glue-line">simplifies complex AI development</span>
-            <span className="glue-line">by unifying tools, agents, and processes.</span>
+            <span className="glue-line">Unifies tools, agents, and processes</span>
+            <span className="glue-line">so you can connect, streamline, and win.</span>
             <div className="cta-container">
               <a href="#waitlist" onClick={scrollToWaitlist} className="cta-primary">
                 Sign Up For Early Access

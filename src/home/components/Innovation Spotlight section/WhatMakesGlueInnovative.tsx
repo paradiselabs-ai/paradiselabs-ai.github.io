@@ -15,11 +15,10 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos-duration="1000"
               >
                 <h1 className="typography-h2 font-bold tracking-tight bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] bg-clip-text text-transparent pb-2">
-                  What Makes GLUE Innovative?
+                Work Smarter, Not Harder
                 </h1>
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#d6ddf4]/5 p-8 rounded-lg shadow-lg hover:bg-[#d6ddf4]/10 transition-all duration-300">
-                  GLUE isn't just another AI framework<span style={{ display: 'block' }}></span>it's a paradigm shift in
-                  how we think about multi-agentic systems.
+                  Break free from traditional AI constraints and watch your teams achieve what was previously impossible.
                 </p>
               </div>
               <div
@@ -29,9 +28,7 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos-delay="200"
               >
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#d6ddf4]/5 p-8 rounded-lg shadow-lg hover:bg-[#d6ddf4]/10 transition-all duration-300">
-                  By enabling human-like collaboration and dynamic resource
-                  management, GLUE empowers you to tackle challenges of any
-                  scale.
+                  Turn your vision into reality with a framework that adapts to how your teams naturally work, scaling effortlessly as you grow.
                 </p>
               </div>
             </div>
@@ -50,7 +47,7 @@ export const WhatMakesGlueInnovative = () => {
                     Human-Like Collaboration
                   </h2>
                   <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
-                    Models interact naturally, mimicking real-world teamwork.
+                    Watch your AI teams work together as naturally as your best human teams.
                   </p>
                 </div>
               </div>
@@ -69,7 +66,7 @@ export const WhatMakesGlueInnovative = () => {
                     Dynamic Resource Management
                   </h2>
                   <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
-                    Tools adapt to the task at hand with adhesive bindings.
+                    Get the right resources exactly when and where you need them.
                   </p>
                 </div>
               </div>
@@ -86,7 +83,7 @@ export const WhatMakesGlueInnovative = () => {
                 <div className="space-y-3">
                   <h2 className="typography-h3 font-semibold !leading-tight">Future-Proof Design</h2>
                   <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
-                    Built to grow with your needs and scale.
+                    Scale confidently knowing your foundation grows with you.
                   </p>
                 </div>
               </div>
@@ -105,7 +102,7 @@ export const WhatMakesGlueInnovative = () => {
                     Community-Driven Growth
                   </h2>
                   <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
-                    Join a vibrant ecosystem of developers.
+                    Accelerate your success with insights from leading innovators.
                   </p>
                 </div>
               </div>
@@ -122,12 +119,10 @@ export const WhatMakesGlueInnovative = () => {
                     verified
                   </span>
                   <h3 className="typography-h3 bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] bg-clip-text text-transparent">
-                    Join Beta Testing
+                    Shape the Future
                   </h3>
                   <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
-                    Be among the first to experience GLUE. Sign up for our
-                    exclusive beta testing program and help shape the future of
-                    AI collaboration.
+                    Join our beta program to be among the first to revolutionize how your teams work with AI. Your feedback shapes the future of collaborative AI.
                   </p>
                 </div>
                 <form
@@ -176,39 +171,39 @@ export const WhatMakesGlueInnovative = () => {
               >
                 <div className="h-full flex flex-col">
                   <div className="grid grid-cols-3 gap-4 p-6 bg-[#d6ddf4]/10">
-                    <h4 className="typography-h3 font-semibold !leading-tight">Feature</h4>
-                    <h4 className="typography-h3 font-semibold !leading-tight">GLUE</h4>
-                    <h4 className="typography-h3 font-semibold !leading-tight">Traditional</h4>
+                    <h4 className="typography-h3 font-semibold !leading-tight">Your Needs</h4>
+                    <h4 className="typography-h3 font-semibold !leading-tight">With GLUE</h4>
+                    <h4 className="typography-h3 font-semibold !leading-tight">Without GLUE</h4>
                   </div>
                   <div className="flex-1 overflow-y-auto">
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Collaboration</div>
+                      <div className="typography-p font-medium">Team Flow</div>
                       <div className="typography-p text-[#d6ddf4]/90">
-                        Human-like interaction
+                        Natural collaboration
                       </div>
-                      <div className="typography-p text-[#d6ddf4]/90">Static workflows</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Rigid processes</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Resources</div>
+                      <div className="typography-p font-medium">Resource Use</div>
                       <div className="typography-p text-[#d6ddf4]/90">
-                        Dynamic adaptation
+                        Smart adaptation
                       </div>
-                      <div className="typography-p text-[#d6ddf4]/90">Fixed allocation</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Fixed limits</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Scalability</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Future-proof</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Limited</div>
+                      <div className="typography-p font-medium">Growth Path</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Unlimited</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Constrained</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Integration</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Seamless</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Complex</div>
+                      <div className="typography-p font-medium">Setup Time</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Minutes</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Weeks</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Learning Curve</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Intuitive</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Steep</div>
+                      <div className="typography-p font-medium">Time to Value</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Immediate</div>
+                      <div className="typography-p text-[#d6ddf4]/90">Months</div>
                     </div>
                   </div>
                 </div>

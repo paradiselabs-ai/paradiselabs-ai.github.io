@@ -71,13 +71,10 @@ export const Waitlist = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="typography-h2 text-[#d6ddf7] !leading-tight">
-                Streamline Your AI Development with GLUE
+              Turn Your AI Vision into Reality with GLUE
               </h2>
               <p className="typography-p text-[#d6ddf4] !leading-relaxed">
-                Be part of the movement shaping the future of AI-powered
-                solutions. Our open-source platform empowers innovators who are
-                already transforming how we build and connect intelligent
-                systems.
+              Be part of the open-source movement turning AI concepts into real-world solutions. Our platform empowers you to focus on what matters most - creating innovations that solve meaningful problems.
               </p>
               <div className="space-y-6">
                 <div className="space-y-3">
@@ -86,7 +83,7 @@ export const Waitlist = () => {
                   </h3>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
-                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#f7d794] transition-colors duration-300"
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -99,13 +96,12 @@ export const Waitlist = () => {
                       />
                     </svg>
                     <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
-                      Unlock premium features and contribute to our open
-                      ecosystem.
+                    Join a thriving open ecosystem and help shape the future of AI integration with your contributions.
                     </span>
                   </div>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
-                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#f7d794] transition-colors duration-300"
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -118,18 +114,35 @@ export const Waitlist = () => {
                       />
                     </svg>
                     <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
-                      Create, integrate, and deploy with ease using GLUE's
-                      intuitive tools.
+                    Turn complex AI workflows into seamless solutions using GLUE's intuitive tools
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
+                    <svg
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
+                    Move from concept to deployment faster than ever before
                     </span>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h3 className="typography-h3 text-[#f7d794]">
-                    Enjoy Priority Support:
+                  Succeed With Dedicated Support:
                   </h3>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
-                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#f7d794] transition-colors duration-300"
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -142,8 +155,7 @@ export const Waitlist = () => {
                       />
                     </svg>
                     <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
-                      Our team is here to ensure your success with dedicated
-                      assistance every step of the way.
+                    Our team partners with you at every step, ensuring your innovations make a real-world impact.
                     </span>
                   </div>
                 </div>

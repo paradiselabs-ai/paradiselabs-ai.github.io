@@ -12,8 +12,7 @@ export const GlueKeyFeatures = () => {
                 Key Features
               </h2>
               <p className="typography-p !leading-relaxed opacity-80 max-w-3xl">
-                Discover the powerful features that make GLUE your ideal
-                solution for AI system management.
+                Turn your AI vision into reality with powerful capabilities that put your team's success first.
               </p>
             </div>
 
@@ -22,37 +21,37 @@ export const GlueKeyFeatures = () => {
                 {
                   icon: "extension",
                   title: "Adhesive Bindings",
-                  desc: "Control how results are shared\n—team-wide (GLUE), session-based (VELCRO), or disposable (TAPE).",
+                  desc: "Share knowledge exactly how your AI agents needs it—whether team-wide (GLUE), project-based (VELCRO), or quick exchanges (TAPE).",
                   delay: "0",
                 },
                 {
                   icon: "diversity_3",
                   title: "Flexible Teams",
-                  desc: "Define leads, members, and available tools for each team with complete flexibility and control.",
+                  desc: "Let your AI agents work their way, with the perfect balance of flexibility and structure to deliver results faster.",
                   delay: "200",
                 },
                 {
                   icon: "build",
                   title: "Built-In Tools",
-                  desc: "Start with powerful tools like web search, code interpreters, and file handlers—or create your own.",
+                  desc: "Hit the ground running with essential tools like web search, code interpreters, and file handlers—then expand as you grow.",
                   delay: "400",
                 },
                 {
                   icon: "architecture",
                   title: "Scalable Architecture",
-                  desc: "Easily add new models, tools, and teams as your project grows without compromising performance.",
+                  desc: "Focus on innovation while your infrastructure grows seamlessly with your success, without missing a beat.",
                   delay: "200",
                 },
                 {
                   icon: "code",
                   title: "Expression Language",
-                  desc: "Simplify app creation with an intuitive language designed for clarity and speed in development.",
+                  desc: "Build faster and smarter with an intuitive language that lets you focus on creating, not configuring.",
                   delay: "400",
                 },
                 {
                   icon: "settings",
                   title: "System Controls",
-                  desc: "Complete control over system settings, permissions, and resource allocation across your organization.",
+                  desc: "Keep your organization secure and efficient with complete visibility and control over your AI resources.",
                   delay: "600",
                 },
               ].map((item, index) => (
