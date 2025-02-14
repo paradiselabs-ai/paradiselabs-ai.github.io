@@ -138,28 +138,32 @@
 
 /* Hero Section Text */
 .home-container .hero-section p {
-  font-size: var(--size-5xl);
+  font-size: var(--size-3xl);
   margin-bottom: 2rem;
   margin-top: 4%;
+  font-weight: 200;
 }
 
 .home-container .hero-section .header-line {
   display: block;
   margin-top: -0.6em;
-  font-size: var(--size-6xl);
+  font-size: var(--size-7xl);
+  font-weight: 800;
 }
 
 .home-container .hero-section .glue-line {
   display: block;
   margin-top: -0.6em;
-  font-size: var(--size-5xl);
+  font-size: var(--size-4xl);
+  font-weight: 200;
 }
 
 .home-container .hero-section .tagline {
   display: inline-block;
-  font-size: var(--size-5xl);
+  font-size: var(--size-6xl);
   margin-bottom: 0rem;
   margin-top: 6rem;
+  font-weight: 500;
 }
 
 .home-container .cta-primary,
@@ -169,7 +173,8 @@
   padding: 0.8rem 2.2rem;
   border-radius: 3rem;
   text-decoration: none;
-  font-size: var(--size-base); /* Updated to match Button Text (Large) */
+  font-size: var(--size-base); 
+  font-weight: 200;
   transition: all 0.3s ease;
 }
 
