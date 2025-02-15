@@ -590,26 +590,26 @@ video {
     var(--tw-backdrop-sepia);
 }
 #WhatMakesGlueInnovative .transition-all {
-  transition-duration: 0.15s;
+  transition-duration: 0.1s;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 #WhatMakesGlueInnovative .transition-colors {
-  transition-duration: 0.15s;
+  transition-duration: 0.1s;
   transition-property: color, background-color, border-color,
     text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 #WhatMakesGlueInnovative .transition-transform {
-  transition-duration: 0.15s;
+  transition-duration: 0.3s;
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 #WhatMakesGlueInnovative .duration-200 {
-  transition-duration: 0.2s;
+  transition-duration: 0.3s;
 }
 #WhatMakesGlueInnovative .duration-300 {
-  transition-duration: 0.3s;
+  transition-duration: 0.35s;
 }
 #WhatMakesGlueInnovative {
   font-family: 'Dongle', sans-serif !important;
@@ -625,7 +625,7 @@ video {
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 #WhatMakesGlueInnovative .hover\:-translate-y-2:hover {
-  --tw-translate-y: -8px;
+  --tw-translate-y: -2px;
 }
 #WhatMakesGlueInnovative .hover\:scale-110:hover {
   --tw-scale-x: 1.1;
@@ -641,12 +641,12 @@ video {
   background-color: rgba(214, 221, 244, 0.1);
 }
 #WhatMakesGlueInnovative .hover\:from-\[\#d6ddf4\]\/15:hover {
-  --tw-gradient-from: rgba(214, 221, 244, 0.15) var(--tw-gradient-from-position);
+  --tw-gradient-from: rgba(214, 221, 244, 0.1) var(--tw-gradient-from-position);
   --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #WhatMakesGlueInnovative .hover\:to-\[\#a8b2e0\]\/15:hover {
-  --tw-gradient-to: rgba(168, 178, 224, 0.15) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgba(168, 178, 224, 0.1) var(--tw-gradient-to-position);
 }
 #WhatMakesGlueInnovative .hover\:opacity-90:hover {
   opacity: 0.9;

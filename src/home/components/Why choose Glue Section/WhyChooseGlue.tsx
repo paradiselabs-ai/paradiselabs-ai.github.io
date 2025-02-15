@@ -13,7 +13,7 @@ export const WhyChooseGlue = () => {
                   Build Better AI Solutions
                 </h2>
                 <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70 max-w-2xl animate-slide-up delay-100">
-                  Transform how your teams collaborate and deliver AI solutions with tools that adapt to your workflow, not the other way around.
+                Stop wrestling with AI complexity. Watch your teams naturally collaborate, innovate, and deliver solutions that drive real business growth - all while working the way they already do.
                 </p>
               </div>
             </div>
@@ -31,8 +31,8 @@ export const WhyChooseGlue = () => {
                         Natural Team Collaboration
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
-                      Work the way your team already does, with built-in structures that mirror your organization's natural workflow and communication patterns.
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
+                    Built-in structures that mirror how your best teams naturally work, turning collaboration barriers into accelerators for success.
                     </p>
                   </div>
                 </div>
@@ -52,7 +52,7 @@ export const WhyChooseGlue = () => {
                         Simplified Development
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
                       Build solutions faster with our intuitive expression language that reduces complexity while maintaining the power you need for AI development.
                     </p>
                   </div>
@@ -75,7 +75,7 @@ export const WhyChooseGlue = () => {
                         Customizable Tools
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
                       Create and adapt tools that fit your specific needs, with seamless integration into your existing development and deployment workflows.
                     </p>
                   </div>
@@ -96,8 +96,8 @@ export const WhyChooseGlue = () => {
                         Knowledge Retention
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
-                      Preserve and share critical insights across teams with built-in knowledge management that makes collaboration and onboarding more effective.
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
+                      Preserve and grow organizational intelligence across teams with built-in knowledge management that makes collaboration and onboarding more effective.
                     </p>
                   </div>
                 </div>

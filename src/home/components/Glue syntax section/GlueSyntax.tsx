@@ -22,8 +22,7 @@ export const GlueSyntax = () => {
                   data-aos-delay="200"
                   className="typography-p !leading-relaxed text-[#abb2bf] text-center mb-8 sm:mb-12"
                 >
-                  Experience the simplicity and flexibility of GLUE's intuitive
-                  syntax
+                  Transform complex AI concepts into business results with a syntax so intuitive, that developers can focus on innovation instead of implementation details
                 </p>
 
                 <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
@@ -41,51 +40,81 @@ export const GlueSyntax = () => {
                           </span>
                         </div>
                         <div className="overflow-x-auto">
-                          <pre className="font-mono text-[#abb2bf] text-xs sm:text-base whitespace-pre">
-                            <code className="language-glue">
-                              <span className="text-[#61dafb]">glue</span> app{" "}
-                              {`{
-  name = `}
-                              <span className="text-[#98c379]">
-                                "My-Research-App"
-                              </span>
-                              {`
-  config {
-    development = true
-    sticky = false
-  }
-}
-`}
-                              <span className="text-[#61dafb]">model</span>{" "}
-                              researcher{" "}
-                              {`{
-  provider = openrouter
-  role = `}
-                              <span className="text-[#98c379]">
-                                "Research topics thoroughly."
-                              </span>
-                              {`
-  adhesives = [glue, velcro]
-}
-`}
-                              <span className="text-[#61dafb]">tool</span>{" "}
-                              web_search{" "}
-                              {`{
-  provider = serp
-}
-`}
-                              <span className="text-[#61dafb]">magnetize</span>{" "}
-                              {`{
-  research {
-    lead = researcher
-    tools = [web_search]
-  }
-}
-`}
-                              <span className="text-[#61dafb]">apply</span> glue
-                            </code>
-                          </pre>
-                        </div>
+  <pre className="font-mono text-[#abb2bf] sm:text-base whitespace-pre">
+    <code className="language-glue">
+      {/* Keywords/Declarations (font-regular) */}
+      <span className="text-[#61dafb] font-normal">glue</span> app{" "}
+      <span className="font-normal">{`{`}</span>
+      <br />
+      &nbsp;&nbsp;name ={" "}
+      <span className="text-[#98c379] font-light">
+        "My-Research-App"
+      </span>
+      <br />
+      &nbsp;&nbsp;config{" "}
+      <span className="font-normal">{`{`}</span>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;development ={" "}
+      <span className="font-light">true</span>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;sticky ={" "}
+      <span className="font-light">false</span>
+      <br />
+      &nbsp;&nbsp;<span className="font-normal">{`}`}</span>
+      <br />
+      <span className="font-normal">{`}`}</span>
+      
+      <br />
+      {/* Keywords/Declarations (font-regular) */}
+      <span className="text-[#61dafb] font-normal">model</span> researcher{" "}
+      <span className="font-normal">{`{`}</span>
+      <br />
+      &nbsp;&nbsp;provider ={" "}
+      <span className="text-[#98c379] font-light">openrouter</span>
+      <br />
+      &nbsp;&nbsp;role ={" "}
+      <span className="text-[#98c379] font-light">
+        "Research topics thoroughly."
+      </span>
+      <br />
+      &nbsp;&nbsp;adhesives ={" "}
+      <span className="font-light">[glue, velcro]</span>
+      <br />
+      <span className="font-normal">{`}`}</span>
+      
+      <br />
+      {/* Keywords/Declarations (font-regular) */}
+      <span className="text-[#61dafb] font-normal">tool</span> web_search{" "}
+      <span className="font-normal">{`{`}</span>
+      <br />
+      &nbsp;&nbsp;provider ={" "}
+      <span className="text-[#98c379] font-light">serp</span>
+      <br />
+      <span className="font-normal">{`}`}</span>
+      
+      <br />
+      {/* Keywords/Declarations (font-regular) */}
+      <span className="text-[#61dafb] font-normal">magnetize</span>{" "}
+      <span className="font-normal">{`{`}</span>
+      <br />
+      &nbsp;&nbsp;research{" "}
+      <span className="font-normal">{`{`}</span>
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;lead = researcher
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;tools ={" "}
+      <span className="font-light">[web_search]</span>
+      <br />
+      &nbsp;&nbsp;<span className="font-normal">{`}`}</span>
+      <br />
+      <span className="font-normal">{`}`}</span>
+      
+      <br />
+      {/* Keywords/Declarations (font-regular) */}
+      <span className="text-[#61dafb] font-normal">apply</span> glue
+    </code>
+  </pre>
+</div>
                       </div>
                     </div>
                   </div>
@@ -106,7 +135,7 @@ export const GlueSyntax = () => {
                             The glue app block configures the application
                             settings:
                           </p>
-                          <ul className="typography-p !leading-relaxed list-disc pl-4 space-y-2">
+                          <ul className="typography-p font-light !leading-relaxed list-disc pl-4 space-y-2">
                             <li>
                               <span className="text-[#61dafb]">name</span>:
                               Defines the application name
@@ -140,7 +169,7 @@ export const GlueSyntax = () => {
                             assistant specialized in conducting thorough
                             research:
                           </p>
-                          <ul className="typography-p !leading-relaxed list-disc pl-4 space-y-2">
+                          <ul className="typography-p font-light !leading-relaxed list-disc pl-4 space-y-2">
                             <li>
                               <span className="text-[#61dafb]">provider</span>:
                               Specifies the service provider (openrouter)

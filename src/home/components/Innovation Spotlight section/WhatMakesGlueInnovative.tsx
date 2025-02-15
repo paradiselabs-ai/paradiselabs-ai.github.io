@@ -46,7 +46,7 @@ export const WhatMakesGlueInnovative = () => {
                   <h2 className="typography-h3 font-semibold !leading-tight">
                     Human-Like Collaboration
                   </h2>
-                  <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
+                  <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/90">
                     Watch your AI teams work together as naturally as your best human teams.
                   </p>
                 </div>
@@ -65,7 +65,7 @@ export const WhatMakesGlueInnovative = () => {
                   <h2 className="typography-h3 font-semibold !leading-tight">
                     Dynamic Resource Management
                   </h2>
-                  <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
+                  <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/90">
                     Get the right resources exactly when and where you need them.
                   </p>
                 </div>
@@ -82,7 +82,7 @@ export const WhatMakesGlueInnovative = () => {
                 </span>
                 <div className="space-y-3">
                   <h2 className="typography-h3 font-semibold !leading-tight">Future-Proof Design</h2>
-                  <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
+                  <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/90">
                     Scale confidently knowing your foundation grows with you.
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export const WhatMakesGlueInnovative = () => {
                   <h2 className="typography-h3 font-semibold !leading-tight">
                     Community-Driven Growth
                   </h2>
-                  <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
+                  <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/90">
                     Accelerate your success with insights from leading innovators.
                   </p>
                 </div>
@@ -118,10 +118,10 @@ export const WhatMakesGlueInnovative = () => {
                   <span className="material-symbols-outlined text-6xl text-[#d6ddf4]">
                     verified
                   </span>
-                  <h3 className="typography-h3 bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] bg-clip-text text-transparent">
+                  <h3 className="typography-h3 font-bold bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] bg-clip-text text-transparent">
                     Shape the Future
                   </h3>
-                  <p className="typography-p !leading-relaxed text-[#d6ddf4]/90">
+                  <p className="typography-p font-regular !leading-relaxed text-[#d6ddf4]/90">
                     Join our beta program to be among the first to revolutionize how your teams work with AI. Your feedback shapes the future of collaborative AI.
                   </p>
                 </div>
@@ -152,13 +152,13 @@ export const WhatMakesGlueInnovative = () => {
                     placeholder="Enter your email"
                     className="w-full px-8 py-4 bg-[#d6ddf4]/10 border border-[#d6ddf4]/30 rounded-lg focus:outline-none focus:border-[#d6ddf4]/50 transition-all duration-300 placeholder-[#d6ddf4]/50"
                   />
-                  <p className="text-red-500 typography-p !leading-tight hidden error-message">
+                  <p className="text-red-500 typography-p font-light !leading-tight hidden error-message">
                     Please enter a valid email address
                   </p>
-                  <button className="w-full px-8 py-4 bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] text-slate-950 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg typography-p font-medium flex items-center justify-center">
+                  <button className="w-full px-8 py-4 bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] text-slate-950 rounded-lg hover:opacity-90 transition-all duration-300 transform  hover:shadow-lg typography-p font-medium flex items-center justify-center">
                     Join Waitlist
                   </button>
-                  <p className="typography-p !leading-tight text-center text-[#d6ddf4]/70">
+                  <p className="typography-xs font-light !leading-tight text-center text-[#d6ddf4]/70">
                     Limited spots available. Early access coming soon.
                   </p>
                 </form>
@@ -177,33 +177,33 @@ export const WhatMakesGlueInnovative = () => {
                   </div>
                   <div className="flex-1 overflow-y-auto">
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Team Flow</div>
-                      <div className="typography-p text-[#d6ddf4]/90">
+                      <div className="typography-p font-medium">Team Innovation</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">
                         Natural collaboration
                       </div>
-                      <div className="typography-p text-[#d6ddf4]/90">Rigid processes</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Rigid processes</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Resource Use</div>
-                      <div className="typography-p text-[#d6ddf4]/90">
+                      <div className="typography-p font-light font-medium">Business Agility</div>
+                      <div className="typography-p  font-light text-[#d6ddf4]/90">
                         Smart adaptation
                       </div>
-                      <div className="typography-p text-[#d6ddf4]/90">Fixed limits</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Fixed limits</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
-                      <div className="typography-p font-medium">Growth Path</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Unlimited</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Constrained</div>
+                      <div className="typography-p font-medium">Future Potential</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Unlimited</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Constrained</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
                       <div className="typography-p font-medium">Setup Time</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Minutes</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Weeks</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Minutes</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Weeks</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#d6ddf4]/10 transition-colors duration-200">
                       <div className="typography-p font-medium">Time to Value</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Immediate</div>
-                      <div className="typography-p text-[#d6ddf4]/90">Months</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Immediate</div>
+                      <div className="typography-p font-light text-[#d6ddf4]/90">Months</div>
                     </div>
                   </div>
                 </div>

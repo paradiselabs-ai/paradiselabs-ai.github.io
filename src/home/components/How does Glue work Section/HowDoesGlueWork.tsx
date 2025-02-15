@@ -43,7 +43,7 @@ export const HowDoesGlueWork = () => {
                     <h3 className="typography-h3 !leading-tight mb-4 md:mb-6 text-[#d6ddf4] animate-slide-up">
                       Accelerate Innovation Together
                     </h3>
-                    <p className="typography-p !leading-relaxed text-[#d6ddf4]/70 animate-fade-in max-w-xl md:ml-auto">
+                    <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70 animate-fade-in max-w-xl md:ml-auto">
                       Break down the barriers that slow your progress. When teams collaborate 
                       seamlessly, you'll see projects that once took months complete in weeks.
                     </p>
@@ -63,7 +63,7 @@ export const HowDoesGlueWork = () => {
                     <h3 className="typography-h3 !leading-tight mb-4 md:mb-6 text-[#d6ddf4] animate-slide-up">
                       Turn Insights into Action
                     </h3>
-                    <p className="typography-p !leading-relaxed text-[#d6ddf4]/70 animate-fade-in max-w-xl">
+                    <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70 animate-fade-in max-w-xl">
                       Watch information flow effortlessly between teams, empowering faster, 
                       more informed decisions that keep you ahead of market changes.
                     </p>
@@ -81,7 +81,7 @@ export const HowDoesGlueWork = () => {
                     <h3 className="typography-h3 !leading-tight mb-4 md:mb-6 text-[#d6ddf4] animate-slide-up">
                       Build Lasting Knowledge
                     </h3>
-                    <p className="typography-p !leading-relaxed text-[#d6ddf4]/70 animate-fade-in max-w-xl md:ml-auto">
+                    <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70 animate-fade-in max-w-xl md:ml-auto">
                       Transform every project into a foundation for future success. Your teams' 
                       expertise becomes your organization's lasting competitive advantage.
                     </p>

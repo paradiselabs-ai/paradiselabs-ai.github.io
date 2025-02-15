@@ -51,7 +51,7 @@ export const GlueKeyFeatures = () => {
                 {
                   icon: "settings",
                   title: "System Controls",
-                  desc: "Keep your organization secure and efficient with complete visibility and control over your AI resources.",
+                  desc: "Keep your AI agents secure and efficient with complete visibility and control over your AI resources.",
                   delay: "600",
                 },
               ].map((item, index) => (
@@ -73,7 +73,7 @@ export const GlueKeyFeatures = () => {
                       <h3 className="typography-h3 !leading-tight font-bold bg-gradient-to-r from-white to-white/90 bg-clip-text tracking-tight relative">
                         {item.title}
                       </h3>
-                      <p className="typography-p !leading-relaxed opacity-70">
+                      <p className="typography-p font-light !leading-relaxed opacity-70">
                         {item.desc}
                       </p>
                     </div>
