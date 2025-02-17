@@ -6,25 +6,55 @@ import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
 import { MCP } from './components/MCP Section/MCP';
 import { Waitlist } from './components/Waitlist section/Waitlist';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo } from 'react';
 import { Link } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import './Home.css';
 
-const Home: React.FC = () => {
-  // Define base styles for section containers
-  const sectionContainerStyle: React.CSSProperties = {
-    width: '100%',
-    minHeight: 'min-content', // Allow container to grow with content
-    padding: '4rem 0',        // Add consistent vertical padding
-    position: 'relative',     // For proper spacing
-  };
+// Memoized section components to prevent unnecessary re-renders
+const Section = memo(({ children, style }: { children: React.ReactNode; style: React.CSSProperties }) => (
+  <section style={style}>{children}</section>
+));
 
-  // Function to handle smooth scrolling
+// Base section styles moved outside component to prevent recreation on each render
+const sectionContainerStyle: React.CSSProperties = {
+  width: '100%',
+  minHeight: 'min-content',
+  padding: '4rem 0',
+  position: 'relative',
+};
+
+// Memoized gradient background component
+const GradientBackground = memo(() => (
+  <div className="gradient-bg">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 16 -7"
+            result="goo"
+          />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div className="gradients-container">
+      <div className="g1"></div>
+      <div className="g2"></div>
+      <div className="g3"></div>
+      <div className="g4"></div>
+    </div>
+  </div>
+));
+
+const Home: React.FC = () => {
   const waitlistRef = useRef<HTMLDivElement>(null);
 
-  // Function to handle smooth scrolling
+  // Keeping the original scroll handler to maintain exact scrolling behavior
   const scrollToWaitlist = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!waitlistRef.current) return;
@@ -58,42 +88,41 @@ const Home: React.FC = () => {
   };
 
   useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 800,
-      once: true,
-      offset: 30,
-      easing: 'ease-in-out-quad',
-    });
+    let isSubscribed = true;
+
+    const timer = setTimeout(() => {
+      if (isSubscribed) {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 30,
+          easing: 'ease-in-out-quad',
+          startEvent: 'DOMContentLoaded',
+          disableMutationObserver: false,
+          throttleDelay: 99,
+        });
+      }
+    }, 100);
+
+    const handleLoad = () => {
+      if (isSubscribed) {
+        AOS.refresh();
+      }
+    };
+
+    window.addEventListener('load', handleLoad);
+
+    return () => {
+      isSubscribed = false;
+      clearTimeout(timer);
+      window.removeEventListener('load', handleLoad);
+    };
   }, []);
 
   return (
     <div className="home-container">
-      {/* ------------- Header Section ------------- */}
       <header className="header-section">
-        <div className="gradient-bg">
-          <svg xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="goo">
-                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-                <feColorMatrix
-                  in="blur"
-                  mode="matrix"
-                  values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 16 -7"
-                  result="goo"
-                />
-                <feBlend in="SourceGraphic" in2="goo" />
-              </filter>
-            </defs>
-          </svg>
-          <div className="gradients-container">
-            <div className="g1"></div>
-            <div className="g2"></div>
-            <div className="g3"></div>
-            <div className="g4"></div>
-          </div>
-        </div>
-
+        <GradientBackground />
         <div className="content-container">
           <section className="hero-section">
             <p>From ParadiseLabs</p>
@@ -114,59 +143,44 @@ const Home: React.FC = () => {
         </div>
       </header>
 
-      {/* ------------- Hero To Main Content Line Seperator ------------- */}
-      
       <div className="divider" style={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
-          margin: 0, 
-          position: 'relative', 
-          zIndex: 1 
-       }}>
-          <svg
-              width="80%"
-              height="3"
-              viewBox="0 0 100 3"
-              preserveAspectRatio="none"
-          >
-              <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
-          </svg>
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        margin: 0, 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <svg width="80%" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
+          <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
+        </svg>
       </div>
 
-      {/* ------------- Main Content ------------- */}
-      
-      {/* Why Choose GLUE Section */}
-      <section style={sectionContainerStyle}>
+      <Section style={sectionContainerStyle}>
         <WhyChooseGlue />
-      </section>
+      </Section>
       
-      {/* How Does Glue Work Section */}
-      <section style={sectionContainerStyle}>
+      <Section style={sectionContainerStyle}>
         <HowDoesGlueWork />
-      </section>
+      </Section>
       
-      {/* Key Features Section */}
-      <section style={sectionContainerStyle}>
+      <Section style={sectionContainerStyle}>
         <GlueKeyFeatures />
-      </section>
+      </Section>
       
-      {/* Glue Syntax Section */}
-      <section style={sectionContainerStyle}>
+      <Section style={sectionContainerStyle}>
         <GlueSyntax />
-      </section>
+      </Section>
       
-      {/* Innovation Spotlight Section */}
-      <section style={sectionContainerStyle}>
+      <Section style={sectionContainerStyle}>
         <WhatMakesGlueInnovative />
-      </section>
+      </Section>
       
-      {/* MCP Section */}
-      <section style={sectionContainerStyle}>
+      <Section style={sectionContainerStyle}>
         <MCP />
-      </section>
+      </Section>
       
-      {/* Waitlist Section */}
+      {/* Use a regular section for the waitlist to properly handle the ref */}
       <section ref={waitlistRef} id="waitlist" style={sectionContainerStyle}>
         <Waitlist />
       </section>
@@ -174,4 +188,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default memo(Home);

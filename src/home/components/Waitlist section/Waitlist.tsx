@@ -277,12 +277,12 @@ export const Waitlist = () => {
                       </div>
                     </div>
                     <label
-  htmlFor="newsletter"
-  style={{ marginTop: '-2px', marginBottom: '-2px' }}
-  className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
->
-  Keep me updated with exclusive launch details
-</label>
+                      htmlFor="newsletter"
+                      style={{ marginTop: '-2px', marginBottom: '-2px' }}
+                      className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
+                    >
+                      Keep me updated with exclusive launch details
+                    </label>
                   </div>
                   <button
                     type="submit"
