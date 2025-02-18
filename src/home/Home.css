@@ -1,11 +1,10 @@
 /* src/home/Home.css */
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 
 /* ==================== */
 /* Global Variables */
 /* ==================== */
 .home-container {
-  font-family: 'Dongle', sans-serif;
+  font-family: var(--font-primary);
   overflow-x: hidden;
   overflow-y: hidden; 
   background: linear-gradient(40deg, rgb(108, 0, 162), rgb(0, 17, 82));
