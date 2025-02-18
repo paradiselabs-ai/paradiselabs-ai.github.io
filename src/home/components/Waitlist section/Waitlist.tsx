@@ -1,17 +1,26 @@
 import React, { FormEvent, useState } from "react";
+import { supabase } from "../../../lib/supabaseClient";
 import "./Waitlist.css";
 import { Check } from 'lucide-react';
 
 export const Waitlist = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const nameInput = form.querySelector("#name") as HTMLInputElement;
     const emailInput = form.querySelector("#email") as HTMLInputElement;
     const reasonInput = form.querySelector("#reason") as HTMLTextAreaElement;
-    
-    const emailValue = emailInput.value;
+    const faxInput = form.querySelector("#fax") as HTMLInputElement;
+
+    if (faxInput.value) {
+      alert("Bot detected! Submission blocked.");
+      return;
+    }
+
+    const emailValue = emailInput.value.toLowerCase();
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!emailRegex.test(emailValue)) {
@@ -27,10 +36,10 @@ export const Waitlist = () => {
       "subscriber": isChecked
     };
 
-    console.log(formData);
-
     const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     button.disabled = true;
+
+    // First state - Processing animation
     button.innerHTML = `
       <div class="flex items-center justify-center gap-3">
         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -40,19 +49,57 @@ export const Waitlist = () => {
         <span class="animate-pulse typography-p !leading-base">Processing your request...</span>
       </div>
     `;
-    setTimeout(() => {
-      button.innerHTML = `
-        <div class="flex items-center justify-center gap-3">
-          <span class="animate-bounce">🎉</span>
-          <span class="typography-p !leading-base">Welcome to GLUE!</span>
-          <svg class="w-5 h-5 text-white animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      `;
-      button.className =
-        "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
-    }, 2000);
+
+    try {
+      const { error } = await supabase
+        .from('waitlist')
+        .insert({
+          name: formData.Name,
+          email: formData.Email,
+          Form: formData.Form,
+          subscriber: formData.subscriber,
+          created_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+      
+      // Success state
+      setTimeout(() => {
+        button.innerHTML = `
+          <div class="flex items-center justify-center gap-3">
+            <span>🎉</span>
+            <span class="typography-p !leading-base">Welcome to GLUE!</span>
+            <svg class="w-5 h-5 text-white animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        `;
+        button.className = "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
+      }, 2000);
+
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      
+      if (error.code === 'PGRST409' || error.code === '23505') {
+        // Already registered case - show the message for 2.5 seconds then revert
+        setTimeout(() => {
+          button.innerHTML = `Already Registered`;
+          button.className = "relative mt-2 sm:mt-3 bg-yellow-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500";
+          
+          // Revert to initial state after 2.5 seconds
+          setTimeout(() => {
+            button.innerHTML = `Start Your Journey`;
+            button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+            button.disabled = false;
+          }, 2500);
+        }, 2000);
+      } else {
+        // Other errors - revert to initial state
+        button.innerHTML = `Start Your Journey`;
+        button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+        button.disabled = false;
+      }
+    }
   };
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -221,6 +268,11 @@ export const Waitlist = () => {
                       onInput={handleEmailInput}
                     />
                   </div>
+                  {/* Honeypot field - hidden from users */}
+                  <div style={{ position: 'absolute', left: '-9999px' }}>
+                    <label htmlFor="fax">Fax Number</label>
+                    <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" />
+                  </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
                       <label
@@ -237,39 +289,40 @@ export const Waitlist = () => {
                       id="reason"
                       name="reason"
                       rows={3}
+                      maxLength={200}
                       className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
                       placeholder="Tell us what excites you about our revolutionary platform..."
                     />
                   </div>
                   <div className="flex items-center gap-3 mt-1 sm:mt-2">
                     <div className="relative inline-flex items-center">
-                      <div 
+                      <div
                         onClick={() => setIsChecked(!isChecked)}
                         className={`
-                          w-5 h-5 
-                          border-2 
-                          rounded-md 
-                          transition-all 
-                          duration-200 
-                          flex 
-                          items-center 
+                          w-5 h-5
+                          border-2
+                          rounded-md
+                          transition-all
+                          duration-200
+                          flex
+                          items-center
                           justify-center
                           cursor
                           -pointer
                           ${isChecked ? 'bg-[#FBF8F1] border-[#FBF8F1]' : 'border-[#F8F9FA]/30 bg-transparent hover:border-[#FBF8F1]/60'}
-                          focus:ring-2 
+                          focus:ring-2
                           focus:ring-[#FBF8F1]/20
                         `}
                         role="checkbox"
                         aria-checked={isChecked}
                         tabIndex={0}
                       >
-                        <Check 
+                        <Check
                           aria-hidden="true"
                           className={`
-                            w-3 h-3 
-                            text-gray-800 
-                            transition-all 
+                            w-3 h-3
+                            text-gray-800
+                            transition-all
                             duration-200
                             ${isChecked ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
                           `}
