@@ -9,10 +9,10 @@ export const GlueKeyFeatures = () => {
           <div className="relative">
             <div className="mb-24" data-aos="fade-up" data-aos-duration="1000">
               <h2 className="typography-h2 !leading-tight font-bold mb-8 bg-gradient-to-r from-white to-white/70 bg-clip-text tracking-tight">
-                Key Features
+              Key Benefits
               </h2>
               <p className="typography-p !leading-relaxed opacity-80 max-w-3xl">
-                Turn your AI vision into reality with powerful capabilities that put your team's success first.
+              Transform your AI vision into tangible results with capabilities designed to accelerate your team's success.
               </p>
             </div>
 
@@ -21,7 +21,7 @@ export const GlueKeyFeatures = () => {
                 {
                   icon: "extension",
                   title: "Adhesive Bindings",
-                  desc: "Share knowledge exactly how your AI agents needs it—whether team-wide (GLUE), project-based (VELCRO), or quick exchanges (TAPE).",
+                  desc: "Share knowledge across AI agents. Team-wide (GLUE), project-based (VELCRO), or quick exchanges (TAPE).",
                   delay: "0",
                 },
                 {
@@ -33,7 +33,7 @@ export const GlueKeyFeatures = () => {
                 {
                   icon: "build",
                   title: "Built-In Tools",
-                  desc: "Hit the ground running with essential tools like web search, code interpreters, and file handlers—then expand as you grow.",
+                  desc: "Start with essential tools like web search, code interpreters, file handlers; expand as you grow.",
                   delay: "400",
                 },
                 {

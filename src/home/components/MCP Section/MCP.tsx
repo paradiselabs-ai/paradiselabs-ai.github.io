@@ -30,7 +30,7 @@ export const MCP = () => {
             <div className="w-full md:w-1/2 lg:w-7/12 p-4 md:p-12 lg:p-24 relative overflow-hidden">
               <div className="space-y-6 md:space-y-12 relative z-10">
                 <div className="text-center md:text-left">
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#d6ddf4] to-[#a9b4e8] bg-clip-text text-transparent mb-3 md:mb-6 !leading-tight">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-6 !leading-tight">
                     Streamline Development with MCP
                   </h1>
                   <p className="typography-p text-[#d6ddf4]/80 !leading-relaxed">

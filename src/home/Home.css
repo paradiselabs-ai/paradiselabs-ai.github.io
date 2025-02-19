@@ -17,12 +17,9 @@
   --color2: 221, 74, 255;
   --color3: 100, 220, 255;
   --color4: 200, 50, 50;
-  --color-interactive: 140, 100, 255;
+
   --circle-size: 80%;
   --blending: hard-light;
-  --card-blur: 8px;
-  --shadow-opacity: 0.15;
-  --border-opacity: 0.2;
 }
 
 /* ==================== */
@@ -145,14 +142,14 @@
 
 .home-container .hero-section .header-line {
   display: block;
-  margin-top: -0.6em;
+  margin-top: -0.2em;
   font-size: var(--size-7xl);
   font-weight: 800;
 }
 
 .home-container .hero-section .glue-line {
   display: block;
-  margin-top: -0.6em;
+  margin-top: -0.2em;
   font-size: var(--size-4xl);
   font-weight: 200;
 }
@@ -161,7 +158,7 @@
   display: inline-block;
   font-size: var(--size-6xl);
   margin-bottom: 0rem;
-  margin-top: 6rem;
+  margin-top: 10rem;
   font-weight: 500;
 }
 

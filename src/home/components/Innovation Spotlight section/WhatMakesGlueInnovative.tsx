@@ -102,7 +102,7 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos="fade-right"
                 data-aos-duration="1000"
               >
-                <h1 className="typography-h2 font-bold tracking-tight bg-gradient-to-r from-[#d6ddf4] to-[#a8b2e0] bg-clip-text text-transparent pb-2">
+                <h1 className="typography-h2 font-bold tracking-tight pb-2">
                 Work Smarter, Not Harder
                 </h1>
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#d6ddf4]/5 p-8 rounded-lg shadow-lg hover:bg-[#d6ddf4]/10 transition-all duration-300">
@@ -210,12 +210,12 @@ export const WhatMakesGlueInnovative = () => {
                     Shape the Future
                   </h3>
                   <p className="typography-p font-regular !leading-relaxed text-[#d6ddf4]/90">
-                    Join our beta program to be among the first to revolutionize how your teams work with AI. Your feedback shapes the future of collaborative AI.
+                  Be first to revolutionize how your teams and AI agents work together. Shape the future of collaborative AI.
                   </p>
                 </div>
                 <form
                   onSubmit={handleSubmit}
-                  className="flex flex-col gap-4 mt-8"
+                  className="flex flex-col gap-4 mt-8 "
                 >
                   <input
                     type="email"
@@ -233,8 +233,8 @@ export const WhatMakesGlueInnovative = () => {
                   >
                     <span>{isSubmitting ? 'Processing...' : alreadyRegistered ? 'Already Registered' : 'Join Waitlist'}</span>
                   </button>
-                  <p className="text-sm font-light !leading-tight text-center text-[#F8F9FA]/70">
-                    Limited spots available. Early access coming soon.
+                  <p className="text-xs font-light !leading-tight text-center text-[#F8F9FA]/70">
+                  Limited early access spots available. Reserve yours today.
                   </p>
                 </form>
               </div>
