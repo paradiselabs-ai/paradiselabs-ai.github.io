@@ -247,7 +247,7 @@ export const Waitlist = () => {
                       id="name"
                       name="name"
                       required
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -263,7 +263,7 @@ export const Waitlist = () => {
                       id="email"
                       name="email"
                       required
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Enter your email address"
                       onInput={handleEmailInput}
                     />
@@ -281,8 +281,8 @@ export const Waitlist = () => {
                       >
                         What sparks your interest?
                       </label>
-                      <span className="text-lg !leading-lg text-[#F8F9FA]/60">
-                        (optional)
+                      <span className="text-base !leading-base text-[#F8F9FA]/60">
+                        optional
                       </span>
                     </div>
                     <textarea
@@ -290,7 +290,7 @@ export const Waitlist = () => {
                       name="reason"
                       rows={3}
                       maxLength={200}
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Tell us what excites you about our revolutionary platform..."
                     />
                   </div>

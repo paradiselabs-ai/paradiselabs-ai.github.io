@@ -233,7 +233,7 @@ export const WhatMakesGlueInnovative = () => {
                   >
                     <span>{isSubmitting ? 'Processing...' : alreadyRegistered ? 'Already Registered' : 'Join Waitlist'}</span>
                   </button>
-                  <p className="typography-xs font-light !leading-tight text-center text-[#F8F9FA]/70">
+                  <p className="text-sm font-light !leading-tight text-center text-[#F8F9FA]/70">
                     Limited spots available. Early access coming soon.
                   </p>
                 </form>
