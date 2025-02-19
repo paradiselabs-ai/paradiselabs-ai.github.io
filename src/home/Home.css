@@ -1,11 +1,10 @@
 /* src/home/Home.css */
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
 
 /* ==================== */
 /* Global Variables */
 /* ==================== */
 .home-container {
-  font-family: 'Dongle', sans-serif;
+  font-family: var(--font-primary);
   overflow-x: hidden;
   overflow-y: hidden; 
   background: linear-gradient(40deg, rgb(108, 0, 162), rgb(0, 17, 82));
@@ -18,12 +17,9 @@
   --color2: 221, 74, 255;
   --color3: 100, 220, 255;
   --color4: 200, 50, 50;
-  --color-interactive: 140, 100, 255;
+
   --circle-size: 80%;
   --blending: hard-light;
-  --card-blur: 8px;
-  --shadow-opacity: 0.15;
-  --border-opacity: 0.2;
 }
 
 /* ==================== */
@@ -138,28 +134,32 @@
 
 /* Hero Section Text */
 .home-container .hero-section p {
-  font-size: var(--size-5xl);
+  font-size: var(--size-3xl);
   margin-bottom: 2rem;
   margin-top: 4%;
+  font-weight: 200;
 }
 
 .home-container .hero-section .header-line {
   display: block;
-  margin-top: -0.6em;
-  font-size: var(--size-6xl);
+  margin-top: -0.2em;
+  font-size: var(--size-7xl);
+  font-weight: 800;
 }
 
 .home-container .hero-section .glue-line {
   display: block;
-  margin-top: -0.6em;
-  font-size: var(--size-5xl);
+  margin-top: -0.2em;
+  font-size: var(--size-4xl);
+  font-weight: 200;
 }
 
 .home-container .hero-section .tagline {
   display: inline-block;
-  font-size: var(--size-5xl);
+  font-size: var(--size-6xl);
   margin-bottom: 0rem;
-  margin-top: 6rem;
+  margin-top: 10rem;
+  font-weight: 500;
 }
 
 .home-container .cta-primary,
@@ -169,7 +169,8 @@
   padding: 0.8rem 2.2rem;
   border-radius: 3rem;
   text-decoration: none;
-  font-size: var(--size-base); /* Updated to match Button Text (Large) */
+  font-size: var(--size-base); 
+  font-weight: 200;
   transition: all 0.3s ease;
 }
 

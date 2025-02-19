@@ -1,17 +1,26 @@
 import React, { FormEvent, useState } from "react";
+import { supabase } from "../../../lib/supabaseClient";
 import "./Waitlist.css";
 import { Check } from 'lucide-react';
 
 export const Waitlist = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const nameInput = form.querySelector("#name") as HTMLInputElement;
     const emailInput = form.querySelector("#email") as HTMLInputElement;
     const reasonInput = form.querySelector("#reason") as HTMLTextAreaElement;
-    
-    const emailValue = emailInput.value;
+    const faxInput = form.querySelector("#fax") as HTMLInputElement;
+
+    if (faxInput.value) {
+      alert("Bot detected! Submission blocked.");
+      return;
+    }
+
+    const emailValue = emailInput.value.toLowerCase();
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!emailRegex.test(emailValue)) {
@@ -27,10 +36,10 @@ export const Waitlist = () => {
       "subscriber": isChecked
     };
 
-    console.log(formData);
-
     const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     button.disabled = true;
+
+    // First state - Processing animation
     button.innerHTML = `
       <div class="flex items-center justify-center gap-3">
         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -40,19 +49,57 @@ export const Waitlist = () => {
         <span class="animate-pulse typography-p !leading-base">Processing your request...</span>
       </div>
     `;
-    setTimeout(() => {
-      button.innerHTML = `
-        <div class="flex items-center justify-center gap-3">
-          <span class="animate-bounce">🎉</span>
-          <span class="typography-p !leading-base">Welcome to GLUE!</span>
-          <svg class="w-5 h-5 text-white animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      `;
-      button.className =
-        "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
-    }, 2000);
+
+    try {
+      const { error } = await supabase
+        .from('waitlist')
+        .insert({
+          name: formData.Name,
+          email: formData.Email,
+          Form: formData.Form,
+          subscriber: formData.subscriber,
+          created_at: new Date().toISOString()
+        });
+
+      if (error) throw error;
+      
+      // Success state
+      setTimeout(() => {
+        button.innerHTML = `
+          <div class="flex items-center justify-center gap-3">
+            <span>🎉</span>
+            <span class="typography-p !leading-base">Welcome to GLUE!</span>
+            <svg class="w-5 h-5 text-white animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        `;
+        button.className = "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
+      }, 2000);
+
+    } catch (error: any) {
+      console.error('Submission error:', error);
+      
+      if (error.code === 'PGRST409' || error.code === '23505') {
+        // Already registered case - show the message for 2.5 seconds then revert
+        setTimeout(() => {
+          button.innerHTML = `Already Registered`;
+          button.className = "relative mt-2 sm:mt-3 bg-yellow-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500";
+          
+          // Revert to initial state after 2.5 seconds
+          setTimeout(() => {
+            button.innerHTML = `Start Your Journey`;
+            button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+            button.disabled = false;
+          }, 2500);
+        }, 2000);
+      } else {
+        // Other errors - revert to initial state
+        button.innerHTML = `Start Your Journey`;
+        button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+        button.disabled = false;
+      }
+    }
   };
 
   const handleEmailInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -71,22 +118,19 @@ export const Waitlist = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <h2 className="typography-h2 text-[#d6ddf7] !leading-tight">
-                Streamline Your AI Development with GLUE
+              Turn Your AI Vision into Reality with GLUE
               </h2>
               <p className="typography-p text-[#d6ddf4] !leading-relaxed">
-                Be part of the movement shaping the future of AI-powered
-                solutions. Our open-source platform empowers innovators who are
-                already transforming how we build and connect intelligent
-                systems.
+              Be part of the open-source movement turning AI concepts into real-world solutions. Our platform empowers you to focus on what matters most - creating innovations that solve meaningful problems.
               </p>
               <div className="space-y-6">
                 <div className="space-y-3">
                   <h3 className="typography-h3 text-[#f7d794]">
-                    Get Early Access:
+                  Begin Your AI Transformation:
                   </h3>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
-                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#f7d794] transition-colors duration-300"
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -98,14 +142,13 @@ export const Waitlist = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
-                      Unlock premium features and contribute to our open
-                      ecosystem.
+                    <span className="typography-p font-light !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
+                    Join a thriving open ecosystem and help shape the future of AI integration with your contributions.
                     </span>
                   </div>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
-                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#f7d794] transition-colors duration-300"
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -117,19 +160,36 @@ export const Waitlist = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
-                      Create, integrate, and deploy with ease using GLUE's
-                      intuitive tools.
+                    <span className="typography-p font-light !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
+                    Turn complex AI workflows into seamless solutions using GLUE's intuitive tools
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
+                    <svg
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="typography-p font-light !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
+                    Move from concept to deployment faster than ever before
                     </span>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h3 className="typography-h3 text-[#f7d794]">
-                    Enjoy Priority Support:
+                  Succeed With Dedicated Support:
                   </h3>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
-                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#f7d794] transition-colors duration-300"
+                      className="w-5 h-5 mt-1 text-[#b0eac4] group-hover:text-[#b0eac4] transition-colors duration-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
@@ -141,9 +201,8 @@ export const Waitlist = () => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                    <span className="typography-p !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
-                      Our team is here to ensure your success with dedicated
-                      assistance every step of the way.
+                    <span className="typography-p font-light !leading-relaxed text-[#d6ddf4] group-hover:text-[#b0eac4] transition-colors duration-300">
+                    Our team partners with you at every step, ensuring your innovations make a real-world impact.
                     </span>
                   </div>
                 </div>
@@ -188,7 +247,7 @@ export const Waitlist = () => {
                       id="name"
                       name="name"
                       required
-                      className="border border-[#F8F9FA]/30 rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -204,10 +263,15 @@ export const Waitlist = () => {
                       id="email"
                       name="email"
                       required
-                      className="border border-[#F8F9FA]/30 rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Enter your email address"
                       onInput={handleEmailInput}
                     />
+                  </div>
+                  {/* Honeypot field - hidden from users */}
+                  <div style={{ position: 'absolute', left: '-9999px' }}>
+                    <label htmlFor="fax">Fax Number</label>
+                    <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="flex items-center gap-2">
@@ -217,23 +281,67 @@ export const Waitlist = () => {
                       >
                         What sparks your interest?
                       </label>
-                      <span className="text-lg !leading-lg text-[#F8F9FA]/60">
-                        (optional)
+                      <span className="text-base !leading-base text-[#F8F9FA]/60">
+                        optional
                       </span>
                     </div>
                     <textarea
                       id="reason"
                       name="reason"
                       rows={3}
-                      className="border border-[#F8F9FA]/30 rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-lg !leading-lg"
+                      maxLength={200}
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Tell us what excites you about our revolutionary platform..."
                     />
+                  </div>
+                  <div className="flex items-center gap-3 mt-1 sm:mt-2">
+                    <div className="relative inline-flex items-center">
+                      <div
+                        onClick={() => setIsChecked(!isChecked)}
+                        className={`
+                          w-5 h-5
+                          border-2
+                          rounded-md
+                          transition-all
+                          duration-200
+                          flex
+                          items-center
+                          justify-center
+                          cursor
+                          -pointer
+                          ${isChecked ? 'bg-[#FBF8F1] border-[#FBF8F1]' : 'border-[#F8F9FA]/30 bg-transparent hover:border-[#FBF8F1]/60'}
+                          focus:ring-2
+                          focus:ring-[#FBF8F1]/20
+                        `}
+                        role="checkbox"
+                        aria-checked={isChecked}
+                        tabIndex={0}
+                      >
+                        <Check
+                          aria-hidden="true"
+                          className={`
+                            w-3 h-3
+                            text-gray-800
+                            transition-all
+                            duration-200
+                            ${isChecked ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
+                          `}
+                        />
+                      </div>
+                    </div>
+                    <label
+                      htmlFor="newsletter"
+                      style={{ marginTop: '-2px', marginBottom: '-2px' }}
+                      className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
+                    >
+                      Keep me updated with exclusive launch details
+                    </label>
                   </div>
                   <button
                     type="submit"
                     className="relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span>Secure Your Early Access</span>
+                    <span>Start Your Journey</span>
                     <svg
                       className="absolute -right-2 -top-2 w-7 sm:w-8 h-7 sm:h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rotate-0 group-hover:rotate-12"
                       viewBox="0 0 32 32"
@@ -245,53 +353,7 @@ export const Waitlist = () => {
                       />
                     </svg>
                   </button>
-                  <div className="flex items-center gap-3 mt-1 sm:mt-2">
-                    <div className="relative inline-flex items-center">
-                      <div 
-                        onClick={() => setIsChecked(!isChecked)}
-                        className={`
-                          w-5 h-5 
-                          border-2 
-                          rounded-md 
-                          transition-all 
-                          duration-200 
-                          flex 
-                          items-center 
-                          justify-center
-                          cursor
-                          -pointer
-                          ${isChecked ? 'bg-[#FBF8F1] border-[#FBF8F1]' : 'border-[#F8F9FA]/30 bg-transparent hover:border-[#FBF8F1]/60'}
-                          focus:ring-2 
-                          focus:ring-[#FBF8F1]/20
-                        `}
-                        role="checkbox"
-                        aria-checked={isChecked}
-                        tabIndex={0}
-                      >
-                        <Check 
-                          aria-hidden="true"
-                          className={`
-                            w-3 h-3 
-                            text-gray-800 
-                            transition-all 
-                            duration-200
-                            ${isChecked ? 'opacity-100 scale-100' : 'opacity-0 scale-0'}
-                          `}
-                        />
-                      </div>
-                    </div>
-                    <label
-                      htmlFor="newsletter"
-                      className="text-lg !leading-lg text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
-                    >
-                      Keep me updated with exclusive launch details
-                    </label>
-                  </div>
                 </form>
-                <p className="text-xs !leading-xs text-center mt-8 sm:mt-10 text-[#F8F9FA]/60 px-2 sm:px-0 relative z-20">
-                  By joining our waitlist, you agree to our Terms of Service and
-                  Privacy Policy
-                </p>
               </div>
             </div>
           </div>

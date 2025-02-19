@@ -27,7 +27,7 @@ const CELL_SIZE = 16; // Spatial partitioning cell size
 
 const InteractiveBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const staticCacheRef = useRef<HTMLCanvasElement>(); // Cache for static circles
+  const staticCacheRef = useRef<HTMLCanvasElement>(null);
   const gridRef = useRef<GridCell[][]>([]); // Spatial partitioning grid
   const frameRef = useRef<number>(0);
   const pointsRef = useRef<Point[]>([]);

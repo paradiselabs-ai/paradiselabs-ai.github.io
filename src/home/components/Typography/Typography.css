@@ -1,77 +1,105 @@
 /* Typography.css - Centralized font size management */
-:root {
-  /* Base font family */
-  --font-primary: 'Dongle', sans-serif;
-  
-    /* Font weight definitions */
-    --font-light: 300;
-    --font-regular: 400;
-    --font-bold: 700;
-  
-    /* Font sizes - Mobile first */
-    --size-xs: 17px;
-    --size-sm: 19px;
-    --size-base: 21px;
-    --size-lg: 23px;
-    --size-xl: 25px;
-    --size-2xl: 30px;
-    --size-3xl: 33px;
-    --size-4xl: 42px;
-    --size-5xl: 47px;
-    --size-6xl: 57px;
-    --size-7xl: 67px;
-    --size-8xl: 87px;
-  
-    /* Line heights - Maintain better readability with larger sizes having tighter leading */
-    --leading-xs: 1.6;
-    --leading-sm: 1.6;
-    --leading-base: 1.5;
-    --leading-lg: 1.4;
-    --leading-xl: 1.4;
-    --leading-2xl: 1.3;
-    --leading-3xl: 1.3;
-    --leading-4xl: 1.25;
-    --leading-5xl: 1.2;
-    --leading-6xl: 1.15;
-    --leading-7xl: 1.1;
-    --leading-8xl: 1.05;
-  }
-  
-  /* Tablet breakpoint */
-  @media (min-width: 640px) {
-    :root {
-      --size-base: 22px;
-      --size-lg: 25px;
-      --size-xl: 28px;
-      --size-2xl: 32px;
-      --size-3xl: 38px;
-      --size-4xl: 46px;
-      --size-5xl: 58px;
-      --size-6xl: 70px;
-      --size-7xl: 86px;
-      --size-8xl: 110px;
-    }
-  }
-  
-  /* Desktop breakpoint */
-  @media (min-width: 1024px) {
-    :root {
-      --size-base: 16px;  /* Keep base size consistent */
-      --size-lg: 20px;
-      --size-xl: 24px;
-      --size-2xl: 28px;
-      --size-3xl: 36px;
-      --size-4xl: 44px;
-      --size-5xl: 56px;
-      --size-6xl: 68px;
-      --size-7xl: 84px;
-      --size-8xl: 112px;
-    }
-  }
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-/* Font family application */
-.typography-root {
+:root {
+  /* Font scaling factors - default to 1 */
+  --primary-font-scale: 0.65;
+  --body-font-scale: 0.65;
+  
+  /* Base font families */
+  --font-primary: "Merriweather Sans", serif;
+  --font-body:  "Open Sans", serif;
+  /* Font weight definitions */
+  --font-light: 300;
+  --font-regular: 400;
+  --font-bold: 700;
+  
+  /* Font sizes - Mobile first */
+  --size-xs: calc(17px * var(--body-font-scale));
+  --size-sm: calc(19px * var(--body-font-scale));
+  --size-base: calc(21px * var(--body-font-scale));
+  --size-lg: calc(23px * var(--body-font-scale));
+  --size-xl: calc(25px * var(--body-font-scale));
+  --size-2xl: calc(30px * var(--primary-font-scale));
+  --size-3xl: calc(33px * var(--primary-font-scale));
+  --size-4xl: calc(42px * var(--primary-font-scale));
+  --size-5xl: calc(47px * var(--primary-font-scale));
+  --size-6xl: calc(57px * var(--primary-font-scale));
+  --size-7xl: calc(67px * var(--primary-font-scale));
+  --size-8xl: calc(87px * var(--primary-font-scale));
+  
+  /* Line heights - Maintain better readability with larger sizes having tighter leading */
+  --leading-xs: 1.6;
+  --leading-sm: 1.6;
+  --leading-base: 1.5;
+  --leading-lg: 1.4;
+  --leading-xl: 1.4;
+  --leading-2xl: 1.3;
+  --leading-3xl: 1.3;
+  --leading-4xl: 1.25;
+  --leading-5xl: 1.2;
+  --leading-6xl: 1.15;
+  --leading-7xl: 1.1;
+  --leading-8xl: 1.05;
+}
+
+/* Tablet breakpoint */
+@media (min-width: 640px) {
+  :root {
+    --size-base: calc(22px * var(--body-font-scale));
+    --size-lg: calc(25px * var(--body-font-scale));
+    --size-xl: calc(28px * var(--body-font-scale));
+    --size-2xl: calc(32px * var(--primary-font-scale));
+    --size-3xl: calc(38px * var(--primary-font-scale));
+    --size-4xl: calc(46px * var(--primary-font-scale));
+    --size-5xl: calc(58px * var(--primary-font-scale));
+    --size-6xl: calc(70px * var(--primary-font-scale));
+    --size-7xl: calc(86px * var(--primary-font-scale));
+    --size-8xl: calc(110px * var(--primary-font-scale));
+  }
+}
+
+/* Desktop breakpoint */
+@media (min-width: 1024px) {
+  :root {
+    --size-base: calc(16px * var(--body-font-scale));
+    --size-lg: calc(20px * var(--body-font-scale));
+    --size-xl: calc(24px * var(--body-font-scale));
+    --size-2xl: calc(28px * var(--primary-font-scale));
+    --size-3xl: calc(36px * var(--primary-font-scale));
+    --size-4xl: calc(44px * var(--primary-font-scale));
+    --size-5xl: calc(56px * var(--primary-font-scale));
+    --size-6xl: calc(68px * var(--primary-font-scale));
+    --size-7xl: calc(84px * var(--primary-font-scale));
+    --size-8xl: calc(112px * var(--primary-font-scale));
+  }
+}
+
+/* Headers use primary font */
+.typography-h1, 
+.typography-h2, 
+.typography-h3,
+.typography-h4,
+.text-4xl,
+.text-5xl,
+.text-6xl,
+.text-7xl,
+.text-8xl {
   font-family: var(--font-primary);
+}
+
+/* Body text uses body font */
+.typography-p,
+.typography-body,
+.text-xs,
+.text-sm,
+.text-base,
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl {
+  font-family: var(--font-body);
 }
 
 /* Semantic Typography Classes */
@@ -98,7 +126,7 @@
 .typography-h3 {
   font-size: var(--size-2xl);
   line-height: var(--leading-2xl);
-  font-weight: var(--font-semibold);
+  font-weight: var(--font-bold);
 }
 
 @media (min-width: 1024px) {

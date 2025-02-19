@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
-
 .header-component .header {
     position: fixed;
     top: 0;
@@ -57,9 +55,9 @@
 
 /* Left-aligned GLUE text */
 .header-component .logo {
-    font-size: 36px;
-    font-weight: bold; 
-    font-family: 'Dongle';
+    font-size: var(--size-4xl);
+    font-family: var(--font-primary);
+    font-weight: 500;
     color: #d6ddf4;
     text-decoration: none;
     z-index: 1;
@@ -84,33 +82,36 @@
 
 /* Right-aligned Docs link */
 .header-component .nav-links {
+    font-family: var(--font-primary);
     display: flex;
     gap: 2.5rem;
     z-index: 1;
 }
-
 .header-component .nav-links a {
-    font-size: 36px;
-    color: #d6ddf4;
-    /* Higher contrast color */
-    text-decoration: none;
-    font-weight: 500;
-    /* Medium weight for better readability */
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    padding: 0.5rem 0;
-    /* Increased clickable area */
+  font-size: var(--size-3xl);
+  color: #d6ddf4;
+  text-decoration: none; /* Remove default underline */
+  font-weight: 500;
+  position: relative; /* Required for positioning the pseudo-element */
+  padding: 0.5rem 0;
 }
 
+/* Create a custom underline using ::after */
 .header-component .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: currentColor;
-    transition: width 0.3s ease;
+  content: ''; /* Creates the pseudo-element */
+  position: absolute;
+  left: 0;
+  bottom: 20px; /* Positions the underline at the bottom of the text */
+  width: 100%; /* Full width of the text */
+  height: 1px; /* Adjust this value to change the underline thickness */
+  background-color: #d6ddf4; /* Matches the text color */
+  transform: scaleX(0); /* Initially hidden */
+  transition: transform 0.1s ease; /* Smooth transition */
+}
+
+/* Show the underline on hover */
+.header-component .nav-links a:hover::after {
+  transform: scaleX(1); /* Fully visible */
 }
 
 

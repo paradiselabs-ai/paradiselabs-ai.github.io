@@ -10,11 +10,10 @@ export const WhyChooseGlue = () => {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12 lg:mb-24 animate-fade-in">
               <div className="max-w-xl lg:mt-20 space-y-12">
                 <h2 className="typography-root typography-h2 !leading-tight font-bold text-[#d6ddf4] lg:tracking-tight lg:whitespace-nowrap animate-slide-up">
-                  Why Choose GLUE?
+                  Build Better AI Solutions
                 </h2>
                 <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70 max-w-2xl animate-slide-up delay-100">
-                  GLUE transforms how AI teams collaborate and build solutions.
-                  It's intuitive, scalable, and built for real-world workflows.
+                Stop wrestling with AI complexity. Watch your teams naturally collaborate, innovate, and deliver solutions that drive real business growth - all while working the way they already do.
                 </p>
               </div>
             </div>
@@ -29,11 +28,11 @@ export const WhyChooseGlue = () => {
                         groups
                       </span>
                       <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
-                        Team-Based Structure
+                        Natural Team Collaboration
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
-                      Mimics real-life organizations<span style={{ display: 'block' }}></span>models work together naturally within teams.
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
+                    Built-in structures that mirror how your best teams naturally work, turning collaboration barriers into accelerators for success.
                     </p>
                   </div>
                 </div>
@@ -50,12 +49,11 @@ export const WhyChooseGlue = () => {
                         code
                       </span>
                       <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
-                        Expression Language
+                        Simplified Development
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
-                      Write applications quickly using an easy-to-understand
-                      declarative syntax.
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
+                      Build solutions faster with our intuitive expression language that reduces complexity while maintaining the power you need for AI development.
                     </p>
                   </div>
                 </div>
@@ -74,12 +72,11 @@ export const WhyChooseGlue = () => {
                         build
                       </span>
                       <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
-                        Custom Tool Creation
+                        Customizable Tools
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
-                      Build tools tailored to your needs, with seamless
-                      integration into workflows.
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
+                      Create and adapt tools that fit your specific needs, with seamless integration into your existing development and deployment workflows.
                     </p>
                   </div>
                 </div>
@@ -96,12 +93,11 @@ export const WhyChooseGlue = () => {
                         share
                       </span>
                       <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#d6ddf4]">
-                        Persistent Knowledge Sharing
+                        Knowledge Retention
                       </h3>
                     </div>
-                    <p className="typography-root typography-p !leading-relaxed text-[#d6ddf4]/70">
-                      Share insights across teams effortlessly with adhesive
-                      bindings.
+                    <p className="typography-root font-light typography-p !leading-relaxed text-[#d6ddf4]/70">
+                      Preserve and grow organizational intelligence across teams with built-in knowledge management that makes collaboration and onboarding more effective.
                     </p>
                   </div>
                 </div>

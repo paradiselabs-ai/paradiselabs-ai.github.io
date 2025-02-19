@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Link } from 'react-router-dom';
 import './HomepageHeader.css';
 
-const SCROLL_THRESHOLD = 100;
-const TOUCH_SAFETY_ZONE = 5;
+// Constants for better maintainability and performance
+const TRANSITION_DURATION = 300;
 
-const LogoSVG = () => (
+const LogoSVG = memo(() => (
   <svg 
     xmlns="http://www.w3.org/2000/svg" 
     x="0px"
@@ -19,74 +19,46 @@ const LogoSVG = () => (
 <path fill="#d6ddf4" opacity="1.000000" stroke="none" d="M354.654602,641.999878 C354.649658,630.670837 354.623260,619.841675 354.650330,609.012695 C354.663391,603.792664 357.178802,600.746216 362.311432,599.607117 C366.315887,598.718506 370.375153,599.095093 373.993774,600.683899 C378.659546,602.732544 381.329987,606.167786 381.304749,611.958801 C381.138031,650.276001 381.272247,688.594604 381.313782,726.912720  C381.322479,734.946838 381.332611,734.941467 389.611877,734.939148  C395.276276,734.937561 400.944122,734.832214 406.604126,734.993835  C412.940643,735.174805 414.715240,738.308594 411.587738,743.757080  C398.412720,766.709412 385.196136,789.637939 371.951843,812.550354  C369.749664,816.360046 368.431305,816.294067 366.094604,812.369263  C352.468719,789.482727 338.858948,766.586487 325.262634,743.682373  C322.097382,738.350342 323.916992,735.078308 330.192200,734.965881  C336.354431,734.855408 342.527771,734.755066 348.681854,735.004944  C353.181091,735.187622 354.770050,733.630493 354.740723,728.965820  C354.559387,700.144836 354.652924,671.322083 354.654602,641.999878 z"/>
 <path fill="#d6ddf4" opacity="1.000000" stroke="none" d="M502.287354,617.338867 C504.355774,614.383240 505.206665,610.994507 508.498077,608.460632 C511.702820,613.509949 514.748657,618.168579 517.654419,622.912964 C527.222595,638.535156 536.743408,654.186340 546.268921,669.834595 C546.873413,670.827637 547.393127,671.876038 547.900269,672.923828 C549.838318,676.927856 549.092651,678.546509 544.678772,678.757263 C539.527832,679.003052 534.350037,678.885376 529.191101,678.711304 C522.938904,678.500427 522.241089,679.021667 522.239563,685.240662 	C522.230469,723.236633 522.239502,761.232666 522.245605,799.228638 	C522.247009,807.680542 520.976074,809.553711 513.195190,812.504089 C503.740417,816.089294 491.801544,808.156738 491.791199,798.188049 C491.752655,761.025269 491.769653,723.862488 491.755371,686.699707  C491.752472,679.090881 490.742584,678.237854 483.022614,678.579773  C479.875549,678.719116 476.712128,678.529541 473.557495,678.441528  C471.807190,678.392700 469.858551,679.092285 468.625458,677.023132  C467.204651,674.639099 468.700806,672.933411 469.812134,671.091797  C477.467682,658.405762 485.108093,645.710632 492.762909,633.024231  C495.860046,627.891296 498.981018,622.772827 502.287354,617.338867 z"/>
   </svg>
-);
+));
+
 
 const HomepageHeader: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [headerVisible, setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
+    
+    // Show header when scrolling up, hide when scrolling down
+    setHeaderVisible(currentScrollY <= lastScrollY);
+    setLastScrollY(currentScrollY);
+  }, [lastScrollY]);
 
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
-
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      // Always show header at page top
-      if (currentScrollY < SCROLL_THRESHOLD) {
-        setHeaderVisible(true);
-        setIsScrolled(false);
-        return;
-      }
-
-      // Determine scroll direction with touch safety buffer
-      const isScrollingDown = currentScrollY > lastScrollY + TOUCH_SAFETY_ZONE;
-      const isScrollingUp = currentScrollY < lastScrollY - TOUCH_SAFETY_ZONE;
-
-      // Update header visibility
-      if (isScrollingDown && headerVisible) {
-        setHeaderVisible(false);
-        setIsScrolled(true);
-      } else if (isScrollingUp && !headerVisible) {
-        setHeaderVisible(true);
-        setIsScrolled(true);
-      }
-
-      // Update last scroll position with debounce
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setLastScrollY(currentScrollY);
-      }, 100);
-    };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timeoutId);
     };
-  }, [lastScrollY, headerVisible]);
+  }, [handleScroll]);
 
   return (
     <div className="header-component">
       <header 
-        className={`header ${isScrolled ? 'scrolled' : ''}`}
+        className={`header ${window.scrollY > 0 ? 'scrolled' : ''}`}
         style={{
-          transform: headerVisible 
-            ? 'translateY(0)' 
-            : 'translateY(-100%)',
-          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+          transform: headerVisible ? 'translateY(0)' : 'translateY(-100%)',
+          transition: `transform ${TRANSITION_DURATION}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+          willChange: 'transform'
         }}
       >
         <div className="header-content">
-          {/* Left-aligned GLUE text */}
           <Link to="/" className="logo">GLUE</Link>
           
-          {/* Centered SVG logo */}
           <Link to="/" className="logo-svg-link">
             <LogoSVG />
           </Link>
           
-          {/* Right-aligned Docs link */}
           <nav className="nav-links">
             <Link to="/docs">Docs</Link>
           </nav>
@@ -96,4 +68,4 @@ const HomepageHeader: React.FC = () => {
   );
 };
 
-export default HomepageHeader;
+export default memo(HomepageHeader);
