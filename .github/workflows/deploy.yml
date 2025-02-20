@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  BASE_URL: '/GLUE/'
+  BASE_URL: '/Glue/'  # Changed to match the deployed URL case
 
 permissions:
   contents: read
@@ -27,9 +27,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: |
-          # Use npm install instead of npm ci to handle optional dependencies
-          npm install
+        run: npm install  # Kept as npm install to handle optional deps
 
       - name: Build project
         run: npm run build
