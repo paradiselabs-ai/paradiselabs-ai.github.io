@@ -31,6 +31,9 @@ jobs:
 
       - name: Build project
         run: BASE_URL=/GLUE/ npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
 
       - name: Verify build output
         run: |
@@ -49,7 +52,7 @@ jobs:
           echo "  X-XSS-Protection: 1; mode=block" >> dist/_headers
           echo "  Referrer-Policy: strict-origin-when-cross-origin" >> dist/_headers
           echo "  Permissions-Policy: camera=(), microphone=(), geolocation=()" >> dist/_headers
-          echo "/*.ico" >> dist/_headers
+          echo "/*.ico" > dist/_headers
           echo "  Content-Type: image/x-icon" >> dist/_headers
           echo "/*.png" >> dist/_headers
           echo "  Content-Type: image/png" >> dist/_headers
