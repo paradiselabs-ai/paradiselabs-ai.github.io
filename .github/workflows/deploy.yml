@@ -27,7 +27,9 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          # Use npm install instead of npm ci to handle optional dependencies
+          npm install
 
       - name: Build project
         run: npm run build
