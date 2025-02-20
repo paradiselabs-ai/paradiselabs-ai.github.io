@@ -47,6 +47,8 @@ jobs:
           cat dist/index.html
           echo "Asset paths:"
           cat dist/index.html | grep "assets" || echo "No assets found"
+          echo "Checking for Material Symbols:"
+          cat dist/index.html | grep "Material+Symbols" || echo "Material Symbols not found"
 
       - name: Create _headers file
         run: |
