@@ -225,7 +225,7 @@ video {
   --tw-numeric-fraction: ;
   --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
+  --tw-ring-offset-color: #F8F5FF;
   --tw-ring-color: rgba(59, 130, 246, 0.5);
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
@@ -278,7 +278,7 @@ video {
   --tw-numeric-fraction: ;
   --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
-  --tw-ring-offset-color: #fff;
+  --tw-ring-offset-color: #F8F5FF;
   --tw-ring-color: rgba(59, 130, 246, 0.5);
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
@@ -384,7 +384,7 @@ video {
   border-width: 1px;
 }
 #GlueKeyFeatures .border-white\/10 {
-  border-color: hsla(0, 0%, 100%, 0.1);
+  border-color: rgba(245, 242, 255, 0.1);
 }
 #GlueKeyFeatures .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -393,32 +393,32 @@ video {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
 #GlueKeyFeatures .from-white {
-  --tw-gradient-from: #fff var(--tw-gradient-from-position);
-  --tw-gradient-to: hsla(0, 0%, 100%, 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: #F8F5FF var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(245, 242, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #GlueKeyFeatures .from-white\/5 {
-  --tw-gradient-from: hsla(0, 0%, 100%, 0.05) var(--tw-gradient-from-position);
-  --tw-gradient-to: hsla(0, 0%, 100%, 0) var(--tw-gradient-to-position);
+  --tw-gradient-from: rgba(245, 242, 255, 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(245, 242, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #GlueKeyFeatures .via-white\/\[0\.02\] {
-  --tw-gradient-to: hsla(0, 0%, 100%, 0) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgba(245, 242, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from),
-    hsla(0, 0%, 100%, 0.02) var(--tw-gradient-via-position),
+    rgba(245, 242, 255, 0.02) var(--tw-gradient-via-position),
     var(--tw-gradient-to);
 }
 #GlueKeyFeatures .to-transparent {
   --tw-gradient-to: transparent var(--tw-gradient-to-position);
 }
 #GlueKeyFeatures .to-white\/70 {
-  --tw-gradient-to: hsla(0, 0%, 100%, 0.7) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgba(245, 242, 255, 0.7) var(--tw-gradient-to-position);
 }
 #GlueKeyFeatures .to-white\/80 {
-  --tw-gradient-to: hsla(0, 0%, 100%, 0.8) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgba(245, 242, 255, 0.8) var(--tw-gradient-to-position);
 }
 #GlueKeyFeatures .to-white\/90 {
-  --tw-gradient-to: hsla(0, 0%, 100%, 0.9) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgba(245, 242, 255, 0.9) var(--tw-gradient-to-position);
 }
 #GlueKeyFeatures .bg-clip-text {
   background-clip: text;
@@ -504,7 +504,7 @@ video {
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 #GlueKeyFeatures .hover\:shadow-white\/5:hover {
-  --tw-shadow-color: hsla(0, 0%, 100%, 0.05);
+  --tw-shadow-color: rgba(245, 242, 255, 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }
 @media (min-width: 640px) {

@@ -58,7 +58,7 @@
     font-size: var(--size-4xl);
     font-family: var(--font-primary);
     font-weight: 500;
-    color: #d6ddf4;
+    color: #F0F0FF;
     text-decoration: none;
     z-index: 1;
 }
@@ -77,7 +77,7 @@
 .header-component .logo-svg-link svg {
     width: 100%;
     height: 100%;
-    color: #d6ddf4;
+    color: #F0F0FF;
 }
 
 /* Right-aligned Docs link */
@@ -89,11 +89,11 @@
 }
 .header-component .nav-links a {
   font-size: var(--size-3xl);
-  color: #d6ddf4;
+  color: #F0F0FF;
   text-decoration: none; /* Remove default underline */
   font-weight: 500;
   position: relative; /* Required for positioning the pseudo-element */
-  padding: 0.5rem 0;
+  padding: 0.9rem 0;
 }
 
 /* Create a custom underline using ::after */
@@ -104,9 +104,9 @@
   bottom: 20px; /* Positions the underline at the bottom of the text */
   width: 100%; /* Full width of the text */
   height: 1px; /* Adjust this value to change the underline thickness */
-  background-color: #d6ddf4; /* Matches the text color */
+  background-color: #F0F0FF; /* Matches the text color */
   transform: scaleX(0); /* Initially hidden */
-  transition: transform 0.1s ease; /* Smooth transition */
+  transition: transform 0.05s ease; /* Smooth transition */
 }
 
 /* Show the underline on hover */

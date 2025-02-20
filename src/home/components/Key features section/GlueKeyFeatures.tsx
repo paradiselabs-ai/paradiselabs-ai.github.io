@@ -12,7 +12,7 @@ export const GlueKeyFeatures = () => {
               Key Benefits
               </h2>
               <p className="typography-p !leading-relaxed opacity-80 max-w-3xl">
-              Transform your AI vision into tangible results with capabilities designed to accelerate your team's success.
+              Transform your AI vision into results with capabilities designed for success.
               </p>
             </div>
 
@@ -21,37 +21,37 @@ export const GlueKeyFeatures = () => {
                 {
                   icon: "extension",
                   title: "Adhesive Bindings",
-                  desc: "Share knowledge across AI agents. Team-wide (GLUE), project-based (VELCRO), or quick exchanges (TAPE).",
+                  desc: "Link AI agents with team-wide (GLUE), project-specific (VELCRO), or instant (TAPE) knowledge sharing.",
                   delay: "0",
                 },
                 {
                   icon: "diversity_3",
                   title: "Flexible Teams",
-                  desc: "Let your AI agents work their way, with the perfect balance of flexibility and structure to deliver results faster.",
+                  desc: "Balance autonomy and structure as AI agents deliver results your way.",
                   delay: "200",
                 },
                 {
                   icon: "build",
                   title: "Built-In Tools",
-                  desc: "Start with essential tools like web search, code interpreters, file handlers; expand as you grow.",
+                  desc: "Launch with web search, code interpreters, and more—expand as needed.",
                   delay: "400",
                 },
                 {
                   icon: "architecture",
                   title: "Scalable Architecture",
-                  desc: "Focus on innovation while your infrastructure grows seamlessly with your success, without missing a beat.",
+                  desc: "Focus on innovation as AI agents seamlessly scale your infrastructure.",
                   delay: "200",
                 },
                 {
                   icon: "code",
                   title: "Expression Language",
-                  desc: "Build faster and smarter with an intuitive language that lets you focus on creating, not configuring.",
+                  desc: "Build faster with an intuitive language that lets you create, not configure.",
                   delay: "400",
                 },
                 {
                   icon: "settings",
                   title: "System Controls",
-                  desc: "Keep your AI agents secure and efficient with complete visibility and control over your AI resources.",
+                  desc: "Keep AI agents secure and efficient with full resource oversight.",
                   delay: "600",
                 },
               ].map((item, index) => (

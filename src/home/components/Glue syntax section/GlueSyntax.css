@@ -423,8 +423,8 @@ video {
 #GlueSyntax .border {
   border-width: 1px;
 }
-#GlueSyntax .border-\[\#abb2bf\]\/20 {
-  border-color: rgba(171, 178, 191, 0.2);
+#GlueSyntax .border-\[\#F4F2FF\]\/20 {
+  border-color: rgba(244, 242, 255, 0.2);
 }
 #GlueSyntax .bg-\[\#282c34\] {
   --tw-bg-opacity: 1;
@@ -488,17 +488,15 @@ video {
 #GlueSyntax .font-semibold {
   font-weight: 600;
 }
-#GlueSyntax .text-\[\#61dafb\] {
-  --tw-text-opacity: 1;
-  color: rgb(97 218 251 / var(--tw-text-opacity));
+#GlueSyntax .text-\[\#34B8CE\] {
+  color: rgb(52, 184, 206);
 }
 #GlueSyntax .text-\[\#98c379\] {
   --tw-text-opacity: 1;
   color: rgb(152 195 121 / var(--tw-text-opacity));
 }
-#GlueSyntax .text-\[\#abb2bf\] {
-  --tw-text-opacity: 1;
-  color: rgb(171 178 191 / var(--tw-text-opacity));
+#GlueSyntax .text-\[\#F4F2FF\] {
+  color: rgb(244, 242, 255);
 }
 #GlueSyntax .backdrop-blur-xl {
   --tw-backdrop-blur: blur(24px);
@@ -530,9 +528,8 @@ video {
 #GlueSyntax .hover\:bg-\[\#282c34\]\/30:hover {
   background-color: rgba(40, 44, 52, 0.3);
 }
-#GlueSyntax .hover\:text-\[\#61dafb\]:hover {
-  --tw-text-opacity: 1;
-  color: rgb(97 218 251 / var(--tw-text-opacity));
+#GlueSyntax .hover\:text-\[\#34B8CE\]:hover {
+  color: rgb(52, 184, 206);
 }
 #GlueSyntax :is(.group:hover .group-hover\:scale-110) {
   --tw-scale-x: 1.1;
