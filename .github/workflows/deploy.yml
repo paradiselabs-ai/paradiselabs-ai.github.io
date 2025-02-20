@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  BASE_URL: '/Glue/'  # Changed to match the deployed URL case
+  BASE_URL: '/Glue/'  # Keep lowercase to match requests
 
 permissions:
   contents: read
@@ -27,10 +27,15 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install  # Kept as npm install to handle optional deps
+        run: npm install
 
       - name: Build project
-        run: npm run build
+        run: BASE_URL=/Glue/ npm run build  # Explicitly set BASE_URL
+
+      - name: Verify build output  # Added to debug
+        run: |
+          ls -R dist
+          cat dist/index.html | grep "assets"  # Check asset paths
 
       - name: Create _headers file
         run: |
