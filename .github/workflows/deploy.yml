@@ -29,6 +29,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          BASE_URL: '/GLUE/'
 
       - name: Create _headers file
         run: |
