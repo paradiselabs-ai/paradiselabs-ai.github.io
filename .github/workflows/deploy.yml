@@ -38,7 +38,11 @@ jobs:
           echo "  X-XSS-Protection: 1; mode=block" >> dist/_headers
           echo "  Referrer-Policy: strict-origin-when-cross-origin" >> dist/_headers
           echo "  Permissions-Policy: camera=(), microphone=(), geolocation=()" >> dist/_headers
-          echo "  Content-Type: text/javascript" >> dist/_headers
+          echo "/*.js" >> dist/_headers
+          echo "  Content-Type: application/javascript" >> dist/_headers
+
+      - name: Create .nojekyll file
+        run: touch dist/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

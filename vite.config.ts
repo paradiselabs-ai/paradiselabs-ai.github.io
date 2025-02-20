@@ -24,7 +24,9 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: '',
     emptyOutDir: true,
-    assetsInlineLimit: 4096
+    assetsInlineLimit: 4096,
+    target: 'esnext',
+    cssCodeSplit: true
   },
   publicDir: 'public'
 })
