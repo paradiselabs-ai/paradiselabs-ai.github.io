@@ -18,6 +18,7 @@ jobs:
   ci:
     name: Continuous Integration
     runs-on: ubuntu-latest
+    environment: github-pages  # Add this to access environment vars
     steps:
       - uses: actions/checkout@v4
       
@@ -32,11 +33,11 @@ jobs:
       - name: Build project
         run: |
           echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL"
-          echo "VITE_SUPABASE_ANON_KEY=$VITE_SUPABASE_ANON_KEY"
+          echo "VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY:0:10}..."  # Mask part of the key
           BASE_URL=/GLUE/ npm run build
         env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       - name: Verify build output
         run: |
