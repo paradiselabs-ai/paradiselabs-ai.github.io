@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /workflow
+
+Sitemap: https://glue-ui.com/sitemap.xml
