@@ -13,3 +13,21 @@
 
 /*.css
   Content-Type: text/css
+
+/*.ico
+  Content-Type: image/x-icon
+
+/*.png
+  Content-Type: image/png
+
+/*.svg
+  Content-Type: image/svg+xml
+
+/*.woff
+  Content-Type: font/woff
+
+/*.woff2
+  Content-Type: font/woff2
+
+/*.ttf
+  Content-Type: font/ttf
