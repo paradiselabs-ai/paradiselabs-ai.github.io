@@ -1,7 +1,23 @@
 import React from "react";
 import "./WhyChooseGlue.css";
 
+// Utility function to ensure Material Symbols font is loaded (runs only once)
+const ensureMaterialSymbols = () => {
+  if (!document.querySelector('link[href*="Material+Symbols+Outlined"]')) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined";
+    document.head.appendChild(link);
+    console.log("Material Symbols font added dynamically"); // Debug log
+  }
+};
+
 export const WhyChooseGlue = () => {
+  // Use useEffect inside the component to run on mount
+  React.useEffect(() => {
+    ensureMaterialSymbols();
+  }, []); // Empty dependency array means it runs once on mount
+
   return (
     <div id="WhyChooseGlue">
       <div className="w-full flex justify-center">

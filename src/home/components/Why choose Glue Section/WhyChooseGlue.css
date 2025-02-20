@@ -303,6 +303,19 @@ video {
   --tw-contain-paint: ;
   --tw-contain-style: ;
 }
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit; /* Allows text-5xl, etc., to work */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
 #WhyChooseGlue .absolute {
   position: absolute;
 }
