@@ -36,8 +36,10 @@ jobs:
         run: |
           echo "Listing dist contents:"
           ls -R dist
-          echo "Checking asset paths in index.html:"
-          cat dist/index.html | grep "assets" || echo "No assets found in index.html"
+          echo "Checking index.html:"
+          cat dist/index.html
+          echo "Asset paths:"
+          cat dist/index.html | grep "assets" || echo "No assets found"
 
       - name: Create _headers file
         run: |
