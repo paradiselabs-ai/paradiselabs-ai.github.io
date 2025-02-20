@@ -16,7 +16,7 @@ html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   font-family: 
-    'Material Symbols Outlined';
+    'Material Symbols Outlined' !important;
   font-feature-settings: normal;
   font-variation-settings: normal;
   -moz-tab-size: 4;
@@ -541,7 +541,7 @@ video {
 }
 #Waitlist .font-title {
     font-family:
-    'Material Symbols Outlined';
+    'Material Symbols Outlined' !important;
 }
 #Waitlist .text-2xl {
   font-size: 24px;
