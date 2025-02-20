@@ -13,7 +13,7 @@ export const MCP = () => {
                   <h1 className="typography-h2 !leading-tight font-bold mb-6 md:mb-8">
                     Streamline Development with MCP
                   </h1>
-                  <p className="typography-p !leading-relaxed text-[#d6ddf4]/80">
+                  <p className="typography-p !leading-relaxed text-[#F8F6FF]/80">
                     Turn technical complexity into business agility. GLUE's MCP infrastructure ensures your AI solutions work together seamlessly, letting you focus on driving business value instead of managing connections.
                   </p>
                 </div>
@@ -23,14 +23,14 @@ export const MCP = () => {
                     data-aos="fade-up"
                     data-aos-delay="90"
                   >
-                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#d6ddf4]">
+                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">
                       bolt
                     </span>
                     <div className="text-center md:text-left">
-                      <h3 className="typography-h3 !leading-tight font-bold text-[#d6ddf4] mb-3">
+                      <h3 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">
                         Instant Server Creation
                       </h3>
-                      <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70">
+                      <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
                         Quickly create MCP servers and tools just by asking your GLUE agent.
                       </p>
                     </div>
@@ -41,14 +41,14 @@ export const MCP = () => {
                     data-aos="fade-up"
                     data-aos-delay="110"
                   >
-                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#d6ddf4]">
+                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">
                       integration_instructions
                     </span>
                     <div className="text-center md:text-left">
-                      <h3 className="typography-h3 !leading-tight font-bold text-[#d6ddf4] mb-3">
+                      <h3 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">
                         Easy Integration
                       </h3>
-                      <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70">
+                      <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
                         Easily connect any existing MCP server to your apps.
                       </p>
                     </div>
@@ -59,14 +59,14 @@ export const MCP = () => {
                     data-aos="fade-up"
                     data-aos-delay="120"
                   >
-                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#d6ddf4]">
+                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">
                       travel_explore
                     </span>
                     <div className="text-center md:text-left">
-                      <h3 className="typography-h3 !leading-tight font-bold text-[#d6ddf4] mb-3">
+                      <h3 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">
                         Server Discovery
                       </h3>
-                      <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70">
+                      <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
                         Auto-updated MCP server list—find existing MCP servers easily right in the terminal.
                       </p>
                     </div>
@@ -77,14 +77,14 @@ export const MCP = () => {
                     data-aos="fade-up"
                     data-aos-delay="130"
                   >
-                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#d6ddf4]">
+                    <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">
                       code
                     </span>
                     <div className="text-center md:text-left">
-                      <h3 className="typography-h3 !leading-tight font-bold text-[#d6ddf4] mb-3">
+                      <h3 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">
                         Seamless Development
                       </h3>
-                      <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70">
+                      <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
                         Build and deploy MCP tools with minimal setup.
                       </p>
                     </div>
@@ -92,14 +92,14 @@ export const MCP = () => {
                 </div>
 
                 <div 
-                  className="backdrop-blur-xl bg-[#d6ddf4]/5 border border-[#d6ddf4]/10 rounded-2xl p-8 md:p-10 mt-12 md:mt-16"
+                  className="backdrop-blur-xl bg-[#F8F6FF]/5 border border-[#F8F6FF]/10 rounded-2xl p-8 md:p-10 mt-12 md:mt-16"
                   data-aos="fade-up"
                   data-aos-delay="140"
                 >
-                  <h4 className="typography-h3 !leading-tight font-bold text-[#d6ddf4] mb-4 md:mb-6 text-center md:text-left">
+                  <h4 className="typography-h3 !leading-tight font-bold text-[#FCF9FA] mb-4 md:mb-6 text-center md:text-left">
                     What This Means for You
                   </h4>
-                  <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/70 text-center md:text-left">
+                  <p className="typography-p font-light !leading-relaxed text-[#FCF9FA]/70 text-center md:text-left">
                     Accelerate your development process with instant access to MCP servers and tools. GLUE's integration with MCP empowers you to build and connect AI solutions faster than ever.
                   </p>
                 </div>
@@ -109,13 +109,13 @@ export const MCP = () => {
             <div className="w-full md:w-1/2 lg:w-5/12 relative overflow-hidden p-12 md:p-16 pr-24 md:pr-32 lg:pr-48">
               <div className="relative h-full flex items-center justify-center">
                 <div className="relative z-10" data-aos="fade-left">
-                  <span className="material-symbols-outlined text-5xl md:text-7xl lg:text-9xl text-[#d6ddf4] mb-8 md:mb-10 block text-center">
+                  <span className="material-symbols-outlined text-5xl md:text-7xl lg:text-9xl text-[#F8F6FF] mb-8 md:mb-10 block text-center">
                     hub
                   </span>
-                  <h2 className="typography-h2 !leading-tight font-bold text-[#d6ddf4] mb-6 md:mb-8 text-center">
+                  <h2 className="typography-h2 !leading-tight font-bold text-[#F8F6FF] mb-6 md:mb-8 text-center">
                     Multi-Client Protocol
                   </h2>
-                  <p className="typography-p font-light !leading-relaxed text-[#d6ddf4]/80 text-center">
+                  <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/80 text-center">
                     Connect, integrate, and scale your AI solutions with our advanced MCP infrastructure.
                   </p>
                 </div>

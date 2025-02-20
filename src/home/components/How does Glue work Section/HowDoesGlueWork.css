@@ -400,8 +400,8 @@ video {
 #HowDoesGlueWork .rounded-full {
   border-radius: 9999px;
 }
-#HowDoesGlueWork .bg-\[\#d6ddf4\]\/10 {
-  background-color: rgba(214, 221, 244, 0.1);
+#HowDoesGlueWork .bg-\[\#F5F2FF\]\/10 {
+  background-color: rgba(245, 242, 255, 0.1);
 }
 #HowDoesGlueWork .p-4 {
   padding: 16px;
@@ -446,12 +446,11 @@ video {
 #HowDoesGlueWork .leading-tight {
   line-height: 1.25;
 }
-#HowDoesGlueWork .text-\[\#d6ddf4\] {
-  --tw-text-opacity: 1;
-  color: rgb(214 221 244 / var(--tw-text-opacity));
+#HowDoesGlueWork .text-\[\#F5F2FF\] {
+  color: rgb(245, 242, 255);
 }
-#HowDoesGlueWork .text-\[\#d6ddf4\]\/70 {
-  color: rgba(214, 221, 244, 0.7);
+#HowDoesGlueWork .text-\[\#F5F2FF\]\/70 {
+  color: rgba(245, 242, 255, 0.7);
 }
 #HowDoesGlueWork .blur-3xl {
   --tw-blur: blur(64px);

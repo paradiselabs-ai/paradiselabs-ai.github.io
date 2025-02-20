@@ -407,21 +407,20 @@ video {
 #WhatMakesGlueInnovative .border {
   border-width: 1px;
 }
-#WhatMakesGlueInnovative .border-\[\#d6ddf4\]\/20 {
-  border-color: rgba(214, 221, 244, 0.2);
+#WhatMakesGlueInnovative .border-\[\#F8F8FF\]\/20 {
+  border-color: rgba(248, 248, 255, 0.2);
 }
-#WhatMakesGlueInnovative .border-\[\#d6ddf4\]\/30 {
-  border-color: rgba(214, 221, 244, 0.3);
+#WhatMakesGlueInnovative .border-\[\#F8F8FF\]\/30 {
+  border-color: rgba(248, 248, 255, 0.3);
 }
-#WhatMakesGlueInnovative .bg-\[\#d6ddf4\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(214 221 244 / var(--tw-bg-opacity));
+#WhatMakesGlueInnovative .bg-\[\#F8F8FF\] {
+  background-color: rgb(248, 248, 255);
 }
-#WhatMakesGlueInnovative .bg-\[\#d6ddf4\]\/10 {
-  background-color: rgba(214, 221, 244, 0.1);
+#WhatMakesGlueInnovative .bg-\[\#F8F8FF\]\/10 {
+  background-color: rgba(248, 248, 255, 0.1);
 }
-#WhatMakesGlueInnovative .bg-\[\#d6ddf4\]\/5 {
-  background-color: rgba(214, 221, 244, 0.05);
+#WhatMakesGlueInnovative .bg-\[\#F8F8FF\]\/5 {
+  background-color: rgba(248, 248, 255, 0.05);
 }
 #WhatMakesGlueInnovative .bg-green-500 {
   --tw-bg-opacity: 1;
@@ -433,14 +432,14 @@ video {
 #WhatMakesGlueInnovative .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
-#WhatMakesGlueInnovative .from-\[\#d6ddf4\] {
-  --tw-gradient-from: #d6ddf4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
+#WhatMakesGlueInnovative .from-\[\#F8F8FF\] {
+  --tw-gradient-from: #F8F8FF var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(248, 248, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-#WhatMakesGlueInnovative .from-\[\#d6ddf4\]\/10 {
-  --tw-gradient-from: rgba(214, 221, 244, 0.1) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
+#WhatMakesGlueInnovative .from-\[\#F8F8FF\]\/10 {
+  --tw-gradient-from: rgba(248, 248, 255, 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(248, 248, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #WhatMakesGlueInnovative .to-\[\#a8b2e0\] {
@@ -530,15 +529,14 @@ video {
 #WhatMakesGlueInnovative .tracking-tight {
   letter-spacing: -0.025em;
 }
-#WhatMakesGlueInnovative .text-\[\#d6ddf4\] {
-  --tw-text-opacity: 1;
-  color: rgb(214 221 244 / var(--tw-text-opacity));
+#WhatMakesGlueInnovative .text-\[\#F8F8FF\] {
+  color: rgb(248, 248, 255);
 }
-#WhatMakesGlueInnovative .text-\[\#d6ddf4\]\/70 {
-  color: rgba(214, 221, 244, 0.7);
+#WhatMakesGlueInnovative .text-\[\#F8F8FF\]\/70 {
+  color: rgba(248, 248, 255, 0.7);
 }
-#WhatMakesGlueInnovative .text-\[\#d6ddf4\]\/90 {
-  color: rgba(214, 221, 244, 0.9);
+#WhatMakesGlueInnovative .text-\[\#F8F8FF\]\/90 {
+  color: rgba(248, 248, 255, 0.9);
 }
 #WhatMakesGlueInnovative .text-red-500 {
   --tw-text-opacity: 1;
@@ -555,8 +553,8 @@ video {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-#WhatMakesGlueInnovative .placeholder-\[\#d6ddf4\]\/50::placeholder {
-  color: rgba(214, 221, 244, 0.5);
+#WhatMakesGlueInnovative .placeholder-\[\#F8F8FF\]\/50::placeholder {
+  color: rgba(248, 248, 255, 0.5);
 }
 #WhatMakesGlueInnovative .opacity-75 {
   opacity: 0.75;
@@ -624,15 +622,15 @@ video {
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#WhatMakesGlueInnovative .hover\:border-\[\#d6ddf4\]\/30:hover {
-  border-color: rgba(214, 221, 244, 0.3);
+#WhatMakesGlueInnovative .hover\:border-\[\#F8F8FF\]\/30:hover {
+  border-color: rgba(248, 248, 255, 0.3);
 }
-#WhatMakesGlueInnovative .hover\:bg-\[\#d6ddf4\]\/10:hover {
-  background-color: rgba(214, 221, 244, 0.1);
+#WhatMakesGlueInnovative .hover\:bg-\[\#F8F8FF\]\/10:hover {
+  background-color: rgba(248, 248, 255, 0.1);
 }
-#WhatMakesGlueInnovative .hover\:from-\[\#d6ddf4\]\/15:hover {
-  --tw-gradient-from: rgba(214, 221, 244, 0.1) var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
+#WhatMakesGlueInnovative .hover\:from-\[\#F8F8FF\]\/15:hover {
+  --tw-gradient-from: rgba(248, 248, 255, 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(248, 248, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #WhatMakesGlueInnovative .hover\:to-\[\#a8b2e0\]\/15:hover {
@@ -656,8 +654,8 @@ video {
   --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
     0 4px 6px -4px var(--tw-shadow-color);
 }
-#WhatMakesGlueInnovative .focus\:border-\[\#d6ddf4\]\/50:focus {
-  border-color: rgba(214, 221, 244, 0.5);
+#WhatMakesGlueInnovative .focus\:border-\[\#F8F8FF\]\/50:focus {
+  border-color: rgba(248, 248, 255, 0.5);
 }
 #WhatMakesGlueInnovative .focus\:outline-none:focus {
   outline: 2px solid transparent;

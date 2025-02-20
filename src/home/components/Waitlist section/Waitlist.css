@@ -497,9 +497,9 @@ video {
   --tw-gradient-to: hsla(42, 56%, 96%, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
-#Waitlist .from-\[\#d6ddf4\] {
-  --tw-gradient-from: #d6ddf4 var(--tw-gradient-from-position);
-  --tw-gradient-to: rgba(214, 221, 244, 0) var(--tw-gradient-to-position);
+#Waitlist .from-\[\#F6F2FF\] {
+  --tw-gradient-from: #F6F2FF var(--tw-gradient-from-position);
+  --tw-gradient-to: rgba(246, 242, 255, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #Waitlist .to-\[\#F8F9FA\] {
@@ -511,8 +511,8 @@ video {
 #Waitlist .to-\[\#FBF8F1\] {
   --tw-gradient-to: #fbf8f1 var(--tw-gradient-to-position);
 }
-#Waitlist .to-\[\#b0eac4\] {
-  --tw-gradient-to: #b0eac4 var(--tw-gradient-to-position);
+#Waitlist .to-\[\#2ECC8E\] {
+  --tw-gradient-to: #2ECC8E var(--tw-gradient-to-position);
 }
 #Waitlist .bg-clip-text {
   background-clip: text;
@@ -610,21 +610,18 @@ video {
   --tw-text-opacity: 1;
   color: rgb(251 248 241 / var(--tw-text-opacity));
 }
-#Waitlist .text-\[\#b0eac4\] {
-  --tw-text-opacity: 1;
-  color: rgb(176 234 196 / var(--tw-text-opacity));
+#Waitlist .text-\[\#2ECC8E\] {
+  color: #2ECC8E;
 }
-#Waitlist .text-\[\#d6ddf4\] {
-  --tw-text-opacity: 1;
-  color: rgb(214 221 244 / var(--tw-text-opacity));
+#Waitlist .text-\[\#F6F2FF\] {
+  color: rgb(246, 242, 255 );
 }
 #Waitlist .text-\[\#d6ddf7\] {
   --tw-text-opacity: 1;
   color: rgb(224 231 254 / var(--tw-text-opacity));
 }
-#Waitlist .text-\[\#f7d794\] {
-  --tw-text-opacity: 1;
-  color: rgb(247 215 148 / var(--tw-text-opacity));
+#Waitlist .text-\[\#FF9E7D\] {
+  color: hsl(51, 100%, 65%);
 }
 #Waitlist .text-gray-800 {
   --tw-text-opacity: 1;
@@ -779,14 +776,7 @@ video {
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-#Waitlist :is(.group:hover .group-hover\:text-\[\#b0eac4\]) {
-  --tw-text-opacity: 1;
-  color: rgb(176 234 196 / var(--tw-text-opacity));
-}
-#Waitlist :is(.group:hover .group-hover\:text-\[\#f7d794\]) {
-  --tw-text-opacity: 1;
-  color: rgb(247 215 148 / var(--tw-text-opacity));
-}
+
 #Waitlist :is(.group:hover .group-hover\:opacity-100) {
   opacity: 1;
 }
