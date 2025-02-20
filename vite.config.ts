@@ -5,28 +5,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   base: '/GLUE/',
-  server: {
-    headers: {
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Resource-Policy': 'same-origin'
-    }
-  },
   build: {
-    sourcemap: false,
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom']
         }
       }
-    },
-    outDir: 'dist',
-    assetsDir: '',
-    emptyOutDir: true,
-    assetsInlineLimit: 4096,
-    target: 'esnext',
-    cssCodeSplit: true
+    }
   },
   publicDir: 'public'
 })
