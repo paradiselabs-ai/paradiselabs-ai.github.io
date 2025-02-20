@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/Glue/',
+  base: '/GLUE/',
   server: {
     headers: {
       'Cross-Origin-Embedder-Policy': 'require-corp',
@@ -22,9 +22,9 @@ export default defineConfig({
       }
     },
     outDir: 'dist',
-    assetsDir: 'assets',
+    assetsDir: '',
     emptyOutDir: true,
-    assetsInlineLimit: 0
+    assetsInlineLimit: 4096
   },
   publicDir: 'public'
 })
