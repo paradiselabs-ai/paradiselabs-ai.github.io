@@ -21,6 +21,10 @@ export default defineConfig({
         }
       }
     },
-    outDir: 'dist'
-  }
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    assetsInlineLimit: 0
+  },
+  publicDir: 'public'
 })
