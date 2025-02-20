@@ -18,7 +18,10 @@ jobs:
   ci:
     name: Continuous Integration
     runs-on: ubuntu-latest
-    environment: github-pages  # Keep this
+    environment: github-pages
+    env:
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
     steps:
       - uses: actions/checkout@v4
       
@@ -35,9 +38,6 @@ jobs:
           echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL"
           echo "VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY:0:10}..."
           BASE_URL=/GLUE/ npm run build
-        env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
 
       - name: Verify build output
         run: |
