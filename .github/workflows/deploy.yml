@@ -29,6 +29,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Optional: Verify dependencies are installed
+      - name: Check ESLint plugins
+        run: npm install eslint-plugin-react-hooks --save-dev || echo "Installing missing plugin"
+
       - name: Lint code
         run: npm run lint
 
