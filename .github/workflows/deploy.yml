@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  BASE_URL: '/GLUE/'  # Changed to uppercase to match deployment
+  BASE_URL: '/GLUE/'
 
 permissions:
   contents: read
@@ -30,12 +30,14 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: BASE_URL=/GLUE/ npm run build  # Explicitly set to uppercase
+        run: BASE_URL=/GLUE/ npm run build
 
-      - name: Verify build output  # Debug step
+      - name: Verify build output
         run: |
+          echo "Listing dist contents:"
           ls -R dist
-          cat dist/index.html | grep "assets"  # Check asset paths
+          echo "Checking asset paths in index.html:"
+          cat dist/index.html | grep "assets" || echo "No assets found in index.html"
 
       - name: Create _headers file
         run: |
