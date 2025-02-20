@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 env:
-  BASE_URL: '/Glue/'  # Keep lowercase to match requests
+  BASE_URL: '/GLUE/'  # Changed to uppercase to match deployment
 
 permissions:
   contents: read
@@ -30,9 +30,9 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: BASE_URL=/Glue/ npm run build  # Explicitly set BASE_URL
+        run: BASE_URL=/GLUE/ npm run build  # Explicitly set to uppercase
 
-      - name: Verify build output  # Added to debug
+      - name: Verify build output  # Debug step
         run: |
           ls -R dist
           cat dist/index.html | grep "assets"  # Check asset paths
