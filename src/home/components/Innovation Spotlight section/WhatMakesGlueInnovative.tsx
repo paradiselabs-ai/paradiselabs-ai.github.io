@@ -116,7 +116,7 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos-delay="200"
               >
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#F8F8FF]/5 p-8 rounded-lg shadow-lg hover:bg-[#F8F8FF]/10 transition-all duration-300">
-                  Turn your vision into reality with a framework that adapts to how your teams naturally work, scaling effortlessly as you grow.
+                  Turn your vision into reality with a framework that adapts to team up like humans, boosting productivity and reshaping work
                 </p>
               </div>
             </div>
@@ -135,7 +135,7 @@ export const WhatMakesGlueInnovative = () => {
                     Human-Like Collaboration
                   </h2>
                   <p className="typography-p font-light !leading-relaxed text-[#F8F8FF]/90">
-                    Watch your AI teams work together as naturally as your best human teams.
+                  See AI agents collaborate as naturally as your top teams.
                   </p>
                 </div>
               </div>
@@ -154,7 +154,7 @@ export const WhatMakesGlueInnovative = () => {
                     Dynamic Resource Management
                   </h2>
                   <p className="typography-p font-light !leading-relaxed text-[#F8F8FF]/90">
-                    Get the right resources exactly when and where you need them.
+                  Get your AI the resources it needs, when it needs them.
                   </p>
                 </div>
               </div>
@@ -171,7 +171,7 @@ export const WhatMakesGlueInnovative = () => {
                 <div className="space-y-3">
                   <h2 className="typography-h3 font-semibold !leading-tight">Future-Proof Design</h2>
                   <p className="typography-p font-light !leading-relaxed text-[#F8F8FF]/90">
-                    Scale confidently knowing your foundation grows with you.
+                  Scale with confidence—your foundation grows as you do.
                   </p>
                 </div>
               </div>
@@ -190,7 +190,7 @@ export const WhatMakesGlueInnovative = () => {
                     Community-Driven Growth
                   </h2>
                   <p className="typography-p font-light !leading-relaxed text-[#F8F8FF]/90">
-                    Accelerate your success with insights from leading innovators.
+                  Tap into innovators' insights to accelerate success.
                   </p>
                 </div>
               </div>
@@ -225,18 +225,18 @@ export const WhatMakesGlueInnovative = () => {
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#F8F8FF]/10 text-center transition-colors duration-200">
                       <div className="typography-p font-medium">Future Potential</div>
-                      <div className="typography-p font-light text-[#F8F8FF]/90">Unlimited</div>
-                      <div className="typography-p font-light text-[#F8F8FF]/90">Constrained</div>
+                      <div className="typography-p font-light text-[#F8F8FF]/90">Unlimited potential</div>
+                      <div className="typography-p font-light text-[#F8F8FF]/90">Constrained growth</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#F8F8FF]/10 transition-colors text-center duration-200">
                       <div className="typography-p font-medium">Setup Time</div>
-                      <div className="typography-p font-light text-[#F8F8FF]/90">Minutes</div>
-                      <div className="typography-p font-light text-[#F8F8FF]/90">Weeks</div>
+                      <div className="typography-p font-light text-[#F8F8FF]/90">Setup in minutes</div>
+                      <div className="typography-p font-light text-[#F8F8FF]/90">Setup in weeks</div>
                     </div>
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#F8F8FF]/10 transition-colors text-center duration-200">
                       <div className="typography-p font-medium">Time to Value</div>
-                      <div className="typography-p font-light text-[#F8F8FF]/90">Immediate</div>
-                      <div className="typography-p font-light text-[#F8F8FF]/90">Months</div>
+                      <div className="typography-p font-light text-[#F8F8FF]/90">Immediate value</div>
+                      <div className="typography-p font-light text-[#F8F8FF]/90">Months to value</div>
                     </div>
                   </div>
                 </div>

@@ -22,7 +22,7 @@ export const GlueSyntax = () => {
                   data-aos-delay="200"
                   className="typography-p !leading-relaxed text-[#F4F2FF] text-center mb-8 sm:mb-12"
                 >
-                  Transform complex AI concepts into business results with a syntax so intuitive, that developers can focus on innovation instead of implementation details
+                  Transform complex AI concepts into results with a syntax so simple, developers can focus on creating, not configuring.
                 </p>
 
                 <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">

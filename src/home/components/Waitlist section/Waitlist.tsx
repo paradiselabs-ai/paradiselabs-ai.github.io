@@ -121,12 +121,12 @@ export const Waitlist = () => {
               Turn Your AI Vision into Reality with GLUE
               </h2>
               <p className="typography-p text-[#F6F2FF] !leading-relaxed">
-              Be part of the open-source movement turning AI concepts into real-world solutions. Our platform empowers you to focus on what matters most - creating innovations that solve meaningful problems.
+              Join an open-source wave making AI practical. GLUE’s AI agents outshine SaaS with adaptability and automation for all.
               </p>
               <div className="space-y-6">
                 <div className="space-y-3">
                   <h3 className="typography-h3 text-[#FF9E7D]">
-                  Begin Your AI Transformation:
+                  Master AI Integration.
                   </h3>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
@@ -143,49 +143,33 @@ export const Waitlist = () => {
                       />
                     </svg>
                     <span className="typography-p font-light !leading-relaxed text-[#F6F2FF] group-hover:text-[#2ECC8E] transition-colors duration-300">
-                    Join a thriving open ecosystem and help shape the future of AI integration with your contributions.
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
-                    <svg
-                      className="w-5 h-5 mt-1 text-[#2ECC8E] group-hover:text-[#2ECC8E] transition-colors duration-300"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        d="M5 13l4 4L19 7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="typography-p font-light !leading-relaxed text-[#F6F2FF] group-hover:text-[#2ECC8E] transition-colors duration-300">
-                    Turn complex AI workflows into seamless solutions using GLUE's intuitive tools
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
-                    <svg
-                      className="w-5 h-5 mt-1 text-[#2ECC8E] group-hover:text-[#2ECC8E] transition-colors duration-300"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path
-                        d="M5 13l4 4L19 7"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span className="typography-p font-light !leading-relaxed text-[#F6F2FF] group-hover:text-[#2ECC8E] transition-colors duration-300">
-                    Move from concept to deployment faster than ever before
+                    Infuse your ideas to AI agent workflows.
                     </span>
                   </div>
                 </div>
-                <div className="space-y-3">
+                <h3 className="typography-h3 text-[#FF9E7D]">
+                Transform Workflows Now.
+                  </h3>
+                  <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
+                    <svg
+                      className="w-5 h-5 mt-1 text-[#2ECC8E] group-hover:text-[#2ECC8E] transition-colors duration-300"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path
+                        d="M5 13l4 4L19 7"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span className="typography-p font-light !leading-relaxed text-[#F6F2FF] group-hover:text-[#2ECC8E] transition-colors duration-300">
+                    Automate and optimize with simple syntax.
+                    </span>
+                  </div>
                   <h3 className="typography-h3 text-[#FF9E7D]">
-                  Succeed With Dedicated Support:
+                  Accelerate from Idea to Launch.
                   </h3>
                   <div className="flex items-start gap-3 group hover:-translate-y-0.5 transition-transform duration-300">
                     <svg
@@ -202,10 +186,9 @@ export const Waitlist = () => {
                       />
                     </svg>
                     <span className="typography-p font-light !leading-relaxed text-[#F6F2FF] group-hover:text-[#2ECC8E] transition-colors duration-300">
-                    Our team partners with you at every step, ensuring your innovations make a real-world impact.
+                    Supercharge with GLUE’s open-source platform.
                     </span>
                   </div>
-                </div>
               </div>
             </div>
 
@@ -228,7 +211,7 @@ export const Waitlist = () => {
                     </svg>
                   </h1>
                   <p className="typography-p !leading-relaxed text-[#F8F9FA] text-center px-2 sm:px-0">
-                  Be among the first to experience GLUE by joining our exclusive early-access program.
+                  Be first to explore GLUE’s open-source platform for AI agents and agentic workflows.
                   </p>
                 </header>
                 <form

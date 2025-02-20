@@ -13,7 +13,7 @@ export const WhyChooseGlue = () => {
                   Build Better AI Solutions
                 </h2>
                 <p className="typography-root typography-p !leading-relaxed text-[#F2F0FF]/70 max-w-2xl animate-slide-up delay-100">
-                Stop wrestling with AI complexity. Watch your teams naturally collaborate, innovate, and deliver solutions that drive real business growth - all while working the way they already do.
+                Say goodbye to AI complexity. GLUE empowers your teams to collaborate, innovate, and deploy AI agents for business—automate tasks, boost growth, or elevate support—all within your existing workflows.
                 </p>
               </div>
             </div>
@@ -32,7 +32,7 @@ export const WhyChooseGlue = () => {
                       </h3>
                     </div>
                     <p className="typography-root font-light typography-p !leading-relaxed text-[#F2F0FF]/70">
-                    Built-in structures that mirror how your best teams naturally work, turning collaboration barriers into accelerators for success.
+                    Mirror how your best teams work, turning barriers into accelerators for success.
                     </p>
                   </div>
                 </div>
@@ -53,7 +53,7 @@ export const WhyChooseGlue = () => {
                       </h3>
                     </div>
                     <p className="typography-root font-light typography-p !leading-relaxed text-[#F2F0FF]/70">
-                      Build solutions faster with our intuitive expression language that reduces complexity while maintaining the power you need for AI development.
+                    Create AI agents quickly with an intuitive language that cuts complexity without losing power.
                     </p>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ export const WhyChooseGlue = () => {
                       </h3>
                     </div>
                     <p className="typography-root font-light typography-p !leading-relaxed text-[#F2F0FF]/70">
-                      Create and adapt tools that fit your specific needs, with seamless integration into your existing development and deployment workflows.
+                      Create and tailor tools for your needs, integrating seamlessly into your development workflows.
                     </p>
                   </div>
                 </div>
@@ -97,7 +97,7 @@ export const WhyChooseGlue = () => {
                       </h3>
                     </div>
                     <p className="typography-root font-light typography-p !leading-relaxed text-[#F2F0FF]/70">
-                      Preserve and grow organizational intelligence across teams with built-in knowledge management that makes collaboration and onboarding more effective.
+                    Preserve and grow intelligence across teams with built-in knowledge management.
                     </p>
                   </div>
                 </div>

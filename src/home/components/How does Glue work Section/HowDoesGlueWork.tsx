@@ -16,9 +16,7 @@ export const HowDoesGlueWork = () => {
                   Transform Your AI Initiative into Results
                 </h2>
                 <p className="typography-p !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-2xl">
-                  Turn the complexity of AI systems into your competitive advantage. 
-                  Watch your teams innovate faster, make better decisions, and build 
-                  lasting organizational knowledge.
+                Turn AI challenges into your edge. Watch your teams innovate faster, make sharper decisions, and build lasting knowledge with AI agents that work smarter.
                 </p>
               </div>
               <div className="w-full lg:w-2/5 relative animate-float p-6 md:p-12">
@@ -44,8 +42,7 @@ export const HowDoesGlueWork = () => {
                       Accelerate Innovation Together
                     </h3>
                     <p className="typography-p font-light !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-xl md:ml-auto">
-                      Break down the barriers that slow your progress. When teams collaborate 
-                      seamlessly, you'll see projects that once took months complete in weeks.
+                    Shatter barriers slowing progress. You'll complete projects in weeks, not months, with seamless AI-human teamwork.
                     </p>
                   </div>
                   <div className="hidden md:block md:w-1/2" />
@@ -64,8 +61,8 @@ export const HowDoesGlueWork = () => {
                       Turn Insights into Action
                     </h3>
                     <p className="typography-p font-light !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-xl">
-                      Watch information flow effortlessly between teams, empowering faster, 
-                      more informed decisions that keep you ahead of market changes.
+                      Watch information flow between AI agents, empowering faster, 
+                      sharper decisions that keep you ahead of market changes.
                     </p>
                   </div>
                 </div>
@@ -82,8 +79,7 @@ export const HowDoesGlueWork = () => {
                       Build Lasting Knowledge
                     </h3>
                     <p className="typography-p font-light !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-xl md:ml-auto">
-                      Transform every project into a foundation for future success. Your teams' 
-                      expertise becomes your organization's lasting competitive advantage.
+                    Transform every project into a foundation for future success, making each a stepping stone with AI preserving your expertise.
                     </p>
                   </div>
                   <div className="hidden md:block md:w-1/2" />

@@ -14,7 +14,7 @@ export const MCP = () => {
                     Streamline Development with MCP
                   </h1>
                   <p className="typography-p !leading-relaxed text-[#F8F6FF]/80">
-                    Turn technical complexity into business agility. GLUE's MCP infrastructure ensures your AI solutions work together seamlessly, letting you focus on driving business value instead of managing connections.
+                    Turn technical complexity into business agility. GLUE's MCP infrastructure powers AI agents to work together flawlessly, freeing you to focus on value.
                   </p>
                 </div>
                 <div className="space-y-6 md:space-y-8">
@@ -31,7 +31,7 @@ export const MCP = () => {
                         Instant Server Creation
                       </h3>
                       <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
-                        Quickly create MCP servers and tools just by asking your GLUE agent.
+                      Easily launch MCP servers and tools by simply asking your GLUE AI agent.
                       </p>
                     </div>
                   </div>
@@ -49,7 +49,7 @@ export const MCP = () => {
                         Easy Integration
                       </h3>
                       <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
-                        Easily connect any existing MCP server to your apps.
+                      Seamlessly integrate any MCP server into your apps with just a click.
                       </p>
                     </div>
                   </div>
@@ -67,7 +67,7 @@ export const MCP = () => {
                         Server Discovery
                       </h3>
                       <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
-                        Auto-updated MCP server list—find existing MCP servers easily right in the terminal.
+                      Take full control of MCP servers—right from your terminal.
                       </p>
                     </div>
                   </div>
@@ -85,7 +85,7 @@ export const MCP = () => {
                         Seamless Development
                       </h3>
                       <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">
-                        Build and deploy MCP tools with minimal setup.
+                      Build and deploy MCP tools faster, with less setup.
                       </p>
                     </div>
                   </div>
