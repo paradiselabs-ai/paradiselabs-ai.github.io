@@ -6,37 +6,25 @@
 .home-container {
   font-family: var(--font-primary);
   overflow-x: hidden;
-  overflow-y: hidden; 
+  overflow-y: hidden;
   background: linear-gradient(
-    135deg,
-    #0B1437 0%,    /* Deep space blue - represents depth and foundation */
-    #142967 45%,   /* Rich navy - symbolizes trust and stability */
-    #1E3B8A 100%   /* Royal blue - suggests innovation and growth */
+  135deg,
+  #001152 0%,    /* Kept as requested */
+  #00ddeb 100%   /* New vibrant cyan for contrast and energy */
 );
   width: 100%;
   color: #F0F0FF;
-  position: relative; 
-  --color1: 18, 113, 255;
-  --color2: 221, 74, 255;
-  --color3: 100, 220, 255;
-  --color4: 200, 50, 50;
-
+  position: relative;
+  --color1: 18, 113, 255;   
+  --color2: 221, 74, 255;   
+  --color3: 100, 220, 255;  
+  --color4: 200, 50, 50;    
   --circle-size: 80%;
-  --blending:normal;
+  --blending: normal;
   background-size: 200% 200%;
-  animation: gradientFlow 15s ease infinite;
 }
-@keyframes gradientFlow {
-  0% {
-      background-position: 0% 50%;
-  }
-  50% {
-      background-position: 100% 50%;
-  }
-  100% {
-      background-position: 0% 50%;
-  }
-}
+
+
 
 /* ==================== */
 /* Layout Containers */
