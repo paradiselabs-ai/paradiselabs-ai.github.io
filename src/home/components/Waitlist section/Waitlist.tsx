@@ -195,7 +195,7 @@ export const Waitlist = () => {
             <div className="w-full flex justify-center">
               <div className="w-[480px] min-h-[580px] rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] p-6 sm:p-14 relative overflow-hidden backdrop-blur-sm bg-gradient-to-br from-[#F8F9FA]/10 to-[#F8F9FA]/5">
                 <header className="mb-8 sm:mb-12 relative z-20">
-                  <h1 className="typography-h2 text-center mb-4 sm:mb-6 bg-gradient-to-r from-[#F8F9FA] to-[#FBF8F1] bg-clip-text text-transparent tracking-tight relative">
+                  <h1 className="typography-h2 text-center mb-4 sm:mb-6 tracking-tight relative">
                     Get Early Access
                     <svg
                       className="absolute -right-6 sm:-right-8 top-0 w-5 sm:w-6 h-5 sm:h-6 text-[#FBF8F1] animate-pulse"
