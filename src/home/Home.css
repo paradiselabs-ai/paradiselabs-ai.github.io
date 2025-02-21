@@ -8,10 +8,10 @@
   overflow-x: hidden;
   overflow-y: hidden;
   background: linear-gradient(
-    135deg,
-    #001152 0%,   /* Unchanged starting color */
-    #006166 100%  /* Darker shade of #009aa5 */
-  );
+  135deg,
+  #12193f 0%,   /* Sleek stellar navy */
+  #00a1d6 100%  /* Sharp electric blue */
+);
   width: 100%;
   color: #F0F0FF;
   position: relative;
