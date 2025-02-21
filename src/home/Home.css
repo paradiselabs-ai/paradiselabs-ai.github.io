@@ -8,10 +8,10 @@
   overflow-x: hidden;
   overflow-y: hidden;
   background: linear-gradient(
-  135deg,
-  #001152 0%,    /* Kept as requested */
-  #009aa5 100%   /* New vibrant cyan for contrast and energy */
-);
+    135deg,
+    #001152 0%,   /* Unchanged starting color */
+    #006166 100%  /* Darker shade of #009aa5 */
+  );
   width: 100%;
   color: #F0F0FF;
   position: relative;
