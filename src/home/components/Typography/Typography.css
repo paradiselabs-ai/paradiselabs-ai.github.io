@@ -49,8 +49,8 @@
 /* Mobile breakpoint (640px - 1023px) */
 @media (min-width: 640px) {
   :root {
-    --primary-font-scale: 0.8; /* Slightly larger for Mobile */
-    --body-font-scale: 0.8;
+    --primary-font-scale: 0.7; /* Slightly larger for Mobile */
+    --body-font-scale: 0.7;
     --size-xs: calc(14px * var(--body-font-scale));
     --size-sm: calc(16px * var(--body-font-scale));
     --size-base: calc(18px * var(--body-font-scale));
@@ -69,8 +69,8 @@
 /* Tablet breakpoint (1024px and up) */
 @media (min-width: 1024px) {
   :root {
-    --primary-font-scale: 0.7; /* Full size for Tablet */
-    --body-font-scale: 0.85;
+    --primary-font-scale: 0.6; /* Full size for Tablet */
+    --body-font-scale: 0.75;
     --size-xs: calc(14px * var(--body-font-scale));
     --size-sm: calc(16px * var(--body-font-scale));
     --size-base: calc(18px * var(--body-font-scale));
