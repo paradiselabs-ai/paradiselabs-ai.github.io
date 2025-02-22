@@ -103,7 +103,7 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos-duration="1000"
               >
                 <h1 className="typography-h2 font-bold tracking-tight pb-2 text-white">
-                Work Smarter, Not Harder
+                Win Smarter, Stress Less
                 </h1>
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#F8F8FF]/5 p-8 rounded-lg shadow-lg hover:bg-[#F8F8FF]/10 transition-all duration-300">
                   Break free from traditional AI constraints and watch your teams achieve what was previously impossible.

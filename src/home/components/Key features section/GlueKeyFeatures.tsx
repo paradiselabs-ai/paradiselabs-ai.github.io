@@ -86,7 +86,7 @@ export const GlueKeyFeatures: React.FC = () => {
           <div className="relative">
             <div className="mb-24" data-aos="fade-up" data-aos-duration="1000">
               <h2 className="typography-h2 !leading-tight font-bold mb-8 tracking-tight">
-                Key Benefits
+              Your Edge with GLUE
               </h2>
               <p className="typography-p !leading-relaxed opacity-80 max-w-3xl">
                 Transform your AI vision into results with capabilities designed for success.

@@ -34,7 +34,7 @@ const features = [
   },
   {
     icon: "code",
-    title: "Simplified Development",
+    title: "Fast Agent Creation",
     description: "Create AI agents quickly with an intuitive language that cuts complexity without losing power.",
     delay: 200,
   },
@@ -85,11 +85,10 @@ export const WhyChooseGlue: React.FC = () => {
             <header className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-12 lg:mb-24 animate-fade-in">
               <div className="max-w-xl lg:mt-20 space-y-12">
                 <h2 className="typography-root typography-h2 !leading-tight font-bold text-[#F2F0FF] lg:tracking-tight lg:whitespace-nowrap animate-slide-up">
-                  Build Better AI Solutions
+                  Build Smarter AI Solutions
                 </h2>
                 <p className="typography-root typography-p !leading-relaxed text-[#F2F0FF]/70 max-w-2xl animate-slide-up delay-100">
-                  Say goodbye to AI complexity. GLUE empowers your teams to collaborate, innovate, and deploy AI agents
-                  for business—automate tasks, boost growth, or elevate support—all within your existing workflows.
+                  Say goodbye to AI complexity. GLUE helps your team collaborate, create, and launch AI agents that fit your business—automating tasks, driving growth, or improving support, all within your current setup.
                 </p>
               </div>
             </header>

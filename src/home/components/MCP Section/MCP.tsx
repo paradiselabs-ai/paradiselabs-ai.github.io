@@ -61,7 +61,7 @@ export const MCP = memo(() => {
               <div className="space-y-12 md:space-y-16 relative z-10">
                 <div className="text-center md:text-left mb-12 md:mb-16" data-aos="fade-right">
                   <h1 className="typography-h2 !leading-tight font-bold mb-6 md:mb-8">
-                    Streamline Development with MCP
+                  Unleash Your Code with MCP
                   </h1>
                   <p className="typography-p !leading-relaxed text-[#F8F6FF]/80">
                     Turn technical complexity into business agility. GLUE's MCP infrastructure powers AI agents to work together flawlessly, freeing you to focus on value.

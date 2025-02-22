@@ -115,7 +115,7 @@ export const HowDoesGlueWork: React.FC = () => {
             >
               <div className="w-full lg:w-3/5 p-4 md:p-8">
                 <h2 className="typography-h2 !leading-tight mb-4 md:mb-8 text-[#F5F2FF] font-bold animate-slide-up">
-                  Transform Your AI Initiative into Results
+                Unlock the Power to Achieve Your Dreams with AI
                 </h2>
                 <p className="typography-p !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-2xl">
                   Turn AI challenges into your edge. Watch your teams innovate faster, make sharper decisions, and build
