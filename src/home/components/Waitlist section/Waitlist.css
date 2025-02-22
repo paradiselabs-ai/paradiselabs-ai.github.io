@@ -485,7 +485,7 @@ video {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 #Waitlist .from-\[\#F8F9FA\]\/10 {
-  --tw-gradient-from: rgba(248, 249, 250, 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-from: rgba(248, 249, 250, 0.05) var(--tw-gradient-from-position);
   --tw-gradient-to: rgba(248, 249, 250, 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
@@ -503,7 +503,7 @@ video {
   --tw-gradient-to: #f8f9fa var(--tw-gradient-to-position);
 }
 #Waitlist .to-\[\#F8F9FA\]\/5 {
-  --tw-gradient-to: rgba(248, 249, 250, 0.05) var(--tw-gradient-to-position);
+  --tw-gradient-to: rgba(250, 248, 248, 0.05) var(--tw-gradient-to-position);
 }
 #Waitlist .to-\[\#FBF8F1\] {
   --tw-gradient-to: #fbf8f1 var(--tw-gradient-to-position);
@@ -635,8 +635,8 @@ video {
   opacity: 0;
 }
 #Waitlist .shadow-\[0_8px_30px_rgb\(248\2c 249\2c 250\2c 0\.2\)\] {
-  --tw-shadow: 0 8px 30px rgb(248, 249, 250, 0.2);
-  --tw-shadow-colored: 0 8px 30px var(--tw-shadow-color);
+  --tw-shadow: 0 8px 40px rgb(248, 249, 250, 0.35);
+  --tw-shadow-colored: 0 8px 40px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }

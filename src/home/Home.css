@@ -7,7 +7,8 @@
   font-family: var(--font-primary);
   overflow-x: hidden;
   overflow-y: hidden;
-  background: linear-gradient(290deg, rgb(18, 115, 60), rgb(0, 17, 82));
+  background: 
+  linear-gradient( rgb(0, 35, 115), rgb(90, 20, 150));
   width: 100%;
   color: #F0F0FF;
   position: relative;
