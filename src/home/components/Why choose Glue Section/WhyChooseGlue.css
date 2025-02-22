@@ -104,9 +104,9 @@
     .lg\:gap-16 { gap: 4rem; }
     .lg\:space-y-16 > :not([hidden]) ~ :not([hidden]) { margin-top: 4rem; }
     .lg\:whitespace-nowrap { white-space: nowrap; }
-    .lg\:p-10 { padding: 2.5rem; }
-    .lg\:px-16 { padding-inline: 4rem; }
-    .lg\:text-6xl { font-size: 3.75rem; line-height: 4.125rem; }
+    .lg\:p-10 { padding: 1.5rem; }
+    .lg\:px-16 { padding-inline: 5rem; }
+    .lg\:text-6xl { font-size: 3.25rem; line-height: 3.525rem; }
     .lg\:tracking-tight { letter-spacing: -0.025em; }
   }
 }

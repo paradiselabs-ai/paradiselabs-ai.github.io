@@ -151,7 +151,7 @@ const Home: React.FC = () => {
         zIndex: 1 
       }}>
         <svg width="80%" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
-          <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#d6ddf4" strokeWidth="2.2" />
+          <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#FDFAFE" strokeWidth="2.2" />
         </svg>
       </div>
 
