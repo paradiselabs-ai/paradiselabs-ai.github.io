@@ -5,8 +5,8 @@
 
 :root {
   /* Font scaling factors - mobile first */
-  --primary-font-scale: 0.75; /* Slightly larger base for better readability */
-  --body-font-scale: 0.75;
+  --primary-font-scale: 0.66; /* Slightly larger base for better readability */
+  --body-font-scale: 0.68;
   
   /* Base font families */
   --font-primary: "Merriweather Sans", serif;

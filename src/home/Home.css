@@ -14,7 +14,7 @@
   --color1: 26, 159, 193; /* Teal-ish */
   --color2: 0, 107, 161;  /* Mid-blue */
   --color3: 0, 71, 139;   /* Darker blue */
-  --circle-size: 80%;
+  --circle-size: 100%;
   --blending: normal;
   background-size: 200% 200%;
 }
@@ -92,20 +92,20 @@
 .home-container .g1 {
   background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
   top: calc(50% - var(--circle-size) / 2);
-  left: calc(60% - var(--circle-size) / 2);
+  left: calc(70% - var(--circle-size) / 2);
 }
 
 .home-container .g2 {
   background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(70% - var(--circle-size) / 2);
+  left: calc(95% - var(--circle-size) / 2);
+  top: calc(70% - var(--circle-size) / 2);
   transform-origin: calc(75% + 100px);
 }
 
 .home-container .g3 {
   background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
-  top: calc(50% - var(--circle-size) / 2);
-  left: calc(82% - var(--circle-size) / 2);
+  top: calc(30% - var(--circle-size) / 2);
+  left: calc(95% - var(--circle-size) / 2);
   transform-origin: calc(75% + 100px);
 }
 
@@ -114,13 +114,13 @@
 /* ==================== */
 @keyframes moveVertical {
   0% {
-    transform: translateY(-25%) translateX(-3%);
+    transform: translateY(-15%) translateX(-2%);
   }
   50% {
-    transform: translateY(30%) translateX(5%);
+    transform: translateY(15%) translateX(3%);
   }
   100% {
-    transform: translateY(-25%) translateX(-3%);
+    transform: translateY(-15%) translateX(-2%);
   }
 }
 
@@ -199,10 +199,14 @@
 /* Mobile (up to 639px) - Base styles above apply */
 
 /* Tablet (640px - 1199px) */
-@media (min-width: 640px) and (max-width: 1199px) {
+@media (min-width: 640px) and (max-width: 1199px) and (orientation: landscape) {
+  /* Styles for tablets in landscape mode (640px - 1199px width) */
+  .home-container {
+    --circle-size: 80%;
+  }
   .home-container .hero-section {
     top: 80px;
-    left: 50px;
+    left: 90px;
   }
   .home-container .hero-section .tagline {
     padding-top: 35vh;
@@ -225,17 +229,65 @@
   } 
   .home-container .g1 {
     left: calc(65% - var(--circle-size) / 2);
+    top: calc(55% - var(--circle-size) / 2);
   }
   .home-container .g2 {
     left: calc(75% - var(--circle-size) / 2);
+    top: calc(55% - var(--circle-size) / 2);
   }
   .home-container .g3 {
+    opacity: 0.8;
     left: calc(88% - var(--circle-size) / 2);
+    top: calc(55% - var(--circle-size) / 2);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) and (orientation: portrait) {
+  /* Styles for tablets in portrait mode (640px - 1199px width) */
+  .home-container {
+    --circle-size: 100%;
+  }
+  .home-container .hero-section {
+    top: 80px;
+    left: 50px;
+  }
+  .home-container .hero-section .tagline {
+    padding-top: 39vh;
+    font-size: var(--size-5xl);
+  }
+  .home-container .hero-section .glue-line {
+    display: block;
+    font-size: var(--size-4xl);
+  }
+  .home-container .hero-section .header-line {
+    display: block;
+    font-size: var(--size-6xl);
+  }
+  .home-container .hero-section p {
+    font-size: var(--size-4xl);
+  }
+  .home-container .cta-primary,
+  .home-container .cta-secondary {
+    font-size: var(--size-base);
+  } 
+  .home-container .g1 {
+    left: calc(75% - var(--circle-size) / 2);
+  }
+  .home-container .g2 {
+    top: calc(70% - var(--circle-size) / 2);
+    left: calc(95% - var(--circle-size) / 2);
+  }
+  .home-container .g3 {
+    top: calc(30% - var(--circle-size) / 2);
+    left: calc(95% - var(--circle-size) / 2);
   }
 }
 
 /* Desktop (1200px and up) */
 @media (min-width: 1200px) {
+  .home-container {
+    --circle-size: 80%;
+  }
   .home-container .hero-section {
     top: 50px;
     left: 150px;
@@ -262,11 +314,14 @@
   .home-container .g1 {
     left: calc(60% - var(--circle-size) / 2);
     animation: moveVertical 30s ease infinite;
+    top: calc(50% - var(--circle-size) / 2);
   }
   .home-container .g2 {
     left: calc(70% - var(--circle-size) / 2);
+    top: calc(50% - var(--circle-size) / 2);
   }
   .home-container .g3 {
     left: calc(82% - var(--circle-size) / 2);
+    top: calc(50% - var(--circle-size) / 2);
   }
 }
