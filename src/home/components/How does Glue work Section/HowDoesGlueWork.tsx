@@ -122,12 +122,7 @@ export const HowDoesGlueWork: React.FC = () => {
                   lasting knowledge with AI agents that work smarter.
                 </p>
               </div>
-              <div className="w-full lg:w-2/5 relative animate-float p-6 md:p-12">
-                <div className="absolute -inset-6 bg-[#F5F2FF]/10 rounded-full blur-3xl animate-pulse" />
-                <span className="material-symbols-outlined text-7xl md:text-9xl text-[#F5F2FF] block text-center transform-gpu hover:scale-110 transition-all duration-300">
-                  rocket_launch
-                </span>
-              </div>
+              
             </section>
 
             <section className="relative mb-16 md:mb-32">
