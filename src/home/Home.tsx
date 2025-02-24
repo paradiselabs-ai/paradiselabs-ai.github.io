@@ -141,7 +141,7 @@ const Home: React.FC = () => {
                 onClick={(e) => scrollTo(e, waitlistRef)}
                 className="cta-primary"
               >
-                Sign Up For Early Access
+                Get Early Access
               </a>
               <a
                 href="#features"
