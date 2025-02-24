@@ -83,9 +83,6 @@ h2, h3, p {
     color: rgba(245, 242, 255, 0.8);
   }
   .blur-3xl { filter: blur(64px); }
-  .animate-pulse {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
 
   /* Transitions and animations */
   .transform-gpu {

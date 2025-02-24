@@ -15,13 +15,15 @@ const loadMaterialSymbols = (() => {
   };
 })();
 
-// Define feature type with strict icon options for better type safety
+// Define feature type with strict icon and aos options for better type safety
 type FeatureIcon = "groups" | "code" | "build" | "share";
+type AosType = "fade-right" | "fade-up-right" | "fade-left"; 
 interface Feature {
   icon: FeatureIcon;
   title: string;
   description: string;
   delay: number;
+  aosType: AosType; // New property for AOS animation type
 }
 
 // Feature data with const assertion for immutability and inference
@@ -31,30 +33,34 @@ const features = [
     title: "Natural Team Collaboration",
     description: "Mirror how your best teams work, turning barriers into accelerators for success.",
     delay: 0,
+    aosType: "fade-up-right",
   },
   {
     icon: "code",
     title: "Fast Agent Creation",
     description: "Create AI agents quickly with an intuitive language that cuts complexity without losing power.",
-    delay: 200,
+    delay: 100,
+    aosType: "fade-right",
   },
   {
     icon: "build",
     title: "Customizable Tools",
     description: "Create and tailor tools for your needs, integrating seamlessly into your development workflows.",
-    delay: 400,
+    delay: 200,
+    aosType: "fade-left",
   },
   {
     icon: "share",
     title: "Knowledge Retention",
     description: "Preserve and grow intelligence across teams with built-in knowledge management.",
-    delay: 600,
+    delay: 300,
+    aosType: "fade-left",
   },
 ] as const satisfies readonly Feature[];
 
 // Memoized FeatureCard to prevent unnecessary re-renders
-const FeatureCard = memo<Feature>(({ icon, title, description, delay }) => (
-  <div className="relative group" data-aos="fade-up" data-aos-delay={delay}>
+const FeatureCard = memo<Feature>(({ icon, title, description, delay, aosType }) => (
+  <div className="relative group" data-aos={aosType} data-aos-delay={delay}>
     <div className="absolute inset-0 bg-[#F2F0FF]/10 rounded-2xl blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
     <div className="p-8 lg:p-10 rounded-2xl backdrop-blur-2xl bg-white/5 border border-white/20 hover:border-[#F2F0FF]/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 relative z-10 group-hover:bg-white/10">
       <div className="flex items-center mb-6">

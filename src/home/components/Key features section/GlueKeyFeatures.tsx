@@ -15,8 +15,8 @@ interface Feature {
 const features: readonly Feature[] = [
   {
     icon: "extension",
-    title: "Adhesive Bindings",
-    desc: "Link AI agents with team-wide (GLUE), project-specific (VELCRO), or instant (TAPE) knowledge sharing.",
+    title: "Knowledge Sharing",
+    desc: "Link AI agents with team-wide, project-specific, or instant knowledge sharing.",
     delay: "0",
   },
   {
