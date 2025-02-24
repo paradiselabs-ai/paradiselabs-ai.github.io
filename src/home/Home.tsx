@@ -1,4 +1,4 @@
-import './components/Typography/Typography.css'
+import './components/Typography/Typography.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
 import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
 import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
@@ -7,17 +7,22 @@ import { WhatMakesGlueInnovative } from './components/Innovation Spotlight secti
 import { MCP } from './components/MCP Section/MCP';
 import { Waitlist } from './components/Waitlist section/Waitlist';
 import React, { useEffect, useRef, memo } from 'react';
-import { Link } from 'react-router-dom';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import './Home.css';
 
-// Memoized section components to prevent unnecessary re-renders
-const Section = memo(({ children, style }: { children: React.ReactNode; style: React.CSSProperties }) => (
+// Define props interface for Section component
+interface SectionProps {
+  children: React.ReactNode;
+  style: React.CSSProperties;
+}
+
+// Memoized section component with typed props
+const Section = memo(({ children, style }: SectionProps) => (
   <section style={style}>{children}</section>
 ));
 
-// Base section styles moved outside component to prevent recreation on each render
+// Base section styles with proper typing
 const sectionContainerStyle: React.CSSProperties = {
   width: '100%',
   minHeight: 'min-content',
@@ -51,17 +56,21 @@ const GradientBackground = memo(() => (
 ));
 
 const Home: React.FC = () => {
-  const waitlistRef = useRef<HTMLDivElement>(null);
+  const featuresRef = useRef<HTMLElement>(null);
+  const waitlistRef = useRef<HTMLElement>(null);
 
-  // Keeping the original scroll handler to maintain exact scrolling behavior
-  const scrollToWaitlist = (e: React.MouseEvent) => {
+  // Scroll handler with corrected targetRef type
+  const scrollTo = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    targetRef: React.RefObject<HTMLElement | null> // Updated type
+  ) => {
     e.preventDefault();
-    if (!waitlistRef.current) return;
+    if (!targetRef.current) return;
 
-    const targetPosition = waitlistRef.current.offsetTop;
+    const targetPosition = targetRef.current.offsetTop;
     const startPosition = window.pageYOffset;
     const distance = targetPosition - startPosition;
-    const duration = 1300; // Duration in milliseconds
+    const duration = 1300;
     let start: number | null = null;
 
     const animation = (currentTime: number) => {
@@ -69,12 +78,8 @@ const Home: React.FC = () => {
       const timeElapsed = currentTime - start;
       const progress = Math.min(timeElapsed / duration, 1);
 
-      // Easing function for smooth acceleration and deceleration
-      const ease = (t: number) => {
-        return t < 0.5
-          ? 4 * t * t * t
-          : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-      };
+      const ease = (t: number) =>
+        t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 
       window.scrollTo(0, startPosition + distance * ease(progress));
 
@@ -131,55 +136,65 @@ const Home: React.FC = () => {
             <span className="glue-line">unifies tools, AI agents, and processes</span>
             <span className="glue-line">so you can connect, streamline, and win.</span>
             <div className="cta-container">
-              <a href="#waitlist" onClick={scrollToWaitlist} className="cta-primary">
+              <a
+                href="#waitlist"
+                onClick={(e) => scrollTo(e, waitlistRef)}
+                className="cta-primary"
+              >
                 Sign Up For Early Access
               </a>
-              <Link to="https://github.com/paradiselabs-ai/glue-framework" className="cta-secondary">
-                View on Github
-              </Link>
+              <a
+                href="#features"
+                onClick={(e) => scrollTo(e, featuresRef)}
+                className="cta-secondary"
+              >
+                Explore Features
+              </a>
             </div>
           </section>
         </div>
       </header>
 
-      <div className="divider" style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        margin: 0, 
-        position: 'relative', 
-        zIndex: 1 
-      }}>
+      <div
+        className="divider"
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: 0,
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
         <svg width="80%" height="3" viewBox="0 0 100 3" preserveAspectRatio="none">
           <line x1="0" y1="1.1" x2="100" y2="1.1" stroke="#FDFAFE" strokeWidth="2.2" />
         </svg>
       </div>
 
-      <Section style={sectionContainerStyle}>
+      <section ref={featuresRef} id="features" style={sectionContainerStyle}>
         <WhyChooseGlue />
-      </Section>
-      
+      </section>
+
       <Section style={sectionContainerStyle}>
         <HowDoesGlueWork />
       </Section>
-      
+
       <Section style={sectionContainerStyle}>
         <GlueKeyFeatures />
       </Section>
-      
+
       <Section style={sectionContainerStyle}>
         <GlueSyntax />
       </Section>
-      
+
       <Section style={sectionContainerStyle}>
         <WhatMakesGlueInnovative />
       </Section>
-      
+
       <Section style={sectionContainerStyle}>
         <MCP />
       </Section>
-      
-      {/* Use a regular section for the waitlist to properly handle the ref */}
+
       <section ref={waitlistRef} id="waitlist" style={sectionContainerStyle}>
         <Waitlist />
       </section>

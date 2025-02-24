@@ -94,7 +94,7 @@ export const WhyChooseGlue: React.FC = () => {
                   Build Smarter AI Solutions
                 </h2>
                 <p className="typography-root typography-p !leading-relaxed text-[#F2F0FF]/70 max-w-2xl animate-slide-up delay-100">
-                  Say goodbye to AI complexity. GLUE helps your team collaborate, create, and launch AI agents that fit your business—automating tasks, driving growth, or improving support, all within your current setup.
+                Say goodbye to AI complexity. GLUE lets your team work together, build, and launch AI agents tailored to your business—streamlining tasks, fueling growth, or enhancing support.
                 </p>
               </div>
             </header>

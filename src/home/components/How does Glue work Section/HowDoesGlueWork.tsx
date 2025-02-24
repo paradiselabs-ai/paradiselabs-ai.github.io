@@ -122,7 +122,6 @@ export const HowDoesGlueWork: React.FC = () => {
                   lasting knowledge with AI agents that work smarter.
                 </p>
               </div>
-              
             </section>
 
             <section className="relative mb-16 md:mb-32">

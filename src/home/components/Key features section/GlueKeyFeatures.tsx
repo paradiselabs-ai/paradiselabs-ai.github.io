@@ -89,7 +89,7 @@ export const GlueKeyFeatures: React.FC = () => {
               Your Edge with GLUE
               </h2>
               <p className="typography-p !leading-relaxed opacity-80 max-w-3xl">
-                Transform your AI vision into results with capabilities designed for success.
+              Shape your AI vision into reality with features crafted for success.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-14">

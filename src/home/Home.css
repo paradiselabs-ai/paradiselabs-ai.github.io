@@ -309,7 +309,7 @@
   }
   .home-container .cta-primary,
   .home-container .cta-secondary {
-    font-size: var(--size-base);
+    font-size: var(--size-lg);
   }
   .home-container .g1 {
     left: calc(60% - var(--circle-size) / 2);

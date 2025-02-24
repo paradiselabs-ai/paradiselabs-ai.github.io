@@ -103,10 +103,10 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos-duration="1000"
               >
                 <h1 className="typography-h2 font-bold tracking-tight pb-2 text-white">
-                Win Smarter, Stress Less
+                Work Smarter, Not Harder
                 </h1>
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#F8F8FF]/5 p-8 rounded-lg shadow-lg hover:bg-[#F8F8FF]/10 transition-all duration-300">
-                  Break free from traditional AI constraints and watch your teams achieve what was previously impossible.
+                Break through classic AI limits and lift your teams to new heights.
                 </p>
               </div>
               <div
@@ -116,7 +116,7 @@ export const WhatMakesGlueInnovative = () => {
                 data-aos-delay="200"
               >
                 <p className="typography-p !leading-relaxed backdrop-blur-xl bg-[#F8F8FF]/5 p-8 rounded-lg shadow-lg hover:bg-[#F8F8FF]/10 transition-all duration-300">
-                  Turn your vision into reality with a framework that adapts to team up like humans, boosting productivity and reshaping work
+                Bring your vision to life with AI that bonds like humans, enhancing productivity and transforming work.
                 </p>
               </div>
             </div>

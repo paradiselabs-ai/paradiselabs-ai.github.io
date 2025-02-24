@@ -175,7 +175,7 @@ export const GlueSyntax: React.FC = () => {
                   data-aos-delay="200"
                   className="typography-p !leading-relaxed text-[#F4F2FF] text-center mb-8 sm:mb-12"
                 >
-                  Transform complex AI concepts into results with a syntax so simple, developers can focus on creating, not configuring.
+                  Simplify tough AI concepts into results with an easy system that lets developers build fast.
                 </p>
 
                 <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">

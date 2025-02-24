@@ -89,7 +89,26 @@
 @media (min-width: 1200px) {
   :root {
     --primary-font-scale: 0.65; /* Full size for Desktop */
-    --body-font-scale: 0.65;
+    --body-font-scale: 0.66;
+    --size-xs: calc(14px * var(--body-font-scale));
+    --size-sm: calc(16px * var(--body-font-scale));
+    --size-base: calc(18px * var(--body-font-scale));
+    --size-lg: calc(20px * var(--body-font-scale));
+    --size-xl: calc(24px * var(--body-font-scale));
+    --size-2xl: calc(28px * var(--primary-font-scale));
+    --size-3xl: calc(34px * var(--primary-font-scale));
+    --size-4xl: calc(42px * var(--primary-font-scale));
+    --size-5xl: calc(50px * var(--primary-font-scale));
+    --size-6xl: calc(60px * var(--primary-font-scale));
+    --size-7xl: calc(72px * var(--primary-font-scale));
+    --size-8xl: calc(96px * var(--primary-font-scale));
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --primary-font-scale: 0.65; /* Full size for Desktop */
+    --body-font-scale: 0.66;
     --size-xs: calc(14px * var(--body-font-scale));
     --size-sm: calc(16px * var(--body-font-scale));
     --size-base: calc(18px * var(--body-font-scale));
