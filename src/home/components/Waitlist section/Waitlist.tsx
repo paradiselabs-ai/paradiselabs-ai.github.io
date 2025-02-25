@@ -121,7 +121,7 @@ export const Waitlist = () => {
               Turn Your AI Vision into Reality with GLUE
               </h2>
               <p className="typography-p text-[#F6F2FF] !leading-relaxed">
-              Join an open-source wave making AI practical. GLUE’s AI agents outshine SaaS with adaptability and automation for all.
+              Join an open-source wave making AI practical. GLUE’s AI agents outpace SaaS with superior adaptability.
               </p>
               <div className="space-y-6">
                 <div className="space-y-3">
@@ -211,7 +211,7 @@ export const Waitlist = () => {
                     </svg>
                   </h1>
                   <p className="typography-p !leading-relaxed text-[#F8F9FA] text-center px-2 sm:px-0">
-                  Be first to explore GLUE’s open-source platform for AI agents and agentic workflows.
+                  Be first to explore GLUE’s open-source platform for AI agents and agentic AI workflows.
                   </p>
                 </header>
                 <form

@@ -134,7 +134,7 @@ const Home: React.FC = () => {
             <span className="header-line">Unification Engine</span>
             <span className="tagline">The GLUE framework</span>
             <span className="glue-line">unifies tools, AI agents, and processes</span>
-            <span className="glue-line">so you can connect, streamline, and win.</span>
+            <span className="glue-line">so you connect, streamline, and succeed.</span>
             <div className="cta-container">
               <a
                 href="#waitlist"
@@ -177,10 +177,6 @@ const Home: React.FC = () => {
 
       <Section style={sectionContainerStyle}>
         <HowDoesGlueWork />
-      </Section>
-
-      <Section style={sectionContainerStyle}>
-        <GlueKeyFeatures />
       </Section>
 
       <Section style={sectionContainerStyle}>

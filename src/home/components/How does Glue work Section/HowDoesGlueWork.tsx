@@ -32,9 +32,9 @@ interface Step {
 const steps: readonly Step[] = [
   {
     icon: "group",
-    title: "Accelerate Innovation Together",
+    title: "Accelerate Development",
     description:
-      "Shatter barriers slowing progress. You'll complete projects in weeks, not months, with seamless AI-human teamwork.",
+      "Smash barriers slowing progress. Complete projects in weeks, not months, with seamless AI-human teamwork that just works.",
     aos: "fade-right",
     textAlign: "right",
     spacerBefore: false, // Spacer after content (on the left)
@@ -43,7 +43,7 @@ const steps: readonly Step[] = [
     icon: "sync_alt",
     title: "Turn Insights into Action",
     description:
-      "Watch information flow between AI agents, empowering faster, sharper decisions that keep you ahead of market changes.",
+      "Watch information flow between agents, powering faster, sharper decisions that keep you ahead of market changes.",
     aos: "fade-left",
     textAlign: "left",
     spacerBefore: true, // Spacer before content (on the right)
@@ -52,7 +52,7 @@ const steps: readonly Step[] = [
     icon: "psychology",
     title: "Build Lasting Knowledge",
     description:
-      "Transform every project into a foundation for future success, making each a stepping stone with AI preserving your expertise.",
+      "Transform every project into a foundation for success, with AI preserving your expertise.",
     aos: "fade-right",
     textAlign: "right",
     spacerBefore: false, // Spacer after content (on the left)
@@ -115,11 +115,10 @@ export const HowDoesGlueWork: React.FC = () => {
             >
               <div className="w-full lg:w-3/5 p-4 md:p-8">
                 <h2 className="typography-h2 !leading-tight mb-4 md:mb-8 text-[#F5F2FF] font-bold animate-slide-up">
-                Unlock the Power to Achieve Your Dreams with AI
+                Unlock the Power to Achieve Your Vision with AI Agents 
                 </h2>
                 <p className="typography-p !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-2xl">
-                  Turn AI challenges into your edge. Watch your teams innovate faster, make sharper decisions, and build
-                  lasting knowledge with AI agents that work smarter.
+                Transform AI obstacles into advantages. Watch teams innovate, decide, and retain knowledge with smarter agents.
                 </p>
               </div>
             </section>

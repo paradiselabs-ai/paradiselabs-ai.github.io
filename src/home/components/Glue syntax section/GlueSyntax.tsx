@@ -77,11 +77,11 @@ const CodeBlock = memo(() => (
 ));
 CodeBlock.displayName = "CodeBlock";
 
-// Memoized DetailsSection component with open prop
+// Memoized DetailsSection component
 const DetailsSection = memo(
   ({ title, icon, children, open = false }: { title: string; icon: string; children: React.ReactNode; open?: boolean }) => (
     <details className="group" open={open}>
-      <summary className="flex items-center cursor-pointer p-2 hover:bg-[#282c34]/30 rounded-lg transition-colors duration-300">
+      <summary className="flex items-center cursor-pointer p-2 rounded-lg transition-colors duration-300">
         <span className="material-symbols-outlined text-[#34B8CE] mr-2 group-hover:scale-110 transition-transform duration-300">
           {icon}
         </span>
@@ -189,7 +189,7 @@ export const GlueSyntax: React.FC = () => {
                           key={item.title}
                           title={item.title}
                           icon={item.icon}
-                          open={item.open} // Pass the open prop
+                          open={item.open}
                         >
                           {item.content}
                         </DetailsSection>

@@ -75,7 +75,20 @@ body {
 #GlueSyntax .backdrop-blur-xl { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
 #GlueSyntax .transition-colors { transition: color 0.3s, background-color 0.3s; }
 #GlueSyntax .transition-transform { transition: transform 0.3s; }
-#GlueSyntax .hover\:bg-\[\#282c34\]\/30:hover { background-color: rgba(40, 44, 52, 0.3); }
+/* Default state: closed, no background unless hovered */
+#GlueSyntax details > summary {
+  background-color: transparent;
+}
+
+/* Hover state: apply background when hovering over summary */
+#GlueSyntax details > summary:hover {
+  background-color: rgba(40, 44, 52, 0.2);
+}
+
+/* Open state: apply background when details is open */
+#GlueSyntax details[open] > summary {
+  background-color: rgba(40, 44, 52, 0.2);
+}
 #GlueSyntax .hover\:text-\[\#34B8CE\]:hover { color: #34B8CE; }
 #GlueSyntax .group:hover .group-hover\:scale-110 { transform: scale(1.1); }
 

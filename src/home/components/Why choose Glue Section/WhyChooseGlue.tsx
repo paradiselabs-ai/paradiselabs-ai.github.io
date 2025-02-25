@@ -31,28 +31,28 @@ const features = [
   {
     icon: "groups",
     title: "Effective Teamwork",
-    description: "Mirror how your best teams work, turning barriers into accelerators for success.",
+    description: "Design AI agents that mirror your best teams, turning challenges into growth.",
     delay: 0,
     aosType: "fade-up-right",
   },
   {
     icon: "code",
     title: "Fast Agent Creation",
-    description: "Create AI agents quickly with an intuitive language that cuts complexity without losing power.",
+    description: "Develop AI agents quickly with a language that simplifies without sacrificing power.",
     delay: 100,
     aosType: "fade-right",
   },
   {
     icon: "build",
     title: "Customizable Tools",
-    description: "Create and tailor tools for your needs, integrating seamlessly into your development workflows.",
+    description: "AI agents auto-create and tailor tools that integrate seamlessly into workflows.",
     delay: 200,
     aosType: "fade-left",
   },
   {
     icon: "share",
     title: "Knowledge Retention",
-    description: "Preserve and grow intelligence across teams with built-in knowledge management.",
+    description: "Preserve and grow intelligence across AI agents with built-in knowledge management.",
     delay: 300,
     aosType: "fade-left",
   },
@@ -94,7 +94,7 @@ export const WhyChooseGlue: React.FC = () => {
                   Build Smarter AI Solutions
                 </h2>
                 <p className="typography-root typography-p !leading-relaxed text-[#F2F0FF]/70 max-w-2xl animate-slide-up delay-100">
-                AI Agents made simple. GLUE lets your team work together, build, and launch agents tailored to your business—streamlining tasks, fueling growth, or enhancing support.
+                Simplify AI Agents. Build custom agents for tasks, growth, or support in minutes
                 </p>
               </div>
             </header>
