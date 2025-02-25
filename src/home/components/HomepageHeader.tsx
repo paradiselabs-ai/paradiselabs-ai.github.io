@@ -59,9 +59,6 @@ const HomepageHeader: React.FC = () => {
             <LogoSVG />
           </Link>
           
-          <nav className="nav-links">
-            <Link to="/docs">Docs</Link>
-          </nav>
         </div>
       </header>
     </div>
