@@ -1,7 +1,6 @@
 import './components/Typography/Typography.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
 import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
-import { GlueKeyFeatures } from './components/Key features section/GlueKeyFeatures';
 import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
 import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
 import { MCP } from './components/MCP Section/MCP';
