@@ -97,7 +97,7 @@ const Home: React.FC = () => {
       if (isSubscribed) {
         AOS.init({
           duration: 800,
-          once: false,
+          once: true,
           offset: 30,
           easing: 'ease-in-out-quad',
           startEvent: 'DOMContentLoaded',
