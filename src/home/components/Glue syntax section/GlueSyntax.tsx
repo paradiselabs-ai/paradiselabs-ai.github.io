@@ -1,9 +1,16 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useMemo, useEffect, ReactNode } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./GlueSyntax.css";
 
-// Memoized CodeBlock component
+// Memoized CodeBlock component with AOS
 const CodeBlock = memo(() => (
-  <div className="rounded-xl overflow-hidden">
+  <div
+    className="rounded-xl overflow-hidden"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-easing="ease-in-out"
+  >
     <div className="backdrop-blur-xl bg-[#282c34] border border-[#F4F2FF]/20 rounded-xl p-4 sm:p-8">
       <div className="flex justify-between items-center mb-4">
         <div className="flex gap-2">
@@ -33,7 +40,7 @@ const CodeBlock = memo(() => (
             <br />
             <span className="font-normal">{"}"}</span>
             <br />
-            
+            <br />
             <span className="text-[#34B8CE] font-normal">model</span> researcher{" "}
             <span className="font-normal">{"{"}</span>
             <br />
@@ -45,7 +52,7 @@ const CodeBlock = memo(() => (
             <br />
             <span className="font-normal">{"}"}</span>
             <br />
-            
+            <br />
             <span className="text-[#34B8CE] font-normal">tool</span> web_search{" "}
             <span className="font-normal">{"{"}</span>
             <br />
@@ -53,7 +60,7 @@ const CodeBlock = memo(() => (
             <br />
             <span className="font-normal">{"}"}</span>
             <br />
-            
+            <br />
             <span className="text-[#34B8CE] font-normal">magnetize</span>{" "}
             <span className="font-normal">{"{"}</span>
             <br />
@@ -67,7 +74,7 @@ const CodeBlock = memo(() => (
             <br />
             <span className="font-normal">{"}"}</span>
             <br />
-            
+            <br />
             <span className="text-[#34B8CE] font-normal">apply</span> glue
           </code>
         </pre>
@@ -77,30 +84,65 @@ const CodeBlock = memo(() => (
 ));
 CodeBlock.displayName = "CodeBlock";
 
-// Memoized DetailsSection component
+// Define props interface for DetailsSection
+interface DetailsSectionProps {
+  title: string;
+  icon: string;
+  children: ReactNode;
+  open?: boolean;
+}
+
+// Memoized DetailsSection component with AOS and typed props
 const DetailsSection = memo(
-  ({ title, icon, children, open = false }: { title: string; icon: string; children: React.ReactNode; open?: boolean }) => (
-    <details className="group" open={open}>
+  ({ title, icon, children, open = false }: DetailsSectionProps) => (
+    <details
+      className="group"
+      open={open}
+      data-aos="fade-left"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      data-aos-delay="200"
+    >
       <summary className="flex items-center cursor-pointer p-2 rounded-lg transition-colors duration-300">
         <span className="material-symbols-outlined text-[#34B8CE] mr-2 group-hover:scale-110 transition-transform duration-300">
           {icon}
         </span>
         <h3 className="typography-h3 !leading-tight font-semibold text-[#34B8CE]">{title}</h3>
       </summary>
-      <div className="pl-6 sm:pl-8 mt-3 sm:mt-4 text-[#F4F2FF]">{children}</div>
+      <div
+        className="pl-6 sm:pl-8 mt-3 sm:mt-4 text-[#F4F2FF]"
+      >
+        {children}
+      </div>
     </details>
   )
 );
 DetailsSection.displayName = "DetailsSection";
 
+// Define interface for details content items
+interface DetailsContentItem {
+  title: string;
+  icon: string;
+  open: boolean;
+  content: ReactNode;
+}
+
 export const GlueSyntax: React.FC = () => {
-  // Memoize the details sections
-  const detailsContent = useMemo(
+  // Initialize AOS
+  useEffect(() => {
+    AOS.init({
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
+  // Memoize the details sections with typed array
+  const detailsContent = useMemo<DetailsContentItem[]>(
     () => [
       {
         title: "App Configuration",
         icon: "apps",
-        open: true, // Set to open by default
+        open: true,
         content: (
           <>
             <p className="typography-p !leading-relaxed mb-2">
@@ -117,7 +159,7 @@ export const GlueSyntax: React.FC = () => {
       {
         title: "Model Definition",
         icon: "architecture",
-        open: false, // Closed by default
+        open: false,
         content: (
           <>
             <p className="typography-p !leading-relaxed mb-2">
@@ -134,7 +176,7 @@ export const GlueSyntax: React.FC = () => {
       {
         title: "Tool Integration",
         icon: "build",
-        open: false, // Closed by default
+        open: false,
         content: (
           <p className="typography-p !leading-relaxed">
             The tool web_search block integrates search capability powered by the serp provider.
@@ -144,7 +186,7 @@ export const GlueSyntax: React.FC = () => {
       {
         title: "Workflow Orchestration",
         icon: "workflow",
-        open: false, // Closed by default
+        open: false,
         content: (
           <p className="typography-p !leading-relaxed">
             The magnetize block orchestrates the workflow by assigning roles and tools to work together seamlessly.
@@ -163,17 +205,19 @@ export const GlueSyntax: React.FC = () => {
             <div className="mt-12 sm:mt-24 relative z-10">
               <div className="max-w-4xl mx-auto mb-8 sm:mb-16">
                 <h2
+                  className="typography-h2 !leading-tight font-bold mb-4 sm:mb-6 text-[#34B8CE] text-center bg-clip-text inline-block break-words w-full"
                   data-aos="fade-down"
                   data-aos-duration="1000"
-                  className="typography-h2 !leading-tight font-bold mb-4 sm:mb-6 text-[#34B8CE] text-center bg-clip-text inline-block break-words w-full"
+                  data-aos-easing="ease-out"
                 >
                   Developer-Friendly Syntax
                 </h2>
                 <p
+                  className="typography-p !leading-relaxed text-[#F4F2FF] text-center mb-8 sm:mb-12"
                   data-aos="fade-up"
                   data-aos-duration="1000"
                   data-aos-delay="200"
-                  className="typography-p !leading-relaxed text-[#F4F2FF] text-center mb-8 sm:mb-12"
+                  data-aos-easing="ease-out"
                 >
                   Simplify tough AI concepts into results with an easy system that lets developers build fast.
                 </p>
@@ -184,12 +228,13 @@ export const GlueSyntax: React.FC = () => {
                   </div>
                   <div className="w-full lg:w-1/2">
                     <div className="space-y-6 sm:space-y-8">
-                      {detailsContent.map((item) => (
+                      {detailsContent.map((item, index) => (
                         <DetailsSection
                           key={item.title}
                           title={item.title}
                           icon={item.icon}
                           open={item.open}
+                          data-aos-delay={`${index * 200}`}
                         >
                           {item.content}
                         </DetailsSection>

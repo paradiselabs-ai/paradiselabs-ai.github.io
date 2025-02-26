@@ -25,7 +25,7 @@
 }
 
 #WhatMakesGlueInnovative .mb-12 {
-  margin-bottom: 48px;
+  margin-bottom: 28px;
 }
 
 #WhatMakesGlueInnovative .mt-8 {
@@ -69,7 +69,7 @@
 }
 
 #WhatMakesGlueInnovative .grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 #WhatMakesGlueInnovative .grid-cols-3 {
@@ -101,11 +101,11 @@
 }
 
 #WhatMakesGlueInnovative .gap-4 {
-  gap: 16px;
+  gap: 0px;
 }
 
 #WhatMakesGlueInnovative .gap-6 {
-  gap: 24px;
+  gap: 15px;
 }
 
 #WhatMakesGlueInnovative :is(.space-y-3 > :not([hidden]) ~ :not([hidden])) {
@@ -135,11 +135,11 @@
 }
 
 #WhatMakesGlueInnovative .rounded-lg {
-  border-radius: 24px;
+  border-radius: 22px;
 }
 
 #WhatMakesGlueInnovative .rounded-xl {
-  border-radius: 36px;
+  border-radius: 26px;
 }
 
 #WhatMakesGlueInnovative .border {
@@ -159,7 +159,7 @@
 }
 
 #WhatMakesGlueInnovative .bg-\[\#F8F8FF\]\/10 {
-  background-color: rgba(248, 248, 255, 0.1);
+  background-color: rgba(248, 248, 255, 0.15);
 }
 
 #WhatMakesGlueInnovative .bg-\[\#F8F8FF\]\/5 {
@@ -181,21 +181,21 @@
 }
 
 #WhatMakesGlueInnovative .p-6 {
-  padding: 24px;
+  padding: 20px;
 }
 
 #WhatMakesGlueInnovative .p-8 {
-  padding: 32px;
+  padding: 22px;
 }
 
 #WhatMakesGlueInnovative .px-8 {
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 52px;
+  padding-right: 52px;
 }
 
 #WhatMakesGlueInnovative .py-12 {
-  padding-top: 48px;
-  padding-bottom: 48px;
+  padding-top: 28px;
+  padding-bottom: 38px;
 }
 
 #WhatMakesGlueInnovative .py-4 {
@@ -204,7 +204,7 @@
 }
 
 #WhatMakesGlueInnovative .pb-2 {
-  padding-bottom: 8px;
+  padding-bottom: 2px;
 }
 
 #WhatMakesGlueInnovative .text-center {
@@ -222,8 +222,8 @@
 }
 
 #WhatMakesGlueInnovative .text-5xl {
-  font-size: 48px;
-  line-height: 52.8px;
+  font-size: 42px;
+  line-height: 34.8px;
 }
 
 #WhatMakesGlueInnovative .text-6xl {
@@ -413,16 +413,26 @@
 
 
 
-@media (min-width: 640px) {
-  #WhatMakesGlueInnovative .sm\:w-8 {
-    width: 32px;
-  }
-  #WhatMakesGlueInnovative .sm\:h-8 {
-    height: 32px;
+/* Extra Small Screens (e.g., mobile devices below 640px) */
+@media (min-width: 320px) {
+  #WhatMakesGlueInnovative .px-8 {
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
+/* Small Screens (e.g., larger phones, small tablets) */
+@media (min-width: 640px) {
+  #WhatMakesGlueInnovative .px-8 {
+    padding-left: 52px;
+    padding-right: 52px;
+  }
+  #WhatMakesGlueInnovative .p-8 {
+    padding: 18px;
+  }
+}
 
+/* Medium Screens (e.g., tablets) */
 @media (min-width: 768px) {
   #WhatMakesGlueInnovative .md\:w-1\/2 {
     width: 50%;
@@ -455,7 +465,13 @@
     line-height: 25.6px;
   }
 }
+
+/* Large Screens (e.g., laptops) */
 @media (min-width: 1024px) {
+  #WhatMakesGlueInnovative .px-8 {
+    padding-left: 110px;
+    padding-right: 110px;
+  }
   #WhatMakesGlueInnovative .lg\:col-span-1 {
     grid-column: span 1 / span 1;
   }
@@ -470,10 +486,13 @@
   }
   #WhatMakesGlueInnovative .lg\:text-5xl {
     font-size: 48px;
-    line-height: 52.800000000000004px;
+    line-height: 52.8px;
   }
   #WhatMakesGlueInnovative .lg\:text-lg {
     font-size: 18px;
     line-height: 27px;
+  }
+  #WhatMakesGlueInnovative .lg\:gap-10 {
+    gap: 40px;
   }
 }

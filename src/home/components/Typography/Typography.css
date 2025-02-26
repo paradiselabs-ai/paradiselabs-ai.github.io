@@ -88,8 +88,8 @@
 
 @media (min-width: 1200px) {
   :root {
-    --primary-font-scale: 0.65; /* Full size for Desktop */
-    --body-font-scale: 0.66;
+    --primary-font-scale: 0.51; /* Full size for Desktop */
+    --body-font-scale: 0.51;
     --size-xs: calc(14px * var(--body-font-scale));
     --size-sm: calc(16px * var(--body-font-scale));
     --size-base: calc(18px * var(--body-font-scale));
@@ -107,8 +107,8 @@
 
 @media (min-width: 1440px) {
   :root {
-    --primary-font-scale: 0.65; /* Full size for Desktop */
-    --body-font-scale: 0.66;
+    --primary-font-scale: 0.6; /* Full size for Desktop */
+    --body-font-scale: 0.6;
     --size-xs: calc(14px * var(--body-font-scale));
     --size-sm: calc(16px * var(--body-font-scale));
     --size-base: calc(18px * var(--body-font-scale));
