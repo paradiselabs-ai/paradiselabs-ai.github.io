@@ -47,8 +47,8 @@ h2, h3, p {
   .w-\[1200px\] { width: 1200px; }
   .h-full { height: 100%; }
   .max-w-full { max-width: 100%; }
-  .max-w-2xl { max-width: 42rem; }
-  .max-w-xl { max-width: 36rem; }
+  .max-w-2xl { max-width: 35rem; }
+  .max-w-xl { max-width: 26rem; }
   .mb-16 { margin-bottom: 64px; }
   .mb-4 { margin-bottom: 16px; }
   .flex { display: flex; }
@@ -119,24 +119,25 @@ h2, h3, p {
 @media (min-width: 768px) {
   #HowDoesGlueWork {
     .md\:mb-32 { margin-bottom: 128px; }
-    .md\:mb-6 { margin-bottom: 24px; }
-    .md\:mb-8 { margin-bottom: 32px; }
+    .md\:mb-6 { margin-bottom: 12px; }
+    .md\:mb-8 { margin-bottom: 28px; }
     .md\:ml-auto { margin-left: auto; }
     .md\:block { display: block; }
-    .md\:w-1 { width: 4px; }
+    .md\:w-1 { width: 2px; }
     .md\:w-1\/2 { width: 50%; }
     .md\:flex-row { flex-direction: row; }
-    .md\:gap-16 { gap: 64px; }
-    .md\:space-y-32 > :not([hidden]) ~ :not([hidden]) { margin-top: 128px; }
-    .md\:p-10 { padding: 40px; }
+    .md\:gap-16 { gap: 24px; }
+    .md\:space-y-32 > :not([hidden]) ~ :not([hidden]) { margin-top: 2vh; }
+    .md\:p-10 { padding: 30px; }
     .md\:p-12 { padding: 48px; }
     .md\:p-8 { padding: 32px; }
-    .md\:px-6 { padding-left: 24px; padding-right: 24px; }
-    .md\:py-16 { padding-top: 64px; padding-bottom: 64px; }
+    .md\:px-6 { padding-left: 28px; padding-right: 28px; }
+    .md\:py-16 { padding-top: 64px; padding-bottom: 24px; }
     .md\:text-left { text-align: left; }
     .md\:text-right { text-align: right; }
-    .md\:text-6xl { font-size: 60px; line-height: 66px; }
+    .md\:text-6xl { font-size: 55px; line-height: 60px; }
     .md\:text-9xl { font-size: 128px; line-height: 134.4px; }
+    .max-w-2xl { max-width: 34rem; }
   }
 }
 
@@ -146,13 +147,30 @@ h2, h3, p {
     .lg\:w-3\/5 { width: 60%; }
     .lg\:flex-row { flex-direction: row; }
   }
+  #HowDoesGlueWork {
+    .md\:mb-32 { margin-bottom: 128px; }
+    .md\:mb-6 { margin-bottom: 12px; }
+    .md\:mb-8 { margin-bottom: 28px; }
+    .md\:ml-auto { margin-left: auto; }
+    .md\:block { display: block; }
+    .md\:w-1 { width: 3px; }
+    .md\:w-1\/2 { width: 50%; }
+    .md\:flex-row { flex-direction: row; }
+    .md\:gap-16 { gap: 34px; }
+    .md\:space-y-32 > :not([hidden]) ~ :not([hidden]) { margin-top: 9vh; }
+    .md\:p-10 { padding: 30px; }
+    .md\:p-12 { padding: 48px; }
+    .md\:p-8 { padding: 32px; }
+    .md\:px-6 { padding-left: 44px; padding-right: 44px; }
+    .md\:py-16 { padding-top: 64px; padding-bottom: 24px; }
+    .md\:text-left { text-align: left; }
+    .md\:text-right { text-align: right; }
+    .md\:text-6xl { font-size: 60px; line-height: 66px; }
+    .md\:text-9xl { font-size: 128px; line-height: 134.4px; }
+  }
 }
 
 /* Animations used in TSX */
-@keyframes pulse {
-  50% { opacity: 0.5; }
-}
-
 @keyframes bounce-slow {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
