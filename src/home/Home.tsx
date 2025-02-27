@@ -29,7 +29,7 @@ const sectionContainerStyle: React.CSSProperties = {
   position: 'relative',
 };
 
-// Memoized gradient background component
+// Memoized gradient background component (first gradient)
 const GradientBackground = memo(() => (
   <div className="gradient-bg">
     <svg xmlns="http://www.w3.org/2000/svg">
@@ -45,11 +45,33 @@ const GradientBackground = memo(() => (
         </filter>
       </defs>
     </svg>
-    <div className="gradients-container">
+    <div className="gradients-container" style={{ filter: 'url(#goo) blur(17px)' }}>
       <div className="g1"></div>
       <div className="g2"></div>
       <div className="g3"></div>
-      <div className="g4"></div>
+    </div>
+  </div>
+));
+
+// Memoized second gradient background component (no animation)
+const SecondsGradientBackground = memo(() => (
+  <div className="gradient-bg">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo2">
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 5 -1"
+            result="goo"
+          />
+          <feBlend in="SourceGraphic" in2="goo" />
+        </filter>
+      </defs>
+    </svg>
+    <div className="gradients-container" style={{ filter: 'url(#goo2) blur(6px)' }}>
+      <div className="g1-2nd"></div>
+      <div className="g2-2nd"></div>
     </div>
   </div>
 ));
@@ -61,7 +83,7 @@ const Home: React.FC = () => {
   // Scroll handler with corrected targetRef type
   const scrollTo = (
     e: React.MouseEvent<HTMLAnchorElement>,
-    targetRef: React.RefObject<HTMLElement | null> // Updated type
+    targetRef: React.RefObject<HTMLElement | null>
   ) => {
     e.preventDefault();
     if (!targetRef.current) return;
@@ -182,7 +204,9 @@ const Home: React.FC = () => {
         <GlueSyntax />
       </Section>
 
+      {/* SecondsGradientBackground placed in WhatMakesGlueInnovative section */}
       <Section style={sectionContainerStyle}>
+        <SecondsGradientBackground />
         <WhatMakesGlueInnovative />
       </Section>
 

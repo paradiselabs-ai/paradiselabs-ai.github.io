@@ -1,5 +1,3 @@
-/* src/home/Home.css */
-
 /* ==================== */
 /* Global Variables & Base Styles */
 /* ==================== */
@@ -14,6 +12,10 @@
   --color1: 26, 159, 193; /* Teal-ish */
   --color2: 0, 107, 161;  /* Mid-blue */
   --color3: 0, 71, 139;   /* Darker blue */
+  
+  --color4: 0, 122, 196; 
+  --color5: 0, 122, 196; 
+  --color6: 0, 122, 196; 
   --circle-size: 100%;
   --blending: normal;
   background-size: 200% 200%;
@@ -74,13 +76,14 @@
 .home-container .gradients-container {
   width: 100%;
   height: 90%;
-  filter: url(#goo) blur(17px);
   transform: translateZ(0);
 }
 
 .home-container .g1,
+.home-container .g1-2nd,
 .home-container .g2,
-.home-container .g3{
+.home-container .g2-2nd,
+.home-container .g3 {
   width: var(--circle-size);
   height: var(--circle-size);
   position: absolute;
@@ -97,15 +100,35 @@
 
 .home-container .g2 {
   background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
-  left: calc(95% - var(--circle-size) / 2);
-  top: calc(70% - var(--circle-size) / 2);
+  left: calc(30% - var(--circle-size) / 2);
+  top: calc(60% - var(--circle-size) / 2);
   transform-origin: calc(75% + 100px);
 }
 
 .home-container .g3 {
   background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
-  top: calc(30% - var(--circle-size) / 2);
-  left: calc(95% - var(--circle-size) / 2);
+  left: calc(40% - var(--circle-size) / 2);
+  top: calc(20% - var(--circle-size) / 2);
+  transform-origin: calc(75% + 100px);
+}
+
+/* -------------------------------------------------------------------*/
+
+.home-container .g1-2nd {
+  background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+  animation: none !important; 
+  left: calc(-30% - var(--circle-size) / 2); 
+  top: calc(43% - var(--circle-size) / 2); 
+  opacity: 0.6;
+  transform-origin: calc(75% + 100px);
+}
+
+.home-container .g2-2nd {
+  background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+  animation: none !important; 
+  left: calc(90% - var(--circle-size) / 2);
+  top: calc(85% - var(--circle-size) / 2);
+  opacity: 0.4;
   transform-origin: calc(75% + 100px);
 }
 
@@ -240,6 +263,17 @@
     left: calc(88% - var(--circle-size) / 2);
     top: calc(55% - var(--circle-size) / 2);
   }
+  .home-container .g1-2nd {
+    left: calc(-10% - var(--circle-size) / 2); 
+    top: calc(40% - var(--circle-size) / 2); 
+    opacity: 0.7;
+  }
+  
+  .home-container .g2-2nd {
+    left: calc(110% - var(--circle-size) / 2);
+    top: calc(75% - var(--circle-size) / 2);
+    opacity: 0.6;
+  }
 }
 
 @media (min-width: 640px) and (max-width: 1199px) and (orientation: portrait) {
@@ -280,6 +314,17 @@
   .home-container .g3 {
     top: calc(30% - var(--circle-size) / 2);
     left: calc(95% - var(--circle-size) / 2);
+  }
+  .home-container .g1-2nd {
+    left: calc(-20% - var(--circle-size) / 2); 
+    top: calc(35% - var(--circle-size) / 2); 
+    opacity: 0.7;
+  }
+  
+  .home-container .g2-2nd {
+    left: calc(115% - var(--circle-size) / 2);
+    top: calc(80% - var(--circle-size) / 2);
+    opacity: 0.7;
   }
 }
 
@@ -323,5 +368,16 @@
   .home-container .g3 {
     left: calc(82% - var(--circle-size) / 2);
     top: calc(50% - var(--circle-size) / 2);
+  }
+  .home-container .g1-2nd {
+    left: calc(-10% - var(--circle-size) / 2); 
+    top: calc(40% - var(--circle-size) / 2); 
+    opacity: 0.7;
+  }
+  
+  .home-container .g2-2nd {
+    left: calc(110% - var(--circle-size) / 2);
+    top: calc(70% - var(--circle-size) / 2);
+    opacity: 0.7;
   }
 }
