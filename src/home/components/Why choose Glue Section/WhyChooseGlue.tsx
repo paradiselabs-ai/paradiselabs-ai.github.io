@@ -61,7 +61,7 @@ const features = [
 // Memoized FeatureCard to prevent unnecessary re-renders
 const FeatureCard = memo<Feature>(({ icon, title, description, delay, aosType }) => (
   <div className="relative group" data-aos={aosType} data-aos-delay={delay}>
-    <div className="absolute inset-0 bg-[#F2F0FF]/10 rounded-2xl blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
+    <div className="absolute inset-0 bg-[#F2F0FF]/10 rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
     <div className="p-8 lg:p-10 rounded-2xl backdrop-blur-2xl bg-white/5 border border-white/20 hover:border-[#F2F0FF]/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 relative z-10 group-hover:bg-white/10">
       <div className="flex items-center mb-6">
         <span className="material-symbols-outlined text-5xl lg:text-6xl text-[#F2F0FF]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#F2F0FF]">

@@ -430,6 +430,13 @@
   #WhatMakesGlueInnovative .p-8 {
     padding: 18px;
   }
+  #WhatMakesGlueInnovative .bg-\[\#F8F8FF\]\/5 {
+    background-color: rgba(248, 248, 255, 0.05);
+    --tw-shadow: 0 5px 20px rgb(248, 249, 250, 0.17);
+      --tw-shadow-colored: 0 8px 40px var(--tw-shadow-color);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+        var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
 }
 
 /* Medium Screens (e.g., tablets) */
