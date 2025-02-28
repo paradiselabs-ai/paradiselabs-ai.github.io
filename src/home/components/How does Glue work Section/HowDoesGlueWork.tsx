@@ -68,11 +68,11 @@ const Step = memo<{
 
   return (
     <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos={aos}>
-      {spacerBefore && <div className="hidden md:block md:w-1/2" />}
+      {spacerBefore && <div className="hidden md:block md:w-1/2 " />}
       <div
         className={`w-full md:w-1/2 text-center md:text-${textAlign} transform-gpu hover:${
           textAlign === "right" ? "-translate-x-2" : "translate-x-2"
-        } transition-all duration-500 p-4 md:p-10`}
+        } transition-all duration-500 p-4 md:p-10 `}
       >
         <span
           className={`material-symbols-outlined text-5xl md:text-6xl text-[#F5F2FF] mb-4 md:mb-6 animate-${
@@ -81,11 +81,11 @@ const Step = memo<{
         >
           {icon}
         </span>
-        <h3 className="typography-h3 !leading-tight mb-4 md:mb-6 text-[#F5F2FF] animate-slide-up">
+        <h3 className="typography-h3 !leading-tight mb-4 md:mb-6  text-[#F5F2FF] animate-slide-up">
           {title}
         </h3>
         <p
-          className={`typography-p font-light !leading-relaxed text-[#F5F2FF]/70 animate-fade-in max-w-xl ${
+          className={`typography-p font-light !leading-relaxed  text-[#F5F2FF]/70 animate-fade-in max-w-xl ${
             textAlign === "right" ? "md:ml-auto" : ""
           }`}
         >

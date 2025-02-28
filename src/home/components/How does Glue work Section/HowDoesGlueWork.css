@@ -70,7 +70,7 @@ h2, h3, p {
   /* Styling */
   .rounded-full { border-radius: 9999px; }
   .bg-\[\#F5F2FF\]\/10 {
-    background-color: rgba(245, 242, 255, 0.15);
+    background-color: rgba(245, 242, 255, 0.15) ;
   }
   .text-5xl { font-size: 48px; line-height: 52.8px; }
   .text-7xl { font-size: 72px; line-height: 75.6px; }
@@ -83,7 +83,6 @@ h2, h3, p {
     color: rgba(245, 242, 255, 0.8);
   }
   .blur-3xl { filter: blur(64px); }
-
   /* Transitions and animations */
   .transform-gpu {
     transform: translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), 0)
