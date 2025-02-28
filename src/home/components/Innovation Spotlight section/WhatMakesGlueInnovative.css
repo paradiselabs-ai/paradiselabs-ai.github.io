@@ -378,7 +378,10 @@
 #WhatMakesGlueInnovative .focus\:border-\[\#F8F8FF\]\/50:focus {
   border-color: rgba(248, 248, 255, 0.5);
 }
-
+[data-aos]:hover {
+  transition-delay: 0s !important;      /* Immediate start */
+  transition-duration: 300ms !important; /* Match your intended duration */
+}
 #WhatMakesGlueInnovative .focus-outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;

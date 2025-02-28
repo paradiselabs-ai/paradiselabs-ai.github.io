@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./WhatMakesGlueInnovative.css";
 
 // Wrap the component with React.memo to prevent unnecessary re-renders
 export const WhatMakesGlueInnovative = React.memo(() => {
-  return (
+  useEffect(() => {
+    const aosElements = document.querySelectorAll<HTMLElement>('[data-aos]');
+    aosElements.forEach((el) => {
+      const duration = parseInt(el.getAttribute('data-aos-duration') || '0', 10);
+      const delay = parseInt(el.getAttribute('data-aos-delay') || '0', 10);
+      const totalTime = duration + delay;
+  
+      setTimeout(() => {
+        el.style.transition = '';
+        el.style.transform = '';
+        el.style.opacity = '';
+      }, totalTime);
+    });
+  }, []);
+    return (
     <div id="WhatMakesGlueInnovative" className="typography-root">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-7xl">
