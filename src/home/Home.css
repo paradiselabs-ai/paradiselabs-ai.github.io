@@ -114,21 +114,13 @@
 
 /* -------------------------------------------------------------------*/
 
-.home-container .g1-2nd {
-  background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
-  animation: none !important; 
-  left: calc(-30% - var(--circle-size) / 2); 
-  top: calc(43% - var(--circle-size) / 2); 
-  opacity: 0.6;
-  transform-origin: calc(75% + 100px);
-}
 
 .home-container .g2-2nd {
   background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
   animation: none !important; 
-  left: calc(90% - var(--circle-size) / 2);
+  left: calc(50% - var(--circle-size) / 2);
   top: calc(85% - var(--circle-size) / 2);
-  opacity: 0.4;
+  opacity: 0.35;
   transform-origin: calc(75% + 100px);
 }
 
@@ -264,6 +256,9 @@
     top: calc(55% - var(--circle-size) / 2);
   }
   .home-container .g1-2nd {
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    animation: none !important; 
+    transform-origin: calc(75% + 100px);
     left: calc(-10% - var(--circle-size) / 2); 
     top: calc(40% - var(--circle-size) / 2); 
     opacity: 0.7;
@@ -316,6 +311,9 @@
     left: calc(95% - var(--circle-size) / 2);
   }
   .home-container .g1-2nd {
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    animation: none !important; 
+    transform-origin: calc(75% + 100px);
     left: calc(-20% - var(--circle-size) / 2); 
     top: calc(35% - var(--circle-size) / 2); 
     opacity: 0.7;
@@ -370,6 +368,9 @@
     top: calc(50% - var(--circle-size) / 2);
   }
   .home-container .g1-2nd {
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    animation: none !important; 
+    transform-origin: calc(75% + 100px);
     left: calc(-10% - var(--circle-size) / 2); 
     top: calc(40% - var(--circle-size) / 2); 
     opacity: 0.7;
