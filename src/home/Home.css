@@ -160,6 +160,11 @@
   display: block;
   font-size: var(--size-4xl);
   font-weight: 800;
+  margin: 0;
+}
+
+.home-container .hero-section .header-line .block {
+  display: block;
 }
 
 .home-container .hero-section .glue-line {

@@ -624,3 +624,29 @@ video {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* Focus states for better keyboard accessibility */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+[role="checkbox"]:focus-visible {
+  outline: 2px solid #FBF8F1;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(251, 248, 241, 0.3);
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: #FBF8F1;
+  box-shadow: 0 0 0 3px rgba(251, 248, 241, 0.3);
+}
+
+/* Ensure checkbox is easily targetable */
+.checkbox-container {
+  min-width: 24px;
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

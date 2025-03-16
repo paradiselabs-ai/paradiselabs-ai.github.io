@@ -1,19 +1,22 @@
 import React, { useEffect, memo } from "react";
 import "./WhyChooseGlue.css";
 
-// Singleton for font loading (unchanged, already optimal)
-const loadMaterialSymbols = (() => {
-  let loaded = false;
-  return () => {
-    if (!loaded && !document.querySelector('link[href*="Material+Symbols+Outlined"]')) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = "https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined";
-      document.head.appendChild(link);
-      loaded = true;
+// Improved async font loading pattern
+const loadMaterialSymbols = async () => {
+  if (document.fonts && !document.fonts.check('1em "Material Symbols Outlined"') && 
+      !document.querySelector('link[href*="Material+Symbols+Outlined"]')) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined&display=swap";
+    document.head.appendChild(link);
+    try {
+      // Wait for font to load
+      await document.fonts.load('1em "Material Symbols Outlined"');
+    } catch (e) {
+      console.warn("Failed to load Material Symbols font:", e);
     }
-  };
-})();
+  }
+};
 
 // Define feature type with strict icon and aos options for better type safety
 type FeatureIcon = "groups" | "code" | "build" | "share";
@@ -81,7 +84,10 @@ FeatureCard.displayName = "FeatureCard"; // For debugging in React DevTools
 
 // Main component with lazy-loaded features section
 export const WhyChooseGlue: React.FC = () => {
-  useEffect(loadMaterialSymbols, []); // Runs once on mount
+  useEffect(() => {
+    // Load the Material Symbols font asynchronously
+    loadMaterialSymbols().catch(console.error);
+  }, []); // Runs once on mount
 
   return (
     <div id="WhyChooseGlue">

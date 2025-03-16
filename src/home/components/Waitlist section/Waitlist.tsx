@@ -1,5 +1,5 @@
-import React, { FormEvent, useState, useCallback, useMemo } from "react";
-import { supabase } from "../../../lib/supabaseClient";
+import React, { FormEvent, useState, useCallback, useMemo, useRef, useEffect } from "react";
+import { api } from "../../../lib/api";
 import "./Waitlist.css";
 import { Check } from 'lucide-react';
 
@@ -59,14 +59,31 @@ const FeatureItem = React.memo(({ title, description }: { title: string; descrip
   </>
 ));
 
-export const Waitlist = React.memo(() => {
+export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [alreadyRegistered, setAlreadyRegistered] = useState(false);
+  const [alreadyRegistered, setAlreadyRegistered] = useState(() => {
+    // Check if user already registered (persistent across sessions)
+    return localStorage.getItem('glue_registered') === 'true';
+  });
+  const [csrfToken, setCsrfToken] = useState<string | null>(null);
 
   const emailRegex = useMemo(() => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, []);
 
+  // Generate CSRF token on component mount
+  useEffect(() => {
+    const token = api.csrf.generateToken();
+    setCsrfToken(token);
+  }, []);
+
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
+    // If already registered, no need to submit again
+    if (alreadyRegistered) {
+      alert("You're already registered for early access!");
+      return;
+    }
+    
     const form = e.currentTarget;
     const nameInput = form.querySelector("#name") as HTMLInputElement;
     const emailInput = form.querySelector("#email") as HTMLInputElement;
@@ -90,7 +107,7 @@ export const Waitlist = React.memo(() => {
     const formData = {
       "Name": nameInput.value,
       "Email": emailValue,
-      "Form": reasonInput.value,
+      "reason": reasonInput.value,
       "subscriber": isChecked
     };
 
@@ -106,17 +123,24 @@ export const Waitlist = React.memo(() => {
     `;
 
     try {
-      const { error } = await supabase
-        .from('waitlist')
-        .insert({
-          name: formData.Name,
-          email: formData.Email,
-          Form: formData.Form,
-          subscriber: formData.subscriber,
-          created_at: new Date().toISOString()
-        });
+      // Check rate limit first
+      if (!api.rateLimit.check(emailValue)) {
+        throw { code: 'RATE_LIMITED', message: 'Too many attempts. Please try again later.' };
+      }
 
-      if (error) throw error;
+      // Submit form using the API abstraction with CSRF token
+      const { success, error } = await api.submitWaitlist({
+        name: formData.Name,
+        email: formData.Email,
+        reason: formData.reason,
+        subscriber: formData.subscriber
+      }, csrfToken || undefined);
+
+      if (!success) throw error;
+
+      // Store that user has registered
+      localStorage.setItem('glue_registered', 'true');
+      setAlreadyRegistered(true);
 
       setTimeout(() => {
         button.innerHTML = `
@@ -129,12 +153,40 @@ export const Waitlist = React.memo(() => {
           </div>
         `;
         button.className = "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
+        
+        // Add a success message and set focus to it for screen readers
+        const formElement = button.closest('form');
+        if (formElement) {
+          const successMessage = document.createElement('div');
+          successMessage.id = 'success-message';
+          successMessage.className = 'text-emerald-400 font-medium mt-4 text-center';
+          successMessage.setAttribute('tabindex', '-1');
+          successMessage.setAttribute('role', 'alert');
+          successMessage.textContent = 'Registration successful! We\'ll be in touch soon.';
+          formElement.appendChild(successMessage);
+          successMessage.focus();
+        }
       }, 2000);
 
     } catch (error: any) {
       console.error('Submission error:', error);
 
-      if (error.code === 'PGRST409' || error.code === '23505') {
+      if (error.code === 'RATE_LIMITED') {
+        setTimeout(() => {
+          button.innerHTML = `Rate Limit Exceeded`;
+          button.className = "relative mt-2 sm:mt-3 bg-orange-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500";
+
+          setTimeout(() => {
+            button.innerHTML = `Start Your Journey`;
+            button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+            button.disabled = false;
+          }, 2500);
+        }, 2000);
+      } else if (error.code === 'PGRST409' || error.code === '23505') {
+        // If duplicate email detected, mark as already registered
+        localStorage.setItem('glue_registered', 'true');
+        setAlreadyRegistered(true);
+        
         setTimeout(() => {
           button.innerHTML = `Already Registered`;
           button.className = "relative mt-2 sm:mt-3 bg-yellow-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500";
@@ -145,19 +197,106 @@ export const Waitlist = React.memo(() => {
             button.disabled = false;
           }, 2500);
         }, 2000);
+      } else if (error.message === 'Invalid email format') {
+        // Show email validation error
+        const emailError = document.getElementById('email-error');
+        const emailField = document.getElementById('email');
+        
+        if (emailError) {
+          emailError.textContent = 'Please enter a valid email address';
+          emailError.classList.remove('hidden');
+          emailError.style.display = 'block';
+        }
+        
+        if (emailField) {
+          emailField.focus();
+        }
+        
+        setTimeout(() => {
+          button.innerHTML = `Start Your Journey`;
+          button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+          button.disabled = false;
+        }, 1000);
+      } else if (error.message === 'Name cannot be empty') {
+        // Show name validation error
+        const nameField = document.getElementById('name');
+        
+        if (nameField) {
+          nameField.classList.add('border-red-400');
+          nameField.focus();
+          
+          // Create or update name error message
+          let nameError = document.getElementById('name-error');
+          if (!nameError) {
+            nameError = document.createElement('div');
+            nameError.id = 'name-error';
+            nameError.className = 'text-red-400 text-sm mt-1';
+            nameField.parentNode?.appendChild(nameError);
+          }
+          
+          nameError.textContent = 'Name cannot be empty';
+        }
+        
+        setTimeout(() => {
+          button.innerHTML = `Start Your Journey`;
+          button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+          button.disabled = false;
+        }, 1000);
+      } else if (error.code === 'INVALID_CSRF') {
+        // Regenerate CSRF token and show error
+        const newToken = api.csrf.generateToken();
+        setCsrfToken(newToken);
+        
+        setTimeout(() => {
+          button.innerHTML = `Security Error`;
+          button.className = "relative mt-2 sm:mt-3 bg-red-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500";
+
+          setTimeout(() => {
+            button.innerHTML = `Start Your Journey`;
+            button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
+            button.disabled = false;
+          }, 2500);
+        }, 2000);
+      } else if (error.code === 'SPAM_DETECTED') {
+        // For spam submissions, we show a success message to the bot
+        // but don't actually process the submission
+        localStorage.setItem('glue_registered', 'true');
+        setAlreadyRegistered(true);
+        
+        setTimeout(() => {
+          button.innerHTML = `
+            <div class="flex items-center justify-center gap-3">
+              <span>🎉</span>
+              <span class="typography-p !leading-base">Welcome to GLUE!</span>
+              <svg class="w-5 h-5 text-white animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          `;
+          button.className = "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
+        }, 2000);
       } else {
         button.innerHTML = `Start Your Journey`;
         button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
         button.disabled = false;
       }
     }
-  }, [isChecked, emailRegex]);
+  }, [isChecked, emailRegex, alreadyRegistered, csrfToken]);
 
   const handleEmailInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const errorElement = document.getElementById('email-error');
     if (!emailRegex.test(e.target.value)) {
       e.target.setCustomValidity("Please enter a valid email address");
+      if (errorElement) {
+        errorElement.classList.remove('hidden');
+        errorElement.style.display = 'block';
+      }
     } else {
       e.target.setCustomValidity("");
+      if (errorElement) {
+        errorElement.classList.add('hidden');
+        errorElement.style.display = 'none';
+      }
     }
   }, [emailRegex]);
 
@@ -166,7 +305,7 @@ export const Waitlist = React.memo(() => {
   }, []);
 
   return (
-    <div id="Waitlist" className="typography-root">
+    <div id="Waitlist" className="typography-root" ref={ref}>
       <div>
         <section className="max-w-7xl mx-auto px-6 py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -175,7 +314,7 @@ export const Waitlist = React.memo(() => {
                 Turn Your AI Vision into Reality with GLUE
               </h2>
               <p className="typography-p text-[#F6F2FF] !leading-relaxed">
-                Join an open-source wave making AI practical. GLUE’s AI agents outpace SaaS with superior adaptability.
+                Join an open-source wave making AI practical. GLUE's AI agents outpace SaaS with superior adaptability.
               </p>
               <div className="space-y-6">
                 <FeatureItem 
@@ -188,7 +327,7 @@ export const Waitlist = React.memo(() => {
                 />
                 <FeatureItem 
                   title="Accelerate from Idea to Launch."
-                  description="Supercharge with GLUE’s open-source platform."
+                  description="Supercharge with GLUE's open-source platform."
                 />
               </div>
             </div>
@@ -196,7 +335,7 @@ export const Waitlist = React.memo(() => {
             <div className="w-full flex justify-center">
               <div className="w-[480px] min-h-[580px] rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] p-6 sm:p-14 relative overflow-hidden backdrop-blur-sm bg-gradient-to-br from-[#F8F9FA]/10 to-[#F8F9FA]/5">
                 <header className="mb-8 sm:mb-12 relative z-20">
-                  <h1 className="typography-h2 text-center mb-4 sm:mb-6 tracking-tight relative">
+                  <h2 className="typography-h2 text-center mb-4 sm:mb-6 tracking-tight relative">
                     Get Early Access
                     <svg
                       className="absolute -right-6 sm:-right-8 top-0 w-5 sm:w-6 h-5 sm:h-6 text-[#FBF8F1] animate-pulse"
@@ -210,9 +349,9 @@ export const Waitlist = React.memo(() => {
                         strokeLinejoin="round"
                       />
                     </svg>
-                  </h1>
+                  </h2>
                   <p className="typography-p !leading-relaxed text-[#F8F9FA] text-center px-2 sm:px-0">
-                    Be first to explore GLUE’s open-source platform for AI agents and agentic AI workflows.
+                    Be first to explore GLUE's open-source platform for AI agents and agentic AI workflows.
                   </p>
                 </header>
                 <form
@@ -223,6 +362,7 @@ export const Waitlist = React.memo(() => {
                     <label
                       htmlFor="name"
                       className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
+                      id="name-label"
                     >
                       Full Name
                     </label>
@@ -231,6 +371,8 @@ export const Waitlist = React.memo(() => {
                       id="name"
                       name="name"
                       required
+                      aria-labelledby="name-label"
+                      aria-required="true"
                       className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Enter your full name"
                     />
@@ -239,6 +381,7 @@ export const Waitlist = React.memo(() => {
                     <label
                       htmlFor="email"
                       className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
+                      id="email-label"
                     >
                       Email Address
                     </label>
@@ -247,11 +390,30 @@ export const Waitlist = React.memo(() => {
                       id="email"
                       name="email"
                       required
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       placeholder="Enter your email address"
+                      aria-labelledby="email-label"
+                      aria-required="true"
+                      aria-describedby="email-error"
+                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
                       onInput={handleEmailInput}
                     />
+                    <div id="email-error" className="text-red-400 text-sm hidden" style={{ display: 'none' }}>
+                      Please enter a valid email address
+                    </div>
                   </div>
+                  
+                  {/* Honeypot field - hidden from real users but visible to bots */}
+                  <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                    <label htmlFor="website">Website (Leave this empty)</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+                  
                   <div style={{ position: 'absolute', left: '-9999px' }}>
                     <label htmlFor="fax">Fax Number</label>
                     <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" />
@@ -278,9 +440,15 @@ export const Waitlist = React.memo(() => {
                     />
                   </div>
                   <div className="flex items-center gap-3 mt-1 sm:mt-2">
-                    <div className="relative inline-flex items-center">
+                    <div className="checkbox-container">
                       <div
                         onClick={handleCheckboxToggle}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleCheckboxToggle();
+                          }
+                        }}
                         className={`
                           w-5 h-5
                           border-2
@@ -306,6 +474,7 @@ export const Waitlist = React.memo(() => {
                       htmlFor="newsletter"
                       style={{ marginTop: '-2px', marginBottom: '-2px' }}
                       className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
+                      onClick={handleCheckboxToggle}
                     >
                       Keep me updated with exclusive launch details
                     </label>

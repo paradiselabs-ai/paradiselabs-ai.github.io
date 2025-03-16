@@ -15,17 +15,28 @@ const App: React.FC = () => {
 
   return (
     <HashRouter>
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:outline focus:outline-2"
+        style={{ clip: 'rect(0, 0, 0, 0)', clipPath: 'inset(50%)', overflow: 'hidden', position: 'absolute', whiteSpace: 'nowrap', width: '1px', height: '1px' }}
+      >
+        Skip to main content
+      </a>
       <Routes>
         <Route path="/" element={
           <div className="min-h-screen">
             <HomepageHeader />
-            <Home />
+            <main id="main-content">
+              <Home />
+            </main>
           </div>
         } />
         <Route path="/docs" element={
           <div className="min-h-screen">
             <HomepageHeader />
-            <Docs />
+            <main id="main-content">
+              <Docs />
+            </main>
           </div>
         } />
         <Route path="/workflow" element={
@@ -33,11 +44,11 @@ const App: React.FC = () => {
             <WorkflowHeader />
             <div className="flex flex-1 h-[calc(100vh-72px)] mt-[72px]">
               <WorkflowEditor />
-              <div className="flex-1 flex flex-col">
+              <main id="main-content" className="flex-1 flex flex-col">
                 <div className="flex-1">
                   <WorkflowBuilder />
                 </div>
-              </div>
+              </main>
             </div>
           </div>
         } />

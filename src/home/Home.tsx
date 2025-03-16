@@ -151,8 +151,10 @@ const Home: React.FC = () => {
         <div className="content-container">
           <section className="hero-section">
             <p>From ParadiseLabs</p>
-            <span className="header-line">Generative-AI Linking &</span>
-            <span className="header-line">Unification Engine</span>
+            <h1 className="header-line">
+              <span className="block">Generative-AI Linking &</span>
+              <span className="block">Unification Engine</span>
+            </h1>
             <span className="tagline">The GLUE framework</span>
             <span className="glue-line">unifies tools, AI agents, and processes</span>
             <span className="glue-line">so you connect, streamline, and succeed.</span>
@@ -161,6 +163,8 @@ const Home: React.FC = () => {
                 href="#waitlist"
                 onClick={(e) => scrollTo(e, waitlistRef)}
                 className="cta-primary"
+                aria-label="Get early access to GLUE"
+                role="button"
               >
                 Get Early Access
               </a>
@@ -168,6 +172,8 @@ const Home: React.FC = () => {
                 href="#features"
                 onClick={(e) => scrollTo(e, featuresRef)}
                 className="cta-secondary"
+                aria-label="View GLUE features"
+                role="button"
               >
                 Explore Features
               </a>
