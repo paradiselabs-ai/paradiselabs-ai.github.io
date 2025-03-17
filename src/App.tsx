@@ -13,6 +13,7 @@ import { ErrorBoundary } from './components/error';
 import { AppProvider } from './context/AppState';
 import { useUserState } from './context/hooks';
 import AlertContainer from './components/ui/AlertContainer';
+import FontPreloader from './components/FontPreloader';
 
 // Custom error handler for logging errors to monitoring service
 const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
@@ -39,6 +40,7 @@ const AppContent: React.FC = () => {
 
   return (
     <ErrorBoundary onError={handleError}>
+      <FontPreloader />
       <HashRouter>
         <a 
           href="#main-content" 

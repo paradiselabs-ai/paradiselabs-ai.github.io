@@ -452,6 +452,7 @@ const WaitlistForm = React.memo(() => {
           <div className="flex items-center gap-3 mt-1 sm:mt-2">
             <div className="checkbox-container">
               <div
+                id="newsletter-checkbox"
                 onClick={handleCheckboxToggle}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -475,13 +476,15 @@ const WaitlistForm = React.memo(() => {
                 `}
                 role="checkbox"
                 aria-checked={isChecked}
+                aria-labelledby="newsletter-label"
                 tabIndex={0}
               >
                 <CheckIcon isChecked={isChecked} />
               </div>
             </div>
             <label
-              htmlFor="newsletter"
+              id="newsletter-label"
+              htmlFor="newsletter-checkbox"
               style={{ marginTop: '-2px', marginBottom: '-2px' }}
               className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
               onClick={handleCheckboxToggle}

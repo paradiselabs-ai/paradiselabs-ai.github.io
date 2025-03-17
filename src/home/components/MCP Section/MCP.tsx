@@ -83,9 +83,9 @@ export const MCP = memo(() => {
                   data-aos="fade-up"
                   data-aos-delay="140"
                 >
-                  <h4 className="typography-h3 !leading-tight font-bold text-[#FCF9FA] mb-9 md:mb-6 text-center md:text-left">
+                  <h3 className="typography-h3 !leading-tight font-bold text-[#FCF9FA] mb-9 md:mb-6 text-center md:text-left">
                     What This Means for You
-                  </h4>
+                  </h3>
                   <p className="typography-p font-light !leading-relaxed text-[#FCF9FA]/70 text-center md:text-left">
                     Accelerate your development process with instant access to MCP servers and tools. GLUE's integration with MCP empowers you to build and connect AI solutions faster than ever.
                   </p>

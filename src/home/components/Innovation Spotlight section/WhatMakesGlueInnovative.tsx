@@ -130,9 +130,9 @@ export const WhatMakesGlueInnovative = React.memo(() => {
               >
                 <div className="h-full flex flex-col">
                   <div className="grid grid-cols-3 gap-4 p-6 bg-[#F8F8FF]/10">
-                    <h4 className="typography-h3 font-semibold !leading-tight text-center">Your Needs</h4>
-                    <h4 className="typography-h3 font-semibold !leading-tight text-center">With GLUE</h4>
-                    <h4 className="typography-h3 font-semibold !leading-tight text-center">Without GLUE</h4>
+                    <h3 className="typography-h3 font-semibold !leading-tight text-center">Your Needs</h3>
+                    <h3 className="typography-h3 font-semibold !leading-tight text-center">With GLUE</h3>
+                    <h3 className="typography-h3 font-semibold !leading-tight text-center">Without GLUE</h3>
                   </div>
                   <div className="flex-1 overflow-y-auto">
                     <div className="grid grid-cols-3 gap-4 p-6 hover:bg-[#F8F8FF]/10 transition-colors duration-200">
