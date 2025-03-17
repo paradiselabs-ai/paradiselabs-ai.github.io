@@ -31,7 +31,13 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --force
+        
+      - name: Verify terser installation
+        run: |
+          echo "Checking terser..."
+          npm list terser
+          npm install terser@5.19.2 --save-dev
 
       - name: Run tests
         run: npm run test:ci

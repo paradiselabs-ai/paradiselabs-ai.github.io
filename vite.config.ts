@@ -21,7 +21,7 @@ export default defineConfig({
     setupFiles: ['./vitest.setup.ts'],
   },
   build: {
-    minify: 'terser',
+    minify: 'esbuild',
     cssCodeSplit: true,
     sourcemap: false,
     rollupOptions: {
