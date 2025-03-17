@@ -9,15 +9,44 @@ export default defineConfig({
     {
       name: 'html-transform',
       transformIndexHtml(html) {
-        // Add preload directives for critical resources
+        // Add preload directives for critical resources and self-hosted fonts
         return html.replace(
           /<\/head>/,
           `
+  <!-- Preload critical assets -->
   <link rel="preload" href="/assets/home-C8R50P2G.css" as="style">
   <link rel="preload" href="/assets/vendor-ui-DvB2Xm2x.css" as="style">
+  <link rel="preload" href="/images/glue.svg" as="image" type="image/svg+xml">
+  
+  <!-- Self-hosted fonts with font-display:swap -->
+  <link rel="stylesheet" href="/fonts/material-icons.css">
+  
+  <!-- Font loading optimization -->
+  <style>
+    /* Font fallbacks ensure text is visible before custom fonts load */
+    body, h1, h2, h3, h4, h5, h6, p, span {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    }
+    
+    /* Apply font-display:swap to all Google Fonts */
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+  </style>
+  
+  <!-- Minimal Google Fonts connection for remaining fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="/images/glue.svg" as="image" type="image/svg+xml">
   </head>`
         );
       },

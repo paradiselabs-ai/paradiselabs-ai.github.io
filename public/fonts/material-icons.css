@@ -1,0 +1,14 @@
+/* Self-hosted Material Icons subset */
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/material-symbols.woff2') format('woff2');
+  unicode-range: U+E5CA, U+E5CD, U+E8B6, U+E5D2, U+EB3B, U+EA19, U+E89C, U+E430, U+E895, U+E1B0, U+E158, U+F1CA;
+}
+
+/* Fallback system fonts */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+} 

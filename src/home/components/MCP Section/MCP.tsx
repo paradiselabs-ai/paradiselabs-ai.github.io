@@ -11,7 +11,7 @@ const FeatureCard = memo(
     >
       <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">{icon}</span>
       <div className="text-center md:text-left">
-        <h4 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">{title}</h4>
+        <strong className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3 block">{title}</strong>
         <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">{desc}</p>
       </div>
     </div>
