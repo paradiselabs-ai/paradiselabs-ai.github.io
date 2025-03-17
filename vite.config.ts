@@ -1,26 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { configDefaults } from 'vitest/config'
-import { resolve } from 'path'
-import fs from 'fs'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    // Lightweight image optimization hook
-    {
-      name: 'optimize-images',
-      apply: 'build',
-      enforce: 'post',
-      closeBundle() {
-        console.log('Checking image optimization status...');
-        // This hook runs after the build is complete
-        // In a real implementation, we'd process images here
-        // But for now, just log information about optimization
-        console.log('Image optimization complete. Optimized webp versions are now available.');
-      }
-    },
     {
       name: 'html-transform',
       transformIndexHtml(html) {
@@ -28,41 +13,19 @@ export default defineConfig({
         return html.replace(
           /<\/head>/,
           `
-  <!-- PWA support -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#121212">
-  
   <!-- Preload critical assets -->
   <link rel="preload" href="/assets/home-C8R50P2G.css" as="style">
   <link rel="preload" href="/assets/vendor-ui-DvB2Xm2x.css" as="style">
   <link rel="preload" href="/images/glue.svg" as="image" type="image/svg+xml">
-  <link rel="preload" href="/fonts/material-symbols.woff2" as="font" type="font/woff2" crossorigin>
   
-  <!-- Self-hosted fonts with font-display:block -->
+  <!-- Self-hosted fonts with font-display:swap -->
   <link rel="stylesheet" href="/fonts/material-icons.css">
   
-  <!-- Inline critical CSS -->
+  <!-- Font loading optimization -->
   <style>
-    /* Critical CSS for faster rendering */
     /* Font fallbacks ensure text is visible before custom fonts load */
     body, h1, h2, h3, h4, h5, h6, p, span {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    }
-    
-    /* Hero section critical styles */
-    .header-line {
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin: 1.5rem 0;
-      background: linear-gradient(90deg, #F8F6FF 0%, #F0F0FF 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    
-    .block {
-      display: block;
     }
     
     /* Apply font-display:swap to all Google Fonts */
@@ -79,39 +42,7 @@ export default defineConfig({
       font-weight: 400;
       font-display: swap;
     }
-    
-    /* Cache control meta tags - alternative to _headers file */
-    /* These inform CDNs but don't guarantee browser caching */
   </style>
-  
-  <!-- Service worker and cache control registration (for better caching control) -->
-  <script>
-    // Register service worker for better caching
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js', {scope: '/'})
-          .then(registration => {
-            console.log('SW registered: ', registration);
-            
-            // Check for updates to the service worker
-            registration.addEventListener('updatefound', () => {
-              const newWorker = registration.installing;
-              console.log('New service worker installing');
-              
-              // When the new service worker is installed
-              newWorker.addEventListener('statechange', () => {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  console.log('New content available, please refresh the page');
-                }
-              });
-            });
-          })
-          .catch(error => {
-            console.log('SW registration failed: ', error);
-          });
-      });
-    }
-  </script>
   
   <!-- Minimal Google Fonts connection for remaining fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
