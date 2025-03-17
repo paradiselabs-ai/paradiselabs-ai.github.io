@@ -21,6 +21,26 @@ const FontPreloader: React.FC = () => {
             font-weight: 400;
             font-display: swap;
           }
+
+          /* Font loading optimization for all web fonts */
+          @font-face {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+          }
+
+          /* Set fallback fonts */
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+          }
         `}
       </style>
     </>

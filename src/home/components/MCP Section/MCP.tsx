@@ -11,7 +11,7 @@ const FeatureCard = memo(
     >
       <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">{icon}</span>
       <div className="text-center md:text-left">
-        <h3 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">{title}</h3>
+        <h4 className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3">{title}</h4>
         <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">{desc}</p>
       </div>
     </div>
@@ -60,9 +60,9 @@ export const MCP = memo(() => {
             <div className="w-full lg:w-7/12 pl-24 p-12 md:p-16 relative overflow-hidden">
               <div className="space-y-12 md:space-y-16 relative z-10">
                 <div className="text-center md:text-left mb-12 md:mb-16" data-aos="fade-right">
-                  <h1 className="typography-h2 !leading-tight font-bold mb-6 md:mb-8">
+                  <h2 className="typography-h2 !leading-tight font-bold mb-6 md:mb-8">
                   Unleash Your Code with MCP
-                  </h1>
+                  </h2>
                   <p className="typography-p !leading-relaxed text-[#F8F6FF]/80">
                     Turn technical complexity into business agility. GLUE's MCP infrastructure powers AI agents to work together flawlessly, freeing you to focus on value.
                   </p>
