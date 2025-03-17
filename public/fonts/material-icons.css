@@ -1,14 +1,32 @@
-/* Self-hosted Material Icons subset */
+/* Self-hosted Material Icons subset - only critical icons we use */
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: block; /* Block render text until font is loaded or timeout */
   src: url('/fonts/material-symbols.woff2') format('woff2');
-  unicode-range: U+E5CA, U+E5CD, U+E8B6, U+E5D2, U+EB3B, U+EA19, U+E89C, U+E430, U+E895, U+E1B0, U+E158, U+F1CA;
+  /* Specifically include only the icon unicode codepoints we actually use */
+  unicode-range: U+E5CA, U+E5CD, U+E8B6, U+E5D2, U+EB3B, U+EA19, U+E89C, U+E430, U+F1CA;
 }
 
-/* Fallback system fonts */
+/* Material icons element styling */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fallback system fonts with similar symbol fallbacks */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 } 

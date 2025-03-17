@@ -1,0 +1,103 @@
+name: Optimize Images
+
+on:
+  # Run on PRs (but only process changed images)
+  pull_request:
+    paths:
+      - 'public/images/**'
+  
+  # Run on pushes to main (process all images)
+  push:
+    branches:
+      - main
+    paths:
+      - 'public/images/**'
+  
+  # Allow manual runs
+  workflow_dispatch:
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Needed to detect changes
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+      
+      - name: Find changed image files
+        id: changed-files
+        run: |
+          if ${{ github.event_name == 'pull_request' }}; then
+            # For PRs, only get changed files
+            FILES=$(git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.sha }} | grep -E '^public/images/.*\.(png|jpg|jpeg)$' || echo "")
+          else
+            # For push to main, get all image files
+            FILES=$(find public/images -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \))
+          fi
+          
+          echo "FILES=$FILES" >> $GITHUB_ENV
+      
+      - name: Optimize images and create WebP versions
+        run: |
+          if [ -z "$FILES" ]; then
+            echo "No image files to optimize"
+            exit 0
+          fi
+          
+          mkdir -p public/images/optimized
+          
+          for file in $FILES; do
+            echo "Processing $file"
+            filename=$(basename "$file")
+            extension="${filename##*.}"
+            name="${filename%.*}"
+            
+            # Create WebP version
+            cwebp -q 85 "$file" -o "public/images/optimized/${name}.webp"
+            
+            # Create optimized version of original format
+            case "$extension" in
+              png)
+                pngquant --quality=85 --skip-if-larger --strip --force --output "public/images/optimized/${filename}" "$file"
+                ;;
+              jpg|jpeg)
+                convert "$file" -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB "public/images/optimized/${filename}"
+                ;;
+            esac
+            
+            echo "Created optimized versions of $file"
+          done
+      
+      - name: Create pull request with optimized images
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'chore: optimize images'
+          title: 'Optimize images'
+          body: 'This PR optimizes images and adds WebP versions'
+          branch: optimize-images-${{ github.run_id }}
+          add-paths: |
+            public/images/optimized/
+      
+      - name: Commit optimized images directly
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          # Setup git
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Add, commit, and push the optimized images
+          git add public/images/optimized/
+          git commit -m "chore: optimize images" || echo "No changes to commit"
+          git push 

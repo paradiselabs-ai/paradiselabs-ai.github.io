@@ -23,6 +23,13 @@
     <!-- Material Symbols Font with display swap for better loading -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
     
+    <!-- PWA support -->
+    <meta name="theme-color" content="#121212">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/images/glue-logo.webp">
+    
     <!-- SPA routing for GitHub Pages -->
     <script>
       // Check if we need to redirect to a specific route after 404
@@ -35,9 +42,53 @@
         }
       })();
     </script>
+    
+    <!-- Service worker registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', {scope: '/'})
+            .then(registration => {
+              console.log('Service Worker registered with scope:', registration.scope);
+              
+              // Check for updates to the service worker
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                console.log('New service worker installing');
+                
+                // When the new service worker is installed
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('New content available, please refresh the page');
+                    
+                    // Optionally show a notification to the user about new content
+                    if (Notification.permission === 'granted') {
+                      new Notification('GLUE Website Updated', {
+                        body: 'New content is available! Click to refresh.',
+                        icon: '/images/glue.svg'
+                      }).onclick = function() {
+                        window.location.reload();
+                      };
+                    }
+                  }
+                });
+              });
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div>
+        <h1>JavaScript Required</h1>
+        <p>GLUE requires JavaScript to be enabled in your browser. Please enable JavaScript to continue.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/index.jsx"></script>
   </body>
 </html>
