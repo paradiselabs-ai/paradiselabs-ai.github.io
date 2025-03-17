@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GLUE - Generative-AI Linking & Unification Engine">
+  <title>GLUE - Generative-AI Linking & Unification Engine</title>
+  <link rel="icon" href="/images/glue.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+  <script>
+    // Get the current URL path excluding the base
+    var segment = window.location.pathname;
+    
+    // Remove the base path if present
+    var basePath = '/GLUE';
+    if (segment.startsWith(basePath)) {
+      segment = segment.slice(basePath.length);
+    }
+    
+    // Check if it's already the root
+    if (segment === '/' || segment === '/index.html' || segment === '/200.html') {
+      window.location.href = '/';
+    } else {
+      // Store the path for the homepage to pick up
+      sessionStorage.setItem('redirectPath', segment.slice(1)); // Remove leading slash
+      window.location.href = '/';
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html> 

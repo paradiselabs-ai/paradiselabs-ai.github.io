@@ -1,20 +1,48 @@
 import './components/Typography/Typography.css';
 import { WhyChooseGlue } from './components/Why choose Glue Section/WhyChooseGlue';
-import { HowDoesGlueWork } from './components/How does Glue work Section/HowDoesGlueWork';
-import { GlueSyntax } from './components/Glue syntax section/GlueSyntax';
-import { WhatMakesGlueInnovative } from './components/Innovation Spotlight section/WhatMakesGlueInnovative';
-import { MCP } from './components/MCP Section/MCP';
-import { Waitlist } from './components/Waitlist section/Waitlist';
-import React, { useEffect, useRef, memo } from 'react';
+import React, { useEffect, useRef, memo, Suspense, lazy } from 'react';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import './Home.css';
+
+// Lazy load below-the-fold components
+const HowDoesGlueWork = lazy(() => import('./components/How does Glue work Section/HowDoesGlueWork').then(module => ({ 
+  default: module.HowDoesGlueWork 
+})));
+const GlueSyntax = lazy(() => import('./components/Glue syntax section/GlueSyntax').then(module => ({ 
+  default: module.GlueSyntax 
+})));
+const WhatMakesGlueInnovative = lazy(() => import('./components/Innovation Spotlight section/WhatMakesGlueInnovative').then(module => ({ 
+  default: module.WhatMakesGlueInnovative 
+})));
+const MCP = lazy(() => import('./components/MCP Section/MCP').then(module => ({ 
+  default: module.MCP 
+})));
+const Waitlist = lazy(() => import('./components/Waitlist section/Waitlist').then(module => ({ 
+  default: module.Waitlist 
+})));
 
 // Define props interface for Section component
 interface SectionProps {
   children: React.ReactNode;
   style: React.CSSProperties;
 }
+
+// Loading fallback component
+const LoadingFallback = memo(() => (
+  <div className="flex justify-center items-center p-12">
+    <div className="animate-pulse flex space-x-4">
+      <div className="rounded-full bg-white/10 h-12 w-12"></div>
+      <div className="flex-1 space-y-4 py-1">
+        <div className="h-4 bg-white/10 rounded w-3/4"></div>
+        <div className="space-y-2">
+          <div className="h-4 bg-white/10 rounded"></div>
+          <div className="h-4 bg-white/10 rounded w-5/6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+));
 
 // Memoized section component with typed props
 const Section = memo(({ children, style }: SectionProps) => (
@@ -203,25 +231,35 @@ const Home: React.FC = () => {
       </section>
 
       <Section style={sectionContainerStyle}>
-        <HowDoesGlueWork />
+        <Suspense fallback={<LoadingFallback />}>
+          <HowDoesGlueWork />
+        </Suspense>
       </Section>
 
       <Section style={sectionContainerStyle}>
-        <GlueSyntax />
+        <Suspense fallback={<LoadingFallback />}>
+          <GlueSyntax />
+        </Suspense>
       </Section>
 
       {/* SecondsGradientBackground placed in WhatMakesGlueInnovative section */}
       <Section style={sectionContainerStyle}>
         <SecondsGradientBackground />
-        <WhatMakesGlueInnovative />
+        <Suspense fallback={<LoadingFallback />}>
+          <WhatMakesGlueInnovative />
+        </Suspense>
       </Section>
 
       <Section style={sectionContainerStyle}>
-        <MCP />
+        <Suspense fallback={<LoadingFallback />}>
+          <MCP />
+        </Suspense>
       </Section>
 
       <section ref={waitlistRef} id="waitlist" style={sectionContainerStyle}>
-        <Waitlist />
+        <Suspense fallback={<LoadingFallback />}>
+          <Waitlist />
+        </Suspense>
       </section>
     </div>
   );

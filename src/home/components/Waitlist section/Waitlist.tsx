@@ -2,6 +2,8 @@ import React, { FormEvent, useState, useCallback, useMemo, useRef, useEffect } f
 import { api } from "../../../lib/api";
 import "./Waitlist.css";
 import { Check } from 'lucide-react';
+import { APIErrorBoundary, useErrorHandler } from "../../../components/error";
+import { useWaitlistState, useUserState, useUIState } from "../../../context/hooks";
 
 // Memoized CheckIcon component
 const CheckIcon = React.memo(({ isChecked }: { isChecked: boolean }) => (
@@ -59,14 +61,23 @@ const FeatureItem = React.memo(({ title, description }: { title: string; descrip
   </>
 ));
 
-export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
+// Wrap the form in this wrapper component to use the error handler
+const WaitlistForm = React.memo(() => {
   const [isChecked, setIsChecked] = useState(false);
-  const [alreadyRegistered, setAlreadyRegistered] = useState(() => {
-    // Check if user already registered (persistent across sessions)
-    return localStorage.getItem('glue_registered') === 'true';
-  });
   const [csrfToken, setCsrfToken] = useState<string | null>(null);
+  const { error, handleError, resetError } = useErrorHandler();
 
+  // Use our state management hooks
+  const { isRegistered, setRegistered } = useUserState();
+  const { 
+    submissionInProgress, 
+    setSubmissionInProgress,
+    setSubmissionSuccess,
+    setSubmissionError,
+    resetWaitlistState
+  } = useWaitlistState();
+  const { addAlert } = useUIState();
+  
   const emailRegex = useMemo(() => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, []);
 
   // Generate CSRF token on component mount
@@ -77,10 +88,12 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    resetError(); // Reset any previous errors
+    resetWaitlistState(); // Reset waitlist state
     
     // If already registered, no need to submit again
-    if (alreadyRegistered) {
-      alert("You're already registered for early access!");
+    if (isRegistered) {
+      addAlert('info', "You're already registered for early access!");
       return;
     }
     
@@ -92,7 +105,7 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
     const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 
     if (faxInput.value) {
-      alert("Bot detected! Submission blocked.");
+      addAlert('warning', "Bot detected! Submission blocked.");
       return;
     }
 
@@ -112,6 +125,7 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
     };
 
     button.disabled = true;
+    setSubmissionInProgress(true);
     button.innerHTML = `
       <div class="flex items-center justify-center gap-3">
         <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -139,8 +153,8 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
       if (!success) throw error;
 
       // Store that user has registered
-      localStorage.setItem('glue_registered', 'true');
-      setAlreadyRegistered(true);
+      setRegistered(true);
+      setSubmissionSuccess(true);
 
       setTimeout(() => {
         button.innerHTML = `
@@ -166,12 +180,21 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
           formElement.appendChild(successMessage);
           successMessage.focus();
         }
+        
+        addAlert('success', 'Registration successful! We\'ll be in touch soon.');
       }, 2000);
 
     } catch (error: any) {
+      // Handle error with our error handler
+      handleError(error);
+      setSubmissionError(error instanceof Error ? error : new Error(error.message || 'Unknown error'));
+      setSubmissionInProgress(false);
+
+      // Rest of error handling code remains the same
       console.error('Submission error:', error);
 
       if (error.code === 'RATE_LIMITED') {
+        addAlert('warning', 'Too many attempts. Please try again later.');
         setTimeout(() => {
           button.innerHTML = `Rate Limit Exceeded`;
           button.className = "relative mt-2 sm:mt-3 bg-orange-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500";
@@ -184,8 +207,8 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
         }, 2000);
       } else if (error.code === 'PGRST409' || error.code === '23505') {
         // If duplicate email detected, mark as already registered
-        localStorage.setItem('glue_registered', 'true');
-        setAlreadyRegistered(true);
+        setRegistered(true);
+        addAlert('info', 'This email is already registered for early access!');
         
         setTimeout(() => {
           button.innerHTML = `Already Registered`;
@@ -212,6 +235,8 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
           emailField.focus();
         }
         
+        addAlert('error', 'Please enter a valid email address.');
+        
         setTimeout(() => {
           button.innerHTML = `Start Your Journey`;
           button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
@@ -237,6 +262,8 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
           nameError.textContent = 'Name cannot be empty';
         }
         
+        addAlert('error', 'Please enter your name.');
+        
         setTimeout(() => {
           button.innerHTML = `Start Your Journey`;
           button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
@@ -246,6 +273,8 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
         // Regenerate CSRF token and show error
         const newToken = api.csrf.generateToken();
         setCsrfToken(newToken);
+        
+        addAlert('error', 'Security error occurred. Please try again.');
         
         setTimeout(() => {
           button.innerHTML = `Security Error`;
@@ -260,8 +289,7 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
       } else if (error.code === 'SPAM_DETECTED') {
         // For spam submissions, we show a success message to the bot
         // but don't actually process the submission
-        localStorage.setItem('glue_registered', 'true');
-        setAlreadyRegistered(true);
+        setRegistered(true);
         
         setTimeout(() => {
           button.innerHTML = `
@@ -276,12 +304,13 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
           button.className = "relative mt-2 sm:mt-3 bg-emerald-500 text-white font-medium typography-p !leading-base rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-500 transform hover:scale-105 hover:shadow-lg";
         }, 2000);
       } else {
+        addAlert('error', 'An unexpected error occurred. Please try again later.');
         button.innerHTML = `Start Your Journey`;
         button.className = "relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group";
         button.disabled = false;
       }
     }
-  }, [isChecked, emailRegex, alreadyRegistered, csrfToken]);
+  }, [isChecked, emailRegex, isRegistered, csrfToken, handleError, resetError, addAlert, setRegistered, resetWaitlistState, setSubmissionInProgress, setSubmissionSuccess, setSubmissionError]);
 
   const handleEmailInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const errorElement = document.getElementById('email-error');
@@ -303,6 +332,186 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
   const handleCheckboxToggle = useCallback(() => {
     setIsChecked(prev => !prev);
   }, []);
+
+  // If there's an error that wasn't handled by the specific cases above, show the error message
+  if (error) {
+    // We'll let the APIErrorBoundary handle this in the parent component
+    throw error;
+  }
+
+  // The form JSX remains the same
+  return (
+    <div className="w-full flex justify-center">
+      <div className="w-[480px] min-h-[580px] rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] p-6 sm:p-14 relative overflow-hidden backdrop-blur-sm bg-gradient-to-br from-[#F8F9FA]/10 to-[#F8F9FA]/5">
+        <header className="mb-8 sm:mb-12 relative z-20">
+          <h2 className="typography-h2 text-center mb-4 sm:mb-6 tracking-tight relative">
+            Get Early Access
+            <svg
+              className="absolute -right-6 sm:-right-8 top-0 w-5 sm:w-6 h-5 sm:h-6 text-[#FBF8F1] animate-pulse"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M12,2 L15,8 L21,9 L16.5,14 L18,20 L12,17 L6,20 L7.5,14 L3,9 L9,8 L12,2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </h2>
+          <p className="typography-p !leading-relaxed text-[#F8F9FA] text-center px-2 sm:px-0">
+            Be first to explore GLUE's open-source platform for AI agents and agentic AI workflows.
+          </p>
+        </header>
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 sm:gap-8 relative z-20"
+        >
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="name"
+              className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
+              id="name-label"
+            >
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              aria-labelledby="name-label"
+              aria-required="true"
+              className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
+              placeholder="Enter your full name"
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="email"
+              className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
+              id="email-label"
+            >
+              Email Address
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Enter your email address"
+              aria-labelledby="email-label"
+              aria-required="true"
+              aria-describedby="email-error"
+              className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
+              onInput={handleEmailInput}
+            />
+            <div id="email-error" className="text-red-400 text-sm hidden" style={{ display: 'none' }}>
+              Please enter a valid email address
+            </div>
+          </div>
+          
+          {/* Honeypot fields remain the same */}
+          <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+            <label htmlFor="website">Website (Leave this empty)</label>
+            <input
+              type="text"
+              id="website"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+          
+          <div style={{ position: 'absolute', left: '-9999px' }}>
+            <label htmlFor="fax">Fax Number</label>
+            <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" />
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <label
+                htmlFor="reason"
+                className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
+              >
+                What sparks your interest?
+              </label>
+              <span className="text-base !leading-base text-[#F8F9FA]/60">
+                optional
+              </span>
+            </div>
+            <textarea
+              id="reason"
+              name="reason"
+              rows={3}
+              maxLength={200}
+              className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
+              placeholder="Tell us what excites you about our revolutionary platform..."
+            />
+          </div>
+          <div className="flex items-center gap-3 mt-1 sm:mt-2">
+            <div className="checkbox-container">
+              <div
+                onClick={handleCheckboxToggle}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleCheckboxToggle();
+                  }
+                }}
+                className={`
+                  w-5 h-5
+                  border-2
+                  rounded-md
+                  transition-all
+                  duration-200
+                  flex
+                  items-center
+                  justify-center
+                  cursor-pointer
+                  ${isChecked ? 'bg-[#FBF8F1] border-[#FBF8F1]' : 'border-[#F8F9FA]/30 bg-transparent hover:border-[#FBF8F1]/60'}
+                  focus:ring-2
+                  focus:ring-[#FBF8F1]/20
+                `}
+                role="checkbox"
+                aria-checked={isChecked}
+                tabIndex={0}
+              >
+                <CheckIcon isChecked={isChecked} />
+              </div>
+            </div>
+            <label
+              htmlFor="newsletter"
+              style={{ marginTop: '-2px', marginBottom: '-2px' }}
+              className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
+              onClick={handleCheckboxToggle}
+            >
+              Keep me updated with exclusive launch details
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={submissionInProgress}
+          >
+            <ButtonContent />
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+});
+
+// The main Waitlist component - now with error boundary
+export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
+  const { addAlert } = useUIState();
+  
+  const handleApiError = (error: Error) => {
+    console.error('API Error in Waitlist:', error);
+    // Add an alert for the user
+    addAlert('error', 'We encountered an error processing your request. Please try again later.');
+    // In a production app, we'd send this to an error monitoring service
+  };
 
   return (
     <div id="Waitlist" className="typography-root" ref={ref}>
@@ -332,162 +541,40 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
               </div>
             </div>
 
-            <div className="w-full flex justify-center">
-              <div className="w-[480px] min-h-[580px] rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] p-6 sm:p-14 relative overflow-hidden backdrop-blur-sm bg-gradient-to-br from-[#F8F9FA]/10 to-[#F8F9FA]/5">
-                <header className="mb-8 sm:mb-12 relative z-20">
-                  <h2 className="typography-h2 text-center mb-4 sm:mb-6 tracking-tight relative">
-                    Get Early Access
-                    <svg
-                      className="absolute -right-6 sm:-right-8 top-0 w-5 sm:w-6 h-5 sm:h-6 text-[#FBF8F1] animate-pulse"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
+            <APIErrorBoundary 
+              onError={handleApiError}
+              fallback={({ error, resetBoundary }) => (
+                <div className="w-[480px] min-h-[400px] rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] p-6 sm:p-14 relative overflow-hidden backdrop-blur-sm bg-gradient-to-br from-[#F8F9FA]/10 to-[#F8F9FA]/5">
+                  <div className="text-center mb-8">
+                    <svg 
+                      className="h-16 w-16 text-amber-400 mx-auto mb-4" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24" 
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path
-                        d="M12,2 L15,8 L21,9 L16.5,14 L18,20 L12,17 L6,20 L7.5,14 L3,9 L9,8 L12,2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                     </svg>
-                  </h2>
-                  <p className="typography-p !leading-relaxed text-[#F8F9FA] text-center px-2 sm:px-0">
-                    Be first to explore GLUE's open-source platform for AI agents and agentic AI workflows.
-                  </p>
-                </header>
-                <form
-                  onSubmit={handleSubmit}
-                  className="flex flex-col gap-6 sm:gap-8 relative z-20"
-                >
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="name"
-                      className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
-                      id="name-label"
+                    <h2 className="typography-h2 text-[#F6F2FF] !leading-tight">Connection Issue</h2>
+                    <p className="typography-p text-[#F6F2FF]/80 mt-4 mb-6">
+                      We couldn't process your request. Please try again in a moment.
+                    </p>
+                    <button
+                      onClick={resetBoundary}
+                      className="bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 py-3 px-6 rounded-xl hover:translate-y-[-2px] transition-all duration-300"
                     >
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      aria-labelledby="name-label"
-                      aria-required="true"
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
-                      placeholder="Enter your full name"
-                    />
+                      Try Again
+                    </button>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="email"
-                      className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
-                      id="email-label"
-                    >
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      placeholder="Enter your email address"
-                      aria-labelledby="email-label"
-                      aria-required="true"
-                      aria-describedby="email-error"
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
-                      onInput={handleEmailInput}
-                    />
-                    <div id="email-error" className="text-red-400 text-sm hidden" style={{ display: 'none' }}>
-                      Please enter a valid email address
-                    </div>
-                  </div>
-                  
-                  {/* Honeypot field - hidden from real users but visible to bots */}
-                  <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
-                    <label htmlFor="website">Website (Leave this empty)</label>
-                    <input
-                      type="text"
-                      id="website"
-                      name="website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
-                  </div>
-                  
-                  <div style={{ position: 'absolute', left: '-9999px' }}>
-                    <label htmlFor="fax">Fax Number</label>
-                    <input type="text" id="fax" name="fax" tabIndex={-1} autoComplete="off" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-2">
-                      <label
-                        htmlFor="reason"
-                        className="typography-p !leading-lg tracking-wide text-[#F8F9FA] font-medium"
-                      >
-                        What sparks your interest?
-                      </label>
-                      <span className="text-base !leading-base text-[#F8F9FA]/60">
-                        optional
-                      </span>
-                    </div>
-                    <textarea
-                      id="reason"
-                      name="reason"
-                      rows={3}
-                      maxLength={200}
-                      className="border border-[#F8F9FA]/30 font-light rounded-xl p-3.5 sm:p-4 bg-[#F5F5DC]/5 transition-all duration-200 focus:border-[#FBF8F1] focus:ring-2 focus:ring-[#FBF8F1]/20 focus:outline-none hover:border-[#FBF8F1]/60 resize-none placeholder-[#F8F9FA]/40 text-[#F8F9FA] text-base !leading-base"
-                      placeholder="Tell us what excites you about our revolutionary platform..."
-                    />
-                  </div>
-                  <div className="flex items-center gap-3 mt-1 sm:mt-2">
-                    <div className="checkbox-container">
-                      <div
-                        onClick={handleCheckboxToggle}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            handleCheckboxToggle();
-                          }
-                        }}
-                        className={`
-                          w-5 h-5
-                          border-2
-                          rounded-md
-                          transition-all
-                          duration-200
-                          flex
-                          items-center
-                          justify-center
-                          cursor-pointer
-                          ${isChecked ? 'bg-[#FBF8F1] border-[#FBF8F1]' : 'border-[#F8F9FA]/30 bg-transparent hover:border-[#FBF8F1]/60'}
-                          focus:ring-2
-                          focus:ring-[#FBF8F1]/20
-                        `}
-                        role="checkbox"
-                        aria-checked={isChecked}
-                        tabIndex={0}
-                      >
-                        <CheckIcon isChecked={isChecked} />
-                      </div>
-                    </div>
-                    <label
-                      htmlFor="newsletter"
-                      style={{ marginTop: '-2px', marginBottom: '-2px' }}
-                      className="text-base !leading-base text-[#F8F9FA] tracking-wide hover:text-[#FBF8F1] transition-colors duration-200 cursor-pointer"
-                      onClick={handleCheckboxToggle}
-                    >
-                      Keep me updated with exclusive launch details
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    className="relative mt-2 sm:mt-3 bg-gradient-to-r from-[#FBF8F1] to-[#F8F9FA] text-gray-800 typography-p !leading-relaxed rounded-xl py-3.5 sm:py-4 px-6 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-[0_8px_30px_rgb(248,249,250,0.3)] active:translate-y-[1px] active:shadow-sm group disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ButtonContent />
-                  </button>
-                </form>
-              </div>
-            </div>
+                  <details className="text-[#F6F2FF]/60 text-sm">
+                    <summary className="cursor-pointer">Error details</summary>
+                    <p className="mt-2 p-2 bg-[#F8F9FA]/5 rounded">{error.message}</p>
+                  </details>
+                </div>
+              )}
+            >
+              <WaitlistForm />
+            </APIErrorBoundary>
           </div>
         </section>
       </div>
@@ -495,7 +582,9 @@ export const Waitlist = React.forwardRef<HTMLDivElement>((props, ref) => {
   );
 });
 
+// Set display names
 Waitlist.displayName = 'Waitlist';
+WaitlistForm.displayName = 'WaitlistForm';
 FeatureItem.displayName = 'FeatureItem';
 CheckIcon.displayName = 'CheckIcon';
 ButtonContent.displayName = 'ButtonContent';

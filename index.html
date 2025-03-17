@@ -3,8 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/glue.svg" /> <!-- Fixed path -->
-    <title>GLUE</title>
+    
+    <!-- Favicon with responsive image format support -->
+    <link rel="icon" href="/images/glue.svg" type="image/svg+xml">
+    <link rel="alternate icon" href="/favicon.ico" type="image/x-icon">
+    
+    <title>GLUE - Generative-AI Linking & Unification Engine</title>
     <meta name="description" content="GLUE unifies AI agents to automate tasks, streamline workflows, and drive innovation. Join early access to build smarter AI solutions today." />
     
     <!-- Resource hints for performance -->
@@ -12,8 +16,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://ekdhkcfmqyfrglyoqgjf.supabase.co" />
     
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/images/glue-logo.webp" as="image" type="image/webp">
+    <link rel="preload" href="/images/glue.svg" as="image" as="image" type="image/svg+xml">
+    
     <!-- Material Symbols Font with display swap for better loading -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    
+    <!-- SPA routing for GitHub Pages -->
+    <script>
+      // Check if we need to redirect to a specific route after 404
+      (function() {
+        const redirectPath = sessionStorage.getItem('redirectPath');
+        if (redirectPath) {
+          sessionStorage.removeItem('redirectPath');
+          // Use the hash router format since we're using HashRouter
+          window.location.hash = redirectPath;
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
