@@ -5,43 +5,48 @@ import { configDefaults } from 'vitest/config'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
+    react(), // Use default React transformation
     {
       name: 'html-transform',
       transformIndexHtml(html) {
-        // Add preload directives for critical resources and self-hosted fonts
+        // Inline critical CSS and use system fonts
         return html.replace(
           /<\/head>/,
           `
-  <!-- Self-hosted fonts with font-display:swap -->
+  <!-- Self-hosted icons with system fonts strategy -->
   <link rel="stylesheet" href="/fonts/material-icons.css">
   
-  <!-- Font loading optimization -->
+  <!-- Critical CSS inline -->
   <style>
-    /* Font fallbacks ensure text is visible before custom fonts load */
-    body, h1, h2, h3, h4, h5, h6, p, span {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* Critical rendering path optimization */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
     }
     
-    /* Apply font-display:swap to all Google Fonts */
-    @font-face {
-      font-family: 'Inter';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
+    /* System font strategy - no external downloads */
+    body, button, input, select, textarea {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
     }
     
-    @font-face {
-      font-family: 'Open Sans';
-      font-style: normal;
-      font-weight: 400;
-      font-display: swap;
+    /* Performance optimization - content-visibility for below-the-fold content */
+    .below-fold {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 5000px;
+    }
+    
+    /* Initial paint optimization */
+    #root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
   </style>
-  
-  <!-- Minimal Google Fonts connection for remaining fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   </head>`
         );
       },
@@ -66,40 +71,50 @@ export default defineConfig({
     minify: 'esbuild',
     cssCodeSplit: true,
     sourcemap: false,
+    // Target modern browsers only for smaller bundle size
+    target: 'es2020', 
     rollupOptions: {
       output: {
+        // Aggressive code splitting for better performance
         manualChunks: (id) => {
-          // More granular code splitting for better tree-shaking
+          // Only load what's needed immediately
           if (id.includes('node_modules')) {
-            // React and router - keep React and Router together to avoid dependencies issues
+            // Essential React - keep small and targeted
+            if (id.includes('react/jsx-runtime') || 
+                id.includes('react/jsx-dev-runtime') || 
+                id.includes('react-dom/client')) {
+              return 'react-core';
+            }
+            
+            // React libraries that can load after initial paint
             if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'vendor-react';
+              return 'react-full';
             }
             
-            // Fix Supabase by keeping it all in one chunk to avoid initialization errors
+            // Backend functionality - can load after UI
             if (id.includes('@supabase')) {
-              return 'vendor-supabase';
+              return 'backend';
             }
             
-            // UI related libraries
-            if (id.includes('aos')) {
-              return 'vendor-aos';
-            }
-            if (id.includes('lucide-react')) {
-              return 'vendor-lucide';
-            }
-            if (id.includes('material')) {
-              return 'vendor-material';
+            // UI libraries - load after core UI is visible
+            if (id.includes('aos') || id.includes('lucide-react') || id.includes('material')) {
+              return 'ui-libs';
             }
             
-            // All other dependencies
-            return 'vendor-other';
+            // Everything else
+            return 'vendor';
           }
           
-          // Application code splitting
+          // Split app code for better loading priority
           if (id.includes('/src/home/')) {
+            // Critical homepage components load first
+            if (id.includes('Hero')) {
+              return 'home-critical';
+            }
             return 'home';
           }
+          
+          // Routes that can load later
           if (id.includes('/src/workflow/')) {
             return 'workflow';
           }
@@ -121,9 +136,14 @@ export default defineConfig({
     modulePreload: {
       polyfill: true,
     },
-    // Add tree shaking to eliminate dead code
-    target: 'es2020',
+    // Modern JS optimizations
     cssMinify: true,
+  },
+  // Set modern browser targets for better optimization
+  esbuild: {
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+    legalComments: 'none',
+    treeShaking: true,
   },
   preview: {
     headers: {
@@ -133,7 +153,7 @@ export default defineConfig({
       'X-XSS-Protection': '1; mode=block',
       'Referrer-Policy': 'strict-origin-when-cross-origin',
       'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
-      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'",
+      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'",
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',
       'Cross-Origin-Resource-Policy': 'same-origin',

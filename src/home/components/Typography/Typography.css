@@ -5,14 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200'); */
 
-/* Font definitions that will be used once fonts are loaded */
+/* Typography system with system fonts only */
 :root {
-  --font-primary: 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-  
-  /* Add fallback fonts to ensure text is visible immediately */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* System font stacks */
+  --font-primary: 'SystemUI-Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'SystemUI-Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+               Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
   
   /* Font scaling factors - mobile first */
   --primary-font-scale: 0.66; /* Slightly larger base for better readability */
@@ -52,15 +51,22 @@
   --leading-8xl: 1.05;
 }
 
-/* Prevent layout shifts - use size-adjust on system fonts */
+/* Prevent layout shifts with system fonts */
 @font-face {
-  font-family: 'system-ui';
-  src: local(-apple-system), local(BlinkMacSystemFont), local('Segoe UI');
+  font-family: 'SystemUI-Serif';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 105%;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SystemUI-Sans';
+  src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI');
   size-adjust: 100%;
   font-display: swap;
 }
 
-/* Ensure consistent layout when custom fonts load */
+/* Ensure consistent layout when fonts load */
 .typography-h1, 
 .typography-h2, 
 .typography-h3,
