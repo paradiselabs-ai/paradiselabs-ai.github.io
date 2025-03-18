@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import "./HowDoesGlueWork.css";
 
 // Define strict TypeScript types
-type MaterialIcon = "rocket_launch" | "double_arrow" | "swap_horiz" | "dns";
+type MaterialIcon = "sync_alt" | "double_arrow" | "swap_horiz" | "dns";
 type AOSAnimation = "fade-up" | "fade-right" | "fade-left";
 
 interface Step {
