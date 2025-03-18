@@ -13,9 +13,6 @@ export default defineConfig({
         return html.replace(
           /<\/head>/,
           `
-  <!-- Preload critical assets -->
-  <link rel="preload" href="/images/glue.svg" as="image" type="image/svg+xml">
-  
   <!-- Self-hosted fonts with font-display:swap -->
   <link rel="stylesheet" href="/fonts/material-icons.css">
   
@@ -79,12 +76,9 @@ export default defineConfig({
               return 'vendor-react';
             }
             
-            // Split Supabase into smaller chunks
-            if (id.includes('@supabase/supabase-js')) {
-              return 'vendor-supabase-core';
-            }
-            if (id.includes('@supabase/storage-js') || id.includes('@supabase/functions-js')) {
-              return 'vendor-supabase-extra';
+            // Fix Supabase by keeping it all in one chunk to avoid initialization errors
+            if (id.includes('@supabase')) {
+              return 'vendor-supabase';
             }
             
             // UI related libraries
