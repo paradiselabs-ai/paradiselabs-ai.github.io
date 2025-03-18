@@ -16,12 +16,54 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://ekdhkcfmqyfrglyoqgjf.supabase.co" />
     
+    <!-- Inline critical CSS for font fallbacks to prevent FOUT -->
+    <style>
+      /* Ensure text is visible during font loading */
+      body, h1, h2, h3, h4, h5, h6, p, span {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+      
+      /* FOUT prevention with font-display: swap */
+      @font-face {
+        font-family: 'Merriweather Sans';
+        font-style: normal;
+        font-weight: 300 800;
+        font-display: swap;
+        src: local('Merriweather Sans');
+      }
+      
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300 800;
+        font-display: swap;
+        src: local('Open Sans');
+      }
+    </style>
+    
+    <!-- Preload most important fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/merriweathersans/v26/2-c99IRs1JiJN1FRAMjTN5zd9vgsFHXwWDvLBsPDdpWMaq2TzesCzRRXnaur.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/opensans/v40/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2" as="font" type="font/woff2" crossorigin>
+    
     <!-- Preload critical assets -->
     <link rel="preload" href="/images/glue-logo.webp" as="image" type="image/webp">
-    <link rel="preload" href="/images/glue.svg" as="image" as="image" type="image/svg+xml">
+    <link rel="preload" href="/images/glue.svg" as="image" type="image/svg+xml">
     
-    <!-- Material Symbols Font with display swap for better loading -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" />
+    <!-- Load Material Icons with font-display:swap -->
+    <link rel="stylesheet" href="/fonts/material-icons.css" media="print" onload="this.media='all'">
+    
+    <!-- Deferred Google Fonts loading with font-display:swap -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for when JavaScript is disabled -->
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&display=swap">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap">
+      <link rel="stylesheet" href="/fonts/material-icons.css">
+    </noscript>
     
     <!-- SPA routing for GitHub Pages -->
     <script>

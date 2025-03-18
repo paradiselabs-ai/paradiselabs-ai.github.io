@@ -16,7 +16,8 @@
 /404.html
   Cache-Control: no-cache
 
-/assets/*.*
+# Asset caching - 1 year for all static assets
+/assets/*
   Cache-Control: public, max-age=31536000, immutable
 
 /fonts/*
@@ -41,4 +42,41 @@
   Cache-Control: public, max-age=31536000, immutable
 
 /*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+# Ensure specific JS and CSS files get proper caching
+/assets/vendor-*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/vendor-*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/home-*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/home-*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/workflow-*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/workflow-*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/index-*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/index-*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/components-*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/documentation-*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/documentation-*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/state-*.js
   Cache-Control: public, max-age=31536000, immutable 

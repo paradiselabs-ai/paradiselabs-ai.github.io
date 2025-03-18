@@ -74,33 +74,54 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
+          // More granular code splitting for better tree-shaking
           if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-              return 'vendor-react'
+            // React and router - core dependencies
+            if (id.includes('react/') || id.includes('react-dom/')) {
+              return 'vendor-react-core';
             }
-            if (id.includes('@supabase')) {
-              return 'vendor-supabase'
+            if (id.includes('react-router')) {
+              return 'vendor-react-router';
             }
-            if (id.includes('aos') || id.includes('lucide-react') || id.includes('material')) {
-              return 'vendor-ui'
+            
+            // Split Supabase into smaller chunks
+            if (id.includes('@supabase/supabase-js')) {
+              return 'vendor-supabase-core';
             }
-            return 'vendor-other'
+            if (id.includes('@supabase/storage-js') || id.includes('@supabase/functions-js')) {
+              return 'vendor-supabase-extra';
+            }
+            
+            // UI related libraries
+            if (id.includes('aos')) {
+              return 'vendor-aos';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-lucide';
+            }
+            if (id.includes('material')) {
+              return 'vendor-material';
+            }
+            
+            // All other dependencies
+            return 'vendor-other';
           }
           
+          // Application code splitting
           if (id.includes('/src/home/')) {
-            return 'home'
+            return 'home';
           }
           if (id.includes('/src/workflow/')) {
-            return 'workflow'
+            return 'workflow';
           }
           if (id.includes('/src/documentation/')) {
-            return 'documentation'
+            return 'documentation';
           }
           if (id.includes('/src/components/')) {
-            return 'components'
+            return 'components';
           }
           if (id.includes('/src/context/')) {
-            return 'state'
+            return 'state';
           }
         }
       }
@@ -111,6 +132,9 @@ export default defineConfig({
     modulePreload: {
       polyfill: true,
     },
+    // Add tree shaking to eliminate dead code
+    target: 'es2020',
+    cssMinify: true,
   },
   preview: {
     headers: {
