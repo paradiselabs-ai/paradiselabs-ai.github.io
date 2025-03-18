@@ -1,0 +1,96 @@
+/* Self-hosted Material Icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-icons.woff2') format('woff2'), url('/fonts/material-icons.woff') format('woff');
+}
+
+/* Outlined variant */
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-icons-outlined.woff2') format('woff2'), url('/fonts/material-icons-outlined.woff') format('woff');
+}
+
+/* Round variant */
+@font-face {
+  font-family: 'Material Icons Round';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-icons-round.woff2') format('woff2'), url('/fonts/material-icons-round.woff') format('woff');
+}
+
+/* Sharp variant */
+@font-face {
+  font-family: 'Material Icons Sharp';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-icons-sharp.woff2') format('woff2'), url('/fonts/material-icons-sharp.woff') format('woff');
+}
+
+/* Two-tone variant */
+@font-face {
+  font-family: 'Material Icons Two Tone';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('/fonts/material-icons-two-tone.woff2') format('woff2'), url('/fonts/material-icons-two-tone.woff') format('woff');
+}
+
+/* Standard Material Icons class */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga";
+}
+
+/* Alias for backward compatibility */
+.material-symbols-outlined {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Icon sizes */
+.material-icons.md-18, .material-symbols-outlined.md-18 { font-size: 18px; }
+.material-icons.md-24, .material-symbols-outlined.md-24 { font-size: 24px; }
+.material-icons.md-36, .material-symbols-outlined.md-36 { font-size: 36px; }
+.material-icons.md-48, .material-symbols-outlined.md-48 { font-size: 48px; }
+
+/* Icon colors */
+.material-icons.md-dark, .material-symbols-outlined.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive, .material-symbols-outlined.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+.material-icons.md-light, .material-symbols-outlined.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive, .material-symbols-outlined.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+/* Fallback system fonts */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+} 
