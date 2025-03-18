@@ -13,7 +13,7 @@
     "coverage": "vitest run --coverage",
     "deploy": "gh-pages -d dist",
     "build:ci": "BASE_URL=/ tsc -b && vite build",
-    "postbuild": "node -e \"const fs=require('fs'); const html=fs.readFileSync('dist/index.html','utf8'); fs.writeFileSync('dist/200.html',html); fs.writeFileSync('dist/404.html',html);\""
+    "postbuild": "cp dist/index.html dist/200.html && cp dist/index.html dist/404.html"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.48.1",

@@ -73,26 +73,40 @@ jobs:
           echo "  Permissions-Policy: camera=(), microphone=(), geolocation=()" >> dist/_headers
           echo "  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload" >> dist/_headers
           echo "  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://*.supabase.co; frame-ancestors 'none'" >> dist/_headers
-          
-          # HTML files - do not cache
           echo "/index.html" >> dist/_headers
           echo "  Cache-Control: no-cache" >> dist/_headers
           echo "/200.html" >> dist/_headers
           echo "  Cache-Control: no-cache" >> dist/_headers
           echo "/404.html" >> dist/_headers
           echo "  Cache-Control: no-cache" >> dist/_headers
-          
-          # All assets - aggressive caching (1 year)
-          echo "/assets/*" >> dist/_headers
+          echo "/assets/*.*" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          
-          # Font files - aggressive caching
-          echo "/assets/*.woff" >> dist/_headers
+          echo "/assets/vendor-*.js" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          echo "/assets/*.woff2" >> dist/_headers
+          echo "/assets/vendor-*.css" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          
-          # Static image files - aggressive caching
+          echo "/assets/home-*.js" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/home-*.css" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/workflow-*.js" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/workflow-*.css" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/index-*.js" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/index-*.css" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/components-*.js" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/state-*.js" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/documentation-*.js" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/assets/documentation-*.css" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
+          echo "/fonts/*" >> dist/_headers
+          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
           echo "/*.ico" >> dist/_headers
           echo "  Content-Type: image/x-icon" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
@@ -105,14 +119,6 @@ jobs:
           echo "/*.webp" >> dist/_headers
           echo "  Content-Type: image/webp" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          echo "/*.jpg" >> dist/_headers
-          echo "  Content-Type: image/jpeg" >> dist/_headers
-          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          echo "/*.jpeg" >> dist/_headers
-          echo "  Content-Type: image/jpeg" >> dist/_headers
-          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          
-          # Font files - aggressive caching
           echo "/*.woff" >> dist/_headers
           echo "  Content-Type: font/woff" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
@@ -121,9 +127,6 @@ jobs:
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
           echo "/*.ttf" >> dist/_headers
           echo "  Content-Type: font/ttf" >> dist/_headers
-          echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
-          echo "/*.otf" >> dist/_headers
-          echo "  Content-Type: font/otf" >> dist/_headers
           echo "  Cache-Control: public, max-age=31536000, immutable" >> dist/_headers
 
       - name: Download and prepare Material Icons font
