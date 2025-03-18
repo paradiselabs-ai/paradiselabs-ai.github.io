@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import "./WhyChooseGlue.css";
 
 // Define feature type with strict icon and aos options for better type safety
-type FeatureIcon = "groups" | "code" | "build" | "share";
+type FeatureIcon = "groups" | "code" | "tune" | "library_books";
 type AosType = "fade-right" | "fade-up-right" | "fade-left"; 
 interface Feature {
   icon: FeatureIcon;
@@ -29,14 +29,14 @@ const features = [
     aosType: "fade-right",
   },
   {
-    icon: "build",
+    icon: "tune",
     title: "Customizable Tools",
     description: "AI agents auto-create and tailor tools that integrate seamlessly into workflows.",
     delay: 200,
     aosType: "fade-left",
   },
   {
-    icon: "share",
+    icon: "library_books",
     title: "Knowledge Retention",
     description: "Preserve and grow intelligence across AI agents with built-in knowledge management.",
     delay: 300,

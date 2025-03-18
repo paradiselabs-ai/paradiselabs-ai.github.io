@@ -104,7 +104,10 @@ const DetailsSection = memo(
       data-aos-delay="200"
     >
       <summary className="flex items-center cursor-pointer p-2 rounded-lg transition-colors duration-300">
-        <span className="material-icons text-[#34B8CE] mr-2 group-hover:scale-110 transition-transform duration-300 md-24">
+      <span 
+        className="material-icons text-[#34B8CE] mr-2 group-hover:scale-110 transition-transform duration-300" 
+        style={{ fontSize: '18px', lineHeight: '18px' }}
+      >
           {icon}
         </span>
         <h3 className="typography-h3 !leading-tight font-semibold text-[#34B8CE]">{title}</h3>
@@ -158,7 +161,7 @@ export const GlueSyntax: React.FC = () => {
       },
       {
         title: "Model Definition",
-        icon: "architecture",
+        icon: "description",
         open: false,
         content: (
           <>

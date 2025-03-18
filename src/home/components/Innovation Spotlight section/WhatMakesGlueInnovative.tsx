@@ -53,8 +53,8 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos="fade-up"
                 data-aos-duration="800"
               >
-                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
-                  group_work
+                <span className="material-icons text-4xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
+                handshake
                 </span>
                 <div className="space-y-3">
                   <h2 className="typography-h3 font-semibold !leading-tight">
@@ -72,7 +72,7 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos-duration="800"
                 data-aos-delay="200"
               >
-                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
+                <span className="material-icons text-4xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
                   settings_suggest
                 </span>
                 <div className="space-y-3">
@@ -91,8 +91,8 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos-duration="800"
                 data-aos-delay="400"
               >
-                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
-                  architecture
+                <span className="material-icons text-4xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
+                trending_up
                 </span>
                 <div className="space-y-3">
                   <h2 className="typography-h3 font-semibold !leading-tight">Future-Proof Architecture</h2>
@@ -108,8 +108,8 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos-duration="800"
                 data-aos-delay="600"
               >
-                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
-                  build
+                <span className="material-icons text-4xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
+                extension
                 </span>
                 <div className="space-y-3">
                   <h2 className="typography-h3 font-semibold !leading-tight">

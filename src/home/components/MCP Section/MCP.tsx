@@ -25,25 +25,25 @@ export const MCP = memo(() => {
   const features = useMemo(
     () => [
       {
-        icon: "bolt",
+        icon: "flash_on",
         title: "Instant Server Creation",
         desc: "Easily launch MCP servers and tools by simply asking your GLUE AI agent.",
         delay: "90",
       },
       {
-        icon: "integration_instructions",
+        icon: "link",
         title: "Easy Integration",
         desc: "Seamlessly integrate any MCP server into your apps with just a click.",
         delay: "110",
       },
       {
-        icon: "travel_explore",
+        icon: "search",
         title: "Server Discovery",
         desc: "Take full control of MCP servers—right from your terminal.",
         delay: "120",
       },
       {
-        icon: "code",
+        icon: "speed",
         title: "Seamless Development",
         desc: "Build and deploy MCP tools faster, with less setup.",
         delay: "130",
@@ -96,10 +96,10 @@ export const MCP = memo(() => {
               <div className="relative h-full flex items-center justify-center">
                 <div className="relative z-10" data-aos="fade-left">
                   <span className="material-icons text-5xl md:text-7xl lg:text-9xl text-[#F8F6FF] mb-8 md:mb-10 block text-center md-48">
-                    hub
+                  device_hub
                   </span>
                   <h2 className="typography-h2 !leading-tight font-bold text-[#F8F6FF] mb-6 md:mb-8 text-center">
-                    Multi-Client Protocol
+                  Model Context Protocol
                   </h2>
                   <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/80 text-center">
                     Connect, integrate, and scale your AI solutions with our advanced MCP infrastructure.

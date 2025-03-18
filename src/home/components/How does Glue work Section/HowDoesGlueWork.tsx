@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import "./HowDoesGlueWork.css";
 
 // Define strict TypeScript types
-type MaterialIcon = "rocket_launch" | "group" | "sync_alt" | "psychology";
+type MaterialIcon = "rocket_launch" | "double_arrow" | "swap_horiz" | "dns";
 type AOSAnimation = "fade-up" | "fade-right" | "fade-left";
 
 interface Step {
@@ -17,7 +17,7 @@ interface Step {
 // Step data with const assertion for immutability and type inference
 const steps: readonly Step[] = [
   {
-    icon: "group",
+    icon: "double_arrow",
     title: "Accelerate Development",
     description:
       "Smash barriers slowing progress. Complete projects in weeks, not months, with seamless AI-human teamwork that just works.",
@@ -26,7 +26,7 @@ const steps: readonly Step[] = [
     spacerBefore: false, // Spacer after content (on the left)
   },
   {
-    icon: "sync_alt",
+    icon: "swap_horiz",
     title: "Turn Insights into Action",
     description:
       "Watch information flow between agents, powering faster, sharper decisions that keep you ahead of market changes.",
@@ -35,7 +35,7 @@ const steps: readonly Step[] = [
     spacerBefore: true, // Spacer before content (on the right)
   },
   {
-    icon: "psychology",
+    icon: "dns",
     title: "Build Lasting Knowledge",
     description:
       "Transform every project into a foundation for success, with AI preserving your expertise.",

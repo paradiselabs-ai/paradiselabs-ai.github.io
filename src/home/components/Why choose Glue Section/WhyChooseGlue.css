@@ -80,7 +80,7 @@
   .bg-\[#F2F0FF\]\/10 { background-color: hsl(244 17% 97% / 0.1); }
   .bg-white\/5 { background-color: hsl(0 0% 100% / 0.05); }
   .p-8 { padding: 2rem; }
-  .text-5xl { font-size: 3rem; line-height: 3.3rem; }
+  .text-5xl { font-size: 2rem; line-height: 2rem; }
   .font-bold { font-weight: 700; }
   .font-semibold { font-weight: 600; }
   .leading-tight { line-height: 1.25; }
@@ -130,7 +130,7 @@
     .lg\:whitespace-nowrap { white-space: nowrap; }
     .lg\:p-10 { padding: 1.5rem; }
     .lg\:px-16 { padding-inline: 5rem; }
-    .lg\:text-6xl { font-size: 3.25rem; line-height: 3.525rem; }
+    .lg\:text-6xl { font-size: 2rem; line-height: 2rem; }
     .lg\:tracking-tight { letter-spacing: -0.025em; }
   }
 }
