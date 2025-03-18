@@ -53,7 +53,7 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos="fade-up"
                 data-aos-duration="800"
               >
-                <span className="material-symbols-outlined text-5xl text-[#F8F8FF] hover:scale-110 transition-transform">
+                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
                   group_work
                 </span>
                 <div className="space-y-3">
@@ -72,7 +72,7 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos-duration="800"
                 data-aos-delay="200"
               >
-                <span className="material-symbols-outlined text-5xl text-[#F8F8FF] hover:scale-110 transition-transform">
+                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
                   settings_suggest
                 </span>
                 <div className="space-y-3">
@@ -91,7 +91,7 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos-duration="800"
                 data-aos-delay="400"
               >
-                <span className="material-symbols-outlined text-5xl text-[#F8F8FF] hover:scale-110 transition-transform">
+                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
                   architecture
                 </span>
                 <div className="space-y-3">
@@ -108,7 +108,7 @@ export const WhatMakesGlueInnovative = React.memo(() => {
                 data-aos-duration="800"
                 data-aos-delay="600"
               >
-                <span className="material-symbols-outlined text-5xl text-[#F8F8FF] hover:scale-110 transition-transform">
+                <span className="material-icons text-5xl text-[#F8F8FF] hover:scale-110 transition-transform md-48">
                   build
                 </span>
                 <div className="space-y-3">

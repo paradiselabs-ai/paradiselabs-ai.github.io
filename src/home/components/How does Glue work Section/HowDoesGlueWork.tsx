@@ -1,19 +1,5 @@
-import React, { useEffect, memo } from "react";
+import React, { memo } from "react";
 import "./HowDoesGlueWork.css";
-
-// Singleton for font loading (unchanged)
-const loadMaterialSymbols = (() => {
-  let loaded = false;
-  return () => {
-    if (!loaded && !document.querySelector('link[href*="Material+Symbols+Outlined"]')) {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = "https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined";
-      document.head.appendChild(link);
-      loaded = true;
-    }
-  };
-})();
 
 // Define strict TypeScript types
 type MaterialIcon = "rocket_launch" | "group" | "sync_alt" | "psychology";
@@ -75,9 +61,9 @@ const Step = memo<{
         } transition-all duration-500 p-4 md:p-10 `}
       >
         <span
-          className={`material-symbols-outlined text-5xl md:text-6xl text-[#F5F2FF] mb-4 md:mb-6 animate-${
+          className={`material-icons text-5xl md:text-6xl text-[#F5F2FF] mb-4 md:mb-6 animate-${
             icon === "sync_alt" ? "spin-slow" : "bounce-slow"
-          }`}
+          } md-48`}
         >
           {icon}
         </span>
@@ -100,10 +86,6 @@ Step.displayName = "Step";
 
 // Main component with improved TypeScript and performance
 export const HowDoesGlueWork: React.FC = () => {
-  useEffect(() => {
-    loadMaterialSymbols();
-  }, []); // Runs once on mount
-
   return (
     <div id="HowDoesGlueWork" className="typography-root">
       <div className="w-full flex justify-center">

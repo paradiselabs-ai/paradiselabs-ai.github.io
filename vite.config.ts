@@ -13,9 +13,6 @@ export default defineConfig({
         return html.replace(
           /<\/head>/,
           `
-  <!-- Self-hosted icons with system fonts strategy -->
-  <link rel="stylesheet" href="/fonts/material-icons.css">
-  
   <!-- Critical CSS inline -->
   <style>
     /* Critical rendering path optimization */
@@ -34,6 +31,22 @@ export default defineConfig({
       line-height: 1.5;
     }
     
+    /* Critical icons styling - ensure icon classes work without render blocking */
+    .material-icons, .material-symbols-outlined {
+      font-family: 'Material Icons';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    
     /* Performance optimization - content-visibility for below-the-fold content */
     .below-fold {
       content-visibility: auto;
@@ -47,6 +60,10 @@ export default defineConfig({
       min-height: 100vh;
     }
   </style>
+  
+  <!-- Material icons now loaded via npm package import -->
+  <!-- <link rel="stylesheet" href="/fonts/material-icons.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/fonts/material-icons.css"></noscript> -->
   </head>`
         );
       },

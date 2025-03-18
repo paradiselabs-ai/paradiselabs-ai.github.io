@@ -1,7 +1,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client'; // Use createRoot
-import App from './App';
 import './index.css';
+import App from './App';
+import 'material-icons/iconfont/material-icons.css';
 
 // Get the root DOM element
 const rootElement = document.getElementById('root');

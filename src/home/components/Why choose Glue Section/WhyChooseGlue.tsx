@@ -1,22 +1,5 @@
-import React, { useEffect, memo } from "react";
+import React, { memo } from "react";
 import "./WhyChooseGlue.css";
-
-// Improved async font loading pattern
-const loadMaterialSymbols = async () => {
-  if (document.fonts && !document.fonts.check('1em "Material Symbols Outlined"') && 
-      !document.querySelector('link[href*="Material+Symbols+Outlined"]')) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined&display=swap";
-    document.head.appendChild(link);
-    try {
-      // Wait for font to load
-      await document.fonts.load('1em "Material Symbols Outlined"');
-    } catch (e) {
-      console.warn("Failed to load Material Symbols font:", e);
-    }
-  }
-};
 
 // Define feature type with strict icon and aos options for better type safety
 type FeatureIcon = "groups" | "code" | "build" | "share";
@@ -26,7 +9,7 @@ interface Feature {
   title: string;
   description: string;
   delay: number;
-  aosType: AosType; // New property for AOS animation type
+  aosType: AosType;
 }
 
 // Feature data with const assertion for immutability and inference
@@ -67,7 +50,7 @@ const FeatureCard = memo<Feature>(({ icon, title, description, delay, aosType })
     <div className="absolute inset-0 bg-[#F2F0FF]/10 rounded-2xl shadow-[0_8px_30px_rgb(248,249,250,0.2)] blur-2xl transition-all duration-300 opacity-0 group-hover:opacity-100" />
     <div className="p-8 lg:p-10 rounded-2xl backdrop-blur-2xl bg-white/5 border border-white/20 hover:border-[#F2F0FF]/30 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 relative z-10 group-hover:bg-white/10">
       <div className="flex items-center mb-6">
-        <span className="material-symbols-outlined text-5xl lg:text-6xl text-[#F2F0FF]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#F2F0FF]">
+        <span className="material-icons text-5xl lg:text-6xl text-[#F2F0FF]/60 group-hover:scale-110 transition-transform duration-300 group-hover:text-[#F2F0FF] md-48">
           {icon}
         </span>
         <h3 className="typography-root typography-h3 !leading-tight font-semibold ml-6 text-[#F2F0FF]">
@@ -84,11 +67,6 @@ FeatureCard.displayName = "FeatureCard"; // For debugging in React DevTools
 
 // Main component with lazy-loaded features section
 export const WhyChooseGlue: React.FC = () => {
-  useEffect(() => {
-    // Load the Material Symbols font asynchronously
-    loadMaterialSymbols().catch(console.error);
-  }, []); // Runs once on mount
-
   return (
     <div id="WhyChooseGlue">
       <div className="w-full flex justify-center">

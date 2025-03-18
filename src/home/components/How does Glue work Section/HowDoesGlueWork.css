@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+/* Local material icons are used - no external fonts needed */
 
 /* Minimal Tailwind-inspired reset (only essentials used in TSX) */
 *, :after, :before {
@@ -8,8 +8,6 @@
 html {
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
-  font-family: 'Material Symbols Outlined' !important;
-  -webkit-tap-highlight-color: transparent;
 }
 body {
   margin: 0;

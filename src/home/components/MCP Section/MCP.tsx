@@ -9,7 +9,7 @@ const FeatureCard = memo(
       data-aos="fade-up"
       data-aos-delay={delay}
     >
-      <span className="material-symbols-outlined text-4xl md:text-3xl text-[#F8F6FF]">{icon}</span>
+      <span className="material-icons text-4xl md:text-3xl text-[#F8F6FF] md-36">{icon}</span>
       <div className="text-center md:text-left">
         <strong className="typography-h3 !leading-tight font-bold text-[#F8F6FF] mb-3 block">{title}</strong>
         <p className="typography-p font-light !leading-relaxed text-[#F8F6FF]/70">{desc}</p>
@@ -95,7 +95,7 @@ export const MCP = memo(() => {
             <div className="w-full md:w-1/2 lg:w-5/12 relative overflow-hidden p-12 md:p-16 pr-24 md:pr-32 lg:pr-48">
               <div className="relative h-full flex items-center justify-center">
                 <div className="relative z-10" data-aos="fade-left">
-                  <span className="material-symbols-outlined text-5xl md:text-7xl lg:text-9xl text-[#F8F6FF] mb-8 md:mb-10 block text-center">
+                  <span className="material-icons text-5xl md:text-7xl lg:text-9xl text-[#F8F6FF] mb-8 md:mb-10 block text-center md-48">
                     hub
                   </span>
                   <h2 className="typography-h2 !leading-tight font-bold text-[#F8F6FF] mb-6 md:mb-8 text-center">

@@ -18,7 +18,7 @@ const CodeBlock = memo(() => (
           <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-yellow-500" />
           <span className="w-2.5 sm:w-3 h-2.5 sm:h-3 rounded-full bg-green-500" />
         </div>
-        <span className="material-symbols-outlined text-[#F4F2FF] text-sm sm:text-base cursor-pointer hover:text-[#34B8CE] transition-colors duration-300">
+        <span className="material-icons text-[#F4F2FF] text-sm sm:text-base cursor-pointer hover:text-[#34B8CE] transition-colors duration-300 md-18">
           content_copy
         </span>
       </div>
@@ -104,7 +104,7 @@ const DetailsSection = memo(
       data-aos-delay="200"
     >
       <summary className="flex items-center cursor-pointer p-2 rounded-lg transition-colors duration-300">
-        <span className="material-symbols-outlined text-[#34B8CE] mr-2 group-hover:scale-110 transition-transform duration-300">
+        <span className="material-icons text-[#34B8CE] mr-2 group-hover:scale-110 transition-transform duration-300 md-24">
           {icon}
         </span>
         <h3 className="typography-h3 !leading-tight font-semibold text-[#34B8CE]">{title}</h3>
@@ -185,7 +185,7 @@ export const GlueSyntax: React.FC = () => {
       },
       {
         title: "Workflow Orchestration",
-        icon: "workflow",
+        icon: "account_tree",
         open: false,
         content: (
           <p className="typography-p !leading-relaxed">
