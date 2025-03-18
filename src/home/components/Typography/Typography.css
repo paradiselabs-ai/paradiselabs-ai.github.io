@@ -52,6 +52,48 @@
   --leading-8xl: 1.05;
 }
 
+/* Prevent layout shifts - use size-adjust on system fonts */
+@font-face {
+  font-family: 'system-ui';
+  src: local(-apple-system), local(BlinkMacSystemFont), local('Segoe UI');
+  size-adjust: 100%;
+  font-display: swap;
+}
+
+/* Ensure consistent layout when custom fonts load */
+.typography-h1, 
+.typography-h2, 
+.typography-h3,
+.typography-h4,
+.text-4xl,
+.text-5xl,
+.text-6xl,
+.text-7xl,
+.text-8xl {
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  min-height: 1em;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* Body text uses body font */
+.typography-p,
+.typography-body,
+.text-xs,
+.text-sm,
+.text-base,
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl {
+  font-family: var(--font-body);
+  line-height: 1.5;
+  min-height: 1em;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
 /* Mobile breakpoint (640px - 1023px) */
 @media (min-width: 640px) {
   :root {
@@ -128,32 +170,6 @@
     --size-7xl: calc(72px * var(--primary-font-scale));
     --size-8xl: calc(96px * var(--primary-font-scale));
   }
-}
-
-/* Headers use primary font */
-.typography-h1, 
-.typography-h2, 
-.typography-h3,
-.typography-h4,
-.text-4xl,
-.text-5xl,
-.text-6xl,
-.text-7xl,
-.text-8xl {
-  font-family: var(--font-primary);
-}
-
-/* Body text uses body font */
-.typography-p,
-.typography-body,
-.text-xs,
-.text-sm,
-.text-base,
-.text-lg,
-.text-xl,
-.text-2xl,
-.text-3xl {
-  font-family: var(--font-body);
 }
 
 /* Semantic Typography Classes */
@@ -253,7 +269,8 @@
 .text-7xl {
   font-size: var(--size-7xl);
   line-height: var(--leading-7xl);
-}.text-8xl {
+}
+.text-8xl {
   font-size: var(--size-8xl);
   line-height: var(--leading-8xl);
 }
@@ -262,3 +279,9 @@
 .font-light { font-weight: var(--font-light); }
 .font-regular { font-weight: var(--font-regular); }
 .font-bold { font-weight: var(--font-bold); }
+
+/* Apply proper styles when fonts are loaded */
+html.fonts-loaded body {
+  /* Apply proper font styles once fonts are loaded */
+  font-family: var(--font-body);
+}

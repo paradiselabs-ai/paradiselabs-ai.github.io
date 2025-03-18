@@ -14,8 +14,6 @@ export default defineConfig({
           /<\/head>/,
           `
   <!-- Preload critical assets -->
-  <link rel="preload" href="/assets/home-C8R50P2G.css" as="style">
-  <link rel="preload" href="/assets/vendor-ui-DvB2Xm2x.css" as="style">
   <link rel="preload" href="/images/glue.svg" as="image" type="image/svg+xml">
   
   <!-- Self-hosted fonts with font-display:swap -->
@@ -76,12 +74,9 @@ export default defineConfig({
         manualChunks: (id) => {
           // More granular code splitting for better tree-shaking
           if (id.includes('node_modules')) {
-            // React and router - core dependencies
-            if (id.includes('react/') || id.includes('react-dom/')) {
-              return 'vendor-react-core';
-            }
-            if (id.includes('react-router')) {
-              return 'vendor-react-router';
+            // React and router - keep React and Router together to avoid dependencies issues
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'vendor-react';
             }
             
             // Split Supabase into smaller chunks
