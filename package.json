@@ -13,7 +13,7 @@
     "coverage": "vitest run --coverage",
     "deploy": "gh-pages -d dist",
     "build:ci": "BASE_URL=/ tsc -b && vite build",
-    "postbuild": "cp dist/index.html dist/200.html && cp dist/index.html dist/404.html"
+    "postbuild": "node -e \"const fs=require('fs'); const html=fs.readFileSync('dist/index.html','utf8'); fs.writeFileSync('dist/200.html',html); fs.writeFileSync('dist/404.html',html);\""
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.48.1",
@@ -37,6 +37,7 @@
     "@types/react-router-dom": "^5.3.3",
     "gh-pages": "^6.1.0",
     "jsdom": "^26.0.0",
+    "lightningcss": "^1.29.3",
     "terser": "^5.19.2",
     "vite": "^6.1.0",
     "vitest": "^3.0.8"

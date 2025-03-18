@@ -11,6 +11,10 @@
     <title>GLUE - Generative-AI Linking & Unification Engine</title>
     <meta name="description" content="GLUE unifies AI agents to automate tasks, streamline workflows, and drive innovation. Join early access to build smarter AI solutions today." />
     
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/src/index.css" as="style">
+    <link rel="preload" href="/assets/material-icons.woff2" as="font" type="font/woff2" crossorigin>
+    
     <!-- Inline critical CSS -->
     <style>
       /* System font stack that closely resembles our previous fonts */
@@ -34,6 +38,7 @@
       /* Font fallbacks ensure text is visible immediately */
       body, h1, h2, h3, h4, h5, h6, p, span {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        text-rendering: optimizeLegibility;
       }
       
       /* Replaces Open Sans */
@@ -55,6 +60,21 @@
         padding: 0;
       }
       
+      /* Add base styling for hero section to avoid CLS */
+      .hero-section {
+        padding-top: 120px;
+        width: 100%;
+        position: relative;
+      }
+      
+      /* Add base styling for navigation */
+      .navigation {
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        top: 0;
+      }
+      
       /* Pre-load material icons styles to avoid render blocking */
       .material-symbols-outlined, .material-icons {
         font-family: 'Material Icons';
@@ -70,7 +90,24 @@
         direction: ltr;
         -webkit-font-smoothing: antialiased;
       }
+      
+      /* Initial paint optimization */
+      #root {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      
+      /* Performance optimization - content-visibility for below-the-fold content */
+      .below-fold {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 5000px;
+      }
     </style>
+    
+    <!-- Load CSS in a non-blocking way -->
+    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.onload=null;this.media='all'">
+    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <!-- Material icons now loaded via npm package import -->
     <!-- <link rel="stylesheet" href="/fonts/material-icons.css" media="print" onload="this.media='all'">

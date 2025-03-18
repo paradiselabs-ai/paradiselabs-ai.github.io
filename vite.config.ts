@@ -59,7 +59,26 @@ export default defineConfig({
       flex-direction: column;
       min-height: 100vh;
     }
+    
+    /* Add base styling for hero section to avoid CLS */
+    .hero-section {
+      padding-top: 120px;
+      width: 100%;
+      position: relative;
+    }
+    
+    /* Add base styling for navigation */
+    .navigation {
+      position: fixed;
+      z-index: 100;
+      width: 100%;
+      top: 0;
+    }
   </style>
+  
+  <!-- Load CSS in a non-blocking way -->
+  <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
   
   <!-- Material icons now loaded via npm package import -->
   <!-- <link rel="stylesheet" href="/fonts/material-icons.css" media="print" onload="this.media='all'">
@@ -85,11 +104,11 @@ export default defineConfig({
     setupFiles: ['./vitest.setup.ts'],
   },
   build: {
-    minify: 'esbuild',
+    minify: 'terser', // Use terser for better minification
     cssCodeSplit: true,
     sourcemap: false,
     // Target modern browsers only for smaller bundle size
-    target: 'es2020', 
+    target: 'esnext', // Use modern JavaScript features
     rollupOptions: {
       output: {
         // Aggressive code splitting for better performance
@@ -153,12 +172,27 @@ export default defineConfig({
     modulePreload: {
       polyfill: true,
     },
+    // Add terser options for better optimization
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.debug', 'console.info'],
+        passes: 2,
+      },
+      mangle: {
+        safari10: false, // Don't worry about Safari 10
+      },
+      format: {
+        comments: false,
+      },
+    },
     // Modern JS optimizations
-    cssMinify: true,
+    cssMinify: 'lightningcss', // Use lightningcss for faster CSS minification
   },
   // Set modern browser targets for better optimization
   esbuild: {
-    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+    target: ['esnext'],
     legalComments: 'none',
     treeShaking: true,
   },
