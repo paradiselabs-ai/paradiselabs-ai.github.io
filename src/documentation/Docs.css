@@ -271,47 +271,112 @@
 
 /* Code block improvements */
 .docs-page .code-block {
-  margin: 1.5rem 0 2rem;
+  background-color: rgb(30, 30, 30);
+  border-radius: 8px;
+  margin: 1.5rem 0;
   position: relative;
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 .docs-page .code-block:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
 }
 
 .docs-page .code-block pre {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 1.5rem 1.25rem;
-  border-radius: 0.5rem;
+  margin: 0;
+  padding: 1.5rem;
   overflow-x: auto;
-  border: 1px solid rgba(52, 184, 206, 0.15);
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.4);
-  position: relative;
-}
-
-.docs-page .code-block::before {
-  content: "GLUE";
-  position: absolute;
-  top: 0.75rem;
-  right: 1rem;
-  font-size: 0.75rem;
-  color: rgba(52, 184, 206, 0.8);
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid rgba(52, 184, 206, 0.2);
-}
-
-.docs-page .code-block code {
-  color: #EBF8F8;
   font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-  line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #E0E0E0;
+  counter-reset: line;
+}
+
+/* Apply IDE-style syntax highlighting to document code blocks */
+.docs-page .code-block .keyword,
+.docs-page .code-block .keyword-glue,
+.docs-page .code-block .keyword-app,
+.docs-page .code-block .keyword-model,
+.docs-page .code-block .keyword-tool,
+.docs-page .code-block .keyword-magnetize,
+.docs-page .code-block .keyword-config {
+  color: #CC7AF1;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-shadow: 0 0 1px rgba(204, 122, 241, 0.2);
+}
+
+.docs-page .code-block .keyword-glue {
+  color: #FF79C6;
+  font-weight: bold;
+  text-shadow: 0 0 1px rgba(255, 121, 198, 0.3);
+}
+
+.docs-page .code-block .keyword-app {
+  color: #BD93F9;
+}
+
+.docs-page .code-block .keyword-model {
+  color: #50FA7B;
+}
+
+.docs-page .code-block .keyword-tool {
+  color: #8BE9FD;
+}
+
+.docs-page .code-block .keyword-magnetize {
+  color: #FFB86C;
+}
+
+.docs-page .code-block .keyword-config {
+  color: #A387D5;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.docs-page .code-block .string {
+  color: #CE9178;
+  letter-spacing: normal;
+  text-shadow: 0 0 1px rgba(206, 145, 120, 0.2);
+}
+
+.docs-page .code-block .comment {
+  color: #6A9955;
+  font-style: italic;
+  letter-spacing: normal;
+  opacity: 0.8;
+}
+
+.docs-page .code-block .number {
+  color: #B5CEA8;
+  letter-spacing: normal;
+  font-weight: 500;
+}
+
+.docs-page .code-block .property {
+  color: #9CDCFE;
+  letter-spacing: normal;
+  text-shadow: 0 0 1px rgba(156, 220, 254, 0.2);
+}
+
+.docs-page .code-block .operator {
+  color: #D4D4D4;
+  letter-spacing: normal;
+  font-weight: 600;
+}
+
+.docs-page .code-block .bracket {
+  color: #D4D4D4;
+  letter-spacing: normal;
+  opacity: 0.9;
+}
+
+.docs-page .code-block .function {
+  color: #DCDCAA;
+  letter-spacing: normal;
+  font-weight: 500;
 }
 
 /* Copy button for code blocks */
@@ -353,33 +418,6 @@
 
 .docs-page .code-block .copy-button.copied::before {
   content: "check";
-}
-
-/* Enhanced syntax highlighting */
-.docs-page .code-block .keyword {
-  color: #ff79c6;
-  font-weight: 500;
-}
-
-.docs-page .code-block .string {
-  color: #f1fa8c;
-}
-
-.docs-page .code-block .comment {
-  color: #6272a4;
-  font-style: italic;
-}
-
-.docs-page .code-block .number {
-  color: #bd93f9;
-}
-
-.docs-page .code-block .property {
-  color: #8be9fd;
-}
-
-.docs-page .code-block .operator {
-  color: #ff79c6;
 }
 
 /* Table of contents improvements */

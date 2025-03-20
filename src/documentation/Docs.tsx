@@ -865,24 +865,27 @@ const CodeOverlay: React.FC<CodeOverlayProps> = ({ isVisible, code, title, filen
 
 // Simple syntax highlighting function
 const formatCodeWithSyntaxHighlighting = (code: string): string => {
+  // First ensure all HTML characters are properly escaped
+  let escapedCode = code
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+
   // Preserve whitespace - particularly indentation
-  const spaces = code.match(/^\s*/)?.[0] || '';
+  const spaces = escapedCode.match(/^\s*/)?.[0] || '';
   const indentLevel = Math.floor(spaces.length / 2); // Assuming 2 spaces per indent level
   const spacesHtml = spaces.replace(/ /g, '&nbsp;');
   
   // Get the actual content after initial whitespace
-  const content = code.trimStart();
+  const content = escapedCode.trimStart();
   
   // If the line is just whitespace, return it as is
   if (!content) {
     return `<span style="--indent-level:${indentLevel};">${spacesHtml}</span>`;
   }
   
-  // Escape HTML special characters to prevent XSS and rendering issues
-  let formattedContent = content
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+  // Start with the escaped content
+  let formattedContent = content;
   
   // Define GLUE language keywords with proper categorization
   const rootKeywords = ['glue', 'app', 'model', 'tool', 'magnetize'];
@@ -893,7 +896,8 @@ const formatCodeWithSyntaxHighlighting = (code: string): string => {
   // Apply syntax highlighting in the correct order to prevent overlap issues
   
   // 1. Highlight comments first (to avoid highlighting within comments)
-  formattedContent = formattedContent.replace(/(\/\/.*$)/gm, '<span class="comment">$1</span>');
+  // Make sure to handle comment highlighting with special care
+  formattedContent = formattedContent.replace(/(\/\/.*$)/g, '<span class="comment">$1</span>');
   
   // 2. Highlight strings (to avoid highlighting keywords inside strings)
   formattedContent = formattedContent.replace(/("(?:[^"\\]|\\.)*")/g, '<span class="string">$1</span>');
@@ -938,7 +942,7 @@ const formatCodeWithSyntaxHighlighting = (code: string): string => {
   formattedContent = formattedContent.replace(/\b(\d+(\.\d+)?)(?![^<]*>)\b/g, '<span class="number">$1</span>');
   
   // 8. Highlight operators
-  formattedContent = formattedContent.replace(/(\=|\->)(?![^<]*>)/g, '<span class="operator">$1</span>');
+  formattedContent = formattedContent.replace(/(\=|\->|\|)(?![^<]*>)/g, '<span class="operator">$1</span>');
   
   // 9. Highlight brackets and braces
   formattedContent = formattedContent.replace(/(\{)(?![^<]*>)/g, '<span class="bracket block-start">$1</span>');
@@ -1513,10 +1517,15 @@ magnetize {
 
   // Render code blocks with copy button
   const renderCodeBlock = (code: string, id: string) => {
+    // Process the code for syntax highlighting
+    const formattedCode = code.split('\n').map(line => 
+      formatCodeWithSyntaxHighlighting(line)
+    ).join('<br>');
+    
     return (
       <div className="code-block">
         <pre>
-          <code>{code}</code>
+          <code dangerouslySetInnerHTML={{ __html: formattedCode }}></code>
         </pre>
         <button 
           id={`copy-btn-${id}`}
@@ -1803,7 +1812,14 @@ magnetize {
               </p>
               
               <h2 id="basic-structure">Basic Structure</h2>
-              {renderCodeBlock(`glue app {
+              <div className="code-block">
+                <pre>
+                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;">glue <span class="keyword keyword-glue">app</span> {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">name</span> <span class="operator">=</span> <span class="string">"Application Name"</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword keyword-config">config</span> {</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">development</span> <span class="operator">=</span> <span class="number">true</span><span class="operator">|</span><span class="number">false</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">sticky</span> <span class="operator">=</span> <span class="number">true</span><span class="operator">|</span><span class="number">false</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br><span style="--indent-level:0;">}</span><br><span style="--indent-level:0;"><span class="comment">// Define components</span></span><br><span style="--indent-level:0;"><span class="keyword keyword-model">model</span> modelName { ... }</span><br><span style="--indent-level:0;"><span class="keyword keyword-tool">tool</span> toolName { ... }</span><br><span style="--indent-level:0;"><span class="comment">// Define workflow</span></span><br><span style="--indent-level:0;"><span class="keyword keyword-magnetize">magnetize</span> { ... }</span>` }}></code>
+                </pre>
+                <button 
+                  id="copy-btn-basic-structure"
+                  className="copy-button" 
+                  onClick={() => copyToClipboard(`glue app {
     name = "Application Name"
     config {
         development = true|false
@@ -1817,6 +1833,10 @@ tool toolName { ... }
 
 // Define workflow
 magnetize { ... }`, "basic-structure")}
+                >
+                  Copy
+                </button>
+              </div>
               
               <h2 id="defining-models">Defining Models</h2>
               {renderCodeBlock(`model researcher {
@@ -1869,10 +1889,7 @@ tool file_handler {
               </p>
               
               <h2>Configuration</h2>
-              <div className="code-block">
-                <pre>
-                  <code>
-{`glue app {
+              {renderCodeBlock(`glue app {
     name = "MCP-Enabled App"
     config {
         development = true
@@ -1884,19 +1901,13 @@ mcp_controller {
     endpoint = "https://mcp-service.example.com"
     auth = "Bearer $MCP_API_KEY"
     features = ["monitoring", "guardrails", "logging"]
-}`}
-                  </code>
-                </pre>
-              </div>
+}`, "mcp-config")}
               
               <h2>Model Integration</h2>
               <p>
                 When MCP is enabled, models can be configured to use MCP for execution control:
               </p>
-              <div className="code-block">
-                <pre>
-                  <code>
-{`model assistant {
+              {renderCodeBlock(`model assistant {
     provider = mcp_proxy
     target_provider = openai
     role = "Handle user requests"
@@ -1905,10 +1916,7 @@ mcp_controller {
         guardrails = ["content_safety", "pii_detection"]
         monitoring = true
     }
-}`}
-                  </code>
-                </pre>
-              </div>
+}`, "mcp-model")}
               
               <h2>Benefits</h2>
               <ul>
@@ -1935,10 +1943,7 @@ mcp_controller {
               </ul>
               
               <h2>NPM Installation</h2>
-              <div className="code-block">
-                <pre>
-                  <code>
-{`# Create a new project directory
+              {renderCodeBlock(`# Create a new project directory
 mkdir my-glue-app
 cd my-glue-app
 
@@ -1946,38 +1951,26 @@ cd my-glue-app
 npm init -y
 
 # Install GLUE
-npm install @glue-ai/core @glue-ai/cli`}
-                  </code>
-                </pre>
-              </div>
+npm install @glue-ai/core @glue-ai/cli`, "npm-install")}
               
               <h2>Configuration</h2>
               <p>
                 Create a .env file in your project root to store your API keys and configuration:
               </p>
-              <div className="code-block">
-                <pre>
-                  <code>
-{`# .env
+              {renderCodeBlock(`# .env
 OPENAI_API_KEY=your_openai_key
 ANTHROPIC_API_KEY=your_anthropic_key
 SERP_API_KEY=your_serp_key
 
 # Optional configurations
 GLUE_DEBUG=true
-GLUE_LOG_LEVEL=info`}
-                  </code>
-                </pre>
-              </div>
+GLUE_LOG_LEVEL=info`, "env-config")}
               
               <h2>Create Your First App</h2>
               <p>
                 Create a file named app.glue in your project root:
               </p>
-              <div className="code-block">
-                <pre>
-                  <code>
-{`glue app {
+              {renderCodeBlock(`glue app {
     name = "Hello World"
     config {
         development = true
@@ -1994,23 +1987,14 @@ model assistant {
 
 magnetize {
     input -> assistant -> output
-}`}
-                  </code>
-                </pre>
-              </div>
+}`, "first-app")}
               
               <h2>Running Your App</h2>
-              <div className="code-block">
-                <pre>
-                  <code>
-{`# Using the CLI
+              {renderCodeBlock(`# Using the CLI
 npx glue run app.glue
 
 # Or start in development mode with hot reloading
-npx glue dev app.glue`}
-                  </code>
-                </pre>
-              </div>
+npx glue dev app.glue`, "run-app")}
             </section>
           )}
 
@@ -2147,10 +2131,14 @@ npx glue dev app.glue`}
               </p>
               
               <h2>Application Configuration</h2>
-                  <div className="code-block">
-                    <pre>
-                      <code>
-{`glue app {
+              <div className="code-block">
+                <pre>
+                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;">glue app {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">name</span> <span class="operator">=</span> string                  <span class="comment">// Application name</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword keyword-config">config</span> {</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">development</span> <span class="operator">=</span> boolean      <span class="comment">// Enable development mode</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">sticky</span> <span class="operator">=</span> boolean           <span class="comment">// Persist state between runs</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">debug</span> <span class="operator">=</span> boolean            <span class="comment">// Enable debug logging</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">log_level</span> <span class="operator">=</span> string         <span class="comment">// "debug" | "info" | "warn" | "error"</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">max_history</span> <span class="operator">=</span> number       <span class="comment">// Max conversation turns to retain</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">mcp_enabled</span> <span class="operator">=</span> boolean      <span class="comment">// Enable MCP integration</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br><span style="--indent-level:0;">}</span>` }}></code>
+                </pre>
+                <button 
+                  id="copy-btn-app-config"
+                  className="copy-button" 
+                  onClick={() => copyToClipboard(`glue app {
     name = string                  // Application name
     config {
         development = boolean      // Enable development mode
@@ -2160,16 +2148,21 @@ npx glue dev app.glue`}
         max_history = number       // Max conversation turns to retain
         mcp_enabled = boolean      // Enable MCP integration
     }
-}`}
-                  </code>
-                </pre>
+}`, "app-config")}
+                >
+                  Copy
+                </button>
               </div>
               
               <h2>Model Configuration</h2>
               <div className="code-block">
                 <pre>
-                  <code>
-{`model name {
+                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;">model name {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">provider</span> <span class="operator">=</span> string             <span class="comment">// Model provider</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">role</span> <span class="operator">=</span> string                 <span class="comment">// Description of model's purpose</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">adhesives</span> <span class="operator">=</span> [string]          <span class="comment">// Array of connection types</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword keyword-config">config</span> {</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">model</span> <span class="operator">=</span> string            <span class="comment">// Specific model to use</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">temperature</span> <span class="operator">=</span> number      <span class="comment">// 0.0 to 1.0</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">max_tokens</span> <span class="operator">=</span> number       <span class="comment">// Maximum response length</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">top_p</span> <span class="operator">=</span> number            <span class="comment">// 0.0 to 1.0</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">top_k</span> <span class="operator">=</span> number            <span class="comment">// Integer value</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">presence_penalty</span> <span class="operator">=</span> number <span class="comment">// -2.0 to 2.0</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">frequency_penalty</span> <span class="operator">=</span> number <span class="comment">// -2.0 to 2.0</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">stop</span> <span class="operator">=</span> [string]           <span class="comment">// Array of stop sequences</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br><span style="--indent-level:0;">}</span>` }}></code>
+                </pre>
+                <button 
+                  id="copy-btn-model-config"
+                  className="copy-button" 
+                  onClick={() => copyToClipboard(`model name {
     provider = string             // Model provider
     role = string                 // Description of model's purpose
     adhesives = [string]          // Array of connection types
@@ -2183,16 +2176,21 @@ npx glue dev app.glue`}
         frequency_penalty = number // -2.0 to 2.0
         stop = [string]           // Array of stop sequences
     }
-}`}
-                  </code>
-                </pre>
+}`, "model-config")}
+                >
+                  Copy
+                </button>
               </div>
               
               <h2>Tool Configuration</h2>
               <div className="code-block">
                 <pre>
-                  <code>
-{`tool name {
+                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;">tool name {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">provider</span> <span class="operator">=</span> string              <span class="comment">// Tool provider if applicable</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword keyword-config">config</span> {</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Provider-specific configuration</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Examples:</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">api_key</span> <span class="operator">=</span> string</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">endpoint</span> <span class="operator">=</span> string</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">max_results</span> <span class="operator">=</span> number</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">timeout</span> <span class="operator">=</span> number</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br><span style="--indent-level:0;">}</span>` }}></code>
+                </pre>
+                <button 
+                  id="copy-btn-tool-config"
+                  className="copy-button" 
+                  onClick={() => copyToClipboard(`tool name {
     provider = string              // Tool provider if applicable
     config {
         // Provider-specific configuration
@@ -2202,16 +2200,21 @@ npx glue dev app.glue`}
         max_results = number
         timeout = number
     }
-}`}
-                      </code>
-                    </pre>
-                  </div>
+}`, "tool-config")}
+                >
+                  Copy
+                </button>
+              </div>
               
               <h2>Workflow Configuration</h2>
               <div className="code-block">
                 <pre>
-                  <code>
-{`magnetize {
+                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;"><span class="keyword keyword-magnetize">magnetize</span> {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Flow definitions</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> component2      <span class="comment">// Direct flow</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> [comp2, comp3]  <span class="comment">// Parallel flow</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;[comp1, comp2] <span class="operator">-></span> component3  <span class="comment">// Join flow</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// With transformations</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> { extract_data } <span class="operator">-></span> component2</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// With conditions</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> if(condition) <span class="operator">-></span> component2 : component3</span><br><span style="--indent-level:0;">}</span>` }}></code>
+                </pre>
+                <button 
+                  id="copy-btn-workflow-config"
+                  className="copy-button" 
+                  onClick={() => copyToClipboard(`magnetize {
     // Flow definitions
     component1 -> component2      // Direct flow
     component1 -> [comp2, comp3]  // Parallel flow
@@ -2222,12 +2225,13 @@ npx glue dev app.glue`}
     
     // With conditions
     component1 -> if(condition) -> component2 : component3
-}`}
-                  </code>
-                </pre>
-            </div>
-          </section>
-        )}
+}`, "workflow-config")}
+                >
+                  Copy
+                </button>
+              </div>
+            </section>
+          )}
       </main>
       </div>
 
