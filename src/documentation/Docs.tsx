@@ -1854,7 +1854,6 @@ magnetize { ... }`, "basic-structure")}
               {renderCodeBlock(`tool web_search {
     provider = serp|tavily
     config {
-        api_key = "key" // Environment variables recommended
         max_results = 5
     }
 }
