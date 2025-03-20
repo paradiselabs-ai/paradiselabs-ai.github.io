@@ -16,7 +16,6 @@
     "postbuild": "cp dist/index.html dist/200.html && cp dist/index.html dist/404.html"
   },
   "dependencies": {
-    "@babel/core": "^7.26.10",
     "@supabase/supabase-js": "^2.48.1",
     "@vitejs/plugin-react": "^4.3.4",
     "aos": "^2.3.4",
