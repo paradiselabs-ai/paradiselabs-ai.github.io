@@ -61,6 +61,9 @@ const HomepageHeader: React.FC = () => {
             <LogoSVG />
           </Link>
           
+          <nav className="nav-links">
+            <Link to="/docs" className="nav-link" aria-label="Documentation" rel="index">Docs</Link>
+          </nav>
         </div>
       </header>
     </div>
