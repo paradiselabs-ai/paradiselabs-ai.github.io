@@ -965,6 +965,10 @@ const Docs: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<{[sectionId: string]: boolean}>({});
   const [tocCollapsed, setTocCollapsed] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+  const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
+  const [showOrientationFeedback, setShowOrientationFeedback] = useState(false);
   const [codeOverlayVisible, setCodeOverlayVisible] = useState(false);
   const [currentOverlayCode, setCurrentOverlayCode] = useState('');
   const [currentOverlayTitle, setCurrentOverlayTitle] = useState('');
@@ -973,6 +977,45 @@ const Docs: React.FC = () => {
   // Reference to track section elements
   const contentRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<{[key: string]: HTMLElement | null}>({});
+
+  // Detect mobile view and orientation
+  useEffect(() => {
+    const checkViewportSettings = () => {
+      const mobile = window.innerWidth <= 768;
+      setIsMobileView(mobile);
+      
+      // Close mobile nav when switching to desktop
+      if (!mobile && mobileNavOpen) {
+        setMobileNavOpen(false);
+      }
+      
+      // Detect orientation
+      const isLandscape = window.innerWidth > window.innerHeight;
+      const newOrientation = isLandscape ? 'landscape' : 'portrait';
+      
+      // Show feedback when orientation changes
+      if (orientation !== newOrientation) {
+        setOrientation(newOrientation);
+        
+        if (mobile) {
+          setShowOrientationFeedback(true);
+          setTimeout(() => setShowOrientationFeedback(false), 2000);
+        }
+      }
+    };
+
+    // Initial check
+    checkViewportSettings();
+    
+    // Add resize and orientation change listeners
+    window.addEventListener('resize', checkViewportSettings);
+    window.addEventListener('orientationchange', checkViewportSettings);
+    
+    return () => {
+      window.removeEventListener('resize', checkViewportSettings);
+      window.removeEventListener('orientationchange', checkViewportSettings);
+    };
+  }, [mobileNavOpen, orientation]);
 
   // Code examples for the overlay
   const codeExamples: {[key: string]: {code: string, title: string, filename: string}} = {
@@ -1595,81 +1638,170 @@ magnetize {
     </div>
   );
 
-  return (
-    <div className="docs-page">
-    <div className="docs-container">
-      <aside className="docs-sidebar">
-        <nav>
-          <h3>Documentation</h3>
-          <ul>
-            <li>
-              <button 
-                className={`sidebar-btn overview ${activeTab === 'overview' ? 'active' : ''}`}
-                onClick={() => handleTabChange('overview')}
-              >
-                Overview
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`sidebar-btn core-concepts ${activeTab === 'core-concepts' ? 'active' : ''}`}
-                onClick={() => handleTabChange('core-concepts')}
-              >
-                Core Concepts
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`sidebar-btn syntax ${activeTab === 'syntax' ? 'active' : ''}`}
-                onClick={() => handleTabChange('syntax')}
-              >
-                GLUE Syntax
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`sidebar-btn integration ${activeTab === 'mcp' ? 'active' : ''}`}
-                onClick={() => handleTabChange('mcp')}
-              >
-                MCP Integration
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`sidebar-btn installation ${activeTab === 'installation' ? 'active' : ''}`}
-                onClick={() => handleTabChange('installation')}
-              >
-                Installation
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`sidebar-btn examples ${activeTab === 'examples' ? 'active' : ''}`}
-                onClick={() => handleTabChange('examples')}
-              >
-                Examples
-              </button>
-            </li>
-            <li>
-              <button 
-                className={`sidebar-btn api ${activeTab === 'api' ? 'active' : ''}`}
-                onClick={() => handleTabChange('api')}
-              >
-                API Reference
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </aside>
-      
-        <main className="docs-content" ref={contentRef}>
-          {/* Breadcrumb navigation */}
-          <div className="page-header">
-            <div className="breadcrumb">
-              <span className="breadcrumb-item">Documentation</span>
-              <span className="breadcrumb-current">{getCurrentTabTitle()}</span>
-            </div>
+  // Code block component
+  const CodeBlock = ({ code, language = 'glue', showCopy = true }: { code: string, language?: string, showCopy?: boolean }) => {
+    const codeRef = useRef<HTMLPreElement>(null);
+    
+    return (
+      <div className="code-block-container">
+        {isMobileView && orientation === 'portrait' && (
+          <div className="rotation-hint">
+            <span className="rotation-icon">screen_rotation</span>
+            <span className="hint-text">Rotate for better view</span>
           </div>
+        )}
+        <pre 
+          ref={codeRef}
+          className={`code-block language-${language}`}
+        >
+          <code>{code}</code>
+        </pre>
+        {showCopy && (
+          <button 
+            className="code-copy-btn" 
+            onClick={() => copyToClipboard(code, 'code-block')}
+            aria-label="Copy code"
+          >
+            content_copy
+          </button>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className={`docs-page orientation-${orientation}`}>
+      {/* Orientation change feedback overlay */}
+      {showOrientationFeedback && isMobileView && (
+        <div className="orientation-feedback">
+          <div className="orientation-feedback-content">
+            <span className="orientation-feedback-icon">screen_rotation</span>
+            <h3>Orientation Changed</h3>
+            <p>Content layout optimized for {orientation} view.</p>
+          </div>
+        </div>
+      )}
+      
+      <div className={`docs-container ${mobileNavOpen ? 'mobile-nav-open' : ''}`}>
+        {/* Mobile hamburger menu */}
+        {isMobileView && (
+          <button 
+            className={`mobile-nav-toggle ${mobileNavOpen ? 'active' : ''}`}
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            aria-label={mobileNavOpen ? "Close navigation menu" : "Open navigation menu"}
+          >
+            <span className="hamburger-icon">{mobileNavOpen ? 'close' : 'menu'}</span>
+          </button>
+        )}
+        
+        <aside className={`docs-sidebar ${mobileNavOpen ? 'open' : ''}`}>
+          <nav>
+            <h3>Documentation</h3>
+            <ul>
+              <li>
+                <button 
+                  className={`sidebar-btn overview ${activeTab === 'overview' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('overview');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  Overview
+                </button>
+              </li>
+              <li>
+                <button 
+                  className={`sidebar-btn core-concepts ${activeTab === 'core-concepts' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('core-concepts');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  Core Concepts
+                </button>
+              </li>
+              <li>
+                <button 
+                  className={`sidebar-btn syntax ${activeTab === 'syntax' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('syntax');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  GLUE Syntax
+                </button>
+              </li>
+              <li>
+                <button 
+                  className={`sidebar-btn integration ${activeTab === 'mcp' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('mcp');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  MCP Integration
+                </button>
+              </li>
+              <li>
+                <button 
+                  className={`sidebar-btn installation ${activeTab === 'installation' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('installation');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  Installation
+                </button>
+              </li>
+              <li>
+                <button 
+                  className={`sidebar-btn examples ${activeTab === 'examples' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('examples');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  Examples
+                </button>
+              </li>
+              <li>
+                <button 
+                  className={`sidebar-btn api ${activeTab === 'api' ? 'active' : ''}`}
+                  onClick={() => {
+                    handleTabChange('api');
+                    isMobileView && setMobileNavOpen(false);
+                  }}
+                >
+                  API Reference
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        
+        <main className="docs-content" ref={contentRef}>
+          {/* Mobile header with search toggle */}
+          {isMobileView && (
+            <div className={`mobile-header orientation-${orientation}`}>
+              <h2>{getCurrentTabTitle()}</h2>
+              {orientation === 'landscape' && (
+                <div className="orientation-message">
+                  <span className="orientation-icon">screen_rotation</span>
+                  <span className="orientation-text">Landscape mode enabled</span>
+                </div>
+              )}
+            </div>
+          )}
+          
+          {/* Breadcrumb navigation - hide on mobile */}
+          {!isMobileView && (
+            <div className="page-header">
+              <div className="breadcrumb">
+                <span className="breadcrumb-item">Documentation</span>
+                <span className="breadcrumb-current">{getCurrentTabTitle()}</span>
+              </div>
+            </div>
+          )}
 
           {/* Search bar */}
           <div className="docs-search">
