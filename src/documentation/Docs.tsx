@@ -957,16 +957,20 @@ const formatCodeWithSyntaxHighlighting = (code: string): string => {
 };
 
 const Docs: React.FC = () => {
+  // Define all states at the beginning of the component
   const [activeTab, setActiveTab] = useState('overview');
   const [expandedCode, setExpandedCode] = useState<string | null>(null);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<{[sectionId: string]: boolean}>({});
+  const [tocCollapsed, setTocCollapsed] = useState(false);
   const [codeOverlayVisible, setCodeOverlayVisible] = useState(false);
   const [currentOverlayCode, setCurrentOverlayCode] = useState('');
   const [currentOverlayTitle, setCurrentOverlayTitle] = useState('');
-  const [currentCodeId, setCurrentCodeId] = useState<string>('');
+  const [currentCodeId, setCurrentCodeId] = useState('');
+  
+  // Reference to track section elements
   const contentRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<{[key: string]: HTMLElement | null}>({});
 
@@ -1400,9 +1404,20 @@ magnetize {
   const renderTableOfContents = () => {
     if (activeTab === 'overview') {
       return (
-        <div className="toc">
-          <div className="toc-title">On this page</div>
-          <ul className="toc-list">
+        <div className={`toc ${tocCollapsed ? 'collapsed' : ''}`} onClick={() => tocCollapsed && setTocCollapsed(false)}>
+          <div className="toc-title">
+            On this page
+            <button 
+              className="toc-toggle"
+              onClick={(e) => {
+                e.stopPropagation();
+                setTocCollapsed(!tocCollapsed);
+              }}
+            >
+              {tocCollapsed ? 'expand_more' : 'expand_less'}
+            </button>
+          </div>
+          <ul className={`toc-list ${tocCollapsed ? 'hidden' : ''}`}>
             <li className={activeSection === 'what-is-glue' ? 'active' : ''}>
               <button 
                 className="toc-link" 
@@ -1432,9 +1447,20 @@ magnetize {
       );
     } else if (activeTab === 'core-concepts') {
       return (
-        <div className="toc">
-          <div className="toc-title">On this page</div>
-          <ul className="toc-list">
+        <div className={`toc ${tocCollapsed ? 'collapsed' : ''}`} onClick={() => tocCollapsed && setTocCollapsed(false)}>
+          <div className="toc-title">
+            On this page
+            <button 
+              className="toc-toggle"
+              onClick={(e) => {
+                e.stopPropagation();
+                setTocCollapsed(!tocCollapsed);
+              }}
+            >
+              {tocCollapsed ? 'expand_more' : 'expand_less'}
+            </button>
+          </div>
+          <ul className={`toc-list ${tocCollapsed ? 'hidden' : ''}`}>
             <li className={activeSection === 'models' ? 'active' : ''}>
               <button 
                 className="toc-link" 
@@ -1472,9 +1498,20 @@ magnetize {
       );
     } else if (activeTab === 'syntax') {
       return (
-        <div className="toc">
-          <div className="toc-title">On this page</div>
-          <ul className="toc-list">
+        <div className={`toc ${tocCollapsed ? 'collapsed' : ''}`} onClick={() => tocCollapsed && setTocCollapsed(false)}>
+          <div className="toc-title">
+            On this page
+            <button 
+              className="toc-toggle"
+              onClick={(e) => {
+                e.stopPropagation();
+                setTocCollapsed(!tocCollapsed);
+              }}
+            >
+              {tocCollapsed ? 'expand_more' : 'expand_less'}
+            </button>
+          </div>
+          <ul className={`toc-list ${tocCollapsed ? 'hidden' : ''}`}>
             <li className={activeSection === 'basic-structure' ? 'active' : ''}>
               <button 
                 className="toc-link" 
