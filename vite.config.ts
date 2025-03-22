@@ -65,6 +65,115 @@ const efficientCachePolicy = (): Plugin => {
         
         next();
       });
+    },
+    configurePreviewServer(server) {
+      // Same as development server
+      server.middlewares.use((req, res, next) => {
+        const url = req.url || '';
+        
+        // HTML files - no cache
+        if (url.endsWith('.html') || url === '/' || url === '/GLUE/') {
+          res.setHeader('Cache-Control', 'no-cache');
+        }
+        // Hashed assets - long cache
+        else if (/\.[0-9a-f]{8,}\.(?:js|css|woff2?)$/i.test(url)) {
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        }
+        // Other static assets - moderate cache
+        else if (/\.(?:js|css|woff2?|svg|png|jpe?g|gif|webp|avif)$/i.test(url)) {
+          res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+        }
+        // API endpoints
+        else if (url.includes('/api/')) {
+          res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+        }
+        // Other resources
+        else {
+          res.setHeader('Cache-Control', 'public, max-age=3600');
+        }
+        
+        res.setHeader('Vary', 'Accept-Encoding');
+        next();
+      });
+    },
+    // Generate headers.json for deployment platforms
+    closeBundle() {
+      // Create a headers file for deployment platforms like Netlify/Vercel
+      const fs = require('fs');
+      const path = require('path');
+      
+      const headers = {
+        '/*': [
+          'X-Content-Type-Options: nosniff',
+          'X-Frame-Options: DENY',
+          'X-XSS-Protection: 1; mode=block',
+          'Referrer-Policy: strict-origin-when-cross-origin',
+          'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload',
+          'Content-Security-Policy: default-src \'self\'; script-src \'self\' \'unsafe-inline\'; style-src \'self\' \'unsafe-inline\'; font-src \'self\'; img-src \'self\' data:; connect-src \'self\' https://*.supabase.co; frame-ancestors \'none\'',
+          'Cross-Origin-Opener-Policy: same-origin',
+          'Cross-Origin-Embedder-Policy: require-corp',
+          'Cross-Origin-Resource-Policy: same-origin',
+          'Permissions-Policy: camera=(), microphone=(), geolocation=()',
+          'Vary: Accept-Encoding'
+        ],
+        '/index.html': [
+          'Cache-Control: no-cache'
+        ],
+        '/assets/*.js': [
+          'Cache-Control: public, max-age=31536000, immutable'
+        ],
+        '/assets/*.css': [
+          'Cache-Control: public, max-age=31536000, immutable'
+        ],
+        '/assets/*.woff2': [
+          'Cache-Control: public, max-age=31536000, immutable'
+        ],
+        '/assets/*.woff': [
+          'Cache-Control: public, max-age=31536000, immutable'
+        ],
+        '/assets/*.png': [
+          'Cache-Control: public, max-age=86400, stale-while-revalidate=604800'
+        ],
+        '/assets/*.jpg': [
+          'Cache-Control: public, max-age=86400, stale-while-revalidate=604800'
+        ],
+        '/assets/*.svg': [
+          'Cache-Control: public, max-age=86400, stale-while-revalidate=604800'
+        ]
+      };
+      
+      // Create _headers file for Netlify
+      try {
+        const netlifyHeaders = Object.entries(headers)
+          .map(([route, headerList]) => `${route}\n  ${headerList.join('\n  ')}`)
+          .join('\n\n');
+        
+        fs.writeFileSync(path.resolve(__dirname, 'dist', '_headers'), netlifyHeaders);
+        console.log('✅ Generated Netlify _headers file');
+      } catch (err) {
+        console.error('❌ Failed to generate Netlify _headers file:', err);
+      }
+      
+      // Create vercel.json file with headers config
+      try {
+        const vercelConfig = {
+          headers: Object.entries(headers).map(([source, headersList]) => ({
+            source,
+            headers: headersList.map(header => {
+              const [key, value] = header.split(': ');
+              return { key, value };
+            })
+          }))
+        };
+        
+        fs.writeFileSync(
+          path.resolve(__dirname, 'dist', 'vercel.json'),
+          JSON.stringify(vercelConfig, null, 2)
+        );
+        console.log('✅ Generated Vercel headers configuration');
+      } catch (err) {
+        console.error('❌ Failed to generate Vercel configuration:', err);
+      }
     }
   };
 };
@@ -253,6 +362,8 @@ export default defineConfig({
       'Cross-Origin-Resource-Policy': 'same-origin',
       'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
       'Vary': 'Accept-Encoding'
-    }
+    },
+    open: true,
+    port: 4173
   }
 })
