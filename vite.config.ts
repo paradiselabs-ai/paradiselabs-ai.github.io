@@ -23,11 +23,58 @@ const fixMimeTypes = (): Plugin => {
   };
 };
 
+// Custom plugin for efficient cache headers
+const efficientCachePolicy = (): Plugin => {
+  return {
+    name: 'efficient-cache-policy',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        // Skip for HTML requests
+        if (req.url?.endsWith('.html') || req.url === '/' || req.url === '/GLUE/') {
+          // Set no-cache for HTML to ensure fresh content
+          res.setHeader('Cache-Control', 'no-cache');
+          next();
+          return;
+        }
+
+        // Determine appropriate cache policy based on asset type
+        const url = req.url || '';
+        
+        // Immutable assets with hash in filename (JS, CSS with content hash)
+        if (/\.[0-9a-f]{8,}\.(?:js|css|woff2?)$/i.test(url)) {
+          // Long-term cache with immutable directive
+          res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        } 
+        // Static assets that change less frequently
+        else if (/\.(?:js|css|woff2?|svg|png|jpe?g|gif|webp|avif)$/i.test(url)) {
+          // Middle-term cache with validation
+          res.setHeader('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+        }
+        // API or dynamic content
+        else if (/\/api\//.test(url)) {
+          // No cache for API endpoints
+          res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+        }
+        // Default moderate cache for other static assets
+        else {
+          res.setHeader('Cache-Control', 'public, max-age=3600');
+        }
+        
+        // Add Vary header for proper cache invalidation
+        res.setHeader('Vary', 'Accept-Encoding');
+        
+        next();
+      });
+    }
+  };
+};
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(), // Use default React transformation
     fixMimeTypes(), // Apply MIME type fixes
+    efficientCachePolicy(), // Apply efficient cache policies
     {
       name: 'html-transform',
       transformIndexHtml(html) {
@@ -114,9 +161,16 @@ export default defineConfig({
     cssCodeSplit: true,
     sourcemap: false,
     // Target modern browsers only for smaller bundle size
-    target: 'es2020', 
+    target: 'es2020',
+    // Enable hashing for cache busting
+    cssMinify: true,
+    assetsInlineLimit: 4096, // Inline files < 4kb
+    // Configure chunk naming based on content hash for efficient caching
     rollupOptions: {
       output: {
+        entryFileNames: 'assets/[name].[hash].js',
+        chunkFileNames: 'assets/[name].[hash].js',
+        assetFileNames: 'assets/[name].[hash].[ext]',
         // Aggressive code splitting for better performance
         manualChunks: (id) => {
           // Only load what's needed immediately
@@ -178,8 +232,6 @@ export default defineConfig({
     modulePreload: {
       polyfill: true,
     },
-    // Modern JS optimizations
-    cssMinify: true,
   },
   // Set modern browser targets for better optimization
   esbuild: {
@@ -199,7 +251,8 @@ export default defineConfig({
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',
       'Cross-Origin-Resource-Policy': 'same-origin',
-      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+      'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+      'Vary': 'Accept-Encoding'
     }
   }
 })
