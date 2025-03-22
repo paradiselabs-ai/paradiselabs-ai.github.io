@@ -13,8 +13,12 @@ const __dirname = path.dirname(__filename);
 // Path to the dist directory
 const distDir = path.resolve(__dirname, '..', 'dist');
 
+// Get the base URL from environment or default to '/GLUE/'
+const baseUrl = process.env.BASE_URL || '/';
+
 console.log('Starting cache headers configuration for GitHub Pages...');
 console.log(`Dist directory: ${distDir}`);
+console.log(`Base URL: ${baseUrl}`);
 
 // Create the .nojekyll file for GitHub Pages
 try {
@@ -73,7 +77,7 @@ try {
     try {
       var assetFiles = fs.readdirSync(assetsDir)
         .filter(file => file.match(/\.js$|\.css$/))
-        .map(file => `'/GLUE/assets/${file}'`).join(',\n  ');
+        .map(file => `'${baseUrl}assets/${file}'`).join(',\n  ');
     } catch (err) {
       console.warn('⚠️ Could not read assets directory. Using empty assets list.');
       var assetFiles = '';
@@ -82,9 +86,10 @@ try {
     
   const swContent = `// Service Worker for cache control
 const CACHE_NAME = 'glue-cache-v1';
+const BASE_URL = '${baseUrl}';
 const STATIC_ASSETS = [
-  '/GLUE/',
-  '/GLUE/index.html',
+  BASE_URL,
+  BASE_URL + 'index.html',
   // Main entry points
   ${assetFiles}
 ];
@@ -136,7 +141,7 @@ self.addEventListener('fetch', event => {
   }
   
   // Network-first for HTML files
-  if (url.pathname.endsWith('.html') || url.pathname === '/GLUE/') {
+  if (url.pathname.endsWith('.html') || url.pathname === BASE_URL) {
     event.respondWith(
       fetch(event.request).catch(() => caches.match(event.request))
     );
@@ -176,7 +181,7 @@ self.addEventListener('fetch', event => {
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/GLUE/sw.js')
+        navigator.serviceWorker.register('${baseUrl}sw.js')
           .then(reg => console.log('Service worker registered'))
           .catch(err => console.error('Service worker registration failed:', err));
       });
