@@ -1,11 +1,33 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { configDefaults } from 'vitest/config'
+import { Plugin } from 'vite'
+
+// Custom plugin to fix MIME type issues
+const fixMimeTypes = (): Plugin => {
+  return {
+    name: 'fix-mime-types',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        // Force correct MIME types for JavaScript modules
+        if (req.url?.endsWith('.js') || req.url?.endsWith('.mjs')) {
+          res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+        } else if (req.url?.endsWith('.ts') || req.url?.endsWith('.tsx')) {
+          res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+        } else if (req.url?.endsWith('.css')) {
+          res.setHeader('Content-Type', 'text/css; charset=utf-8');
+        }
+        next();
+      });
+    }
+  };
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(), // Use default React transformation
+    fixMimeTypes(), // Apply MIME type fixes
     {
       name: 'html-transform',
       transformIndexHtml(html) {
@@ -74,8 +96,11 @@ export default defineConfig({
     headers: {
       'Cross-Origin-Embedder-Policy': 'require-corp',
       'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Resource-Policy': 'same-origin'
-    }
+      'Cross-Origin-Resource-Policy': 'same-origin',
+      'Content-Type': 'application/javascript; charset=utf-8'
+    },
+    strictPort: true,
+    middlewareMode: false
   },
   test: {
     environment: 'jsdom',
