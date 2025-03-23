@@ -189,6 +189,7 @@ const efficientCachePolicy = (): Plugin => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/GLUE/' : '/',
   plugins: [
     react(), // Use default React transformation
     fixMimeTypes(), // Apply MIME type fixes
@@ -256,13 +257,14 @@ export default defineConfig({
       },
     },
   ],
-  base: process.env.BASE_URL || '/GLUE/', 
   server: {
     headers: {
-      'Cross-Origin-Embedder-Policy': 'require-corp',
-      'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Resource-Policy': 'same-origin',
-      'Content-Type': 'application/javascript; charset=utf-8'
+      'Access-Control-Allow-Origin': '*',
+      'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' ws: wss:; style-src 'self' 'unsafe-inline';"
+    },
+    cors: true,
+    hmr: {
+      overlay: true,
     },
     strictPort: true,
     middlewareMode: false
