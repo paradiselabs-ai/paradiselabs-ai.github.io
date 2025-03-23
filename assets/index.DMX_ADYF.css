@@ -1,0 +1,1 @@
+*,*:before,*:after{box-sizing:border-box;margin:0;padding:0}:root{--animation-duration-slow: 12s;--animation-duration-medium: .3s;--animation-duration-fast: .2s;--transition-timing: cubic-bezier(.4, 0, .2, 1);--z-base: 1;--z-header: 100;--z-workflow-editor: 50}body{margin:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /workflow
 
-Sitemap: https://glue-ui.com/sitemap.xml
+Sitemap: https://applyglue.com/sitemap.xml
