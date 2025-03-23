@@ -5,22 +5,22 @@ const STATIC_ASSETS = [
   BASE_URL,
   BASE_URL + 'index.html',
   // Main entry points
-  '/assets/backend.CMRMkKTU.js',
-  '/assets/components.1JGZsXUz.js',
+  '/assets/backend.QuUChf_h.js',
+  '/assets/components.CAIqTpDd.js',
   '/assets/documentation.CeQ1-Nna.css',
-  '/assets/documentation.CsD88AgW.js',
+  '/assets/documentation.DM07_CSQ.js',
   '/assets/home.CkXB7kzr.css',
-  '/assets/home._0EMf26g.js',
-  '/assets/index.DgeR5L2D.js',
+  '/assets/home.IZqz74kX.js',
+  '/assets/index.Cxu_marm.js',
   '/assets/index.DMX_ADYF.css',
-  '/assets/react-core.CF-4sVlY.js',
-  '/assets/react-full.hLWEX48c.js',
-  '/assets/state.BBBb-3Ib.js',
-  '/assets/ui-libs.1V-OyM-R.js',
-  '/assets/ui-libs.BzBcDO9z.css',
-  '/assets/vendor.CBJAbCk_.js',
-  '/assets/workflow.CBP4IdCp.js',
-  '/assets/workflow.ClaqlwTj.css'
+  '/assets/react-core.BQPeW7rL.js',
+  '/assets/react-full.BKSoK5FJ.js',
+  '/assets/state.DF06KoBk.js',
+  '/assets/ui-libs.BvCUr5oq.css',
+  '/assets/ui-libs.CGYtS8Ml.js',
+  '/assets/vendor.BtI3oo2L.js',
+  '/assets/workflow.ClaqlwTj.css',
+  '/assets/workflow.Q9Vp1-I6.js'
 ];
 
 // Install event - cache critical assets
@@ -72,22 +72,7 @@ self.addEventListener('fetch', event => {
   // Network-first for HTML files
   if (url.pathname.endsWith('.html') || url.pathname === BASE_URL) {
     event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          // Ensure correct Content-Type header for HTML
-          if (!response.headers.get('Content-Type') || 
-              !response.headers.get('Content-Type').includes('text/html')) {
-            const newHeaders = new Headers(response.headers);
-            newHeaders.set('Content-Type', 'text/html; charset=utf-8');
-            return new Response(response.body, {
-              status: response.status,
-              statusText: response.statusText,
-              headers: newHeaders
-            });
-          }
-          return response;
-        })
-        .catch(() => caches.match(event.request))
+      fetch(event.request).catch(() => caches.match(event.request))
     );
     return;
   }
