@@ -189,7 +189,7 @@ const efficientCachePolicy = (): Plugin => {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/GLUE/' : '/',
+  base: process.env.BASE_URL || '/',
   plugins: [
     react(), // Use default React transformation
     fixMimeTypes(), // Apply MIME type fixes

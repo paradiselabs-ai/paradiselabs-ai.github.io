@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 // Path to the dist directory
 const distDir = path.resolve(__dirname, '..', 'dist');
 
-// Get the base URL from environment or default to '/GLUE/'
+// Get the base URL from environment or default to '/'
 const baseUrl = process.env.BASE_URL || '/';
 
 console.log('Starting cache headers configuration for GitHub Pages...');
