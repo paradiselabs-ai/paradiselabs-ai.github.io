@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import './Docs.css';
 
+import GlueAnimatedDiagrams from './components/GlueAnimatedDiagrams';
+
 interface CodeOverlayProps {
   isVisible: boolean;
   code: string;
@@ -1910,14 +1912,14 @@ magnetize {
                   </ul>
                   
                   {renderCodeBlock(`model researcher {
-  provider = anthropic
-  role = "Research topics thoroughly"
-  adhesives = [glue, velcro]
-  config {
-    model = "claude-3-opus-20240229"
-    temperature = 0.7
-    max_tokens = 4000
-  }
+provider = anthropic
+role = "Research topics thoroughly"
+adhesives = [glue, velcro]
+config {
+  model = "claude-3-opus-20240229"
+  temperature = 0.7
+  max_tokens = 4000
+}
 }`, "models-example")}
                 </>
               )}
@@ -1970,6 +1972,13 @@ magnetize {
                   </ul>
                 </>
               )}
+
+              <h2 id="component-interactions">Component Interactions</h2>
+              <p>
+                {highlightText('Visualize how GLUE components work together in different workflows:')}
+              </p>
+              
+              <GlueAnimatedDiagrams />
             </section>
           )}
 

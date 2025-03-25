@@ -6,9 +6,6 @@ import AOS from 'aos';
 import './Home.css';
 
 // Lazy load below-the-fold components
-const HowDoesGlueWork = lazy(() => import('./components/How does Glue work Section/HowDoesGlueWork').then(module => ({ 
-  default: module.HowDoesGlueWork 
-})));
 const GlueSyntax = lazy(() => import('./components/Glue syntax section/GlueSyntax').then(module => ({ 
   default: module.GlueSyntax 
 })));
@@ -229,12 +226,6 @@ const Home: React.FC = () => {
       <section ref={featuresRef} id="features" style={sectionContainerStyle}>
         <WhyChooseGlue />
       </section>
-
-      <Section style={sectionContainerStyle}>
-        <Suspense fallback={<LoadingFallback />}>
-          <HowDoesGlueWork />
-        </Suspense>
-      </Section>
 
       <Section style={sectionContainerStyle}>
         <Suspense fallback={<LoadingFallback />}>
