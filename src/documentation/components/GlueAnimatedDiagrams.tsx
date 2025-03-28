@@ -521,10 +521,9 @@ const ComplexWorkflowDiagram: React.FC = () => {
   )
 }
 
+// Replace the AdhesivesDiagram component with this new implementation
 const AdhesivesDiagram: React.FC = () => {
   const [selectedAdhesive, setSelectedAdhesive] = useState<string>("glue")
-
-  // Add this inside the AdhesivesDiagram component, right after the useState
   const [windowWidth, setWindowWidth] = useState<number>(0)
 
   useEffect(() => {
@@ -549,82 +548,131 @@ const AdhesivesDiagram: React.FC = () => {
     glue: {
       name: "GLUE",
       description:
-        "GLUE forms a permanent, one-way binding between components. It enables stable, reliable communication patterns in a workflow.",
-      connectionClass: styles.adhesiveGlue,
+        "Forms a permanent connection that maintains consistent data flow. Ideal for components that need reliable, unchanging communication paths.",
+      icon: "link",
+      color: "rgb(90, 219, 242)",
+      properties: ["Permanent", "One-way", "Reliable"],
     },
     velcro: {
       name: "VELCRO",
       description:
-        "VELCRO creates a bidirectional, detachable connection. Components can be easily reconfigured while maintaining clear dependencies.",
-      connectionClass: styles.adhesiveVelcro,
+        "Creates a flexible, two-way connection that can be attached and detached as needed. Perfect for components that exchange information in both directions.",
+      icon: "swap_horiz",
+      color: "rgb(132, 94, 247)",
+      properties: ["Bidirectional", "Detachable", "Adaptable"],
     },
     tape: {
       name: "TAPE",
       description:
-        "TAPE establishes a directional, temporary binding. It's perfect for sequential operations with clear data flow direction.",
-      connectionClass: styles.adhesiveTape,
-    },
-    staple: {
-      name: "STAPLE",
-      description:
-        "STAPLE forms fixed, secure connections for critical data. It ensures reliability in workflows where data integrity is paramount.",
-      connectionClass: styles.adhesiveStaple,
+        "Establishes a temporary, directional binding that guides information flow. Excellent for sequential operations with clear data paths.",
+      icon: "arrow_forward",
+      color: "rgb(255, 183, 77)",
+      properties: ["Directional", "Temporary", "Sequential"],
     },
   }
 
   return (
     <div className={styles.diagramContainer}>
-      <div className={styles.adhesivesDiagram}>
-        <div className={styles.adhesivesSelector}>
-          {Object.keys(adhesiveTypes).map((type) => (
-            <button
-              key={type}
-              className={`${styles.adhesiveButton} ${selectedAdhesive === type ? styles.active : ""}`}
-              onClick={() => setSelectedAdhesive(type)}
-            >
-              {adhesiveTypes[type as keyof typeof adhesiveTypes].name}
-            </button>
-          ))}
-        </div>
-
-        <div className={styles.adhesiveVisualization}>
-          <div className={`${styles.model} ${styles.modelLeft}`}>
-            <div className={styles.modelIcon}>
-              <span className="material-icons">psychology</span>
-            </div>
-            <div className={styles.modelLabel}>Model A</div>
-          </div>
-
-          <div
-            className={`${styles.connection} ${adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].connectionClass}`}
+      <div className={styles.adhesivesSelector}>
+        {Object.keys(adhesiveTypes).map((type) => (
+          <button
+            key={type}
+            className={`${styles.adhesiveButton} ${selectedAdhesive === type ? styles.active : ""}`}
+            onClick={() => setSelectedAdhesive(type)}
+            style={{
+              borderColor:
+                selectedAdhesive === type ? adhesiveTypes[type as keyof typeof adhesiveTypes].color : undefined,
+              boxShadow:
+                selectedAdhesive === type
+                  ? `0 0 10px ${adhesiveTypes[type as keyof typeof adhesiveTypes].color}40`
+                  : undefined,
+            }}
           >
-            <div className={styles.adhesiveName}>
-              {adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].name}
+            <span className="material-icons" style={{ color: adhesiveTypes[type as keyof typeof adhesiveTypes].color }}>
+              {adhesiveTypes[type as keyof typeof adhesiveTypes].icon}
+            </span>
+            {adhesiveTypes[type as keyof typeof adhesiveTypes].name}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.adhesiveShowcase}>
+        <div
+          className={styles.adhesiveVisual}
+          style={{
+            backgroundColor: `${adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color}15`,
+            borderColor: `${adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color}30`,
+          }}
+        >
+          <div className={styles.adhesiveIconLarge}>
+            <span
+              className="material-icons"
+              style={{ color: adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color }}
+            >
+              {adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].icon}
+            </span>
+          </div>
+
+          <div className={styles.adhesiveModels}>
+            <div className={styles.adhesiveModel}>
+              <div className={styles.modelCircle}>
+                <span className="material-icons">psychology</span>
+              </div>
+              <div className={styles.modelLabel}>Model A</div>
+            </div>
+
+            <div
+              className={styles.adhesiveConnection}
+              style={{ backgroundColor: adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color }}
+            >
+              <div
+                className={styles.connectionAnimation}
+                style={{ backgroundColor: adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color }}
+              ></div>
+            </div>
+
+            <div className={styles.adhesiveModel}>
+              <div className={styles.modelCircle}>
+                <span className="material-icons">memory</span>
+              </div>
+              <div className={styles.modelLabel}>Model B</div>
             </div>
           </div>
 
-          <div className={`${styles.model} ${styles.modelRight}`}>
-            <div className={styles.modelIcon}>
-              <span className="material-icons">memory</span>
-            </div>
-            <div className={styles.modelLabel}>Model B</div>
+          <div className={styles.adhesiveProperties}>
+            {adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].properties.map((property, index) => (
+              <div
+                key={index}
+                className={styles.propertyTag}
+                style={{ backgroundColor: `${adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color}20` }}
+              >
+                {property}
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className={styles.adhesiveDescription}>
-          <p>{adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].description}</p>
+        <div className={styles.adhesiveInfo}>
+          <h3
+            className={styles.adhesiveTitle}
+            style={{ color: adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].color }}
+          >
+            {adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].name}
+          </h3>
+          <p className={styles.adhesiveDescription}>
+            {adhesiveTypes[selectedAdhesive as keyof typeof adhesiveTypes].description}
+          </p>
         </div>
       </div>
     </div>
   )
 }
 
+// Replace the TeamCommunicationDiagram component with this new implementation
 const TeamCommunicationDiagram: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [animationInterval, setAnimationInterval] = useState<NodeJS.Timeout | null>(null)
-
-  // Add this inside the TeamCommunicationDiagram component, right after the useState declarations
   const [windowWidth, setWindowWidth] = useState<number>(0)
 
   useEffect(() => {
@@ -645,12 +693,14 @@ const TeamCommunicationDiagram: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize)
   }, [])
 
+  const isDesktop = windowWidth >= 768
+
   const steps: StepInfo[] = [
-    { description: "Initial state: Team composed of models with different specialties" },
-    { description: "Lead model communicates tasks and context to team members" },
-    { description: "Team members access tools through shared adhesive bindings" },
-    { description: "Results from tools are processed by the team" },
-    { description: "Team collaborates to produce final output" },
+    { description: "Team structure: Specialized models work together through a central coordination point" },
+    { description: "Task distribution: Lead model assigns tasks and provides context to team members" },
+    { description: "Resource access: Team members connect to shared tools through adhesive bindings" },
+    { description: "Collaboration: Team processes results from tools and shares information" },
+    { description: "Delivery: The team produces a unified output from their combined efforts" },
   ]
 
   const togglePlay = () => {
@@ -712,73 +762,107 @@ const TeamCommunicationDiagram: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.teamCommunicationDiagram}>
-        <div className={styles.teamContainer}>
-          <div className={styles.teamHeader}>Research Team</div>
-          <div className={styles.teamContent}>
-            <div className={`${styles.teamModel} ${styles.leadModel}`}>
-              <span className="material-icons">star</span>
-              <span className={styles.modelName}>Lead Researcher</span>
-              <div className={`${styles.msgBubble} ${currentStep === 1 ? styles.visible : ""}`}>
-                Let's analyze this data together
+      <div className={`${styles.teamHubContainer} ${isDesktop ? styles.teamHubDesktop : ""}`}>
+        <div className={styles.teamHub}>
+          <div className={`${styles.hubCenter} ${currentStep >= 1 ? styles.active : ""}`}>
+            <div className={styles.hubIcon}>
+              <span className="material-icons">groups</span>
+            </div>
+            <div className={styles.hubLabel}>Team Hub</div>
+
+            {currentStep === 1 && <div className={styles.communicationPulse}></div>}
+          </div>
+
+          <div className={`${styles.teamMembers} ${isDesktop ? styles.teamMembersDesktop : ""}`}>
+            <div className={`${styles.teamMember} ${styles.leadMember} ${currentStep >= 1 ? styles.activeMember : ""}`}>
+              <div className={styles.memberIcon}>
+                <span className="material-icons">star</span>
               </div>
+              <div className={styles.memberLabel}>Lead</div>
+              {currentStep === 1 && (
+                <div className={styles.messageBubble}>
+                  <span>Assigning tasks</span>
+                </div>
+              )}
             </div>
 
-            <div className={styles.teamModels}>
-              <div className={styles.teamModel}>
+            <div className={`${styles.teamMember} ${currentStep >= 2 ? styles.activeMember : ""}`}>
+              <div className={styles.memberIcon}>
                 <span className="material-icons">analytics</span>
-                <span className={styles.modelName}>Data Analyst</span>
               </div>
-              <div className={styles.teamModel}>
-                <span className="material-icons">trending_up</span>
-                <span className={styles.modelName}>Statistician</span>
-              </div>
+              <div className={styles.memberLabel}>Analyst</div>
+              {currentStep === 2 && (
+                <div className={styles.toolAccess}>
+                  <span className="material-icons">build</span>
+                </div>
+              )}
             </div>
 
-            <div className={`${styles.teamTool} ${currentStep >= 2 ? styles.active : ""}`}>
-              <span className="material-icons">table_chart</span>
-              <span className={styles.toolName}>Data Processing</span>
-              <div className={`${styles.toolAdhesive} ${currentStep >= 2 ? styles.visible : ""}`}>VELCRO</div>
-              <div className={`${styles.toolResult} ${currentStep >= 3 ? styles.visible : ""}`}>
-                Data analysis complete
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={`${styles.teamFlow} ${currentStep >= 1 ? styles.active : ""}`}>
-          <span className="material-icons">swap_horiz</span>
-          <span className={styles.flowText}>Bidirectional</span>
-        </div>
-
-        <div className={styles.teamContainer}>
-          <div className={styles.teamHeader}>Implementation Team</div>
-          <div className={styles.teamContent}>
-            <div className={`${styles.teamModel} ${styles.leadModel}`}>
-              <span className="material-icons">engineering</span>
-              <span className={styles.modelName}>Systems Engineer</span>
-            </div>
-
-            <div className={styles.teamModels}>
-              <div className={styles.teamModel}>
+            <div className={`${styles.teamMember} ${currentStep >= 2 ? styles.activeMember : ""}`}>
+              <div className={styles.memberIcon}>
                 <span className="material-icons">code</span>
-                <span className={styles.modelName}>Developer</span>
               </div>
-              <div className={styles.teamModel}>
-                <span className="material-icons">bug_report</span>
-                <span className={styles.modelName}>Tester</span>
-              </div>
+              <div className={styles.memberLabel}>Developer</div>
+              {currentStep === 2 && (
+                <div className={styles.toolAccess}>
+                  <span className="material-icons">terminal</span>
+                </div>
+              )}
             </div>
 
-            <div className={`${styles.teamTool} ${currentStep >= 2 ? styles.active : ""}`}>
-              <span className="material-icons">terminal</span>
-              <span className={styles.toolName}>Code Execution</span>
-              <div className={`${styles.toolAdhesive} ${currentStep >= 2 ? styles.visible : ""}`}>GLUE</div>
-              <div className={`${styles.toolResult} ${currentStep >= 3 ? styles.visible : ""}`}>
-                Implementation verified
+            <div className={`${styles.teamMember} ${currentStep >= 2 ? styles.activeMember : ""}`}>
+              <div className={styles.memberIcon}>
+                <span className="material-icons">bug_report</span>
               </div>
+              <div className={styles.memberLabel}>Tester</div>
+              {currentStep === 2 && (
+                <div className={styles.toolAccess}>
+                  <span className="material-icons">science</span>
+                </div>
+              )}
             </div>
           </div>
+
+          {currentStep >= 3 && (
+            <div className={styles.teamTools}>
+              <div className={styles.toolsLabel}>Shared Resources</div>
+              <div className={styles.toolsGrid}>
+                <div className={styles.toolItem}>
+                  <span className="material-icons">build</span>
+                  <span>Analysis</span>
+                </div>
+                <div className={styles.toolItem}>
+                  <span className="material-icons">terminal</span>
+                  <span>Code</span>
+                </div>
+                <div className={styles.toolItem}>
+                  <span className="material-icons">science</span>
+                  <span>Testing</span>
+                </div>
+                <div className={styles.toolItem}>
+                  <span className="material-icons">storage</span>
+                  <span>Data</span>
+                </div>
+              </div>
+
+              {currentStep === 3 && (
+                <div className={styles.toolResults}>
+                  <span className="material-icons">check_circle</span>
+                  <span>Processing complete</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {currentStep === 4 && (
+            <div className={styles.teamOutput}>
+              <div className={styles.outputIcon}>
+                <span className="material-icons">output</span>
+              </div>
+              <div className={styles.outputLabel}>Final Output</div>
+              <div className={styles.collaborationLines}></div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -789,10 +873,9 @@ const TeamCommunicationDiagram: React.FC = () => {
   )
 }
 
+// Replace the MagnetizeFlowDiagram component with this new implementation
 const MagnetizeFlowDiagram: React.FC = () => {
   const [selectedFlow, setSelectedFlow] = useState<string>("push")
-
-  // Add this inside the MagnetizeFlowDiagram component, right after the useState
   const [windowWidth, setWindowWidth] = useState<number>(0)
 
   useEffect(() => {
@@ -817,92 +900,110 @@ const MagnetizeFlowDiagram: React.FC = () => {
     push: {
       name: "Push Flow",
       description:
-        "In Push flow, models push information to other models. The originating model takes initiative and controls when information is sent.",
-      connectionClass: styles.flowPush,
-      arrow: "→",
-      code: `const researchTeam = new Team({\n  flow: 'push',\n  models: [researchLeader, analyst, statistician]\n});`,
+        "Information flows from the source to destination models. The source model initiates and controls when information is sent, similar to a broadcast pattern.",
+      icon: "arrow_downward",
+      color: "#4ade80",
+      animation: styles.pushAnimation,
     },
     pull: {
       name: "Pull Flow",
       description:
-        "In Pull flow, models request information from other models. The receiving model initiates the exchange when it needs data.",
-      connectionClass: styles.flowPull,
-      arrow: "←",
-      code: `const implementationTeam = new Team({\n  flow: 'pull',\n  models: [engineer, developer, tester]\n});`,
+        "Information is requested by destination models when needed. The receiving model initiates the exchange, creating an on-demand information retrieval pattern.",
+      icon: "arrow_upward",
+      color: "#60a5fa",
+      animation: styles.pullAnimation,
     },
     repulsion: {
       name: "Repulsion Flow",
       description:
-        "In Repulsion flow, models operate independently with minimal communication. Each model focuses on its own tasks.",
-      connectionClass: styles.flowRepulsion,
-      arrow: "⊥",
-      code: `const autonomousTeam = new Team({\n  flow: 'repulsion',\n  models: [specialist1, specialist2, specialist3]\n});`,
+        "Models operate independently with minimal direct communication. Each model focuses on its own tasks, sharing only essential information through a central repository.",
+      icon: "block",
+      color: "#f87171",
+      animation: styles.repulsionAnimation,
     },
   }
 
+  const isDesktop = windowWidth >= 768
+
   return (
     <div className={styles.diagramContainer}>
-      <div className={styles.flowDiagram}>
-        <div className={styles.flowSelector}>
-          {Object.keys(flowTypes).map((type) => (
-            <button
-              key={type}
-              className={`${styles.flowButton} ${selectedFlow === type ? styles.active : ""}`}
-              onClick={() => setSelectedFlow(type)}
-            >
-              {flowTypes[type as keyof typeof flowTypes].name}
-            </button>
-          ))}
-        </div>
-
-        <div className={styles.flowVisualization}>
-          <div className={styles.team}>
-            <div className={styles.teamIcon}>
-              <span className="material-icons">groups</span>
-            </div>
-            <div className={styles.teamLabel}>Team A</div>
-            <div className={styles.teamModels}>
-              <div className={styles.teamModel}>
-                <span className="material-icons">person</span>
-                <span className={styles.modelName}>Model 1</span>
-              </div>
-              <div className={styles.teamModel}>
-                <span className="material-icons">person</span>
-                <span className={styles.modelName}>Model 2</span>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={`${styles.teamConnection} ${flowTypes[selectedFlow as keyof typeof flowTypes].connectionClass}`}
+      <div className={styles.flowSelector}>
+        {Object.keys(flowTypes).map((type) => (
+          <button
+            key={type}
+            className={`${styles.flowButton} ${selectedFlow === type ? styles.active : ""}`}
+            onClick={() => setSelectedFlow(type)}
+            style={{
+              borderColor: selectedFlow === type ? flowTypes[type as keyof typeof flowTypes].color : undefined,
+              boxShadow:
+                selectedFlow === type ? `0 0 10px ${flowTypes[type as keyof typeof flowTypes].color}40` : undefined,
+            }}
           >
-            <div className={styles.flowArrow}>{flowTypes[selectedFlow as keyof typeof flowTypes].arrow}</div>
+            <span className="material-icons" style={{ color: flowTypes[type as keyof typeof flowTypes].color }}>
+              {flowTypes[type as keyof typeof flowTypes].icon}
+            </span>
+            {flowTypes[type as keyof typeof flowTypes].name}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.flowPatternContainer}>
+        <div className={styles.flowVisualizer}>
+          <div
+            className={styles.flowPattern}
+            style={{ backgroundColor: `${flowTypes[selectedFlow as keyof typeof flowTypes].color}10` }}
+          >
+            <div className={`${styles.flowTeams} ${isDesktop ? styles.flowTeamsDesktop : ""}`}>
+              <div className={styles.flowTeam}>
+                <div className={styles.teamCircle}>
+                  <span className="material-icons">groups</span>
+                </div>
+                <div className={styles.teamLabel}>Team A</div>
+                <div className={styles.teamDots}>
+                  <div className={styles.teamDot}></div>
+                  <div className={styles.teamDot}></div>
+                  <div className={styles.teamDot}></div>
+                </div>
+              </div>
+
+              <div
+                className={`${styles.flowConnection} ${flowTypes[selectedFlow as keyof typeof flowTypes].animation} ${isDesktop ? styles.flowConnectionDesktop : ""}`}
+                style={{ backgroundColor: flowTypes[selectedFlow as keyof typeof flowTypes].color }}
+              >
+                <span
+                  className={`material-icons ${styles.arrowDesktop}`}
+                  style={{ color: flowTypes[selectedFlow as keyof typeof flowTypes].color }}
+                >
+                  {isDesktop
+                    ? selectedFlow === "push"
+                      ? "arrow_forward"
+                      : selectedFlow === "pull"
+                        ? "arrow_back"
+                        : "block"
+                    : flowTypes[selectedFlow as keyof typeof flowTypes].icon}
+                </span>
+              </div>
+
+              <div className={styles.flowTeam}>
+                <div className={styles.teamCircle}>
+                  <span className="material-icons">groups</span>
+                </div>
+                <div className={styles.teamLabel}>Team B</div>
+                <div className={styles.teamDots}>
+                  <div className={styles.teamDot}></div>
+                  <div className={styles.teamDot}></div>
+                  <div className={styles.teamDot}></div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className={styles.team}>
-            <div className={styles.teamIcon}>
-              <span className="material-icons">groups</span>
-            </div>
-            <div className={styles.teamLabel}>Team B</div>
-            <div className={styles.teamModels}>
-              <div className={styles.teamModel}>
-                <span className="material-icons">person</span>
-                <span className={styles.modelName}>Model 3</span>
-              </div>
-              <div className={styles.teamModel}>
-                <span className="material-icons">person</span>
-                <span className={styles.modelName}>Model 4</span>
-              </div>
-            </div>
+          <div className={styles.flowInfo}>
+            <h3 className={styles.flowTitle} style={{ color: flowTypes[selectedFlow as keyof typeof flowTypes].color }}>
+              {flowTypes[selectedFlow as keyof typeof flowTypes].name}
+            </h3>
+            <p className={styles.flowDescription}>{flowTypes[selectedFlow as keyof typeof flowTypes].description}</p>
           </div>
-        </div>
-
-        <div className={styles.flowDescription}>
-          <p>{flowTypes[selectedFlow as keyof typeof flowTypes].description}</p>
-        </div>
-
-        <div className={styles.codeExample}>
-          <pre className={styles.flowCode}>{flowTypes[selectedFlow as keyof typeof flowTypes].code}</pre>
         </div>
       </div>
     </div>
@@ -973,4 +1074,3 @@ const GlueAnimatedDiagrams: React.FC = () => {
 }
 
 export default GlueAnimatedDiagrams
-

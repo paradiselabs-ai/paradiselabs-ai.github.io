@@ -1005,30 +1005,14 @@
   font-size: 1.2rem;
 }
 
+/* Remove unused CSS related to the staple adhesive type */
 .adhesiveStaple {
-  background: #8a98c9;
-  height: 4px;
-  border-radius: 0;
-  position: relative;
-  min-width: 100px;
+  display: none;
 }
 
 .adhesiveStaple::before,
 .adhesiveStaple::after {
-  content: "";
-  position: absolute;
-  width: 4px;
-  height: 10px;
-  background: #8a98c9;
-  top: -8px;
-}
-
-.adhesiveStaple::before {
-  left: 30%;
-}
-
-.adhesiveStaple::after {
-  right: 30%;
+  display: none;
 }
 
 /* Team Communication Diagram */
@@ -1678,7 +1662,7 @@
     var(--accent-primary) 80%,
     var(--accent-secondary) 100%
   );
-}
+};
 
 /* Add these comprehensive responsive styles at the end of the file */
 
@@ -2457,6 +2441,3094 @@
 
   .toolLabel {
     font-size: 0.6rem;
+  }
+}
+
+/* Mobile-first Adhesive Diagram */
+.adhesiveCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(32, 34, 58, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin: 1.5rem auto;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.adhesiveHeader {
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.adhesiveName {
+  background: #272a40;
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.modelCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(40, 44, 74, 0.8);
+  border-radius: 12px;
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
+  box-shadow: 4px 4px 8px rgba(21, 22, 38, 0.7), -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.verticalConnection {
+  width: 6px;
+  height: 60px;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+/* Mobile-first Team Communication */
+.teamCommunicationCards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.teamCard {
+  background: rgba(45, 48, 69, 0.8);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 12px;
+  box-shadow: 6px 6px 12px rgba(21, 22, 38, 0.7), -6px -6px 12px rgba(57, 61, 87, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow: visible;
+  position: relative;
+}
+
+.teamFlow {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+  animation: pulseArrow 1.5s infinite alternate;
+}
+
+.teamFlow .material-icons {
+  color: var(--accent-primary);
+  font-size: 24px;
+  margin-right: 0.5rem;
+}
+
+/* Mobile-first Flow Diagram */
+.flowCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(32, 34, 58, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin: 1.5rem auto;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.flowHeader {
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.flowName {
+  background: #272a40;
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Update existing flow styles for vertical orientation */
+.flowPush {
+  background: linear-gradient(to bottom, #5adbf2, #2d92a3);
+  width: 6px;
+  border-radius: 3px;
+  animation: flowPushVertical 1.5s infinite linear;
+  background-size: 100% 200%;
+}
+
+.flowPull {
+  background: linear-gradient(to top, #5adbf2, #2d92a3);
+  width: 6px;
+  border-radius: 3px;
+  animation: flowPullVertical 1.5s infinite linear;
+  background-size: 100% 200%;
+}
+
+.flowRepulsion {
+  background: repeating-linear-gradient(0deg, #3d4159, #3d4159 5px, #272a40 5px, #272a40 10px);
+  width: 6px;
+  border-radius: 0;
+}
+
+@keyframes flowPushVertical {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 200%;
+  }
+}
+
+@keyframes flowPullVertical {
+  0% {
+    background-position: 0 200%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Update adhesive styles for vertical orientation */
+.adhesiveGlue {
+  background: linear-gradient(to bottom, #5adbf2, #2d92a3);
+  width: 6px;
+  border-radius: 3px;
+}
+
+.adhesiveVelcro {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(90, 219, 242, 0.4) 0,
+    rgba(90, 219, 242, 0.4) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  background-color: #2d92a3;
+  width: 8px;
+  border-radius: 4px;
+}
+
+.adhesiveTape {
+  background: linear-gradient(to bottom, #3d4159, #5adbf2);
+  width: 4px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.adhesiveTape::after {
+  content: "↓";
+  position: absolute;
+  bottom: -12px;
+  left: -4px;
+  color: #5adbf2;
+  font-size: 1.2rem;
+}
+
+.adhesiveStaple {
+  background: #8a98c9;
+  width: 4px;
+  border-radius: 0;
+  position: relative;
+}
+
+.adhesiveStaple::before,
+.adhesiveStaple::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  background: #8a98c9;
+  left: -8px;
+}
+
+.adhesiveStaple::before {
+  top: 30%;
+}
+
+.adhesiveStaple::after {
+  bottom: 30%;
+}
+
+/* Responsive adjustments for the new components */
+@media (min-width: 768px) {
+  .adhesiveCard,
+  .flowCard {
+    max-width: 400px;
+    padding: 2rem;
+  }
+
+  .teamCommunicationCards {
+    max-width: 500px;
+  }
+
+  .modelCard {
+    padding: 1.5rem;
+  }
+
+  .verticalConnection {
+    height: 80px;
+  }
+
+  .adhesiveName,
+  .flowName {
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .adhesiveCard,
+  .flowCard {
+    max-width: 500px;
+  }
+
+  .teamCommunicationCards {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhesiveCard,
+  .flowCard {
+    padding: 1rem 0.75rem;
+  }
+
+  .modelCard {
+    padding: 0.75rem;
+  }
+
+  .verticalConnection {
+    height: 40px;
+  }
+
+  .adhesiveName,
+  .flowName {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .teamCard {
+    margin-bottom: 0.75rem;
+  }
+
+  .teamFlow {
+    margin: 0.25rem 0;
+  }
+
+  .teamFlow .material-icons {
+    font-size: 20px;
+  }
+
+  .flowCode {
+    font-size: 0.7rem;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .adhesiveCard,
+  .flowCard {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .modelCard {
+    padding: 0.5rem;
+  }
+
+  .verticalConnection {
+    height: 30px;
+  }
+
+  .adhesiveName,
+  .flowName {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .teamFlow .material-icons {
+    font-size: 18px;
+  }
+
+  .flowCode {
+    font-size: 0.65rem;
+    padding: 0.5rem;
+  }
+}
+
+/* Add these new styles for the redesigned Adhesive Types component */
+.adhesiveShowcase {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.adhesiveVisual {
+  background-color: rgba(90, 219, 242, 0.1);
+  border: 1px solid rgba(90, 219, 242, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.adhesiveIconLarge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 1;
+}
+
+.adhesiveIconLarge .material-icons {
+  font-size: 24px;
+}
+
+.adhesiveModels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 1rem 0;
+  position: relative;
+}
+
+.adhesiveModel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modelCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(40, 44, 74, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 8px rgba(21, 22, 38, 0.7), -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.modelCircle .material-icons {
+  font-size: 28px;
+  color: var(--accent-primary);
+}
+
+.modelLabel {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.adhesiveConnection {
+  height: 6px;
+  flex: 1;
+  margin: 0 1rem;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.connectionAnimation {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+  animation: flowAcross 2s infinite linear;
+  opacity: 0.7;
+}
+
+@keyframes flowAcross {
+  0% {
+    left: -100%;
+    width: 100%;
+  }
+  100% {
+    left: 100%;
+    width: 100%;
+  }
+}
+
+.adhesiveProperties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.propertyTag {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  background-color: rgba(90, 219, 242, 0.2);
+}
+
+.adhesiveInfo {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 4px 4px 8px rgba(21, 22, 38, 0.7), inset -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.adhesiveTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent-primary);
+}
+
+.adhesiveDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Add these new styles for the redesigned Team Communication component */
+.teamHubContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.teamHub {
+  background-color: rgba(32, 34, 58, 0.8);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 6px 6px 12px rgba(21, 22, 38, 0.7), -6px -6px 12px rgba(45, 48, 79, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hubCenter {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(59, 82, 168, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hubCenter.active {
+  background-color: rgba(59, 82, 168, 0.6);
+  box-shadow: 0 0 20px rgba(59, 82, 168, 0.4);
+}
+
+.hubIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hubIcon .material-icons {
+  font-size: 32px;
+  color: #c9dfff;
+}
+
+.hubLabel {
+  font-size: 0.8rem;
+  color: #c9dfff;
+  margin-top: 0.25rem;
+}
+
+.communicationPulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(59, 82, 168, 0.3);
+  animation: pulsate 1.5s infinite;
+  z-index: -1;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.teamMembers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.teamMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: all 0.3s ease;
+  width: calc(50% - 1.5rem);
+  max-width: 120px;
+}
+
+.teamMember.leadMember .memberIcon {
+  background-color: rgba(59, 82, 168, 0.6);
+}
+
+.teamMember.activeMember {
+  transform: translateY(-5px);
+}
+
+.memberIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgba(40, 44, 74, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.memberIcon .material-icons {
+  font-size: 24px;
+  color: var(--accent-primary);
+}
+
+.teamMember.activeMember .memberIcon {
+  box-shadow: 0 0 15px rgba(97, 232, 255, 0.5);
+}
+
+.memberLabel {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.messageBubble {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(59, 82, 168, 0.8);
+  color: #c9dfff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  animation: fadeIn 0.3s ease-in;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.messageBubble::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid rgba(59, 82, 168, 0.8);
+}
+
+.toolAccess {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(255, 183, 77, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 1s infinite alternate;
+  box-shadow: 0 0 10px rgba(255, 183, 77, 0.4);
+}
+
+.toolAccess .material-icons {
+  font-size: 16px;
+  color: #fff;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.teamTools {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.toolsLabel {
+  font-size: 1rem;
+  color: var(--accent-tool);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.toolsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.toolItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(40, 44, 74, 0.8);
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: var(--accent-tool);
+}
+
+.toolItem .material-icons {
+  font-size: 18px;
+}
+
+.toolResults {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  background-color: rgba(40, 44, 74, 0.8);
+  border-radius: 8px;
+  color: #4ade80;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.toolResults .material-icons {
+  font-size: 18px;
+}
+
+.teamOutput {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.outputIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(74, 222, 128, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.outputIcon .material-icons {
+  font-size: 30px;
+  color: #4ade80;
+}
+
+.outputLabel {
+  font-size: 1rem;
+  color: #4ade80;
+}
+
+.collaborationLines {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, transparent 30%, rgba(74, 222, 128, 0.1) 70%);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add these new styles for the redesigned Flow Patterns component */
+.flowPatternContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flowVisualizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.flowPattern {
+  background-color: rgba(74, 222, 128, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.flowTeams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.flowTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.teamCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(40, 44, 74, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 8px rgba(21, 22, 38, 0.7), -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.teamCircle .material-icons {
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.teamDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.teamDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.flowConnection {
+  width: 6px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowConnection .material-icons {
+  position: absolute;
+  font-size: 24px;
+  background-color: var(--bg-primary);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.pushAnimation {
+  animation: flowDown 2s infinite linear;
+  background-image: linear-gradient(to bottom, transparent 0%, #4ade80 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.pullAnimation {
+  animation: flowUp 2s infinite linear;
+  background-image: linear-gradient(to top, transparent 0%, #60a5fa 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.repulsionAnimation {
+  background-image: repeating-linear-gradient(0deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+}
+
+@keyframes flowDown {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes flowUp {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
+}
+
+.flowInfo {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 4px 4px 8px rgba(21, 22, 38, 0.7), inset -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.flowTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #4ade80;
+}
+
+.flowDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.codeExample {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(40, 44, 74, 0.8);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.codeHeader .material-icons {
+  font-size: 18px;
+}
+
+.flowCode {
+  padding: 1rem;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Responsive styles for the new components */
+@media (min-width: 768px) {
+  .adhesiveShowcase {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .adhesiveVisual {
+    flex: 1;
+  }
+
+  .adhesiveInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flowTeams {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .flowConnection {
+    width: 120px;
+    height: 6px;
+  }
+
+  .pushAnimation {
+    animation: flowRight 2s infinite linear;
+    background-image: linear-gradient(to right, transparent 0%, #4ade80 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .pullAnimation {
+    animation: flowLeft 2s infinite linear;
+    background-image: linear-gradient(to left, transparent 0%, #60a5fa 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .repulsionAnimation {
+    background-image: repeating-linear-gradient(90deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+  }
+
+  @keyframes flowRight {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes flowLeft {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .adhesivesSelector,
+  .flowSelector {
+    gap: 0.5rem;
+  }
+
+  .adhesiveButton,
+  .flowButton {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .adhesiveButton .material-icons,
+  .flowButton .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modelCircle .material-icons,
+  .teamCircle .material-icons {
+    font-size: 24px;
+  }
+
+  .adhesiveTitle,
+  .flowTitle {
+    font-size: 1.1rem;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhesiveShowcase {
+    gap: 1rem;
+  }
+
+  .adhesiveVisual {
+    padding: 1rem;
+  }
+
+  .adhesiveInfo {
+    padding: 1rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 32px;
+    height: 32px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 20px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 20px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.8rem;
+  }
+
+  .propertyTag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .teamHub {
+    padding: 1.5rem 1rem;
+  }
+
+  .hubCenter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 26px;
+  }
+
+  .teamMembers {
+    gap: 1rem;
+  }
+
+  .memberIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolItem {
+    padding: 0.5rem;
+  }
+
+  .toolItem .material-icons {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .adhesiveShowcase {
+    gap: 0.75rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.75rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.75rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 18px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 18px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.7rem;
+  }
+
+  .propertyTag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .teamHub {
+    padding: 1rem 0.75rem;
+  }
+
+  .hubCenter {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 24px;
+  }
+
+  .teamMembers {
+    gap: 0.75rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.4rem);
+    max-width: 80px;
+  }
+
+  .memberIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 18px;
+  }
+
+  .flowPattern {
+    padding: 1rem 0.75rem;
+  }
+
+  .flowCode {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .adhesiveShowcase {
+    gap: 0.5rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.5rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.5rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 24px;
+    height: 24px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 16px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.6rem;
+  }
+
+  .propertyTag {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .teamHub {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hubCenter {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamMembers {
+    gap: 0.5rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.3rem);
+    max-width: 60px;
+  }
+
+  .memberIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 16px;
+  }
+
+  .flowPattern {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .flowCode {
+    font-size: 0.65rem;
+  }
+}
+
+/* Add these new styles for the redesigned Flow Patterns component */
+.flowPatternContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flowVisualizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.flowPattern {
+  background-color: rgba(74, 222, 128, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.flowTeams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.flowTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.teamCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(40, 44, 74, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 8px rgba(21, 22, 38, 0.7), -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.teamCircle .material-icons {
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.teamDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.teamDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.flowConnection {
+  width: 6px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowConnection .material-icons {
+  position: absolute;
+  font-size: 24px;
+  background-color: var(--bg-primary);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.pushAnimation {
+  animation: flowDown 2s infinite linear;
+  background-image: linear-gradient(to bottom, transparent 0%, #4ade80 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.pullAnimation {
+  animation: flowUp 2s infinite linear;
+  background-image: linear-gradient(to top, transparent 0%, #60a5fa 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.repulsionAnimation {
+  background-image: repeating-linear-gradient(0deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+}
+
+@keyframes flowDown {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes flowUp {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
+}
+
+.flowInfo {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 4px 4px 8px rgba(21, 22, 38, 0.7), inset -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.flowTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #4ade80;
+}
+
+.flowDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.codeExample {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(40, 44, 74, 0.8);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.codeHeader .material-icons {
+  font-size: 18px;
+}
+
+.flowCode {
+  padding: 1rem;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Responsive styles for the new components */
+@media (min-width: 768px) {
+  .adhesiveShowcase {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .adhesiveVisual {
+    flex: 1;
+  }
+
+  .adhesiveInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flowTeams {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .flowConnection {
+    width: 120px;
+    height: 6px;
+  }
+
+  .pushAnimation {
+    animation: flowRight 2s infinite linear;
+    background-image: linear-gradient(to right, transparent 0%, #4ade80 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .pullAnimation {
+    animation: flowLeft 2s infinite linear;
+    background-image: linear-gradient(to left, transparent 0%, #60a5fa 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .repulsionAnimation {
+    background-image: repeating-linear-gradient(90deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+  }
+
+  @keyframes flowRight {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes flowLeft {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .adhesivesSelector,
+  .flowSelector {
+    gap: 0.5rem;
+  }
+
+  .adhesiveButton,
+  .flowButton {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .adhesiveButton .material-icons,
+  .flowButton .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 24px;
+  }
+
+  .adhesiveTitle,
+  .flowTitle {
+    font-size: 1.1rem;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhesiveShowcase {
+    gap: 1rem;
+  }
+
+  .adhesiveVisual {
+    padding: 1rem;
+  }
+
+  .adhesiveInfo {
+    padding: 1rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 32px;
+    height: 32px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 20px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 20px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.8rem;
+  }
+
+  .propertyTag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .teamHub {
+    padding: 1.5rem 1rem;
+  }
+
+  .hubCenter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 26px;
+  }
+
+  .teamMembers {
+    gap: 1rem;
+  }
+
+  .memberIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolItem {
+    padding: 0.5rem;
+  }
+
+  .toolItem .material-icons {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .adhesiveShowcase {
+    gap: 0.75rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.75rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.75rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 18px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 18px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.7rem;
+  }
+
+  .propertyTag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .teamHub {
+    padding: 1rem 0.75rem;
+  }
+
+  .hubCenter {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 24px;
+  }
+
+  .teamMembers {
+    gap: 0.75rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.4rem);
+    max-width: 80px;
+  }
+
+  .memberIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 18px;
+  }
+
+  .flowPattern {
+    padding: 1rem 0.75rem;
+  }
+
+  .flowCode {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .adhesiveShowcase {
+    gap: 0.5rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.5rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.5rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 24px;
+    height: 24px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 16px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.6rem;
+  }
+
+  .propertyTag {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .teamHub {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hubCenter {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamMembers {
+    gap: 0.5rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.3rem);
+    max-width: 60px;
+  }
+
+  .memberIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 16px;
+  }
+
+  .flowPattern {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .flowCode {
+    font-size: 0.65rem;
+  }
+}
+
+/* Add these new styles for the redesigned Flow Patterns component */
+.flowPatternContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flowVisualizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.flowPattern {
+  background-color: rgba(74, 222, 128, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.flowTeams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.flowTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.teamCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(40, 44, 74, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 8px rgba(21, 22, 38, 0.7), -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.teamCircle .material-icons {
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.teamDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.teamDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.flowConnection {
+  width: 6px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowConnection .material-icons {
+  position: absolute;
+  font-size: 24px;
+  background-color: var(--bg-primary);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.pushAnimation {
+  animation: flowDown 2s infinite linear;
+  background-image: linear-gradient(to bottom, transparent 0%, #4ade80 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.pullAnimation {
+  animation: flowUp 2s infinite linear;
+  background-image: linear-gradient(to top, transparent 0%, #60a5fa 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.repulsionAnimation {
+  background-image: repeating-linear-gradient(0deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+}
+
+@keyframes flowDown {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes flowUp {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
+}
+
+.flowInfo {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 4px 4px 8px rgba(21, 22, 38, 0.7), inset -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.flowTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #4ade80;
+}
+
+.flowDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.codeExample {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(40, 44, 74, 0.8);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.codeHeader .material-icons {
+  font-size: 18px;
+}
+
+.flowCode {
+  padding: 1rem;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Responsive styles for the new components */
+@media (min-width: 768px) {
+  .adhesiveShowcase {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .adhesiveVisual {
+    flex: 1;
+  }
+
+  .adhesiveInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flowTeams {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .flowConnection {
+    width: 120px;
+    height: 6px;
+  }
+
+  .pushAnimation {
+    animation: flowRight 2s infinite linear;
+    background-image: linear-gradient(to right, transparent 0%, #4ade80 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .pullAnimation {
+    animation: flowLeft 2s infinite linear;
+    background-image: linear-gradient(to left, transparent 0%, #60a5fa 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .repulsionAnimation {
+    background-image: repeating-linear-gradient(90deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+  }
+
+  @keyframes flowRight {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes flowLeft {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .adhesivesSelector,
+  .flowSelector {
+    gap: 0.5rem;
+  }
+
+  .adhesiveButton,
+  .flowButton {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .adhesiveButton .material-icons,
+  .flowButton .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 24px;
+  }
+
+  .adhesiveTitle,
+  .flowTitle {
+    font-size: 1.1rem;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhesiveShowcase {
+    gap: 1rem;
+  }
+
+  .adhesiveVisual {
+    padding: 1rem;
+  }
+
+  .adhesiveInfo {
+    padding: 1rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 32px;
+    height: 32px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 20px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 20px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.8rem;
+  }
+
+  .propertyTag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .teamHub {
+    padding: 1.5rem 1rem;
+  }
+
+  .hubCenter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 26px;
+  }
+
+  .teamMembers {
+    gap: 1rem;
+  }
+
+  .memberIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolItem {
+    padding: 0.5rem;
+  }
+
+  .toolItem .material-icons {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .adhesiveShowcase {
+    gap: 0.75rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.75rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.75rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 18px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 18px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.7rem;
+  }
+
+  .propertyTag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .teamHub {
+    padding: 1rem 0.75rem;
+  }
+
+  .hubCenter {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 24px;
+  }
+
+  .teamMembers {
+    gap: 0.75rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.4rem);
+    max-width: 80px;
+  }
+
+  .memberIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 18px;
+  }
+
+  .flowPattern {
+    padding: 1rem 0.75rem;
+  }
+
+  .flowCode {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .adhesiveShowcase {
+    gap: 0.5rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.5rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.5rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 24px;
+    height: 24px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 16px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.6rem;
+  }
+
+  .propertyTag {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .teamHub {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hubCenter {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamMembers {
+    gap: 0.5rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.3rem);
+    max-width: 60px;
+  }
+
+  .memberIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 16px;
+  }
+
+  .flowPattern {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .flowCode {
+    font-size: 0.65rem;
+  }
+}
+
+/* Add these new styles for the redesigned Flow Patterns component */
+.flowPatternContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flowVisualizer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.flowPattern {
+  background-color: rgba(74, 222, 128, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.flowTeams {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.flowTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.teamCircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: rgba(40, 44, 74, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 8px rgba(21, 22, 38, 0.7), -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.teamCircle .material-icons {
+  font-size: 28px;
+  color: var(--text-primary);
+}
+
+.teamDots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.teamDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.flowConnection {
+  width: 6px;
+  height: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowConnection .material-icons {
+  position: absolute;
+  font-size: 24px;
+  background-color: var(--bg-primary);
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.pushAnimation {
+  animation: flowDown 2s infinite linear;
+  background-image: linear-gradient(to bottom, transparent 0%, #4ade80 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.pullAnimation {
+  animation: flowUp 2s infinite linear;
+  background-image: linear-gradient(to top, transparent 0%, #60a5fa 50%, transparent 100%);
+  background-size: 100% 200%;
+}
+
+.repulsionAnimation {
+  background-image: repeating-linear-gradient(0deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+}
+
+@keyframes flowDown {
+  0% {
+    background-position: 0 -100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@keyframes flowUp {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
+}
+
+.flowInfo {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: inset 4px 4px 8px rgba(21, 22, 38, 0.7), inset -4px -4px 8px rgba(45, 48, 79, 0.3);
+}
+
+.flowTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #4ade80;
+}
+
+.flowDescription {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.codeExample {
+  background-color: rgba(26, 27, 46, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: rgba(40, 44, 74, 0.8);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.codeHeader .material-icons {
+  font-size: 18px;
+}
+
+.flowCode {
+  padding: 1rem;
+  margin: 0;
+  font-family: "Fira Code", monospace;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+/* Responsive styles for the new components */
+@media (min-width: 768px) {
+  .adhesiveShowcase {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .adhesiveVisual {
+    flex: 1;
+  }
+
+  .adhesiveInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .flowTeams {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .flowConnection {
+    width: 120px;
+    height: 6px;
+  }
+
+  .pushAnimation {
+    animation: flowRight 2s infinite linear;
+    background-image: linear-gradient(to right, transparent 0%, #4ade80 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .pullAnimation {
+    animation: flowLeft 2s infinite linear;
+    background-image: linear-gradient(to left, transparent 0%, #60a5fa 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .repulsionAnimation {
+    background-image: repeating-linear-gradient(90deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+  }
+
+  @keyframes flowRight {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes flowLeft {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .adhesivesSelector,
+  .flowSelector {
+    gap: 0.5rem;
+  }
+
+  .adhesiveButton,
+  .flowButton {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .adhesiveButton .material-icons,
+  .flowButton .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 24px;
+  }
+
+  .adhesiveTitle,
+  .flowTitle {
+    font-size: 1.1rem;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .adhesiveShowcase {
+    gap: 1rem;
+  }
+
+  .adhesiveVisual {
+    padding: 1rem;
+  }
+
+  .adhesiveInfo {
+    padding: 1rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 32px;
+    height: 32px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 20px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 20px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.8rem;
+  }
+
+  .propertyTag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .teamHub {
+    padding: 1.5rem 1rem;
+  }
+
+  .hubCenter {
+    width: 60px;
+    height: 60px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 26px;
+  }
+
+  .teamMembers {
+    gap: 1rem;
+  }
+
+  .memberIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamTools {
+    padding: 1rem;
+  }
+
+  .toolItem {
+    padding: 0.5rem;
+  }
+
+  .toolItem .material-icons {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .adhesiveShowcase {
+    gap: 0.75rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.75rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.75rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 28px;
+    height: 28px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 18px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 18px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.7rem;
+  }
+
+  .propertyTag {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .teamHub {
+    padding: 1rem 0.75rem;
+  }
+
+  .hubCenter {
+    width: 50px;
+    height: 50px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 24px;
+  }
+
+  .teamMembers {
+    gap: 0.75rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.4rem);
+    max-width: 80px;
+  }
+
+  .memberIcon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 18px;
+  }
+
+  .flowPattern {
+    padding: 1rem 0.75rem;
+  }
+
+  .flowCode {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .adhesiveShowcase {
+    gap: 0.5rem;
+  }
+
+  .adhesiveVisual {
+    padding: 0.5rem;
+  }
+
+  .adhesiveInfo {
+    padding: 0.5rem;
+  }
+
+  .adhesiveIconLarge {
+    width: 24px;
+    height: 24px;
+  }
+
+  .adhesiveIconLarge .material-icons {
+    font-size: 16px;
+  }
+
+  .modelCircle,
+  .teamCircle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .modelCircle .material-icons {
+    font-size: 16px;
+  }
+
+  .modelLabel,
+  .teamLabel {
+    font-size: 0.6rem;
+  }
+
+  .propertyTag {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+
+  .teamHub {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .hubCenter {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 20px;
+  }
+
+  .teamMembers {
+    gap: 0.5rem;
+  }
+
+  .teamMember {
+    width: calc(50% - 0.3rem);
+    max-width: 60px;
+  }
+
+  .memberIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 16px;
+  }
+
+  .flowPattern {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .flowCode {
+    font-size: 0.65rem;
+  }
+}
+
+/* Add these styles for the optimized desktop flow patterns */
+.flowTeamsDesktop {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.flowConnectionDesktop {
+  width: 180px;
+  height: 8px;
+  margin: 0 1.5rem;
+}
+
+
+.arrowDesktop {
+  font-size: 22px !important;
+  background-color: var(--bg-primary);
+  border-radius: 50%;
+  padding: 7px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Update animation styles for desktop */
+@media (min-width: 768px) {
+  .pushAnimation {
+    animation: flowRight 2s infinite linear;
+    background-image: linear-gradient(to right, transparent 0%, #4ade80 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .pullAnimation {
+    animation: flowLeft 2s infinite linear;
+    background-image: linear-gradient(to left, transparent 0%, #60a5fa 50%, transparent 100%);
+    background-size: 200% 100%;
+  }
+
+  .repulsionAnimation {
+    background-image: repeating-linear-gradient(90deg, #f87171, #f87171 3px, transparent 3px, transparent 6px);
+  }
+
+  @keyframes flowRight {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  @keyframes flowLeft {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
+  }
+}
+
+/* Enhance the adhesive showcase for better clarity */
+.adhesiveShowcase {
+  gap: 2rem;
+}
+
+.adhesiveVisual {
+  padding: 2rem;
+}
+
+.adhesiveModel .modelCircle {
+  width: 70px;
+  height: 70px;
+}
+
+.adhesiveModel .modelCircle .material-icons {
+  font-size: 32px;
+}
+
+.adhesiveModel .modelLabel {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.adhesiveConnection {
+  height: 8px;
+  margin: 0 1.5rem;
+}
+
+.adhesiveProperties {
+  margin-top: 1.5rem;
+}
+
+.propertyTag {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.adhesiveInfo {
+  padding: 2rem;
+}
+
+.adhesiveTitle {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.adhesiveDescription {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Enhance team communication for better clarity */
+.teamHubContainer {
+  max-width: 700px;
+}
+
+.teamHub {
+  padding: 2.5rem;
+}
+
+.hubCenter {
+  width: 90px;
+  height: 90px;
+}
+
+.hubIcon .material-icons {
+  font-size: 36px;
+}
+
+.hubLabel {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.teamMembers {
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+.teamMember {
+  max-width: 130px;
+}
+
+.memberIcon {
+  width: 60px;
+  height: 60px;
+}
+
+.memberIcon .material-icons {
+  font-size: 28px;
+}
+
+.memberLabel {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.messageBubble {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  top: -45px;
+}
+
+.toolsLabel {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.toolsGrid {
+  gap: 1.2rem;
+}
+
+.toolItem {
+  padding: 0.9rem;
+}
+
+.toolItem .material-icons {
+  font-size: 22px;
+}
+
+.toolItem span {
+  font-size: 0.95rem;
+}
+
+.outputIcon {
+  width: 70px;
+  height: 70px;
+}
+
+.outputIcon .material-icons {
+  font-size: 34px;
+}
+
+.outputLabel {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .adhesiveVisual {
+    padding: 1.5rem;
+  }
+
+  .adhesiveModel .modelCircle {
+    width: 55px;
+    height: 55px;
+  }
+
+  .adhesiveModel .modelCircle .material-icons {
+    font-size: 26px;
+  }
+
+  .adhesiveConnection {
+    height: 6px;
+    margin: 0 1rem;
+  }
+
+  .propertyTag {
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .teamHub {
+    padding: 1.5rem;
+  }
+
+  .hubCenter {
+    width: 70px;
+    height: 70px;
+  }
+
+  .hubIcon .material-icons {
+    font-size: 30px;
+  }
+
+  .teamMembers {
+    gap: 1.2rem;
+  }
+
+  .memberIcon {
+    width: 45px;
+    height: 45px;
+  }
+
+  .memberIcon .material-icons {
+    font-size: 22px;
   }
 }
 
