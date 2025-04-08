@@ -892,14 +892,13 @@ const formatCodeWithSyntaxHighlighting = (code: string): string => {
   // Define GLUE language keywords with proper categorization
   const rootKeywords = ['glue', 'app', 'model', 'tool', 'magnetize'];
   const configKeywords = ['config', 'provider', 'role', 'adhesives'];
-  const adhesiveTypes = ['glue', 'velcro', 'tape', 'staple'];
+  const adhesiveTypes = ['glue', 'velcro', 'tape'];
   const booleanValues = ['true', 'false'];
   
   // Apply syntax highlighting in the correct order to prevent overlap issues
   
   // 1. Highlight comments first (to avoid highlighting within comments)
-  // Make sure to handle comment highlighting with special care
-  formattedContent = formattedContent.replace(/(\/\/.*$)/g, '<span class="comment">$1</span>');
+  formattedContent = formattedContent.replace(/(\/\/[^<>]*$)/g, '<span class="comment">$1</span>');
   
   // 2. Highlight strings (to avoid highlighting keywords inside strings)
   formattedContent = formattedContent.replace(/("(?:[^"\\]|\\.)*")/g, '<span class="string">$1</span>');
@@ -1192,8 +1191,8 @@ magnetize {
     'core-concepts': {
       'models': 'Models AI agents Provider OpenAI Anthropic Role Adhesives Config temperature max tokens',
       'tools': 'Tools web search file operations external APIs code execution',
-      'adhesives': 'Adhesives Glue Velcro Tape Staple bidirectional communication context-aware connections memory data transfer',
-      'workflows': 'Workflows magnetize block orchestrates models and tools information flow processing sequences dependencies error handling',
+      'adhesives': 'Adhesives Glue Velcro Tape  binding tools to model persistent tool output shared context-aware connections memory',
+      'magnetic field': 'Magnetize block orchestrates models and tools information flow processing sequences bidirectional directional communication dependencies data transfer error handling',
     },
     'syntax': {
       'basic-structure': 'Basic Structure glue app model tool magnetize',
@@ -1600,9 +1599,13 @@ magnetize {
   // Render code blocks with copy button
   const renderCodeBlock = (code: string, id: string) => {
     // Process the code for syntax highlighting
-    const formattedCode = code.split('\n').map(line => 
-      formatCodeWithSyntaxHighlighting(line)
-    ).join('<br>');
+    const formattedCode = code.split('\n').map(line => {
+      // Handle comments separately to avoid HTML-like tags
+      if (line.trim().startsWith('//')) {
+        return `<span class="comment">${line}</span>`;
+      }
+      return formatCodeWithSyntaxHighlighting(line);
+    }).join('<br>');
     
     return (
       <div className="code-block">
@@ -1852,10 +1855,6 @@ magnetize {
               
               {isSectionVisible('what-is-glue') && (
                 <>
-                  <InfoBlock type="note" title="Latest Version">
-                    <p>GLUE 1.5 is now available with enhanced workflow controls and MCP integration.</p>
-                  </InfoBlock>
-                  
                   <h2 id="what-is-glue">What is GLUE?</h2>
                   <p>
                     {highlightText('GLUE provides a declarative syntax for connecting AI models, tools, and systems into cohesive applications. It allows developers to orchestrate complex workflows involving multiple models and tools without getting lost in implementation details.')}
@@ -1868,10 +1867,10 @@ magnetize {
                   <h2 id="key-features">Key Features</h2>
                   <ul>
                     <li><strong>{highlightText('Declarative Syntax')}</strong> - Define your AI application architecture with a clean, readable syntax</li>
-                    <li><strong>{highlightText('Model Orchestration')}</strong> - Connect multiple AI models with specialized roles</li>
-                    <li><strong>{highlightText('Tool Integration')}</strong> - Seamlessly incorporate tools like web search, file operations, and more</li>
-                    <li><strong>{highlightText('Flexible Adhesives')}</strong> - Define how models and tools communicate with configurable connection types</li>
-                    <li><strong>{highlightText('Development Mode')}</strong> - Test and iterate quickly with built-in debugging features</li>
+                    <li><strong>{highlightText('Model Orchestration')}</strong> - Connect multiple AI models with specialized roles and group them into teams</li>
+                    <li><strong>{highlightText('Team Based Structure')}</strong> - Every GLUE application is made of teams with a lead member, other members, and are given a list of tools</li>
+                    <li><strong>{highlightText('Tool Integration')}</strong> - Tools are given to teams, rather than directly to an agent, so each team member can seamlessly incorporate tools like web search, file operations, and more</li>
+                    <li><strong>{highlightText('Flexible Adhesives')}</strong> - Define how models use tools and how they handle the tool output, and whether to share the output with the team and keep it persistent</li>
                   </ul>
                 </>
               )}
@@ -1947,28 +1946,27 @@ config {
                 <>
                   <h2 id="adhesives">Adhesives</h2>
                   <p>
-                    {highlightText('Adhesives define how components communicate and share information:')}
+                  {highlightText('Adhesives define how agents use tools and if the tool data and output is shared with the team, and kept persistent or not:')}
                   </p>
                   <ul>
-                    <li><strong>{highlightText('Glue')}</strong> - Standard bidirectional communication</li>
-                    <li><strong>{highlightText('Velcro')}</strong> - Context-aware connections with memory</li>
-                    <li><strong>{highlightText('Tape')}</strong> - One-way data transfer with transformation</li>
-                    <li><strong>{highlightText('Staple')}</strong> - Fixed, secure connections for critical data</li>
+                    <li><strong>{highlightText('Glue')}</strong> - When agents use glue to access a tool, its data and output is persistent and shared with the team</li>
+                    <li><strong>{highlightText('Velcro')}</strong> - Velcro is used for subtasks and the tools output and data is only kept persistent while using the tool</li>
+                    <li><strong>{highlightText('Tape')}</strong> - Tape is for quick, one time using of tools with no persistence</li>
                   </ul>
                 </>
               )}
               
               {isSectionVisible('workflows') && (
                 <>
-                  <h2 id="workflows">Workflows</h2>
+                   <h2 id="workflows">Magnetic Field (Workflow)</h2>
                   <p>
-                    {highlightText('The magnetize block orchestrates how models and tools work together, defining:')}
+                    {highlightText('The magnetize block orchestrates how teams interact with other teams in the pipeline, defining:')}
                   </p>
                   <ul>
-                    <li>{highlightText('Information flow between components')}</li>
-                    <li>{highlightText('Processing sequences and dependencies')}</li>
+                    <li>{highlightText('Information flow between teams')}</li>
+                    <li>{highlightText('Processing sequences of data and tasks')}</li>
                     <li>{highlightText('Error handling and fallback strategies')}</li>
-                    <li>{highlightText('Output formatting and delivery')}</li>
+                    <li>{highlightText('Routing tasks and prompts to specific teams')}</li>
                   </ul>
                 </>
               )}
@@ -2031,10 +2029,6 @@ magnetize { ... }`, "basic-structure")}
               <h2 id="defining-tools">Defining Tools</h2>
               {renderCodeBlock(`tool web_search {
     provider = serp|tavily
-    config {
-        api_key = "key" // Environment variables recommended
-        max_results = 5
-    }
 }
 
 tool file_handler {
@@ -2046,10 +2040,22 @@ tool file_handler {
               
               <h2 id="workflow-orchestration">Workflow Orchestration</h2>
               {renderCodeBlock(`magnetize {
-    input -> researcher
-    researcher -> [web_search, code_interpreter]
-    web_search -> fact_checker
-    fact_checker -> output
+    research_team {
+        lead = researcher
+        tools = [web_search]
+    }
+
+    doc_team {
+        lead = writer
+        tools = [file_handler]
+    }
+
+    flow {
+        // Push sends data one-way from one team to another
+        research_team -> doc_team
+        // Pull lets a team fetch needed data from another team if not provided
+        doc_team <- research_team
+    }
 }`, "workflow-definition")}
             </section>
           )}
@@ -2120,16 +2126,17 @@ mcp_controller {
                 <li>An API key for your preferred AI model provider(s)</li>
               </ul>
               
-              <h2>NPM Installation</h2>
+              <h2>Pip Installation</h2>
               {renderCodeBlock(`# Create a new project directory
 mkdir my-glue-app
 cd my-glue-app
 
-# Initialize npm
-npm init -y
+# Initialize a python venv
+python3 -m venv venv
+source venv/bin/activate
 
 # Install GLUE
-npm install @glue-ai/core @glue-ai/cli`, "npm-install")}
+pip install glue-fw`, "pip-install")}
               
               <h2>Configuration</h2>
               <p>
@@ -2144,12 +2151,13 @@ SERP_API_KEY=your_serp_key
 GLUE_DEBUG=true
 GLUE_LOG_LEVEL=info`, "env-config")}
               
-              <h2>Create Your First App</h2>
+              <h2>Create Your First Simple Chatbot</h2>
               <p>
                 Create a file named app.glue in your project root:
               </p>
               {renderCodeBlock(`glue app {
-    name = "Hello World"
+    // The keyword 'app' is required in every .glue file, regardless of its name.
+    name = "Glue Chat"
     config {
         development = true
     }
@@ -2159,20 +2167,20 @@ model assistant {
     provider = openai
     role = "Assistant"
     config {
-        model = "gpt-4"
+        model = "gpt-4o"
+        temperature = 0.2
     }
 }
 
 magnetize {
-    input -> assistant -> output
+    assistant {
+        lead = assistant
+    }
 }`, "first-app")}
               
               <h2>Running Your App</h2>
-              {renderCodeBlock(`# Using the CLI
-npx glue run app.glue
-
-# Or start in development mode with hot reloading
-npx glue dev app.glue`, "run-app")}
+              {renderCodeBlock(`// Using the CLI
+glue run app.glue`, "run-app")}
             </section>
           )}
 
@@ -2343,7 +2351,7 @@ npx glue dev app.glue`, "run-app")}
                   onClick={() => copyToClipboard(`model name {
     provider = string             // Model provider
     role = string                 // Description of model's purpose
-    adhesives = [string]          // Array of connection types
+    adhesives = [string, string, string]          // Array of connection types
     config {
         model = string            // Specific model to use
         temperature = number      // 0.0 to 1.0
@@ -2363,7 +2371,7 @@ npx glue dev app.glue`, "run-app")}
               <h2>Tool Configuration</h2>
               <div className="code-block">
                 <pre>
-                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;">tool name {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">provider</span> <span class="operator">=</span> string              <span class="comment">// Tool provider if applicable</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword keyword-config">config</span> {</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Provider-specific configuration</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Examples:</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">api_key</span> <span class="operator">=</span> string</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">endpoint</span> <span class="operator">=</span> string</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">max_results</span> <span class="operator">=</span> number</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">timeout</span> <span class="operator">=</span> number</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br><span style="--indent-level:0;">}</span>` }}></code>
+                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;">tool name {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">provider</span> <span class="operator">=</span> string              <span class="comment">// Tool provider if applicable</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword keyword-config">config</span> {</span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Provider-specific configuration</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Examples:</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">api_key</span> <span class="operator">=</span> string          <span class="comment">// Authentication key</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">endpoint</span> <span class="operator">=</span> string        <span class="comment">// Service endpoint URL</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">max_results</span> <span class="operator">=</span> number     <span class="comment">// Result limit</span></span><br><span style="--indent-level:2;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="property">timeout</span> <span class="operator">=</span> number         <span class="comment">// Request timeout</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;}</span><br><span style="--indent-level:0;">}</span>` }}></code>
                 </pre>
                 <button 
                   id="copy-btn-tool-config"
@@ -2373,37 +2381,12 @@ npx glue dev app.glue`, "run-app")}
     config {
         // Provider-specific configuration
         // Examples:
-        api_key = string
-        endpoint = string
-        max_results = number
-        timeout = number
+        api_key = string          // Authentication key
+        endpoint = string        // Service endpoint URL
+        max_results = number     // Result limit
+        timeout = number         // Request timeout
     }
 }`, "tool-config")}
-                >
-                  Copy
-                </button>
-              </div>
-              
-              <h2>Workflow Configuration</h2>
-              <div className="code-block">
-                <pre>
-                  <code dangerouslySetInnerHTML={{ __html: `<span style="--indent-level:0;"><span class="keyword keyword-magnetize">magnetize</span> {</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// Flow definitions</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> component2      <span class="comment">// Direct flow</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> [comp2, comp3]  <span class="comment">// Parallel flow</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;[comp1, comp2] <span class="operator">-></span> component3  <span class="comment">// Join flow</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// With transformations</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> { extract_data } <span class="operator">-></span> component2</span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment">// With conditions</span></span><br><span style="--indent-level:1;">&nbsp;&nbsp;&nbsp;&nbsp;component1 <span class="operator">-></span> if(condition) <span class="operator">-></span> component2 : component3</span><br><span style="--indent-level:0;">}</span>` }}></code>
-                </pre>
-                <button 
-                  id="copy-btn-workflow-config"
-                  className="copy-button" 
-                  onClick={() => copyToClipboard(`magnetize {
-    // Flow definitions
-    component1 -> component2      // Direct flow
-    component1 -> [comp2, comp3]  // Parallel flow
-    [comp1, comp2] -> component3  // Join flow
-    
-    // With transformations
-    component1 -> { extract_data } -> component2
-    
-    // With conditions
-    component1 -> if(condition) -> component2 : component3
-}`, "workflow-config")}
                 >
                   Copy
                 </button>
