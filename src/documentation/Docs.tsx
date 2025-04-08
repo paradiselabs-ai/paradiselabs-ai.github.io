@@ -1918,7 +1918,7 @@ config {
   model = "claude-3-opus-20240229"
   temperature = 0.7
   max_tokens = 4000
-}
+    }
 }`, "models-example")}
                 </>
               )}
