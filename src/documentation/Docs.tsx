@@ -892,7 +892,7 @@ const formatCodeWithSyntaxHighlighting = (code: string): string => {
   // Define GLUE language keywords with proper categorization
   const rootKeywords = ['glue', 'app', 'model', 'tool', 'magnetize'];
   const configKeywords = ['config', 'provider', 'role', 'adhesives'];
-  const adhesiveTypes = ['glue', 'velcro', 'tape'];
+  const adhesiveTypes = ['glue', 'velcro', 'tape', 'staple'];
   const booleanValues = ['true', 'false'];
   
   // Apply syntax highlighting in the correct order to prevent overlap issues
@@ -1192,8 +1192,8 @@ magnetize {
     'core-concepts': {
       'models': 'Models AI agents Provider OpenAI Anthropic Role Adhesives Config temperature max tokens',
       'tools': 'Tools web search file operations external APIs code execution',
-      'adhesives': 'Adhesives Glue Velcro Tape binding tools to model persistent tool output shared context-aware connections memory',
-      'magnetic field': 'Magnetize block orchestrates models and tools information flow processing sequences bidirectional directional communication dependencies data transfer error handling',
+      'adhesives': 'Adhesives Glue Velcro Tape Staple bidirectional communication context-aware connections memory data transfer',
+      'workflows': 'Workflows magnetize block orchestrates models and tools information flow processing sequences dependencies error handling',
     },
     'syntax': {
       'basic-structure': 'Basic Structure glue app model tool magnetize',
@@ -1852,6 +1852,10 @@ magnetize {
               
               {isSectionVisible('what-is-glue') && (
                 <>
+                  <InfoBlock type="note" title="Latest Version">
+                    <p>GLUE 1.5 is now available with enhanced workflow controls and MCP integration.</p>
+                  </InfoBlock>
+                  
                   <h2 id="what-is-glue">What is GLUE?</h2>
                   <p>
                     {highlightText('GLUE provides a declarative syntax for connecting AI models, tools, and systems into cohesive applications. It allows developers to orchestrate complex workflows involving multiple models and tools without getting lost in implementation details.')}
@@ -1864,10 +1868,10 @@ magnetize {
                   <h2 id="key-features">Key Features</h2>
                   <ul>
                     <li><strong>{highlightText('Declarative Syntax')}</strong> - Define your AI application architecture with a clean, readable syntax</li>
-                    <li><strong>{highlightText('Model Orchestration')}</strong> - Connect multiple AI models with specialized roles and group them into teams</li>
-                    <li><strong>{hightlightText('Team Based Structure')}</strong>> - Every GLUE application is made of teams with a lead member, other members, and are given a list of tools</li>
-                    <li><strong>{highlightText('Tool Integration')}</strong> - Tools are given to teams, rather than directly to an agent, so each team member can seamlessly incorporate tools like web search, file operations, and more</li>
-                    <li><strong>{highlightText('Flexible Adhesives')}</strong> - Define how models use tools and how they handle the tool output, and whether to share the output with the team and keep it persistent</li>
+                    <li><strong>{highlightText('Model Orchestration')}</strong> - Connect multiple AI models with specialized roles</li>
+                    <li><strong>{highlightText('Tool Integration')}</strong> - Seamlessly incorporate tools like web search, file operations, and more</li>
+                    <li><strong>{highlightText('Flexible Adhesives')}</strong> - Define how models and tools communicate with configurable connection types</li>
+                    <li><strong>{highlightText('Development Mode')}</strong> - Test and iterate quickly with built-in debugging features</li>
                   </ul>
                 </>
               )}
@@ -1943,27 +1947,28 @@ config {
                 <>
                   <h2 id="adhesives">Adhesives</h2>
                   <p>
-                    {highlightText('Adhesives define how agents use tools and if the tool data and output is shared with the team, and kept persistent or not:')}
+                    {highlightText('Adhesives define how components communicate and share information:')}
                   </p>
                   <ul>
-                    <li><strong>{highlightText('Glue')}</strong> - When agents use glue to access a tool, its data and output is persistent and shared with the team</li>
-                    <li><strong>{highlightText('Velcro')}</strong> - Velcro is used for subtasks and the tools output and data is only kept persistent while using the tool</li>
-                    <li><strong>{highlightText('Tape')}</strong> - Tape is for quick, one time using of tools with no persistence</li>
+                    <li><strong>{highlightText('Glue')}</strong> - Standard bidirectional communication</li>
+                    <li><strong>{highlightText('Velcro')}</strong> - Context-aware connections with memory</li>
+                    <li><strong>{highlightText('Tape')}</strong> - One-way data transfer with transformation</li>
+                    <li><strong>{highlightText('Staple')}</strong> - Fixed, secure connections for critical data</li>
                   </ul>
                 </>
               )}
               
               {isSectionVisible('workflows') && (
                 <>
-                  <h2 id="workflows">Magnetic Field (Workflow)</h2>
+                  <h2 id="workflows">Workflows</h2>
                   <p>
-                    {highlightText('The magnetize block orchestrates how teams interact with other teams in the pipeline, defining:')}
+                    {highlightText('The magnetize block orchestrates how models and tools work together, defining:')}
                   </p>
                   <ul>
-                    <li>{highlightText('Information flow between teams')}</li>
-                    <li>{highlightText('Processing sequences of data and tasks')}</li>
+                    <li>{highlightText('Information flow between components')}</li>
+                    <li>{highlightText('Processing sequences and dependencies')}</li>
                     <li>{highlightText('Error handling and fallback strategies')}</li>
-                    <li>{highlightText('Routing tasks and prompts to specific teams')}</li>
+                    <li>{highlightText('Output formatting and delivery')}</li>
                   </ul>
                 </>
               )}
@@ -2026,6 +2031,10 @@ magnetize { ... }`, "basic-structure")}
               <h2 id="defining-tools">Defining Tools</h2>
               {renderCodeBlock(`tool web_search {
     provider = serp|tavily
+    config {
+        api_key = "key" // Environment variables recommended
+        max_results = 5
+    }
 }
 
 tool file_handler {
@@ -2037,20 +2046,10 @@ tool file_handler {
               
               <h2 id="workflow-orchestration">Workflow Orchestration</h2>
               {renderCodeBlock(`magnetize {
-    research_team {
-        lead = researcher
-        tools - [web_search]
-    }
-
-    doc_team {
-        lead = writer
-        tools = [file_handler]
-    }
-
-    flow {
-        research_team -> doc_team // the magnetic operator -> declares a one way push of information and data from one team to another
-        doc_team <- pull // pull is an optional fallback magnetic operator, if the pull team was never given the data or info it needs to complete its task it can pull the info from the team that has it
-    }
+    input -> researcher
+    researcher -> [web_search, code_interpreter]
+    web_search -> fact_checker
+    fact_checker -> output
 }`, "workflow-definition")}
             </section>
           )}
@@ -2121,17 +2120,16 @@ mcp_controller {
                 <li>An API key for your preferred AI model provider(s)</li>
               </ul>
               
-              <h2>Pip Installation</h2>
+              <h2>NPM Installation</h2>
               {renderCodeBlock(`# Create a new project directory
 mkdir my-glue-app
 cd my-glue-app
 
-# Initialize a python venv
-python3 -m venv venv
-source venv/bin/activate
+# Initialize npm
+npm init -y
 
 # Install GLUE
-pip install glue-fw`, "pip-install")}
+npm install @glue-ai/core @glue-ai/cli`, "npm-install")}
               
               <h2>Configuration</h2>
               <p>
@@ -2146,15 +2144,14 @@ SERP_API_KEY=your_serp_key
 GLUE_DEBUG=true
 GLUE_LOG_LEVEL=info`, "env-config")}
               
-              <h2>Create Your First Simple Chatbot</h2>
+              <h2>Create Your First App</h2>
               <p>
                 Create a file named app.glue in your project root:
               </p>
-              {renderCodeBlock(`glue app { // 'app' is always needed as a keyword, regardless of what you name your .glue file
-    name = "Glue Chat"
+              {renderCodeBlock(`glue app {
+    name = "Hello World"
     config {
         development = true
-        sticky = true // keep your 
     }
 }
 
@@ -2162,20 +2159,20 @@ model assistant {
     provider = openai
     role = "Assistant"
     config {
-        model = "gpt-4o"
-        temperature = 0.2
+        model = "gpt-4"
     }
 }
 
 magnetize {
-    assistant {
-        lead = assistant
-    }
+    input -> assistant -> output
 }`, "first-app")}
               
               <h2>Running Your App</h2>
               {renderCodeBlock(`# Using the CLI
-glue run app.glue, "run-app")}
+npx glue run app.glue
+
+# Or start in development mode with hot reloading
+npx glue dev app.glue`, "run-app")}
             </section>
           )}
 
@@ -2346,7 +2343,7 @@ glue run app.glue, "run-app")}
                   onClick={() => copyToClipboard(`model name {
     provider = string             // Model provider
     role = string                 // Description of model's purpose
-    adhesives = [string, string, string]          // Array of connection types
+    adhesives = [string]          // Array of connection types
     config {
         model = string            // Specific model to use
         temperature = number      // 0.0 to 1.0
@@ -2396,7 +2393,16 @@ glue run app.glue, "run-app")}
                   id="copy-btn-workflow-config"
                   className="copy-button" 
                   onClick={() => copyToClipboard(`magnetize {
+    // Flow definitions
+    component1 -> component2      // Direct flow
+    component1 -> [comp2, comp3]  // Parallel flow
+    [comp1, comp2] -> component3  // Join flow
     
+    // With transformations
+    component1 -> { extract_data } -> component2
+    
+    // With conditions
+    component1 -> if(condition) -> component2 : component3
 }`, "workflow-config")}
                 >
                   Copy
